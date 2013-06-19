@@ -1,0 +1,9 @@
+{
+  "name": "asteroid-clients-test-server",
+  "version": "0.0.0",
+  "description": "A test server for running asteroid-clients integration testing.",
+  "main": "index.js",
+  "dependencies": {
+    "asteroid": "git+ssh://git@github.com/strongloop/asteroid.git"
+  }
+}
