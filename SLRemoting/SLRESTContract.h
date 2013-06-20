@@ -29,6 +29,7 @@ extern NSString *SLRESTContractDefaultVerb;
 + (instancetype)contract;
 
 - (void)addItem:(SLRESTContractItem *)item forMethod:(NSString *)method;
+- (void)addItemsFromContract:(SLRESTContract *)contract;
 
 - (NSString *)urlForMethod:(NSString *)method
                 parameters:(NSDictionary *)parameters;
