@@ -6,8 +6,5 @@
 //  Copyright (c) 2013 StrongLoop. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-@interface Asteroid : NSObject
-
-@end
+#import "SLAModel.h"
+#import "SLARESTAdapter.h"
