@@ -35,11 +35,11 @@
 //- (void)existsWithId:(NSNumber *)_id
 //             success:(SLAModelExistsSuccessBlock)success
 //             failure:(SLFailureBlock)failure;
-//
-//typedef void (^SLAModelFindSuccessBlock)(SLAModel *model);
-//- (void)findWithId:(NSNumber *)_id
-//           success:(SLAModelFindSuccessBlock)success
-//           failure:(SLFailureBlock)failure;
+
+typedef void (^SLAModelFindSuccessBlock)(SLAModel *model);
+- (void)findWithId:(NSNumber *)_id
+           success:(SLAModelFindSuccessBlock)success
+           failure:(SLFailureBlock)failure;
 
 typedef void (^SLAModelAllSuccessBlock)(NSArray *models);
 - (void)allWithSuccess:(SLAModelAllSuccessBlock)success

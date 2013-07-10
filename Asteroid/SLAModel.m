@@ -68,6 +68,8 @@
 - (SLRESTContract *)contract {
     SLRESTContract *contract = [SLRESTContract contract];
 
+    [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@/:id", self.className] verb:@"GET"]
+            forMethod:[NSString stringWithFormat:@"%@.findById", self.className]];
     [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@/all", self.className] verb:@"GET"]
             forMethod:[NSString stringWithFormat:@"%@.all", self.className]];
 
@@ -93,11 +95,24 @@
     return model;
 }
 
+- (void)findWithId:(NSNumber *)_id
+           success:(SLAModelFindSuccessBlock)success
+           failure:(SLFailureBlock)failure {
+    [self invokeStaticMethod:@"findById"
+                  parameters:@{ @"id": _id }
+                     success:^(id value) {
+                         NSAssert([[value class] isSubclassOfClass:[NSDictionary class]], @"Received non-Dictionary: %@", value);
+                         success([self modelWithDictionary:value]);
+                     } failure:failure];
+}
+
 - (void)allWithSuccess:(SLAModelAllSuccessBlock)success
                failure:(SLFailureBlock)failure {
     [self invokeStaticMethod:@"all"
                   parameters:@{}
                      success:^(id value) {
+                         NSAssert([[value class] isSubclassOfClass:[NSArray class]], @"Received non-Array: %@", value);
+
                          NSMutableArray *models = [NSMutableArray array];
 
                          [value enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {

@@ -36,6 +36,19 @@
     STAssertEqualObjects(@"Foobar", [model objectAtKeyedSubscript:@"name"], @"Invalid name.");
 }
 
+- (void)testFind {
+    ASYNC_TEST_START
+    [self.prototype findWithId:@2
+                       success:^(SLAModel *model) {
+                           STAssertNotNil(model, @"No model found with ID 2");
+                           STAssertTrue([[model class] isSubclassOfClass:[SLAModel class]], @"Invalid class.");
+                           STAssertEqualObjects([model objectAtKeyedSubscript:@"name"], @"Bar", @"Invalid name");
+                           STAssertEqualObjects([model objectAtKeyedSubscript:@"bars"], @1, @"Invalid bars");
+                           ASYNC_TEST_SIGNAL
+                       } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
 - (void)testAll {
     ASYNC_TEST_START
     [self.prototype allWithSuccess:^(NSArray *models) {

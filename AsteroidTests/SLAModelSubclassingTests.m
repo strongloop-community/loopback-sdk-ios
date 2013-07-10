@@ -62,6 +62,19 @@
     STAssertEqualObjects(model.bars, @1, @"Invalid name.");
 }
 
+- (void)testFind {
+    ASYNC_TEST_START
+    [self.prototype findWithId:@2
+                       success:^(SLAModel *model) {
+                           STAssertNotNil(model, @"No model found with ID 2");
+                           STAssertTrue([[model class] isSubclassOfClass:[Widget class]], @"Invalid class.");
+                           STAssertEqualObjects(((Widget *)model).name, @"Bar", @"Invalid name");
+                           STAssertEqualObjects(((Widget *)model).bars, @1, @"Invalid bars");
+                           ASYNC_TEST_SIGNAL
+                       } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
 - (void)testAll {
     ASYNC_TEST_START
     [self.prototype allWithSuccess:^(NSArray *models) {
