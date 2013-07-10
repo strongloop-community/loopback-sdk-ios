@@ -1,28 +1,28 @@
 //
-//  SLAModelTests.m
-//  Asteroid
+//  LBModelTests.m
+//  LoopBack
 //
 //  Created by Michael Schoonmaker on 6/19/13.
 //  Copyright (c) 2013 StrongLoop. All rights reserved.
 //
 
-#import "SLAModelTests.h"
+#import "LBModelTests.h"
 
-#import "SLAModel.h"
-#import "SLARESTAdapter.h"
+#import "LBModel.h"
+#import "LBRESTAdapter.h"
 
-@interface SLAModelTests()
+@interface LBModelTests()
 
-@property (nonatomic) SLAModelPrototype *prototype;
+@property (nonatomic) LBModelPrototype *prototype;
 
 @end
 
-@implementation SLAModelTests
+@implementation LBModelTests
 
 - (void)setUp {
     [super setUp];
 
-    SLARESTAdapter *adapter = [SLARESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
+    LBRESTAdapter *adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
     self.prototype = [adapter prototypeWithName:@"widgets"];
 }
 
@@ -31,7 +31,7 @@
 }
 
 - (void)testCreation {
-    SLAModel *model = [self.prototype modelWithDictionary:@{ @"name": @"Foobar" }];
+    LBModel *model = [self.prototype modelWithDictionary:@{ @"name": @"Foobar" }];
 
     STAssertEqualObjects(@"Foobar", [model objectAtKeyedSubscript:@"name"], @"Invalid name.");
 }
@@ -39,9 +39,9 @@
 - (void)testFind {
     ASYNC_TEST_START
     [self.prototype findWithId:@2
-                       success:^(SLAModel *model) {
+                       success:^(LBModel *model) {
                            STAssertNotNil(model, @"No model found with ID 2");
-                           STAssertTrue([[model class] isSubclassOfClass:[SLAModel class]], @"Invalid class.");
+                           STAssertTrue([[model class] isSubclassOfClass:[LBModel class]], @"Invalid class.");
                            STAssertEqualObjects([model objectAtKeyedSubscript:@"name"], @"Bar", @"Invalid name");
                            STAssertEqualObjects([model objectAtKeyedSubscript:@"bars"], @1, @"Invalid bars");
                            ASYNC_TEST_SIGNAL
@@ -54,7 +54,7 @@
     [self.prototype allWithSuccess:^(NSArray *models) {
         STAssertNotNil(models, @"No models returned.");
         STAssertEquals([models count], (NSUInteger)2, [NSString stringWithFormat:@"Invalid # of models returned: %lu", (unsigned long)[models count]]);
-        STAssertTrue([[models[0] class] isSubclassOfClass:[SLAModel class]], @"Invalid class.");
+        STAssertTrue([[models[0] class] isSubclassOfClass:[LBModel class]], @"Invalid class.");
         STAssertEqualObjects([models[0] objectAtKeyedSubscript:@"name"], @"Foo", @"Invalid name.");
         STAssertEqualObjects([models[0] objectAtKeyedSubscript:@"bars"], @0, @"Invalid bars: %@");
         STAssertEqualObjects([models[1] objectAtKeyedSubscript:@"name"], @"Bar", @"Invalid name: %@");

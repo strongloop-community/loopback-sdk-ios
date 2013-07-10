@@ -1,17 +1,17 @@
 //
-//  SLAModelSubclassingTests.m
-//  Asteroid
+//  LBModelSubclassingTests.m
+//  LoopBack
 //
 //  Created by Michael Schoonmaker on 6/19/13.
 //  Copyright (c) 2013 StrongLoop. All rights reserved.
 //
 
-#import "SLAModelSubclassingTests.h"
+#import "LBModelSubclassingTests.h"
 
-#import "SLAModel.h"
-#import "SLARESTAdapter.h"
+#import "LBModel.h"
+#import "LBRESTAdapter.h"
 
-@interface Widget : SLAModel
+@interface Widget : LBModel
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) NSNumber *bars;
@@ -22,7 +22,7 @@
 
 @end
 
-@interface WidgetPrototype : SLAModelPrototype
+@interface WidgetPrototype : LBModelPrototype
 
 + (instancetype)prototype;
 
@@ -36,18 +36,18 @@
 
 @end
 
-@interface SLAModelSubclassingTests()
+@interface LBModelSubclassingTests()
 
 @property (nonatomic) WidgetPrototype *prototype;
 
 @end
 
-@implementation SLAModelSubclassingTests
+@implementation LBModelSubclassingTests
 
 - (void)setUp {
     [super setUp];
 
-    SLARESTAdapter *adapter = [SLARESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
+    LBRESTAdapter *adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
     self.prototype = (WidgetPrototype *)[adapter prototypeWithClass:[WidgetPrototype class]];
 }
 
@@ -65,7 +65,7 @@
 - (void)testFind {
     ASYNC_TEST_START
     [self.prototype findWithId:@2
-                       success:^(SLAModel *model) {
+                       success:^(LBModel *model) {
                            STAssertNotNil(model, @"No model found with ID 2");
                            STAssertTrue([[model class] isSubclassOfClass:[Widget class]], @"Invalid class.");
                            STAssertEqualObjects(((Widget *)model).name, @"Bar", @"Invalid name");

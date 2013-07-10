@@ -1,17 +1,17 @@
 //
-//  SLAModel.m
-//  Asteroid
+//  LBModel.m
+//  LoopBack
 //
 //  Created by Michael Schoonmaker on 6/19/13.
 //  Copyright (c) 2013 StrongLoop. All rights reserved.
 //
 
-#import "SLAModel.h"
+#import "LBModel.h"
 
 #define NSSelectorForSetter(key) NSSelectorFromString([NSString stringWithFormat:@"set%@:", [key capitalizedString]])
 
 
-@interface SLAModel() {
+@interface LBModel() {
     NSMutableDictionary *__overflow;
 }
 
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation SLAModel
+@implementation LBModel
 
 - (instancetype)init {
     self = [super init];
@@ -47,7 +47,7 @@
 
 @end
 
-@implementation SLAModelPrototype
+@implementation LBModelPrototype
 
 - (instancetype)initWithName:(NSString *)name {
     self = [super initWithName:name];
@@ -58,7 +58,7 @@
 
         self.modelClass = NSClassFromString(modelClassName);
         if (!self.modelClass) {
-            self.modelClass = [SLAModel class];
+            self.modelClass = [LBModel class];
         }
     }
 
@@ -76,8 +76,8 @@
     return contract;
 }
 
-- (SLAModel *)modelWithDictionary:(NSDictionary *)dictionary {
-    SLAModel __block *model = (SLAModel *)[[self.modelClass alloc] init];
+- (LBModel *)modelWithDictionary:(NSDictionary *)dictionary {
+    LBModel __block *model = (LBModel *)[[self.modelClass alloc] init];
 
     [[model _overflow] addEntriesFromDictionary:dictionary];
 
@@ -96,7 +96,7 @@
 }
 
 - (void)findWithId:(NSNumber *)_id
-           success:(SLAModelFindSuccessBlock)success
+           success:(LBModelFindSuccessBlock)success
            failure:(SLFailureBlock)failure {
     [self invokeStaticMethod:@"findById"
                   parameters:@{ @"id": _id }
@@ -106,7 +106,7 @@
                      } failure:failure];
 }
 
-- (void)allWithSuccess:(SLAModelAllSuccessBlock)success
+- (void)allWithSuccess:(LBModelAllSuccessBlock)success
                failure:(SLFailureBlock)failure {
     [self invokeStaticMethod:@"all"
                   parameters:@{}

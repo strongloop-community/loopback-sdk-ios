@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B3335DA9178E16E40073082F /* LBRESTAdapter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D221481773766800B7CB63 /* LBRESTAdapter.h */; };
 		B38935B8178E0CEE00740143 /* AFHTTPClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212717722B5100B7CB63 /* AFHTTPClient.h */; };
 		B38935B9178E0CEE00740143 /* AFHTTPRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212817722B5100B7CB63 /* AFHTTPRequestOperation.h */; };
 		B38935BA178E0CEE00740143 /* AFImageRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212917722B5100B7CB63 /* AFImageRequestOperation.h */; };
@@ -25,19 +26,19 @@
 		B38935C7178E0CEE00740143 /* SLRESTContract.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2213617722B5100B7CB63 /* SLRESTContract.h */; };
 		B38935C9178E0D3300740143 /* libSLRemoting.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212517722B5100B7CB63 /* libSLRemoting.a */; };
 		B3D220FB17722AE800B7CB63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D220FA17722AE800B7CB63 /* Foundation.framework */; };
-		B3D2210017722AE800B7CB63 /* Asteroid.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D220FF17722AE800B7CB63 /* Asteroid.h */; };
+		B3D2210017722AE800B7CB63 /* LoopBack.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D220FF17722AE800B7CB63 /* LoopBack.h */; };
 		B3D2210A17722AE800B7CB63 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D2210917722AE800B7CB63 /* SenTestingKit.framework */; };
 		B3D2210D17722AE800B7CB63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D220FA17722AE800B7CB63 /* Foundation.framework */; };
-		B3D2211017722AE800B7CB63 /* libAsteroid.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D220F717722AE800B7CB63 /* libAsteroid.a */; };
+		B3D2211017722AE800B7CB63 /* libLoopBack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D220F717722AE800B7CB63 /* libLoopBack.a */; };
 		B3D2211617722AE800B7CB63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3D2211417722AE800B7CB63 /* InfoPlist.strings */; };
-		B3D2212417722B1700B7CB63 /* SLAModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2212317722B1700B7CB63 /* SLAModel.m */; };
+		B3D2212417722B1700B7CB63 /* LBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2212317722B1700B7CB63 /* LBModel.m */; };
 		B3D2213717722B5100B7CB63 /* libSLRemoting.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D2212517722B5100B7CB63 /* libSLRemoting.a */; };
 		B3D2213817722B5100B7CB63 /* libSLRemoting.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D2212517722B5100B7CB63 /* libSLRemoting.a */; };
-		B3D2213B17722BAB00B7CB63 /* SLAModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2213A17722BAB00B7CB63 /* SLAModelTests.m */; };
-		B3D2213C1772579500B7CB63 /* SLAModel.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212217722B1700B7CB63 /* SLAModel.h */; };
-		B3D2214217725A7F00B7CB63 /* SLAModelSubclassingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2214117725A7F00B7CB63 /* SLAModelSubclassingTests.m */; };
+		B3D2213B17722BAB00B7CB63 /* LBModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2213A17722BAB00B7CB63 /* LBModelTests.m */; };
+		B3D2213C1772579500B7CB63 /* LBModel.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212217722B1700B7CB63 /* LBModel.h */; };
+		B3D2214217725A7F00B7CB63 /* LBModelSubclassingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2214117725A7F00B7CB63 /* LBModelSubclassingTests.m */; };
 		B3D2214417725DAB00B7CB63 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D2214317725DAB00B7CB63 /* UIKit.framework */; };
-		B3D2214A1773766800B7CB63 /* SLARESTAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D221491773766800B7CB63 /* SLARESTAdapter.m */; };
+		B3D2214A1773766800B7CB63 /* LBRESTAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D221491773766800B7CB63 /* LBRESTAdapter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +47,7 @@
 			containerPortal = B3D220EF17722AE800B7CB63 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B3D220F617722AE800B7CB63;
-			remoteInfo = Asteroid;
+			remoteInfo = LoopBack;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -92,24 +93,25 @@
 			dstPath = "${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				B3D2213C1772579500B7CB63 /* SLAModel.h in CopyFiles */,
-				B3D2210017722AE800B7CB63 /* Asteroid.h in CopyFiles */,
+				B3335DA9178E16E40073082F /* LBRESTAdapter.h in CopyFiles */,
+				B3D2213C1772579500B7CB63 /* LBModel.h in CopyFiles */,
+				B3D2210017722AE800B7CB63 /* LoopBack.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B3D220F717722AE800B7CB63 /* libAsteroid.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAsteroid.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3D220F717722AE800B7CB63 /* libLoopBack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLoopBack.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D220FA17722AE800B7CB63 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		B3D220FE17722AE800B7CB63 /* Asteroid-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Asteroid-Prefix.pch"; sourceTree = "<group>"; };
-		B3D220FF17722AE800B7CB63 /* Asteroid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Asteroid.h; sourceTree = "<group>"; };
-		B3D2210817722AE800B7CB63 /* AsteroidTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AsteroidTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3D220FE17722AE800B7CB63 /* LoopBack-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LoopBack-Prefix.pch"; sourceTree = "<group>"; };
+		B3D220FF17722AE800B7CB63 /* LoopBack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoopBack.h; sourceTree = "<group>"; };
+		B3D2210817722AE800B7CB63 /* LoopBackTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoopBackTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D2210917722AE800B7CB63 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		B3D2211317722AE800B7CB63 /* AsteroidTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AsteroidTests-Info.plist"; sourceTree = "<group>"; };
+		B3D2211317722AE800B7CB63 /* LoopBackTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LoopBackTests-Info.plist"; sourceTree = "<group>"; };
 		B3D2211517722AE800B7CB63 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B3D2212217722B1700B7CB63 /* SLAModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAModel.h; sourceTree = "<group>"; };
-		B3D2212317722B1700B7CB63 /* SLAModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAModel.m; sourceTree = "<group>"; };
+		B3D2212217722B1700B7CB63 /* LBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBModel.h; sourceTree = "<group>"; };
+		B3D2212317722B1700B7CB63 /* LBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBModel.m; sourceTree = "<group>"; };
 		B3D2212517722B5100B7CB63 /* libSLRemoting.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSLRemoting.a; path = ../libSLRemoting.a; sourceTree = "<group>"; };
 		B3D2212717722B5100B7CB63 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		B3D2212817722B5100B7CB63 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -127,13 +129,13 @@
 		B3D2213417722B5100B7CB63 /* SLRemotingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRemotingUtils.h; sourceTree = "<group>"; };
 		B3D2213517722B5100B7CB63 /* SLRESTAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRESTAdapter.h; sourceTree = "<group>"; };
 		B3D2213617722B5100B7CB63 /* SLRESTContract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRESTContract.h; sourceTree = "<group>"; };
-		B3D2213917722BAB00B7CB63 /* SLAModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAModelTests.h; sourceTree = "<group>"; };
-		B3D2213A17722BAB00B7CB63 /* SLAModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAModelTests.m; sourceTree = "<group>"; };
-		B3D2214017725A7F00B7CB63 /* SLAModelSubclassingTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAModelSubclassingTests.h; sourceTree = "<group>"; };
-		B3D2214117725A7F00B7CB63 /* SLAModelSubclassingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAModelSubclassingTests.m; sourceTree = "<group>"; };
+		B3D2213917722BAB00B7CB63 /* LBModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBModelTests.h; sourceTree = "<group>"; };
+		B3D2213A17722BAB00B7CB63 /* LBModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBModelTests.m; sourceTree = "<group>"; };
+		B3D2214017725A7F00B7CB63 /* LBModelSubclassingTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBModelSubclassingTests.h; sourceTree = "<group>"; };
+		B3D2214117725A7F00B7CB63 /* LBModelSubclassingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBModelSubclassingTests.m; sourceTree = "<group>"; };
 		B3D2214317725DAB00B7CB63 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		B3D221481773766800B7CB63 /* SLARESTAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLARESTAdapter.h; sourceTree = "<group>"; };
-		B3D221491773766800B7CB63 /* SLARESTAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLARESTAdapter.m; sourceTree = "<group>"; };
+		B3D221481773766800B7CB63 /* LBRESTAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBRESTAdapter.h; sourceTree = "<group>"; };
+		B3D221491773766800B7CB63 /* LBRESTAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBRESTAdapter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +156,7 @@
 				B3D2210D17722AE800B7CB63 /* Foundation.framework in Frameworks */,
 				B3D2214417725DAB00B7CB63 /* UIKit.framework in Frameworks */,
 				B3D2213817722B5100B7CB63 /* libSLRemoting.a in Frameworks */,
-				B3D2211017722AE800B7CB63 /* libAsteroid.a in Frameworks */,
+				B3D2211017722AE800B7CB63 /* libLoopBack.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,8 +166,8 @@
 		B3D220EE17722AE800B7CB63 = {
 			isa = PBXGroup;
 			children = (
-				B3D220FC17722AE800B7CB63 /* Asteroid */,
-				B3D2211117722AE800B7CB63 /* AsteroidTests */,
+				B3D220FC17722AE800B7CB63 /* LoopBack */,
+				B3D2211117722AE800B7CB63 /* LoopBackTests */,
 				B3D220F917722AE800B7CB63 /* Frameworks */,
 				B3D220F817722AE800B7CB63 /* Products */,
 				B3D2212617722B5100B7CB63 /* SLRemoting */,
@@ -175,8 +177,8 @@
 		B3D220F817722AE800B7CB63 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B3D220F717722AE800B7CB63 /* libAsteroid.a */,
-				B3D2210817722AE800B7CB63 /* AsteroidTests.octest */,
+				B3D220F717722AE800B7CB63 /* libLoopBack.a */,
+				B3D2210817722AE800B7CB63 /* LoopBackTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -191,43 +193,43 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B3D220FC17722AE800B7CB63 /* Asteroid */ = {
+		B3D220FC17722AE800B7CB63 /* LoopBack */ = {
 			isa = PBXGroup;
 			children = (
-				B3D220FF17722AE800B7CB63 /* Asteroid.h */,
+				B3D220FF17722AE800B7CB63 /* LoopBack.h */,
 				B3D220FD17722AE800B7CB63 /* Supporting Files */,
-				B3D2212217722B1700B7CB63 /* SLAModel.h */,
-				B3D2212317722B1700B7CB63 /* SLAModel.m */,
-				B3D221481773766800B7CB63 /* SLARESTAdapter.h */,
-				B3D221491773766800B7CB63 /* SLARESTAdapter.m */,
+				B3D2212217722B1700B7CB63 /* LBModel.h */,
+				B3D2212317722B1700B7CB63 /* LBModel.m */,
+				B3D221481773766800B7CB63 /* LBRESTAdapter.h */,
+				B3D221491773766800B7CB63 /* LBRESTAdapter.m */,
 			);
-			path = Asteroid;
+			path = LoopBack;
 			sourceTree = "<group>";
 		};
 		B3D220FD17722AE800B7CB63 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B3D220FE17722AE800B7CB63 /* Asteroid-Prefix.pch */,
+				B3D220FE17722AE800B7CB63 /* LoopBack-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B3D2211117722AE800B7CB63 /* AsteroidTests */ = {
+		B3D2211117722AE800B7CB63 /* LoopBackTests */ = {
 			isa = PBXGroup;
 			children = (
 				B3D2211217722AE800B7CB63 /* Supporting Files */,
-				B3D2213917722BAB00B7CB63 /* SLAModelTests.h */,
-				B3D2213A17722BAB00B7CB63 /* SLAModelTests.m */,
-				B3D2214017725A7F00B7CB63 /* SLAModelSubclassingTests.h */,
-				B3D2214117725A7F00B7CB63 /* SLAModelSubclassingTests.m */,
+				B3D2213917722BAB00B7CB63 /* LBModelTests.h */,
+				B3D2213A17722BAB00B7CB63 /* LBModelTests.m */,
+				B3D2214017725A7F00B7CB63 /* LBModelSubclassingTests.h */,
+				B3D2214117725A7F00B7CB63 /* LBModelSubclassingTests.m */,
 			);
-			path = AsteroidTests;
+			path = LoopBackTests;
 			sourceTree = "<group>";
 		};
 		B3D2211217722AE800B7CB63 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B3D2211317722AE800B7CB63 /* AsteroidTests-Info.plist */,
+				B3D2211317722AE800B7CB63 /* LoopBackTests-Info.plist */,
 				B3D2211417722AE800B7CB63 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -260,9 +262,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B3D220F617722AE800B7CB63 /* Asteroid */ = {
+		B3D220F617722AE800B7CB63 /* LoopBack */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B3D2211C17722AE800B7CB63 /* Build configuration list for PBXNativeTarget "Asteroid" */;
+			buildConfigurationList = B3D2211C17722AE800B7CB63 /* Build configuration list for PBXNativeTarget "LoopBack" */;
 			buildPhases = (
 				B3D220F317722AE800B7CB63 /* Sources */,
 				B3D220F417722AE800B7CB63 /* Frameworks */,
@@ -274,14 +276,14 @@
 			);
 			dependencies = (
 			);
-			name = Asteroid;
-			productName = Asteroid;
-			productReference = B3D220F717722AE800B7CB63 /* libAsteroid.a */;
+			name = LoopBack;
+			productName = LoopBack;
+			productReference = B3D220F717722AE800B7CB63 /* libLoopBack.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		B3D2210717722AE800B7CB63 /* AsteroidTests */ = {
+		B3D2210717722AE800B7CB63 /* LoopBackTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B3D2211F17722AE800B7CB63 /* Build configuration list for PBXNativeTarget "AsteroidTests" */;
+			buildConfigurationList = B3D2211F17722AE800B7CB63 /* Build configuration list for PBXNativeTarget "LoopBackTests" */;
 			buildPhases = (
 				B3D2210317722AE800B7CB63 /* Sources */,
 				B3D2210417722AE800B7CB63 /* Frameworks */,
@@ -293,9 +295,9 @@
 			dependencies = (
 				B3D2210F17722AE800B7CB63 /* PBXTargetDependency */,
 			);
-			name = AsteroidTests;
-			productName = AsteroidTests;
-			productReference = B3D2210817722AE800B7CB63 /* AsteroidTests.octest */;
+			name = LoopBackTests;
+			productName = LoopBackTests;
+			productReference = B3D2210817722AE800B7CB63 /* LoopBackTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -307,7 +309,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = StrongLoop;
 			};
-			buildConfigurationList = B3D220F217722AE800B7CB63 /* Build configuration list for PBXProject "Asteroid" */;
+			buildConfigurationList = B3D220F217722AE800B7CB63 /* Build configuration list for PBXProject "LoopBack" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -319,8 +321,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B3D220F617722AE800B7CB63 /* Asteroid */,
-				B3D2210717722AE800B7CB63 /* AsteroidTests */,
+				B3D220F617722AE800B7CB63 /* LoopBack */,
+				B3D2210717722AE800B7CB63 /* LoopBackTests */,
 			);
 		};
 /* End PBXProject section */
@@ -357,8 +359,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3D2212417722B1700B7CB63 /* SLAModel.m in Sources */,
-				B3D2214A1773766800B7CB63 /* SLARESTAdapter.m in Sources */,
+				B3D2212417722B1700B7CB63 /* LBModel.m in Sources */,
+				B3D2214A1773766800B7CB63 /* LBRESTAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,8 +368,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3D2213B17722BAB00B7CB63 /* SLAModelTests.m in Sources */,
-				B3D2214217725A7F00B7CB63 /* SLAModelSubclassingTests.m in Sources */,
+				B3D2213B17722BAB00B7CB63 /* LBModelTests.m in Sources */,
+				B3D2214217725A7F00B7CB63 /* LBModelSubclassingTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +378,7 @@
 /* Begin PBXTargetDependency section */
 		B3D2210F17722AE800B7CB63 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B3D220F617722AE800B7CB63 /* Asteroid */;
+			target = B3D220F617722AE800B7CB63 /* LoopBack */;
 			targetProxy = B3D2210E17722AE800B7CB63 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -449,9 +451,9 @@
 		B3D2211D17722AE800B7CB63 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DSTROOT = /tmp/Asteroid.dst;
+				DSTROOT = /tmp/LoopBack.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Asteroid/Asteroid-Prefix.pch";
+				GCC_PREFIX_HEADER = "LoopBack/LoopBack-Prefix.pch";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -465,9 +467,9 @@
 		B3D2211E17722AE800B7CB63 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DSTROOT = /tmp/Asteroid.dst;
+				DSTROOT = /tmp/LoopBack.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Asteroid/Asteroid-Prefix.pch";
+				GCC_PREFIX_HEADER = "LoopBack/LoopBack-Prefix.pch";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -486,8 +488,8 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Asteroid/Asteroid-Prefix.pch";
-				INFOPLIST_FILE = "AsteroidTests/AsteroidTests-Info.plist";
+				GCC_PREFIX_HEADER = "LoopBack/LoopBack-Prefix.pch";
+				INFOPLIST_FILE = "LoopBackTests/LoopBackTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -505,8 +507,8 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Asteroid/Asteroid-Prefix.pch";
-				INFOPLIST_FILE = "AsteroidTests/AsteroidTests-Info.plist";
+				GCC_PREFIX_HEADER = "LoopBack/LoopBack-Prefix.pch";
+				INFOPLIST_FILE = "LoopBackTests/LoopBackTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -519,7 +521,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B3D220F217722AE800B7CB63 /* Build configuration list for PBXProject "Asteroid" */ = {
+		B3D220F217722AE800B7CB63 /* Build configuration list for PBXProject "LoopBack" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3D2211A17722AE800B7CB63 /* Debug */,
@@ -528,7 +530,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B3D2211C17722AE800B7CB63 /* Build configuration list for PBXNativeTarget "Asteroid" */ = {
+		B3D2211C17722AE800B7CB63 /* Build configuration list for PBXNativeTarget "LoopBack" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3D2211D17722AE800B7CB63 /* Debug */,
@@ -537,7 +539,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B3D2211F17722AE800B7CB63 /* Build configuration list for PBXNativeTarget "AsteroidTests" */ = {
+		B3D2211F17722AE800B7CB63 /* Build configuration list for PBXNativeTarget "LoopBackTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3D2212017722AE800B7CB63 /* Debug */,
