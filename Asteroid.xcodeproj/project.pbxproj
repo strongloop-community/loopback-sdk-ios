@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B38935B8178E0CEE00740143 /* AFHTTPClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212717722B5100B7CB63 /* AFHTTPClient.h */; };
+		B38935B9178E0CEE00740143 /* AFHTTPRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212817722B5100B7CB63 /* AFHTTPRequestOperation.h */; };
+		B38935BA178E0CEE00740143 /* AFImageRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212917722B5100B7CB63 /* AFImageRequestOperation.h */; };
+		B38935BB178E0CEE00740143 /* AFJSONRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212A17722B5100B7CB63 /* AFJSONRequestOperation.h */; };
+		B38935BC178E0CEE00740143 /* AFNetworkActivityIndicatorManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212B17722B5100B7CB63 /* AFNetworkActivityIndicatorManager.h */; };
+		B38935BD178E0CEE00740143 /* AFNetworking.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212C17722B5100B7CB63 /* AFNetworking.h */; };
+		B38935BE178E0CEE00740143 /* AFPropertyListRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212D17722B5100B7CB63 /* AFPropertyListRequestOperation.h */; };
+		B38935BF178E0CEE00740143 /* AFURLConnectionOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212E17722B5100B7CB63 /* AFURLConnectionOperation.h */; };
+		B38935C0178E0CEE00740143 /* AFXMLRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212F17722B5100B7CB63 /* AFXMLRequestOperation.h */; };
+		B38935C1178E0CEE00740143 /* SLAdapter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2213017722B5100B7CB63 /* SLAdapter.h */; };
+		B38935C2178E0CEE00740143 /* SLObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2213117722B5100B7CB63 /* SLObject.h */; };
+		B38935C3178E0CEE00740143 /* SLRemoting-Prefix.pch in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2213217722B5100B7CB63 /* SLRemoting-Prefix.pch */; };
+		B38935C4178E0CEE00740143 /* SLRemoting.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2213317722B5100B7CB63 /* SLRemoting.h */; };
+		B38935C5178E0CEE00740143 /* SLRemotingUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2213417722B5100B7CB63 /* SLRemotingUtils.h */; };
+		B38935C6178E0CEE00740143 /* SLRESTAdapter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2213517722B5100B7CB63 /* SLRESTAdapter.h */; };
+		B38935C7178E0CEE00740143 /* SLRESTContract.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2213617722B5100B7CB63 /* SLRESTContract.h */; };
+		B38935C9178E0D3300740143 /* libSLRemoting.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212517722B5100B7CB63 /* libSLRemoting.a */; };
 		B3D220FB17722AE800B7CB63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D220FA17722AE800B7CB63 /* Foundation.framework */; };
 		B3D2210017722AE800B7CB63 /* Asteroid.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D220FF17722AE800B7CB63 /* Asteroid.h */; };
 		B3D2210217722AE800B7CB63 /* Asteroid.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2210117722AE800B7CB63 /* Asteroid.m */; };
@@ -35,6 +52,41 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		B38935B6178E0CDD00740143 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = SLRemoting;
+			dstSubfolderSpec = 16;
+			files = (
+				B38935B8178E0CEE00740143 /* AFHTTPClient.h in CopyFiles */,
+				B38935B9178E0CEE00740143 /* AFHTTPRequestOperation.h in CopyFiles */,
+				B38935BA178E0CEE00740143 /* AFImageRequestOperation.h in CopyFiles */,
+				B38935BB178E0CEE00740143 /* AFJSONRequestOperation.h in CopyFiles */,
+				B38935BC178E0CEE00740143 /* AFNetworkActivityIndicatorManager.h in CopyFiles */,
+				B38935BD178E0CEE00740143 /* AFNetworking.h in CopyFiles */,
+				B38935BE178E0CEE00740143 /* AFPropertyListRequestOperation.h in CopyFiles */,
+				B38935BF178E0CEE00740143 /* AFURLConnectionOperation.h in CopyFiles */,
+				B38935C0178E0CEE00740143 /* AFXMLRequestOperation.h in CopyFiles */,
+				B38935C1178E0CEE00740143 /* SLAdapter.h in CopyFiles */,
+				B38935C2178E0CEE00740143 /* SLObject.h in CopyFiles */,
+				B38935C3178E0CEE00740143 /* SLRemoting-Prefix.pch in CopyFiles */,
+				B38935C4178E0CEE00740143 /* SLRemoting.h in CopyFiles */,
+				B38935C5178E0CEE00740143 /* SLRemotingUtils.h in CopyFiles */,
+				B38935C6178E0CEE00740143 /* SLRESTAdapter.h in CopyFiles */,
+				B38935C7178E0CEE00740143 /* SLRESTContract.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B38935C8178E0D2200740143 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				B38935C9178E0D3300740143 /* libSLRemoting.a in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B3D220F517722AE800B7CB63 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -217,7 +269,9 @@
 			buildPhases = (
 				B3D220F317722AE800B7CB63 /* Sources */,
 				B3D220F417722AE800B7CB63 /* Frameworks */,
+				B38935C8178E0D2200740143 /* CopyFiles */,
 				B3D220F517722AE800B7CB63 /* CopyFiles */,
+				B38935B6178E0CDD00740143 /* CopyFiles */,
 			);
 			buildRules = (
 			);
