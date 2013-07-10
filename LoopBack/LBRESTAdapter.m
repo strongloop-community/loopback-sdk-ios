@@ -29,7 +29,11 @@
     NSParameterAssert([type isSubclassOfClass:[LBModelPrototype class]]);
     NSParameterAssert([type respondsToSelector:@selector(prototype)]);
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-method-access"
     LBModelPrototype *prototype = (LBModelPrototype *)[type prototype];
+#pragma clang diagnostic pop
+
     [self attachPrototype:prototype];
     return prototype;
 }
