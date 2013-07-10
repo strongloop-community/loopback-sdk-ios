@@ -55,11 +55,30 @@
     [super tearDown];
 }
 
-- (void)testCreation {
+- (void)testCreate {
     Widget *model = (Widget*)[self.prototype modelWithDictionary:@{ @"name": @"Foobar", @"bars": @1 }];
 
     STAssertEqualObjects(model.name, @"Foobar", @"Invalid name.");
-    STAssertEqualObjects(model.bars, @1, @"Invalid name.");
+    STAssertEqualObjects(model.bars, @1, @"Invalid bars.");
+    STAssertEqualObjects(model._id, nil, @"Invalid id");
+
+    ASYNC_TEST_START
+    [model saveWithSuccess:^{
+        STAssertEqualObjects(model._id, @3, @"Invalid id");
+        ASYNC_TEST_SIGNAL
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
+- (void)testRemove {
+    ASYNC_TEST_START
+    [self.prototype findWithId:@3
+                       success:^(LBModel *model) {
+                           [model destroyWithSuccess:^{
+                               ASYNC_TEST_SIGNAL
+                           } failure:ASYNC_TEST_FAILURE_BLOCK];
+                       } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
 }
 
 - (void)testFind {

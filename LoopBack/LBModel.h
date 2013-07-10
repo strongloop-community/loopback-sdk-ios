@@ -10,16 +10,20 @@
 
 @interface LBModel : SLObject
 
+@property (nonatomic, readonly, copy) NSNumber *_id;
+
 - (id)objectAtKeyedSubscript:(id <NSCopying>)key;
 - (void)setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key;
 
-//typedef void (^LBModelSaveSuccessBlock)();
-//- (void)save:(LBModelSaveSuccessBlock)success
-//     failure:(SLFailureBlock)failure;
-//
-//typedef void (^LBModelDestroySuccessBlock)();
-//- (void)destroy:(LBModelDestroySuccessBlock)success
-//        failure:(SLFailureBlock)failure;
+- (NSDictionary *)toDictionary;
+
+typedef void (^LBModelSaveSuccessBlock)();
+- (void)saveWithSuccess:(LBModelSaveSuccessBlock)success
+                failure:(SLFailureBlock)failure;
+
+typedef void (^LBModelDestroySuccessBlock)();
+- (void)destroyWithSuccess:(LBModelDestroySuccessBlock)success
+                   failure:(SLFailureBlock)failure;
 
 @end
 

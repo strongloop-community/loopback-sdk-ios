@@ -15,14 +15,17 @@
     NSMutableDictionary *__overflow;
 }
 
+@property (nonatomic, readwrite, copy) NSNumber *_id;
+
 - (NSMutableDictionary *)_overflow;
+- (void)setId:(NSNumber *)_id;
 
 @end
 
 @implementation LBModel
 
-- (instancetype)init {
-    self = [super init];
+- (instancetype)initWithPrototype:(SLPrototype *)prototype parameters:(NSDictionary *)parameters {
+    self = [super initWithPrototype:prototype parameters:parameters];
 
     if (self) {
         __overflow = [NSMutableDictionary dictionary];
@@ -43,6 +46,39 @@
 
 - (NSMutableDictionary *)_overflow {
     return __overflow;
+}
+
+- (void)setId:(NSNumber *)_id {
+    __id = _id;
+}
+
+- (NSDictionary *)toDictionary {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+
+    [dict setValue:__id forKey:@"id"];
+
+    return dict;
+}
+
+- (void)saveWithSuccess:(LBModelSaveSuccessBlock)success
+                failure:(SLFailureBlock)failure {
+    [self invokeMethod:@"save"
+            parameters:[self toDictionary]
+               success:^(id value) {
+                   self._id = [value valueForKey:@"id"];
+                   success();
+               }
+               failure:failure];
+}
+
+- (void)destroyWithSuccess:(LBModelDestroySuccessBlock)success
+                   failure:(SLFailureBlock)failure {
+    [self invokeMethod:@"remove"
+            parameters:[self toDictionary]
+               success:^(id value) {
+                   success();
+               }
+               failure:failure];
 }
 
 @end
@@ -68,6 +104,10 @@
 - (SLRESTContract *)contract {
     SLRESTContract *contract = [SLRESTContract contract];
 
+    [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@/:id", self.className] verb:@"PUT"]
+            forMethod:[NSString stringWithFormat:@"%@.prototype.save", self.className]];
+    [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@/:id", self.className] verb:@"DELETE"]
+            forMethod:[NSString stringWithFormat:@"%@.prototype.remove", self.className]];
     [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@/:id", self.className] verb:@"GET"]
             forMethod:[NSString stringWithFormat:@"%@.findById", self.className]];
     [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@/all", self.className] verb:@"GET"]
@@ -77,7 +117,7 @@
 }
 
 - (LBModel *)modelWithDictionary:(NSDictionary *)dictionary {
-    LBModel __block *model = (LBModel *)[[self.modelClass alloc] init];
+    LBModel __block *model = (LBModel *)[[self.modelClass alloc] initWithPrototype:self parameters:dictionary];
 
     [[model _overflow] addEntriesFromDictionary:dictionary];
 
