@@ -35,8 +35,8 @@ static NSNumber *lastId;
 - (void)testCreate {
     LBModel __block *model = [self.prototype modelWithDictionary:@{ @"name": @"Foobar", @"bars": @1 }];
 
-    STAssertEqualObjects(@"Foobar", [model objectAtKeyedSubscript:@"name"], @"Invalid name.");
-    STAssertEqualObjects(@1, [model objectAtKeyedSubscript:@"bars"], @"Invalid bars.");
+    STAssertEqualObjects(@"Foobar", model[@"name"], @"Invalid name.");
+    STAssertEqualObjects(@1, model[@"bars"], @"Invalid bars.");
     STAssertNil(model._id, @"Invalid id");
 
     ASYNC_TEST_START
@@ -66,8 +66,8 @@ static NSNumber *lastId;
                        success:^(LBModel *model) {
                            STAssertNotNil(model, @"No model found with ID 2");
                            STAssertTrue([[model class] isSubclassOfClass:[LBModel class]], @"Invalid class.");
-                           STAssertEqualObjects([model objectAtKeyedSubscript:@"name"], @"Bar", @"Invalid name");
-                           STAssertEqualObjects([model objectAtKeyedSubscript:@"bars"], @1, @"Invalid bars");
+                           STAssertEqualObjects(model[@"name"], @"Bar", @"Invalid name");
+                           STAssertEqualObjects(model[@"bars"], @1, @"Invalid bars");
                            ASYNC_TEST_SIGNAL
                        } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
@@ -79,10 +79,10 @@ static NSNumber *lastId;
         STAssertNotNil(models, @"No models returned.");
         STAssertTrue([models count] >= 2, [NSString stringWithFormat:@"Invalid # of models returned: %lu", (unsigned long)[models count]]);
         STAssertTrue([[models[0] class] isSubclassOfClass:[LBModel class]], @"Invalid class.");
-        STAssertEqualObjects([models[0] objectAtKeyedSubscript:@"name"], @"Foo", @"Invalid name");
-        STAssertEqualObjects([models[0] objectAtKeyedSubscript:@"bars"], @0, @"Invalid bars");
-        STAssertEqualObjects([models[1] objectAtKeyedSubscript:@"name"], @"Bar", @"Invalid name");
-        STAssertEqualObjects([models[1] objectAtKeyedSubscript:@"bars"], @1, @"Invalid bars");
+        STAssertEqualObjects(models[0][@"name"], @"Foo", @"Invalid name");
+        STAssertEqualObjects(models[0][@"bars"], @0, @"Invalid bars");
+        STAssertEqualObjects(models[1][@"name"], @"Bar", @"Invalid name");
+        STAssertEqualObjects(models[1][@"bars"], @1, @"Invalid bars");
         ASYNC_TEST_SIGNAL
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
@@ -92,10 +92,10 @@ static NSNumber *lastId;
     ASYNC_TEST_START
     LBModelFindSuccessBlock verify = ^(LBModel *model) {
         STAssertNotNil(model, @"No model found with ID 2");
-        STAssertEqualObjects([model objectAtKeyedSubscript:@"name"], @"Barfoo", @"Invalid name");
-        STAssertEqualObjects([model objectAtKeyedSubscript:@"bars"], @1, @"Invalid bars");
+        STAssertEqualObjects(model[@"name"], @"Barfoo", @"Invalid name");
+        STAssertEqualObjects(model[@"bars"], @1, @"Invalid bars");
 
-        [model setObject:@"Bar" forKeyedSubscript:@"name"];
+        model[@"name"] = @"Bar";
         [model saveWithSuccess:^{
             ASYNC_TEST_SIGNAL
         } failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -107,7 +107,7 @@ static NSNumber *lastId;
 
     LBModelFindSuccessBlock update = ^(LBModel *model) {
         STAssertNotNil(model, @"No model found with ID 2");
-        [model setObject:@"Barfoo" forKeyedSubscript:@"name"];
+        model[@"name"] = @"Barfoo";
         [model saveWithSuccess:findAgain failure:ASYNC_TEST_FAILURE_BLOCK];
     };
 

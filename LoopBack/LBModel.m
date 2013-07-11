@@ -36,7 +36,7 @@
     return self;
 }
 
-- (id)objectAtKeyedSubscript:(id <NSCopying>)key {
+- (id)objectForKeyedSubscript:(id <NSCopying>)key {
     NSLog(@"RTS: %i", [self respondsToSelector:@selector(key)]);
 
     return [__overflow objectForKey:key];

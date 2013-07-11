@@ -12,7 +12,7 @@
 
 @property (nonatomic, readonly, copy) NSNumber *_id;
 
-- (id)objectAtKeyedSubscript:(id <NSCopying>)key;
+- (id)objectForKeyedSubscript:(id <NSCopying>)key;
 - (void)setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key;
 
 - (NSDictionary *)toDictionary;
