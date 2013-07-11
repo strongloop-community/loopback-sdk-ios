@@ -37,8 +37,6 @@
 }
 
 - (id)objectForKeyedSubscript:(id <NSCopying>)key {
-    NSLog(@"RTS: %i", [self respondsToSelector:@selector(key)]);
-
     return [__overflow objectForKey:key];
 }
 
@@ -77,7 +75,7 @@
 
 - (void)saveWithSuccess:(LBModelSaveSuccessBlock)success
                 failure:(SLFailureBlock)failure {
-    [self invokeMethod:@"save"
+    [self invokeMethod:self._id ? @"save" : @"create"
             parameters:[self toDictionary]
                success:^(id value) {
                    self._id = [value valueForKey:@"id"];
@@ -119,6 +117,8 @@
 - (SLRESTContract *)contract {
     SLRESTContract *contract = [SLRESTContract contract];
 
+    [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@", self.className] verb:@"POST"]
+            forMethod:[NSString stringWithFormat:@"%@.prototype.create", self.className]];
     [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@/:id", self.className] verb:@"PUT"]
             forMethod:[NSString stringWithFormat:@"%@.prototype.save", self.className]];
     [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@/:id", self.className] verb:@"DELETE"]
