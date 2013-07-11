@@ -39,6 +39,7 @@
 		B3D2214217725A7F00B7CB63 /* LBModelSubclassingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2214117725A7F00B7CB63 /* LBModelSubclassingTests.m */; };
 		B3D2214417725DAB00B7CB63 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D2214317725DAB00B7CB63 /* UIKit.framework */; };
 		B3D2214A1773766800B7CB63 /* LBRESTAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D221491773766800B7CB63 /* LBRESTAdapter.m */; };
+		B3DC030D178F1EE20044DD58 /* libobjc.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DC030C178F1EE20044DD58 /* libobjc.A.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +137,7 @@
 		B3D2214317725DAB00B7CB63 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B3D221481773766800B7CB63 /* LBRESTAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBRESTAdapter.h; sourceTree = "<group>"; };
 		B3D221491773766800B7CB63 /* LBRESTAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBRESTAdapter.m; sourceTree = "<group>"; };
+		B3DC030C178F1EE20044DD58 /* libobjc.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.A.dylib; path = usr/lib/libobjc.A.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3DC030D178F1EE20044DD58 /* libobjc.A.dylib in Frameworks */,
 				B3D220FB17722AE800B7CB63 /* Foundation.framework in Frameworks */,
 				B3D2213717722B5100B7CB63 /* libSLRemoting.a in Frameworks */,
 			);
@@ -186,6 +189,7 @@
 		B3D220F917722AE800B7CB63 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3DC030C178F1EE20044DD58 /* libobjc.A.dylib */,
 				B3D220FA17722AE800B7CB63 /* Foundation.framework */,
 				B3D2210917722AE800B7CB63 /* SenTestingKit.framework */,
 				B3D2214317725DAB00B7CB63 /* UIKit.framework */,

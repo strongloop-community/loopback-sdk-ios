@@ -8,6 +8,8 @@
 
 #import "LBModel.h"
 
+#import <objc/runtime.h>
+
 #define NSSelectorForSetter(key) NSSelectorFromString([NSString stringWithFormat:@"set%@:", [key capitalizedString]])
 
 
@@ -53,9 +55,22 @@
 }
 
 - (NSDictionary *)toDictionary {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:__overflow];
 
     [dict setValue:__id forKey:@"id"];
+
+    unsigned int propertyCount, i;
+    objc_property_t *properties = class_copyPropertyList([self class], &propertyCount);
+    NSString *propertyName;
+
+    for (i = 0; i < propertyCount; i++) {
+        propertyName = [NSString stringWithCString:property_getName(properties[i]) encoding:NSUTF8StringEncoding];
+        if ([propertyName isEqualToString:@"_id"]) {
+            continue;
+        }
+
+        [dict setValue:[self valueForKey:propertyName] forKey:propertyName];
+    }
 
     return dict;
 }
