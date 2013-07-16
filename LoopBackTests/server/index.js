@@ -1,9 +1,9 @@
-var asteroid = require('asteroid');
-var app = asteroid();
-var Memory = asteroid.createDataSource({
-  connector: asteroid.Memory
+var loopback = require('loopback');
+var app = loopback();
+var Memory = loopback.createDataSource({
+  connector: loopback.Memory
 });
-var Widget = asteroid.createModel('widget', {
+var Widget = loopback.createModel('widget', {
   name: {
     type: String,
     required: true
@@ -21,7 +21,7 @@ var Widget = asteroid.createModel('widget', {
 Widget.attachTo(Memory);
 app.model(Widget);
 
-app.use(asteroid.rest());
+app.use(loopback.rest());
 app.listen(3000);
 
 Widget.destroyAll(function () {

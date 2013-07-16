@@ -1,9 +1,9 @@
 {
-  "name": "asteroid-clients-test-server",
+  "name": "loopback-clients-test-server",
   "version": "0.0.0",
-  "description": "A test server for running asteroid-clients integration testing.",
+  "description": "A test server for running loopback-clients integration testing.",
   "main": "index.js",
   "dependencies": {
-    "asteroid": "git+ssh://git@github.com/strongloop/asteroid.git"
+    "loopback": "git+ssh://git@github.com/strongloop/loopback.git"
   }
 }
