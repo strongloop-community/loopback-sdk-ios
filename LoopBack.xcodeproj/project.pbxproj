@@ -6,40 +6,38 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		B3DFA5B117970B1200F656D7 /* LoopBackFramework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B3DFA5B217970B1200F656D7 /* Build configuration list for PBXAggregateTarget "LoopBackFramework" */;
+			buildPhases = (
+				B3DFA5C517970B7700F656D7 /* ShellScript */,
+			);
+			dependencies = (
+				B3DFA5C417970B7400F656D7 /* PBXTargetDependency */,
+			);
+			name = LoopBackFramework;
+			productName = LoopBackFramework;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		B3335DA9178E16E40073082F /* LBRESTAdapter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D221481773766800B7CB63 /* LBRESTAdapter.h */; };
-		B38935B8178E0CEE00740143 /* AFHTTPClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212717722B5100B7CB63 /* AFHTTPClient.h */; };
-		B38935B9178E0CEE00740143 /* AFHTTPRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212817722B5100B7CB63 /* AFHTTPRequestOperation.h */; };
-		B38935BA178E0CEE00740143 /* AFImageRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212917722B5100B7CB63 /* AFImageRequestOperation.h */; };
-		B38935BB178E0CEE00740143 /* AFJSONRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212A17722B5100B7CB63 /* AFJSONRequestOperation.h */; };
-		B38935BC178E0CEE00740143 /* AFNetworkActivityIndicatorManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212B17722B5100B7CB63 /* AFNetworkActivityIndicatorManager.h */; };
-		B38935BD178E0CEE00740143 /* AFNetworking.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212C17722B5100B7CB63 /* AFNetworking.h */; };
-		B38935BE178E0CEE00740143 /* AFPropertyListRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212D17722B5100B7CB63 /* AFPropertyListRequestOperation.h */; };
-		B38935BF178E0CEE00740143 /* AFURLConnectionOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212E17722B5100B7CB63 /* AFURLConnectionOperation.h */; };
-		B38935C0178E0CEE00740143 /* AFXMLRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212F17722B5100B7CB63 /* AFXMLRequestOperation.h */; };
-		B38935C1178E0CEE00740143 /* SLAdapter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2213017722B5100B7CB63 /* SLAdapter.h */; };
-		B38935C2178E0CEE00740143 /* SLObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2213117722B5100B7CB63 /* SLObject.h */; };
-		B38935C3178E0CEE00740143 /* SLRemoting-Prefix.pch in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2213217722B5100B7CB63 /* SLRemoting-Prefix.pch */; };
-		B38935C4178E0CEE00740143 /* SLRemoting.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2213317722B5100B7CB63 /* SLRemoting.h */; };
-		B38935C5178E0CEE00740143 /* SLRemotingUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2213417722B5100B7CB63 /* SLRemotingUtils.h */; };
-		B38935C6178E0CEE00740143 /* SLRESTAdapter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2213517722B5100B7CB63 /* SLRESTAdapter.h */; };
-		B38935C7178E0CEE00740143 /* SLRESTContract.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2213617722B5100B7CB63 /* SLRESTContract.h */; };
-		B38935C9178E0D3300740143 /* libSLRemoting.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212517722B5100B7CB63 /* libSLRemoting.a */; };
+		B36E878917970C81000B685A /* SLRemoting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36E878817970C81000B685A /* SLRemoting.framework */; };
 		B3D220FB17722AE800B7CB63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D220FA17722AE800B7CB63 /* Foundation.framework */; };
-		B3D2210017722AE800B7CB63 /* LoopBack.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D220FF17722AE800B7CB63 /* LoopBack.h */; };
 		B3D2210A17722AE800B7CB63 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D2210917722AE800B7CB63 /* SenTestingKit.framework */; };
 		B3D2210D17722AE800B7CB63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D220FA17722AE800B7CB63 /* Foundation.framework */; };
 		B3D2211017722AE800B7CB63 /* libLoopBack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D220F717722AE800B7CB63 /* libLoopBack.a */; };
 		B3D2211617722AE800B7CB63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3D2211417722AE800B7CB63 /* InfoPlist.strings */; };
 		B3D2212417722B1700B7CB63 /* LBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2212317722B1700B7CB63 /* LBModel.m */; };
-		B3D2213717722B5100B7CB63 /* libSLRemoting.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D2212517722B5100B7CB63 /* libSLRemoting.a */; };
-		B3D2213817722B5100B7CB63 /* libSLRemoting.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D2212517722B5100B7CB63 /* libSLRemoting.a */; };
 		B3D2213B17722BAB00B7CB63 /* LBModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2213A17722BAB00B7CB63 /* LBModelTests.m */; };
-		B3D2213C1772579500B7CB63 /* LBModel.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B3D2212217722B1700B7CB63 /* LBModel.h */; };
 		B3D2214217725A7F00B7CB63 /* LBModelSubclassingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2214117725A7F00B7CB63 /* LBModelSubclassingTests.m */; };
 		B3D2214417725DAB00B7CB63 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D2214317725DAB00B7CB63 /* UIKit.framework */; };
 		B3D2214A1773766800B7CB63 /* LBRESTAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D221491773766800B7CB63 /* LBRESTAdapter.m */; };
 		B3DC030D178F1EE20044DD58 /* libobjc.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DC030C178F1EE20044DD58 /* libobjc.A.dylib */; };
+		B3DFA5AD17970AB700F656D7 /* LoopBack.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D220FF17722AE800B7CB63 /* LoopBack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3DFA5AE17970ABD00F656D7 /* LBModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D2212217722B1700B7CB63 /* LBModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3DFA5AF17970ABD00F656D7 /* LBRESTAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D221481773766800B7CB63 /* LBRESTAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3DFA5B017970AC700F656D7 /* LoopBack-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = B3D220FE17722AE800B7CB63 /* LoopBack-Prefix.pch */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,59 +48,17 @@
 			remoteGlobalIDString = B3D220F617722AE800B7CB63;
 			remoteInfo = LoopBack;
 		};
+		B3DFA5C317970B7400F656D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3D220EF17722AE800B7CB63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B3D220F617722AE800B7CB63;
+			remoteInfo = LoopBack;
+		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		B38935B6178E0CDD00740143 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = SLRemoting;
-			dstSubfolderSpec = 16;
-			files = (
-				B38935B8178E0CEE00740143 /* AFHTTPClient.h in CopyFiles */,
-				B38935B9178E0CEE00740143 /* AFHTTPRequestOperation.h in CopyFiles */,
-				B38935BA178E0CEE00740143 /* AFImageRequestOperation.h in CopyFiles */,
-				B38935BB178E0CEE00740143 /* AFJSONRequestOperation.h in CopyFiles */,
-				B38935BC178E0CEE00740143 /* AFNetworkActivityIndicatorManager.h in CopyFiles */,
-				B38935BD178E0CEE00740143 /* AFNetworking.h in CopyFiles */,
-				B38935BE178E0CEE00740143 /* AFPropertyListRequestOperation.h in CopyFiles */,
-				B38935BF178E0CEE00740143 /* AFURLConnectionOperation.h in CopyFiles */,
-				B38935C0178E0CEE00740143 /* AFXMLRequestOperation.h in CopyFiles */,
-				B38935C1178E0CEE00740143 /* SLAdapter.h in CopyFiles */,
-				B38935C2178E0CEE00740143 /* SLObject.h in CopyFiles */,
-				B38935C3178E0CEE00740143 /* SLRemoting-Prefix.pch in CopyFiles */,
-				B38935C4178E0CEE00740143 /* SLRemoting.h in CopyFiles */,
-				B38935C5178E0CEE00740143 /* SLRemotingUtils.h in CopyFiles */,
-				B38935C6178E0CEE00740143 /* SLRESTAdapter.h in CopyFiles */,
-				B38935C7178E0CEE00740143 /* SLRESTContract.h in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B38935C8178E0D2200740143 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 16;
-			files = (
-				B38935C9178E0D3300740143 /* libSLRemoting.a in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B3D220F517722AE800B7CB63 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "${PRODUCT_NAME}";
-			dstSubfolderSpec = 16;
-			files = (
-				B3335DA9178E16E40073082F /* LBRESTAdapter.h in CopyFiles */,
-				B3D2213C1772579500B7CB63 /* LBModel.h in CopyFiles */,
-				B3D2210017722AE800B7CB63 /* LoopBack.h in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		B36E878817970C81000B685A /* SLRemoting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SLRemoting.framework; sourceTree = "<group>"; };
 		B3D220F717722AE800B7CB63 /* libLoopBack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLoopBack.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D220FA17722AE800B7CB63 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B3D220FE17722AE800B7CB63 /* LoopBack-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LoopBack-Prefix.pch"; sourceTree = "<group>"; };
@@ -113,23 +69,6 @@
 		B3D2211517722AE800B7CB63 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B3D2212217722B1700B7CB63 /* LBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBModel.h; sourceTree = "<group>"; };
 		B3D2212317722B1700B7CB63 /* LBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBModel.m; sourceTree = "<group>"; };
-		B3D2212517722B5100B7CB63 /* libSLRemoting.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSLRemoting.a; path = ../libSLRemoting.a; sourceTree = "<group>"; };
-		B3D2212717722B5100B7CB63 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
-		B3D2212817722B5100B7CB63 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
-		B3D2212917722B5100B7CB63 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
-		B3D2212A17722B5100B7CB63 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
-		B3D2212B17722B5100B7CB63 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
-		B3D2212C17722B5100B7CB63 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
-		B3D2212D17722B5100B7CB63 /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
-		B3D2212E17722B5100B7CB63 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
-		B3D2212F17722B5100B7CB63 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
-		B3D2213017722B5100B7CB63 /* SLAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAdapter.h; sourceTree = "<group>"; };
-		B3D2213117722B5100B7CB63 /* SLObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLObject.h; sourceTree = "<group>"; };
-		B3D2213217722B5100B7CB63 /* SLRemoting-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SLRemoting-Prefix.pch"; sourceTree = "<group>"; };
-		B3D2213317722B5100B7CB63 /* SLRemoting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRemoting.h; sourceTree = "<group>"; };
-		B3D2213417722B5100B7CB63 /* SLRemotingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRemotingUtils.h; sourceTree = "<group>"; };
-		B3D2213517722B5100B7CB63 /* SLRESTAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRESTAdapter.h; sourceTree = "<group>"; };
-		B3D2213617722B5100B7CB63 /* SLRESTContract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRESTContract.h; sourceTree = "<group>"; };
 		B3D2213917722BAB00B7CB63 /* LBModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBModelTests.h; sourceTree = "<group>"; };
 		B3D2213A17722BAB00B7CB63 /* LBModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBModelTests.m; sourceTree = "<group>"; };
 		B3D2214017725A7F00B7CB63 /* LBModelSubclassingTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBModelSubclassingTests.h; sourceTree = "<group>"; };
@@ -147,7 +86,7 @@
 			files = (
 				B3DC030D178F1EE20044DD58 /* libobjc.A.dylib in Frameworks */,
 				B3D220FB17722AE800B7CB63 /* Foundation.framework in Frameworks */,
-				B3D2213717722B5100B7CB63 /* libSLRemoting.a in Frameworks */,
+				B36E878917970C81000B685A /* SLRemoting.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,7 +97,6 @@
 				B3D2210A17722AE800B7CB63 /* SenTestingKit.framework in Frameworks */,
 				B3D2210D17722AE800B7CB63 /* Foundation.framework in Frameworks */,
 				B3D2214417725DAB00B7CB63 /* UIKit.framework in Frameworks */,
-				B3D2213817722B5100B7CB63 /* libSLRemoting.a in Frameworks */,
 				B3D2211017722AE800B7CB63 /* libLoopBack.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,7 +111,6 @@
 				B3D2211117722AE800B7CB63 /* LoopBackTests */,
 				B3D220F917722AE800B7CB63 /* Frameworks */,
 				B3D220F817722AE800B7CB63 /* Products */,
-				B3D2212617722B5100B7CB63 /* SLRemoting */,
 			);
 			sourceTree = "<group>";
 		};
@@ -189,6 +126,7 @@
 		B3D220F917722AE800B7CB63 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B36E878817970C81000B685A /* SLRemoting.framework */,
 				B3DC030C178F1EE20044DD58 /* libobjc.A.dylib */,
 				B3D220FA17722AE800B7CB63 /* Foundation.framework */,
 				B3D2210917722AE800B7CB63 /* SenTestingKit.framework */,
@@ -239,31 +177,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B3D2212617722B5100B7CB63 /* SLRemoting */ = {
-			isa = PBXGroup;
-			children = (
-				B3D2212517722B5100B7CB63 /* libSLRemoting.a */,
-				B3D2212717722B5100B7CB63 /* AFHTTPClient.h */,
-				B3D2212817722B5100B7CB63 /* AFHTTPRequestOperation.h */,
-				B3D2212917722B5100B7CB63 /* AFImageRequestOperation.h */,
-				B3D2212A17722B5100B7CB63 /* AFJSONRequestOperation.h */,
-				B3D2212B17722B5100B7CB63 /* AFNetworkActivityIndicatorManager.h */,
-				B3D2212C17722B5100B7CB63 /* AFNetworking.h */,
-				B3D2212D17722B5100B7CB63 /* AFPropertyListRequestOperation.h */,
-				B3D2212E17722B5100B7CB63 /* AFURLConnectionOperation.h */,
-				B3D2212F17722B5100B7CB63 /* AFXMLRequestOperation.h */,
-				B3D2213017722B5100B7CB63 /* SLAdapter.h */,
-				B3D2213117722B5100B7CB63 /* SLObject.h */,
-				B3D2213217722B5100B7CB63 /* SLRemoting-Prefix.pch */,
-				B3D2213317722B5100B7CB63 /* SLRemoting.h */,
-				B3D2213417722B5100B7CB63 /* SLRemotingUtils.h */,
-				B3D2213517722B5100B7CB63 /* SLRESTAdapter.h */,
-				B3D2213617722B5100B7CB63 /* SLRESTContract.h */,
-			);
-			path = SLRemoting;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B3DFA5AC17970AAD00F656D7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3DFA5AD17970AB700F656D7 /* LoopBack.h in Headers */,
+				B3DFA5AE17970ABD00F656D7 /* LBModel.h in Headers */,
+				B3DFA5AF17970ABD00F656D7 /* LBRESTAdapter.h in Headers */,
+				B3DFA5B017970AC700F656D7 /* LoopBack-Prefix.pch in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		B3D220F617722AE800B7CB63 /* LoopBack */ = {
@@ -272,9 +200,8 @@
 			buildPhases = (
 				B3D220F317722AE800B7CB63 /* Sources */,
 				B3D220F417722AE800B7CB63 /* Frameworks */,
-				B38935C8178E0D2200740143 /* CopyFiles */,
-				B3D220F517722AE800B7CB63 /* CopyFiles */,
-				B38935B6178E0CDD00740143 /* CopyFiles */,
+				B3DFA5AC17970AAD00F656D7 /* Headers */,
+				B36E878A17970CC4000B685A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -327,6 +254,7 @@
 			targets = (
 				B3D220F617722AE800B7CB63 /* LoopBack */,
 				B3D2210717722AE800B7CB63 /* LoopBackTests */,
+				B3DFA5B117970B1200F656D7 /* LoopBackFramework */,
 			);
 		};
 /* End PBXProject section */
@@ -343,6 +271,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		B36E878A17970CC4000B685A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n";
+		};
 		B3D2210617722AE800B7CB63 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -355,6 +296,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		B3DFA5C517970B7700F656D7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nlipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -384,6 +338,11 @@
 			isa = PBXTargetDependency;
 			target = B3D220F617722AE800B7CB63 /* LoopBack */;
 			targetProxy = B3D2210E17722AE800B7CB63 /* PBXContainerItemProxy */;
+		};
+		B3DFA5C417970B7400F656D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B3D220F617722AE800B7CB63 /* LoopBack */;
+			targetProxy = B3DFA5C317970B7400F656D7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -456,6 +415,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/LoopBack.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LoopBack/LoopBack-Prefix.pch";
 				LIBRARY_SEARCH_PATHS = (
@@ -464,6 +427,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "${PROJECT_NAME}Headers";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -472,6 +436,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/LoopBack.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LoopBack/LoopBack-Prefix.pch";
 				LIBRARY_SEARCH_PATHS = (
@@ -480,6 +448,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "${PROJECT_NAME}Headers";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -522,6 +491,20 @@
 			};
 			name = Release;
 		};
+		B3DFA5B317970B1200F656D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B3DFA5B417970B1200F656D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -548,6 +531,15 @@
 			buildConfigurations = (
 				B3D2212017722AE800B7CB63 /* Debug */,
 				B3D2212117722AE800B7CB63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3DFA5B217970B1200F656D7 /* Build configuration list for PBXAggregateTarget "LoopBackFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3DFA5B317970B1200F656D7 /* Debug */,
+				B3DFA5B417970B1200F656D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
