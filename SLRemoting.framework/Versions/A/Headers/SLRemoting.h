@@ -10,7 +10,9 @@
 #define __SL_REMOTING_H
 
 #import "SLRemotingUtils.h"
+#import "SLAdapter.h"
 #import "SLRESTAdapter.h"
+#import "SLRESTContract.h"
 #import "SLObject.h"
 
 #endif // __SL_REMOTING_H

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 StrongLoop. All rights reserved.
 //
 
-#import "SLRESTAdapter.h"
+#import <SLRemoting/SLRemoting.h>
 
 #import "LBModel.h"
 

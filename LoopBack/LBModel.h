@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 StrongLoop. All rights reserved.
 //
 
-#import "SLRemoting.h"
+#import <SLRemoting/SLRemoting.h>
 
 @interface LBModel : SLObject
 
