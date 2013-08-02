@@ -1,10 +1,9 @@
-//
-//  LBModel.m
-//  LoopBack
-//
-//  Created by Michael Schoonmaker on 6/19/13.
-//  Copyright (c) 2013 StrongLoop. All rights reserved.
-//
+/**
+ * @file LBModel.m
+ *
+ * @author Michael Schoonmaker
+ * @copyright (c) 2013 StrongLoop. All rights reserved.
+ */
 
 #import "LBModel.h"
 
@@ -125,7 +124,7 @@
             forMethod:[NSString stringWithFormat:@"%@.prototype.remove", self.className]];
     [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@/:id", self.className] verb:@"GET"]
             forMethod:[NSString stringWithFormat:@"%@.findById", self.className]];
-    [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@/all", self.className] verb:@"GET"]
+    [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@", self.className] verb:@"GET"]
             forMethod:[NSString stringWithFormat:@"%@.all", self.className]];
 
     return contract;

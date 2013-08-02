@@ -1,10 +1,9 @@
-//
-//  LBRESTAdapter.m
-//  LoopBack
-//
-//  Created by Michael Schoonmaker on 6/20/13.
-//  Copyright (c) 2013 StrongLoop. All rights reserved.
-//
+/**
+ * @file LBRESTAdapter.m
+ *
+ * @author Michael Schoonmaker
+ * @copyright (c) 2013 StrongLoop. All rights reserved.
+ */
 
 #import "LBRESTAdapter.h"
 
