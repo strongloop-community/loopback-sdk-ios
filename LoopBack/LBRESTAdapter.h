@@ -5,7 +5,7 @@
  * @copyright (c) 2013 StrongLoop. All rights reserved.
  */
 
-#import <SLRemoting/SLRemoting.h>
+#import <LoopBack/SLRemoting.h>
 
 #import "LBModel.h"
 
