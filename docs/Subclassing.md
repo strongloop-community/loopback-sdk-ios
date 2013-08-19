@@ -60,9 +60,10 @@ var Widget = loopback.createModel('widget', {
 });
 ```
 
-Because of this, if you're working against an existing server, the name
-(`'widget'`, above) needs to match. _If you're not, don't worry. Just use
-whatever name you want and the server will adjust accordingly._
+Because of this the Prototype name (`'widget'`, above) needs to match the name
+that model was given on the server. _If you don't have a model, [see this
+guide](#) for more information._ The model _must_ exist (even if the schema is
+empty) before it can be interacted with.
 
 **TL;DR** - Use this to make creating Models easier. Match the name or create
 your own.
