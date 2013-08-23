@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>An extension to the vanilla SLRESTAdapter to make working with LBModels easier.  
+<p>An extension to the vanilla <a class="el" href="interface_s_l_r_e_s_t_adapter.html" title="A specific SLAdapter implementation for RESTful servers. ">SLRESTAdapter</a> to make working with LBModels easier.  
  <a href="interface_l_b_r_e_s_t_adapter.html#details">More...</a></p>
 
 <p><code>#import &lt;<a class="el" href="_l_b_r_e_s_t_adapter_8h_source.html">LBRESTAdapter.h</a>&gt;</code></p>
@@ -98,6 +98,8 @@ Inheritance diagram for LBRESTAdapter:</div>
  <div class="center">
   <img src="interface_l_b_r_e_s_t_adapter.png" usemap="#LBRESTAdapter_map" alt=""/>
   <map id="LBRESTAdapter_map" name="LBRESTAdapter_map">
+<area href="interface_s_l_r_e_s_t_adapter.html" title="A specific SLAdapter implementation for RESTful servers. " alt="SLRESTAdapter" shape="rect" coords="0,112,103,136"/>
+<area href="interface_s_l_adapter.html" title="The entry point to all networking accomplished with LoopBack. " alt="SLAdapter" shape="rect" coords="0,56,103,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -109,9 +111,23 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a07fc3f88eaaa4518ffe8f6aba968fae6"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_l_b_model_prototype.html">LBModelPrototype</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_l_b_r_e_s_t_adapter.html#a07fc3f88eaaa4518ffe8f6aba968fae6">prototypeWithClass:</a></td></tr>
 <tr class="memdesc:a07fc3f88eaaa4518ffe8f6aba968fae6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a new <a class="el" href="interface_l_b_model_prototype.html" title="A local representative of a single model type on the server, encapsulating the name of the model type...">LBModelPrototype</a> from the given subclass.  <a href="#a07fc3f88eaaa4518ffe8f6aba968fae6">More...</a><br/></td></tr>
 <tr class="separator:a07fc3f88eaaa4518ffe8f6aba968fae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_static_methods_interface_s_l_adapter"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_interface_s_l_adapter')"><img src="closed.png" alt="-"/>&#160;Class Methods inherited from <a class="el" href="interface_s_l_adapter.html">SLAdapter</a></td></tr>
+<tr class="memitem:a5a7195ff8d9ffa5a314a44e75791da97 inherit pub_static_methods_interface_s_l_adapter"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_s_l_adapter.html#a5a7195ff8d9ffa5a314a44e75791da97">adapter</a></td></tr>
+<tr class="memdesc:a5a7195ff8d9ffa5a314a44e75791da97 inherit pub_static_methods_interface_s_l_adapter"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a new, disconnected Adapter.  <a href="#a5a7195ff8d9ffa5a314a44e75791da97">More...</a><br/></td></tr>
+<tr class="separator:a5a7195ff8d9ffa5a314a44e75791da97 inherit pub_static_methods_interface_s_l_adapter"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbdfbfe0048dd0cfa7976c0060d81232 inherit pub_static_methods_interface_s_l_adapter"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_s_l_adapter.html#abbdfbfe0048dd0cfa7976c0060d81232">adapterWithURL:</a></td></tr>
+<tr class="memdesc:abbdfbfe0048dd0cfa7976c0060d81232 inherit pub_static_methods_interface_s_l_adapter"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a new Adapter connected to <code>url</code>.  <a href="#abbdfbfe0048dd0cfa7976c0060d81232">More...</a><br/></td></tr>
+<tr class="separator:abbdfbfe0048dd0cfa7976c0060d81232 inherit pub_static_methods_interface_s_l_adapter"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_interface_s_l_r_e_s_t_adapter"><td colspan="2" onclick="javascript:toggleInherit('properties_interface_s_l_r_e_s_t_adapter')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interface_s_l_r_e_s_t_adapter.html">SLRESTAdapter</a></td></tr>
+<tr class="memitem:aefe945e1e8e062ce0c061598d999cccf inherit properties_interface_s_l_r_e_s_t_adapter"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_s_l_r_e_s_t_contract.html">SLRESTContract</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_s_l_r_e_s_t_adapter.html#aefe945e1e8e062ce0c061598d999cccf">contract</a></td></tr>
+<tr class="memdesc:aefe945e1e8e062ce0c061598d999cccf inherit properties_interface_s_l_r_e_s_t_adapter"><td class="mdescLeft">&#160;</td><td class="mdescRight">A custom contract for fine-grained route configuration.  <a href="#aefe945e1e8e062ce0c061598d999cccf">More...</a><br/></td></tr>
+<tr class="separator:aefe945e1e8e062ce0c061598d999cccf inherit properties_interface_s_l_r_e_s_t_adapter"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>An extension to the vanilla SLRESTAdapter to make working with LBModels easier. </p>
+<div class="textblock"><p>An extension to the vanilla <a class="el" href="interface_s_l_r_e_s_t_adapter.html" title="A specific SLAdapter implementation for RESTful servers. ">SLRESTAdapter</a> to make working with LBModels easier. </p>
 </div><h2 class="groupheader">Method Documentation</h2>
 <a class="anchor" id="a07fc3f88eaaa4518ffe8f6aba968fae6"></a>
 <div class="memitem">
@@ -169,7 +185,7 @@ Instance Methods</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Aug 5 2013 09:16:21 for LoopBack iOS SDK by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 23 2013 09:10:13 for LoopBack iOS SDK by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
