@@ -1,7 +1,6 @@
-## Generating the API Documentation
+## iOS
 
- 1. Install doxygen.
- 1. Find the installation location: `which doxygen`. Copy the result.
- 1. Add the result as a User-Defined Setting in the LoopBackDocs target.
- 1. Build the LoopBackDocs target (the device setting doesn't matter).
- 1. Profit.
+The LoopBack iOS SDK obviates the need for using the clunky `NSURLRequest` and
+similar interfaces to interact with a LoopBack-based backend, albeit RESTful.
+Instead, interact with your Models and Data Sources in a comfortable,
+first-class, native manner.

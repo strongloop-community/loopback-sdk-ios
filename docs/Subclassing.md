@@ -4,8 +4,9 @@
 
  - **Knowledge of Objective-C and iOS App Development**
  - **LoopBack iOS SDK** - You should know how to set this up already if you've
-    gone through the [sample app](#). If not, run through that guide first. It
-    doesn't take long, and it provides the basis for this guide.
+    gone through the [Getting Started](#getting-started). If not, run through
+    that guide first. It doesn't take long, and it provides the basis for this
+    guide.
  - **Schema** - Explaining the type of data to store and why is outside the
     scope of this guide, being tightly coupled to your application's needs.
 
@@ -18,10 +19,11 @@ types.
 ### Step 1: Model Interface & Properties
 
 As with any Objective-C class, the first step is to build your interface. If we
-leave any [custom behaviour](#) for later, then it's just a few `@property`
-declarations and we're ready for the implementation.
+leave any [custom behaviour](#http://docs.strongloop.com/strong-remoting) for
+later, then it's just a few `@property` declarations and we're ready for the
+implementation.
 
-```objc
+```objectivec
 /**
  * A widget for sale.
  */
@@ -38,10 +40,10 @@ declarations and we're ready for the implementation.
 
 ### Step 2: Model Implementation
 
-Since we've left [custom behaviour](#) for later, then I'll just leave this
-here.
+Since we've left [custom behaviour](#http://docs.strongloop.com/strong-remoting)
+for later, then I'll just leave this here.
 
-```objc
+```objectivec
 @implementation Widget
 @end
 ```
@@ -71,7 +73,7 @@ your own.
 Since `LBModelPrototype` provides a basic implementation, we only need to
 override its constructor to provide the appropriate name.
 
-```objc
+```objectivec
 @interface WidgetPrototype : LBModelPrototype
 
 + (instancetype)prototype;
@@ -83,7 +85,7 @@ override its constructor to provide the appropriate name.
 
 Remember to use the right name:
 
-```obj
+```objectivec
 @implementation WidgetPrototype
 
 + (instancetype)prototype {
@@ -95,10 +97,10 @@ Remember to use the right name:
 
 ### Step 5: A Little Glue
 
-Just as we did in [the getting started guide](#), we'll need an `LBRESTAdapter`
-instance to connect to our server:
+Just as we did in [the getting started guide](#getting-started), we'll need an
+`LBRESTAdapter` instance to connect to our server:
 
-```objc
+```objectivec
 LBRESTAdapter *adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://myserver:3000"]];
 ```
 
@@ -107,7 +109,7 @@ server.
 
 Once we have that adapter, we can create our Prototype instance.
 
-```objc
+```objectivec
 WidgetPrototype *prototype = (WidgetPrototype *)[adapter prototypeWithClass:[WidgetPrototype class]];
 ```
 
@@ -117,13 +119,13 @@ Now that we have a `WidgetPrototype` instance, we can:
 
  - Create a `Widget`
 
-```objc
+```objectivec
 Widget *pencil = (Widget *)[prototype modelWithDictionary:@{ @"name": @"Pencil", @"price": @1.50 }];
 ```
 
  - Save said `Widget`
 
-```objc
+```objectivec
 [pencil saveWithSuccess:^{
                     // Pencil now exists on the server!
                 }
@@ -134,7 +136,7 @@ Widget *pencil = (Widget *)[prototype modelWithDictionary:@{ @"name": @"Pencil",
 
  - Find another `Widget`
 
-```objc
+```objectivec
 [prototype findWithId:@2
               success:^(LBModel *model) {
                   Widget *pen = (Widget *)model;
@@ -146,7 +148,7 @@ Widget *pencil = (Widget *)[prototype modelWithDictionary:@{ @"name": @"Pencil",
 
  - Remove a `Widget`
 
-```
+```objectivec
 [pencil destroyWithSuccess:^{
                        // No more pencil. Long live Pen!
                    }
