@@ -19,10 +19,10 @@ iOS Guide Application. The Guide Application comes ready to compile with XCode,
 and each Tab in the Application will guide you through the features available to
 mobile applications through the SDK.
 
-<img src="assets/getting-started-app-01.png" alt="tab Home" height="209" width="120">
-<img src="assets/getting-started-app-02.png" alt="tab 1" height="209" width="120">
-<img src="assets/getting-started-app-03.png" alt="tab 2" height="209" width="120">
-<img src="assets/getting-started-app-04.png" alt="tab 3" height="209" width="120">
+<img src="ios/img/getting-started-app-01.png" alt="tab Home" width="20%">
+<img src="ios/img/getting-started-app-02.png" alt="tab 1" width="20%">
+<img src="ios/img/getting-started-app-03.png" alt="tab 2" width="20%">
+<img src="ios/img/getting-started-app-04.png" alt="tab 3" width="20%">
 
 From your usual projects directory:
 
@@ -66,13 +66,13 @@ installed and are ready to develop LoopBack applications (see
  1. Drag the entire LoopBack.framework folder from the new Finder window into
  your Xcode project.
 
-<img src="assets/XcodeDragToFrameworkFolder.png" width="50%" height="50%" alt="Finder to Xcode">
+<img class="img-thumbnail" src="ios/img/XcodeDragToFrameworkFolder.png" width="100%" alt="Finder to Xcode">
 
     - **Important:** Make sure the "Copy items to destination's group folder"
     checkbox is checked. This places a copy of the SDK within your application's
     project folder.
 
-<img src="assets/ios-framework-add.png" width="220" alt="Copy items">
+<img class="img-thumbnail" src="ios/img/ios-framework-add.png" width="100%" alt="Copy items">
 
  1. Verify LoopBack is included in the list of iOS Frameworks to link against
  your binary. In your Project settings, check the 'Link with Binaries' section
@@ -82,7 +82,7 @@ installed and are ready to develop LoopBack applications (see
     - If LoopBack.framework isn't displayed in the list, try the previous step
     again; Xcode didn't create the copy it was supposed to create.
 
-<img src="assets/linkBindaryScreen.png" width="80%" height="80%" alt="Link with Binaries">
+<img class="img-thumbnail" src="ios/img/linkBinaryScreen.png" width="100%" alt="Link with Binaries">
 
  1. Import the LoopBack.h header into your application just as you would
  `Foundation/Foundation.h`:
@@ -91,7 +91,7 @@ installed and are ready to develop LoopBack applications (see
     #import <LoopBack/LoopBack.h>
     ```
 
-<img src="assets/ios-firstViewController.png" width="60%" height="60%" alt="LoopBack.h">
+<img class="img-thumbnail" src="ios/img/ios-firstViewController.png" width="100%" alt="LoopBack.h">
 
  1. Somewhere, we're going to need an Adapter to tell the SDK where to find our
  server:
