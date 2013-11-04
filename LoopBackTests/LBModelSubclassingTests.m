@@ -74,7 +74,7 @@ static NSNumber *lastId;
 
 - (void)testRemove {
     ASYNC_TEST_START
-    [self.repository findWithId:lastId
+    [self.repository findById:lastId
                        success:^(LBModel *model) {
                            [model destroyWithSuccess:^{
                                ASYNC_TEST_SIGNAL
@@ -85,7 +85,7 @@ static NSNumber *lastId;
 
 - (void)testFind {
     ASYNC_TEST_START
-    [self.repository findWithId:@2
+    [self.repository findById:@2
                        success:^(LBModel *model) {
                            STAssertNotNil(model, @"No model found with ID 2");
                            STAssertTrue([[model class] isSubclassOfClass:[Widget class]], @"Invalid class.");
@@ -127,7 +127,7 @@ static NSNumber *lastId;
     };
 
     LBModelSaveSuccessBlock findAgain = ^() {
-        [self.repository findWithId:@2 success:verify failure:ASYNC_TEST_FAILURE_BLOCK];
+        [self.repository findById:@2 success:verify failure:ASYNC_TEST_FAILURE_BLOCK];
     };
 
     LBModelFindSuccessBlock update = ^(LBModel *model) {
@@ -136,7 +136,7 @@ static NSNumber *lastId;
         [model saveWithSuccess:findAgain failure:ASYNC_TEST_FAILURE_BLOCK];
     };
 
-    [self.repository findWithId:@2 success:update failure:ASYNC_TEST_FAILURE_BLOCK];
+    [self.repository findById:@2 success:update failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
 }
 

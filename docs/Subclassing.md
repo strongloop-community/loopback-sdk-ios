@@ -137,7 +137,7 @@ Widget *pencil = (Widget *)[repository modelWithDictionary:@{ @"name": @"Pencil"
  - Find another `Widget`
 
 ```objectivec
-[repository findWithId:@2
+[repository findById:@2
               success:^(LBModel *model) {
                   Widget *pen = (Widget *)model;
               }

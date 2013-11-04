@@ -150,7 +150,7 @@
     return model;
 }
 
-- (void)findWithId:(NSNumber *)_id
+- (void)findById:(NSNumber *)_id
            success:(LBModelFindSuccessBlock)success
            failure:(SLFailureBlock)failure {
     [self invokeStaticMethod:@"findById"
