@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['adapter',['adapter',['../interface_s_l_prototype.html#a8c06d6bf932a84477863adcbf57809fc',1,'SLPrototype']]]
+  ['adapter',['adapter',['../interface_s_l_repository.html#ab80405fac6612b5866f70201621ed377',1,'SLRepository']]]
 ];
