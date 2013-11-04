@@ -48,9 +48,9 @@ for later, then I'll just leave this here.
 @end
 ```
 
-### Step 3: Prototype Interface
+### Step 3: Repository Interface
 
-The `LBModelPrototype` is the LoopBack iOS SDK's placeholder for what in Node is
+The `LBModelRepository` is the LoopBack iOS SDK's placeholder for what in Node is
 a JavaScript prototype representing a specific "type" of Model on the server. In
 our example, this would be the model exposed as "widget" (or similar) on the
 server:
@@ -70,26 +70,26 @@ empty) before it can be interacted with.
 **TL;DR** - Use this to make creating Models easier. Match the name or create
 your own.
 
-Since `LBModelPrototype` provides a basic implementation, we only need to
+Since `LBModelRepository` provides a basic implementation, we only need to
 override its constructor to provide the appropriate name.
 
 ```objectivec
-@interface WidgetPrototype : LBModelPrototype
+@interface WidgetRepository : LBModelRepository
 
-+ (instancetype)prototype;
++ (instancetype)repository;
 
 @end
 ```
 
-### Step 4: Prototype Implementation
+### Step 4: Repository Implementation
 
 Remember to use the right name:
 
 ```objectivec
-@implementation WidgetPrototype
+@implementation WidgetRepository
 
-+ (instancetype)prototype {
-    return [self prototypeWithName:@"widget"];
++ (instancetype)repository {
+    return [self repositoryForClassName:@"widget"];
 }
 
 @end
@@ -107,20 +107,20 @@ LBRESTAdapter *adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"ht
 **Remember:** Replace `"http://myserver:3000"` with the complete URL to your
 server.
 
-Once we have that adapter, we can create our Prototype instance.
+Once we have that adapter, we can create our Repository instance.
 
 ```objectivec
-WidgetPrototype *prototype = (WidgetPrototype *)[adapter prototypeWithClass:[WidgetPrototype class]];
+WidgetRepository *repository = (WidgetRepository *)[adapter repositoryWithClass:[WidgetPrototype class]];
 ```
 
 ### Step 6: Profit!
 
-Now that we have a `WidgetPrototype` instance, we can:
+Now that we have a `WidgetRepository` instance, we can:
 
  - Create a `Widget`
 
 ```objectivec
-Widget *pencil = (Widget *)[prototype modelWithDictionary:@{ @"name": @"Pencil", @"price": @1.50 }];
+Widget *pencil = (Widget *)[repository modelWithDictionary:@{ @"name": @"Pencil", @"price": @1.50 }];
 ```
 
  - Save said `Widget`
@@ -137,7 +137,7 @@ Widget *pencil = (Widget *)[prototype modelWithDictionary:@{ @"name": @"Pencil",
  - Find another `Widget`
 
 ```objectivec
-[prototype findWithId:@2
+[repository findWithId:@2
               success:^(LBModel *model) {
                   Widget *pen = (Widget *)model;
               }

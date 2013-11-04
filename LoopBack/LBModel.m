@@ -25,8 +25,8 @@
 
 @implementation LBModel
 
-- (instancetype)initWithPrototype:(SLPrototype *)prototype parameters:(NSDictionary *)parameters {
-    self = [super initWithPrototype:prototype parameters:parameters];
+- (instancetype)initWithRepository:(SLRepository *)repository parameters:(NSDictionary *)parameters {
+    self = [super initWithRepository:repository parameters:parameters];
 
     if (self) {
         __overflow = [NSMutableDictionary dictionary];
@@ -95,14 +95,15 @@
 
 @end
 
-@implementation LBModelPrototype
+@implementation LBModelRepository
 
-- (instancetype)initWithName:(NSString *)name {
-    self = [super initWithName:name];
+- (instancetype)initWithClassName:(NSString *)name {
+    self = [super initWithClassName:name];
 
     if (self) {
         NSString *modelClassName = NSStringFromClass([self class]);
-        modelClassName = [modelClassName substringWithRange:NSMakeRange(0, [modelClassName length] - 9)];
+        const int strlenOfRepository = 10;
+        modelClassName = [modelClassName substringWithRange:NSMakeRange(0, [modelClassName length] - strlenOfRepository)];
 
         self.modelClass = NSClassFromString(modelClassName);
         if (!self.modelClass) {
@@ -131,7 +132,7 @@
 }
 
 - (LBModel *)modelWithDictionary:(NSDictionary *)dictionary {
-    LBModel __block *model = (LBModel *)[[self.modelClass alloc] initWithPrototype:self parameters:dictionary];
+    LBModel __block *model = (LBModel *)[[self.modelClass alloc] initWithRepository:self parameters:dictionary];
 
     [[model _overflow] addEntriesFromDictionary:dictionary];
 

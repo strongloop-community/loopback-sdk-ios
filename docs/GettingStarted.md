@@ -105,16 +105,16 @@ installed and are ready to develop LoopBack applications (see
 
  1. Once we have access to `adapter` (for the sake of example, we'll assume the
  Adapter is available through our AppDelegate), we can create basic `LBModel`
- and `LBModelPrototype` objects. Assuming we've previously created [a model
+ and `LBModelRepository` objects. Assuming we've previously created [a model
  named "product"](http://docs.strongloop.com/loopback#model):
 
     ```objectivec
     LBRESTAdapter *adapter = [[UIApplication sharedApplication] delegate].adapter;
-    LBModelPrototype *Product = [adapter prototypeWithName:@"products"];
-    LBModel *pen = [Product modelWithDictionary:@{ "name": "Awesome Pen" }];
+    LBModelRepository *productRepository = [adapter repositoryForClassName:@"products"];
+    LBModel *pen = [productRepository modelWithDictionary:@{ "name": "Awesome Pen" }];
     ```
 
-    - All the normal, magical `LBModel` and `LBModelPrototype` methods (e.g.
+    - All the normal, magical `LBModel` and `LBModelRepository` methods (e.g.
     `create`, `destroy`, `findById`) are now available through `Product` and
     `pen`!
 

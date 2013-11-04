@@ -9,37 +9,37 @@
 
 @interface LBRESTAdapter()
 
-- (void)attachPrototype:(LBModelPrototype *)prototype;
+- (void)attachRepository:(LBModelRepository *)repository;
 
 @end
 
 @implementation LBRESTAdapter
 
-- (LBModelPrototype *)prototypeWithName:(NSString *)name {
+- (LBModelRepository *)repositoryForClassName:(NSString *)name {
     NSParameterAssert(name);
 
-    LBModelPrototype *prototype = [LBModelPrototype prototypeWithName:name];
-    [self attachPrototype:prototype];
-    return prototype;
+    LBModelRepository *repository = [LBModelRepository repositoryForClassName:name];
+    [self attachRepository:repository];
+    return repository;
 }
 
-- (LBModelPrototype *)prototypeWithClass:(Class)type {
+- (LBModelRepository *)repositoryWithClass:(Class)type {
     NSParameterAssert(type);
-    NSParameterAssert([type isSubclassOfClass:[LBModelPrototype class]]);
-    NSParameterAssert([type respondsToSelector:@selector(prototype)]);
+    NSParameterAssert([type isSubclassOfClass:[LBModelRepository class]]);
+    NSParameterAssert([type respondsToSelector:@selector(repository)]);
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-method-access"
-    LBModelPrototype *prototype = (LBModelPrototype *)[type prototype];
+    LBModelRepository *repository = (LBModelRepository *)[type repository];
 #pragma clang diagnostic pop
 
-    [self attachPrototype:prototype];
-    return prototype;
+    [self attachRepository:repository];
+    return repository;
 }
 
-- (void)attachPrototype:(LBModelPrototype *)prototype {
-    [self.contract addItemsFromContract:[prototype contract]];
-    prototype.adapter = self;
+- (void)attachRepository:(LBModelRepository *)repository {
+    [self.contract addItemsFromContract:[repository contract]];
+    repository.adapter = self;
 }
 
 @end

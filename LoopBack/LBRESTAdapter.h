@@ -16,19 +16,19 @@
 @interface LBRESTAdapter : SLRESTAdapter
 
 /**
- * Returns a new LBModelPrototype representing the named model type.
+ * Returns a new LBModelRepository representing the named model type.
  *
  * @param  name The model name.
- * @return      A new prototype instance.
+ * @return      A new repository instance.
  */
-- (LBModelPrototype *)prototypeWithName:(NSString *)name;
+- (LBModelRepository *)repositoryForClassName:(NSString *)name;
 
 /**
- * Returns a new LBModelPrototype from the given subclass.
+ * Returns a new LBModelRepository from the given subclass.
  *
- * @param  type A subclass of LBModelPrototype to use.
- * @return      A new prototype instance.
+ * @param  type A subclass of LBModelRepository to use.
+ * @return      A new repository instance.
  */
-- (LBModelPrototype *)prototypeWithClass:(Class)type;
+- (LBModelRepository *)repositoryWithClass:(Class)type;
 
 @end

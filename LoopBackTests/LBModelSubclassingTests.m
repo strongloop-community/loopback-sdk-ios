@@ -24,23 +24,22 @@ static NSNumber *lastId;
 
 @end
 
-@interface WidgetPrototype : LBModelPrototype
-
-+ (instancetype)prototype;
+@interface WidgetRepository : LBModelRepository
++ (instancetype)repository;
 
 @end
 
-@implementation WidgetPrototype
+@implementation WidgetRepository
 
-+ (instancetype)prototype {
-    return [self prototypeWithName:@"widgets"];
++ (instancetype)repository {
+    return [self repositoryForClassName:@"widgets"];
 }
 
 @end
 
 @interface LBModelSubclassingTests()
 
-@property (nonatomic) WidgetPrototype *prototype;
+@property (nonatomic) WidgetRepository *repository;
 
 @end
 
@@ -50,7 +49,7 @@ static NSNumber *lastId;
     [super setUp];
 
     LBRESTAdapter *adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
-    self.prototype = (WidgetPrototype *)[adapter prototypeWithClass:[WidgetPrototype class]];
+    self.repository = (WidgetRepository *)[adapter repositoryWithClass:[WidgetRepository class]];
 }
 
 - (void)tearDown {
@@ -58,7 +57,7 @@ static NSNumber *lastId;
 }
 
 - (void)testCreate {
-    Widget *model = (Widget*)[self.prototype modelWithDictionary:@{ @"name": @"Foobar", @"bars": @1 }];
+    Widget *model = (Widget*)[self.repository modelWithDictionary:@{ @"name": @"Foobar", @"bars": @1 }];
 
     STAssertEqualObjects(model.name, @"Foobar", @"Invalid name.");
     STAssertEqualObjects(model.bars, @1, @"Invalid bars.");
@@ -75,7 +74,7 @@ static NSNumber *lastId;
 
 - (void)testRemove {
     ASYNC_TEST_START
-    [self.prototype findWithId:lastId
+    [self.repository findWithId:lastId
                        success:^(LBModel *model) {
                            [model destroyWithSuccess:^{
                                ASYNC_TEST_SIGNAL
@@ -86,7 +85,7 @@ static NSNumber *lastId;
 
 - (void)testFind {
     ASYNC_TEST_START
-    [self.prototype findWithId:@2
+    [self.repository findWithId:@2
                        success:^(LBModel *model) {
                            STAssertNotNil(model, @"No model found with ID 2");
                            STAssertTrue([[model class] isSubclassOfClass:[Widget class]], @"Invalid class.");
@@ -99,7 +98,7 @@ static NSNumber *lastId;
 
 - (void)testAll {
     ASYNC_TEST_START
-    [self.prototype allWithSuccess:^(NSArray *models) {
+    [self.repository allWithSuccess:^(NSArray *models) {
         STAssertNotNil(models, @"No models returned.");
         STAssertTrue([models count] >= 2, [NSString stringWithFormat:@"Invalid # of models returned: %lu", (unsigned long)[models count]]);
         STAssertTrue([[models[0] class] isSubclassOfClass:[Widget class]], @"Invalid class.");
@@ -128,7 +127,7 @@ static NSNumber *lastId;
     };
 
     LBModelSaveSuccessBlock findAgain = ^() {
-        [self.prototype findWithId:@2 success:verify failure:ASYNC_TEST_FAILURE_BLOCK];
+        [self.repository findWithId:@2 success:verify failure:ASYNC_TEST_FAILURE_BLOCK];
     };
 
     LBModelFindSuccessBlock update = ^(LBModel *model) {
@@ -137,7 +136,7 @@ static NSNumber *lastId;
         [model saveWithSuccess:findAgain failure:ASYNC_TEST_FAILURE_BLOCK];
     };
 
-    [self.prototype findWithId:@2 success:update failure:ASYNC_TEST_FAILURE_BLOCK];
+    [self.repository findWithId:@2 success:update failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
 }
 

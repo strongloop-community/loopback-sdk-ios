@@ -95,7 +95,7 @@ typedef void (^LBModelDestroySuccessBlock)();
  * the name of the model type for easy LBModel creation, discovery, and
  * management.
  */
-@interface LBModelPrototype : SLPrototype
+@interface LBModelRepository : SLRepository
 
 /** The LBModel subclass used to wrap model instances. */
 @property Class modelClass;
@@ -123,7 +123,7 @@ typedef void (^LBModelDestroySuccessBlock)();
 
 /**
  * Blocks of this type are executed when
- * LBModelPrototype::findWithId:success:failure: is successful.
+ * LBModelRepository::findWithId:success:failure: is successful.
  */
 typedef void (^LBModelFindSuccessBlock)(LBModel *model);
 /**
@@ -140,7 +140,7 @@ typedef void (^LBModelFindSuccessBlock)(LBModel *model);
 
 /**
  * Blocks of this type are executed when
- * LBModelPrototype::allWithSuccess:failure: is successful.
+ * LBModelRepository::allWithSuccess:failure: is successful.
  */
 typedef void (^LBModelAllSuccessBlock)(NSArray *models);
 /**
