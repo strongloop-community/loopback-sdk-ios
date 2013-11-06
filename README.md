@@ -6,3 +6,11 @@ Instead, interact with your Models and Data Sources in a comfortable,
 first-class, native manner.
 
 See [LoopBack iOS SDK](http://docs.strongloop.com/loopback-clients/ios/api/annotated.html) for API reference documentation.
+
+> This section describes v1.1 version of the LoopBack iOS SDK. The following API
+> changes were made:
+>
+>  - `LBModelPrototype` was renamed to `LBModelRepository`
+>  - `findWithId` was renamed to `findById`
+
+The documentation for the previous version 1.0 can be found here: [iOS v1.0](#ios-v10)
