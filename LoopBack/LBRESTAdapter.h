@@ -21,7 +21,7 @@
  * @param  name The model name.
  * @return      A new repository instance.
  */
-- (LBModelRepository *)repositoryForClassName:(NSString *)name;
+- (LBModelRepository *)repositoryWithModelName:(NSString *)name;
 
 /**
  * Returns a new LBModelRepository from the given subclass.
@@ -29,6 +29,6 @@
  * @param  type A subclass of LBModelRepository to use.
  * @return      A new repository instance.
  */
-- (LBModelRepository *)repositoryWithClass:(Class)type;
+- (LBModelRepository *)repositoryWithModelClass:(Class)type;
 
 @end

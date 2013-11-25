@@ -32,7 +32,7 @@ static NSNumber *lastId;
 @implementation WidgetRepository
 
 + (instancetype)repository {
-    return [self repositoryForClassName:@"widgets"];
+    return [self repositoryWithClassName:@"widgets"];
 }
 
 @end
@@ -49,7 +49,7 @@ static NSNumber *lastId;
     [super setUp];
 
     LBRESTAdapter *adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
-    self.repository = (WidgetRepository *)[adapter repositoryWithClass:[WidgetRepository class]];
+    self.repository = (WidgetRepository *)[adapter repositoryWithModelClass:[WidgetRepository class]];
 }
 
 - (void)tearDown {

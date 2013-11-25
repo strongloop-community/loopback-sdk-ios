@@ -110,7 +110,7 @@ installed and are ready to develop LoopBack applications (see
 
     ```objectivec
     LBRESTAdapter *adapter = [[UIApplication sharedApplication] delegate].adapter;
-    LBModelRepository *productRepository = [adapter repositoryForClassName:@"products"];
+    LBModelRepository *productRepository = [adapter repositoryWithModelName:@"products"];
     LBModel *pen = [productRepository modelWithDictionary:@{ "name": "Awesome Pen" }];
     ```
 

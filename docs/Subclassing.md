@@ -89,7 +89,7 @@ Remember to use the right name:
 @implementation WidgetRepository
 
 + (instancetype)repository {
-    return [self repositoryForClassName:@"widget"];
+    return [self repositoryWithModelName:@"widget"];
 }
 
 @end
@@ -110,7 +110,7 @@ server.
 Once we have that adapter, we can create our Repository instance.
 
 ```objectivec
-WidgetRepository *repository = (WidgetRepository *)[adapter repositoryWithClass:[WidgetPrototype class]];
+WidgetRepository *repository = (WidgetRepository *)[adapter repositoryWithModelClass:[WidgetPrototype class]];
 ```
 
 ### Step 6: Profit!

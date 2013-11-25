@@ -15,15 +15,15 @@
 
 @implementation LBRESTAdapter
 
-- (LBModelRepository *)repositoryForClassName:(NSString *)name {
+- (LBModelRepository *)repositoryWithModelName:(NSString *)name {
     NSParameterAssert(name);
 
-    LBModelRepository *repository = [LBModelRepository repositoryForClassName:name];
+    LBModelRepository *repository = [LBModelRepository repositoryWithClassName:name];
     [self attachRepository:repository];
     return repository;
 }
 
-- (LBModelRepository *)repositoryWithClass:(Class)type {
+- (LBModelRepository *)repositoryWithModelClass:(Class)type {
     NSParameterAssert(type);
     NSParameterAssert([type isSubclassOfClass:[LBModelRepository class]]);
     NSParameterAssert([type respondsToSelector:@selector(repository)]);
