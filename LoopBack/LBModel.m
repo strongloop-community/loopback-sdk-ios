@@ -74,7 +74,7 @@
 
 - (void)saveWithSuccess:(LBModelSaveSuccessBlock)success
                 failure:(SLFailureBlock)failure {
-    [self invokeMethod:self._id ? @"save" : @"create"
+    [self invokeMethod:(self._id || [self valueForKey:@"id"]) ? @"save" : @"create"
             parameters:[self toDictionary]
                success:^(id value) {
                    self._id = [value valueForKey:@"id"];
