@@ -21,6 +21,11 @@ var Widget = loopback.createModel('widget', {
 Widget.attachTo(Memory);
 app.model(Widget);
 
+var Device = loopback.createModel('device', {
+});
+Device.attachTo(Memory);
+app.model(Device);
+
 app.use(loopback.rest());
 app.listen(3000);
 

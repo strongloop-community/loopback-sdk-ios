@@ -4,6 +4,6 @@
   "description": "A test server for running loopback-clients integration testing.",
   "main": "index.js",
   "dependencies": {
-    "loopback": "git+ssh://git@github.com/strongloop/loopback.git"
+    "loopback": "1.x.x"
   }
 }

@@ -33,6 +33,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		4769FF09184D6F4F00E5152C /* LBDeviceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4769FF08184D6F4F00E5152C /* LBDeviceTests.m */; };
 		47AD031318491DA700F724C8 /* LBDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AD031118491DA700F724C8 /* LBDevice.m */; };
 		47AD031418491E2000F724C8 /* LBDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 47AD031018491DA700F724C8 /* LBDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B356B1F217BBFA6400A50334 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B356AF5D17BBFA6300A50334 /* AFHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -115,6 +116,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4769FF07184D6F4F00E5152C /* LBDeviceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBDeviceTests.h; sourceTree = "<group>"; };
+		4769FF08184D6F4F00E5152C /* LBDeviceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBDeviceTests.m; sourceTree = "<group>"; };
 		47AD031018491DA700F724C8 /* LBDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBDevice.h; sourceTree = "<group>"; };
 		47AD031118491DA700F724C8 /* LBDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBDevice.m; sourceTree = "<group>"; };
 		B356AF5D17BBFA6300A50334 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -322,6 +325,8 @@
 		B3D2211117722AE800B7CB63 /* LoopBackTests */ = {
 			isa = PBXGroup;
 			children = (
+				4769FF07184D6F4F00E5152C /* LBDeviceTests.h */,
+				4769FF08184D6F4F00E5152C /* LBDeviceTests.m */,
 				B3D2211217722AE800B7CB63 /* Supporting Files */,
 				B3D2213917722BAB00B7CB63 /* LBModelTests.h */,
 				B3D2213A17722BAB00B7CB63 /* LBModelTests.m */,
@@ -561,6 +566,7 @@
 			files = (
 				B3D2213B17722BAB00B7CB63 /* LBModelTests.m in Sources */,
 				B3D2214217725A7F00B7CB63 /* LBModelSubclassingTests.m in Sources */,
+				4769FF09184D6F4F00E5152C /* LBDeviceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

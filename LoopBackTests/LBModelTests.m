@@ -32,7 +32,7 @@ static NSNumber *lastId;
     [super tearDown];
 }
 
-- (void)testCreate {
+- (void)test1Create {
     LBModel __block *model = [self.repository modelWithDictionary:@{ @"name": @"Foobar", @"bars": @1 }];
 
     STAssertEqualObjects(@"Foobar", model[@"name"], @"Invalid name.");
@@ -49,7 +49,7 @@ static NSNumber *lastId;
     ASYNC_TEST_END
 }
 
-- (void)testRemove {
+- (void)test5Remove {
     ASYNC_TEST_START
     [self.repository findById:lastId
                        success:^(LBModel *model) {
@@ -60,7 +60,7 @@ static NSNumber *lastId;
     ASYNC_TEST_END
 }
 
-- (void)testFind {
+- (void)test2Find {
     ASYNC_TEST_START
     [self.repository findById:@2
                        success:^(LBModel *model) {
@@ -73,7 +73,7 @@ static NSNumber *lastId;
     ASYNC_TEST_END
 }
 
-- (void)testAll {
+- (void)test3All {
     ASYNC_TEST_START
     [self.repository allWithSuccess:^(NSArray *models) {
         STAssertNotNil(models, @"No models returned.");
@@ -88,7 +88,7 @@ static NSNumber *lastId;
     ASYNC_TEST_END
 }
 
-- (void)testUpdate {
+- (void)test4Update {
     ASYNC_TEST_START
     LBModelFindSuccessBlock verify = ^(LBModel *model) {
         STAssertNotNil(model, @"No model found with ID 2");

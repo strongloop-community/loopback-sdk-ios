@@ -12,14 +12,16 @@
     return hexToken;
 }
 
-+ (void)registerDevice: (LBDevice *) device callback: (DeviceRegistrationCallback) callback {
++ (void)registerDevice: (LBDevice *) device
+               success: (SLSuccessBlock) success
+               failure: (SLFailureBlock) failure {
     // 4. Save!
     [device saveWithSuccess:^{
         NSLog(@"Successfully saved %@", device._id);
-        callback(nil, device);
+        success(device);
     } failure:^(NSError *error) {
         NSLog(@"Failed to save %@ with %@", device, error);
-        callback(error, device);
+        failure(error);
     }];
 }
 
@@ -28,12 +30,13 @@
  */
 + (void)registerDevice:(LBRESTAdapter *) adapter
            deviceToken: (NSData *)deviceToken
-        registrationId:(NSNumber *)registrationId
-                 appId:(NSString *) appId
-            appVersion:(NSString * ) appVersion
-                userId:(NSString *) userId
+        registrationId: (NSNumber *)registrationId
+                 appId: (NSString *) appId
+            appVersion: (NSString * ) appVersion
+                userId: (NSString *) userId
                  badge: (NSNumber *) badge
-              callback:(DeviceRegistrationCallback) callback {
+               success: (SLSuccessBlock) success
+               failure: (SLFailureBlock) failure {
     
     NSString* hexToken = [LBDevice deviceToken:deviceToken];
     
@@ -53,7 +56,7 @@
         model.id = registrationId;
     }
     
-    [LBDevice registerDevice:model callback:callback];
+    [LBDevice registerDevice:model success:success failure:failure];
 }
 
 @end

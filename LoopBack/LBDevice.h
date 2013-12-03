@@ -41,23 +41,28 @@ typedef void (^DeviceRegistrationCallback)(NSError *err, LBDevice *model);
  * @param appVersion The application version
  * @param userIs The user id
  * @param badge The badge
- * @param callback The callback block for device registration
+ * @param success The success callback block for device registration
+ * @param failure The failure callback block for device registration
  */
 + (void)registerDevice: (LBRESTAdapter *) adapter
            deviceToken: (NSData *)deviceToken
-        registrationId:(NSNumber *)registrationId
-                 appId:(NSString *) appId
-            appVersion:(NSString * ) appVersion
-                userId:(NSString *) userId
+        registrationId: (NSNumber *)registrationId
+                 appId: (NSString *) appId
+            appVersion: (NSString * ) appVersion
+                userId: (NSString *) userId
                  badge: (NSNumber *) badge
-              callback:(DeviceRegistrationCallback) callback;
+               success: (SLSuccessBlock) success
+               failure: (SLFailureBlock) failure;
 
 /**
  * Register the device token
  * @param device The device information
- * @param callback The callback block for device registration
+ * @param success The success callback block for device registration
+ * @param failure The failure callback block for device registration
  */
-+ (void)registerDevice: (LBDevice *) device callback: (DeviceRegistrationCallback) callback;
++ (void)registerDevice: (LBDevice *) device
+               success: (SLSuccessBlock) success
+               failure: (SLFailureBlock) failure;
 
 
 @end
