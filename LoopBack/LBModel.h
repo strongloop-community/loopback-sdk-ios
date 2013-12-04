@@ -15,7 +15,7 @@
 @interface LBModel : SLObject
 
 /** All Models have a numerical `id` field. */
-@property (nonatomic, readonly, copy) NSNumber *_id;
+@property (nonatomic, readonly, copy) id _id;
 
 /**
  * Returns the value associated with a given key.
@@ -117,7 +117,7 @@ typedef void (^LBModelDestroySuccessBlock)();
 - (LBModel *)modelWithDictionary:(NSDictionary *)dictionary;
 
 //typedef void (^LBModelExistsSuccessBlock)(BOOL exists);
-//- (void)existsWithId:(NSNumber *)_id
+//- (void)existsWithId:(id)_id
 //             success:(LBModelExistsSuccessBlock)success
 //             failure:(SLFailureBlock)failure;
 
@@ -134,7 +134,7 @@ typedef void (^LBModelFindSuccessBlock)(LBModel *model);
  * @param success  The block to be executed when the destroy is successful.
  * @param failure  The block to be executed when the destroy fails.
  */
-- (void)findById:(NSNumber *)_id
+- (void)findById:(id)_id
            success:(LBModelFindSuccessBlock)success
            failure:(SLFailureBlock)failure;
 

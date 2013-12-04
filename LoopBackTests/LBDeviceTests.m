@@ -12,7 +12,7 @@
 #import "LBRESTAdapter.h"
 #import "LBDevice.h"
 
-static NSNumber *lastId = nil;
+static id lastId = nil;
 
 @interface LBDeviceTests()
 
@@ -50,6 +50,9 @@ static NSNumber *lastId = nil;
 - (void)testRegister {
     ASYNC_TEST_START
     unsigned char bytes[] = {
+        0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
+        0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
+        0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
         0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f};
     NSData *data = [NSData dataWithBytes:bytes length:sizeof(bytes)];
     
@@ -58,8 +61,8 @@ static NSNumber *lastId = nil;
               registrationId:lastId
                        appId:@"testapp"
                   appVersion:@"1.0"
-                      userId:@"somebody"
-                       badge: @1
+                      userId:@"user1"
+                       badge:@1
                      success:^(LBDevice *model) {
                          // NSLog(@"Completed with: %@", model._id);
                          lastId = model._id;
@@ -96,7 +99,11 @@ static NSNumber *lastId = nil;
 - (void)testReRegister {
     ASYNC_TEST_START
     unsigned char bytes[] = {
+        0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
+        0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
+        0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
         0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f};
+
     NSData *data = [NSData dataWithBytes:bytes length:sizeof(bytes)];
     
     [LBDevice registerDevice: (LBRESTAdapter *)self.repository.adapter
@@ -104,11 +111,15 @@ static NSNumber *lastId = nil;
               registrationId:lastId
                        appId:@"testapp"
                   appVersion:@"1.0"
-                      userId:@"somebody"
-                       badge: @1
+                      userId:@"user2"
+                       badge:@1
                     success:^(LBDevice *model) {
-                        // NSLog(@"Completed with: %@", model._id);
-                        STAssertEquals(lastId, model._id, @"The ids should be the same");
+                        // NSLog(@"Completed with: %@ %@", model._id, [model._id class]);
+                        // NSLog(@"Completed with: %@ %@", lastId, [lastId class]);
+                        // [rfeng] We have to do NSString comparision
+                        NSString *id1 = (NSString *) model._id;
+                        NSString *id2 = (NSString *) lastId;
+                        STAssertTrue([id1 isEqualToString:id2], @"The ids should be the same");
                         lastId = model._id;
                         STAssertNotNil(model._id, @"Invalid id");
                         ASYNC_TEST_SIGNAL

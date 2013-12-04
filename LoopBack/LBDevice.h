@@ -16,7 +16,7 @@ typedef void (^DeviceRegistrationCallback)(NSError *err, LBDevice *model);
 
 @interface LBDevice : LBModel
 
-@property (nonatomic, copy) NSNumber *id;
+@property (nonatomic, copy) id id;
 @property (nonatomic, copy) NSString *appId;
 @property (nonatomic, copy) NSString *appVersion;
 @property (nonatomic, copy) NSString *userId;
@@ -45,10 +45,10 @@ typedef void (^DeviceRegistrationCallback)(NSError *err, LBDevice *model);
  * @param failure The failure callback block for device registration
  */
 + (void)registerDevice: (LBRESTAdapter *) adapter
-           deviceToken: (NSData *)deviceToken
-        registrationId: (NSNumber *)registrationId
+           deviceToken: (NSData *) deviceToken
+        registrationId: (id) registrationId
                  appId: (NSString *) appId
-            appVersion: (NSString * ) appVersion
+            appVersion: (NSString *) appVersion
                 userId: (NSString *) userId
                  badge: (NSNumber *) badge
                success: (SLSuccessBlock) success

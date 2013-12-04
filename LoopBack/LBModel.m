@@ -16,10 +16,10 @@
     NSMutableDictionary *__overflow;
 }
 
-@property (nonatomic, readwrite, copy) NSNumber *_id;
+@property (nonatomic, readwrite, copy) id _id;
 
 - (NSMutableDictionary *)_overflow;
-- (void)setId:(NSNumber *)_id;
+- (void)setId:(id)_id;
 
 @end
 
@@ -47,7 +47,7 @@
     return __overflow;
 }
 
-- (void)setId:(NSNumber *)_id {
+- (void)setId:(id)_id {
     __id = _id;
 }
 
@@ -155,7 +155,7 @@
     return model;
 }
 
-- (void)findById:(NSNumber *)_id
+- (void)findById:(id)_id
            success:(LBModelFindSuccessBlock)success
            failure:(SLFailureBlock)failure {
     [self invokeStaticMethod:@"findById"

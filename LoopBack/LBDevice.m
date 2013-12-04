@@ -37,7 +37,7 @@
  */
 + (void)registerDevice:(LBRESTAdapter *) adapter
            deviceToken: (NSData *) deviceToken
-        registrationId: (NSNumber *) registrationId
+        registrationId: (id) registrationId
                  appId: (NSString *) appId
             appVersion: (NSString *) appVersion
                 userId: (NSString *) userId
