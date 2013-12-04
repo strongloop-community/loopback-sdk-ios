@@ -21,6 +21,20 @@ static NSNumber *lastId;
 
 @implementation LBModelTests
 
+/**
+ * Create the default test suite to control the order of test methods
+ */
++ (id)defaultTestSuite {
+    SenTestSuite *suite = [SenTestSuite testSuiteWithName:@"TestSuite for LBDevice."];
+    [suite addTest:[self testCaseWithSelector:@selector(testCreate)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testFind)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testAll)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testUpdate)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testRemove)]];
+    return suite;
+}
+
+
 - (void)setUp {
     [super setUp];
 
@@ -32,7 +46,7 @@ static NSNumber *lastId;
     [super tearDown];
 }
 
-- (void)test1Create {
+- (void)testCreate {
     LBModel __block *model = [self.repository modelWithDictionary:@{ @"name": @"Foobar", @"bars": @1 }];
 
     STAssertEqualObjects(@"Foobar", model[@"name"], @"Invalid name.");
@@ -49,18 +63,7 @@ static NSNumber *lastId;
     ASYNC_TEST_END
 }
 
-- (void)test5Remove {
-    ASYNC_TEST_START
-    [self.repository findById:lastId
-                       success:^(LBModel *model) {
-                           [model destroyWithSuccess:^{
-                               ASYNC_TEST_SIGNAL
-                           } failure:ASYNC_TEST_FAILURE_BLOCK];
-                       } failure:ASYNC_TEST_FAILURE_BLOCK];
-    ASYNC_TEST_END
-}
-
-- (void)test2Find {
+- (void)testFind {
     ASYNC_TEST_START
     [self.repository findById:@2
                        success:^(LBModel *model) {
@@ -73,7 +76,7 @@ static NSNumber *lastId;
     ASYNC_TEST_END
 }
 
-- (void)test3All {
+- (void)testAll {
     ASYNC_TEST_START
     [self.repository allWithSuccess:^(NSArray *models) {
         STAssertNotNil(models, @"No models returned.");
@@ -88,7 +91,7 @@ static NSNumber *lastId;
     ASYNC_TEST_END
 }
 
-- (void)test4Update {
+- (void)testUpdate {
     ASYNC_TEST_START
     LBModelFindSuccessBlock verify = ^(LBModel *model) {
         STAssertNotNil(model, @"No model found with ID 2");
@@ -114,5 +117,17 @@ static NSNumber *lastId;
     [self.repository findById:@2 success:update failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
 }
+
+- (void)testRemove {
+    ASYNC_TEST_START
+    [self.repository findById:lastId
+                      success:^(LBModel *model) {
+                          [model destroyWithSuccess:^{
+                              ASYNC_TEST_SIGNAL
+                          } failure:ASYNC_TEST_FAILURE_BLOCK];
+                      } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
 
 @end

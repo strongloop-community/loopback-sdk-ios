@@ -16,11 +16,25 @@ static NSNumber *lastId = nil;
 
 @interface LBDeviceTests()
 
++ (id)defaultTestSuite;
 @property (nonatomic) LBDeviceRepository *repository;
 
 @end
 
 @implementation LBDeviceTests
+
+/**
+ * Create the default test suite to control the order of test methods
+ */
++ (id)defaultTestSuite {
+    SenTestSuite *suite = [SenTestSuite testSuiteWithName:@"TestSuite for LBDevice."];
+    [suite addTest:[self testCaseWithSelector:@selector(testRegister)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testFind)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testAll)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testReRegister)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testRemove)]];
+    return suite;
+}
 
 - (void)setUp {
     [super setUp];
@@ -33,7 +47,7 @@ static NSNumber *lastId = nil;
     [super tearDown];
 }
 
-- (void)test1Register {
+- (void)testRegister {
     ASYNC_TEST_START
     unsigned char bytes[] = {
         0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f};
@@ -56,9 +70,9 @@ static NSNumber *lastId = nil;
 }
 
 
-- (void)test2Find {
+- (void)testFind {
     ASYNC_TEST_START
-    [self.repository findById:@1
+    [self.repository findById:lastId
                       success:^(LBModel *model) {
                           STAssertNotNil(model, @"No model found with ID 1");
                           STAssertTrue([[model class] isSubclassOfClass:[LBDevice class]], @"Invalid class.");
@@ -68,7 +82,7 @@ static NSNumber *lastId = nil;
 }
 
 
-- (void)test3All {
+- (void)testAll {
     ASYNC_TEST_START
     [self.repository allWithSuccess:^(NSArray *models) {
         STAssertNotNil(models, @"No models returned.");
@@ -79,7 +93,7 @@ static NSNumber *lastId = nil;
     ASYNC_TEST_END
 }
 
-- (void)test4ReRegister {
+- (void)testReRegister {
     ASYNC_TEST_START
     unsigned char bytes[] = {
         0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f};
@@ -102,7 +116,7 @@ static NSNumber *lastId = nil;
 }
 
 
-- (void)test5Remove {
+- (void)testRemove {
     ASYNC_TEST_START
     [self.repository findById:lastId
                       success:^(LBModel *model) {
