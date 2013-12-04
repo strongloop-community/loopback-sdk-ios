@@ -108,6 +108,7 @@ static NSNumber *lastId = nil;
                        badge: @1
                     success:^(LBDevice *model) {
                         // NSLog(@"Completed with: %@", model._id);
+                        STAssertEquals(lastId, model._id, @"The ids should be the same");
                         lastId = model._id;
                         STAssertNotNil(model._id, @"Invalid id");
                         ASYNC_TEST_SIGNAL
