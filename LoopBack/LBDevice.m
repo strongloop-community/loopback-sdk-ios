@@ -32,7 +32,7 @@
            deviceToken: (NSData *)deviceToken
         registrationId: (NSNumber *)registrationId
                  appId: (NSString *) appId
-            appVersion: (NSString * ) appVersion
+            appVersion: (NSString *) appVersion
                 userId: (NSString *) userId
                  badge: (NSNumber *) badge
                success: (SLSuccessBlock) success
@@ -41,6 +41,10 @@
     NSString* hexToken = [LBDevice deviceToken:deviceToken];
     
     LBDeviceRepository *repository = (LBDeviceRepository *) [adapter repositoryWithModelClass:[LBDeviceRepository class]];
+    
+    if(appVersion == nil) {
+        appVersion = @"1.0.0";
+    }
     
     // 3. From that repository, create a new LBDevice.
     LBDevice *model = (LBDevice *)[repository modelWithDictionary:@{
