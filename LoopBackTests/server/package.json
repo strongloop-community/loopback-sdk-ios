@@ -4,6 +4,7 @@
   "description": "A test server for running loopback-clients integration testing.",
   "main": "index.js",
   "dependencies": {
-    "loopback": "1.x.x"
+    "loopback": "1.x.x",
+    "loopback-push-notification": "git+ssh://git@github.com:strongloop/loopback-push-notification"
   }
 }

@@ -21,13 +21,10 @@ var Widget = loopback.createModel('widget', {
 Widget.attachTo(Memory);
 app.model(Widget);
 
-var Device = loopback.createModel('device', {
-});
-Device.attachTo(Memory);
-app.model(Device);
-
+var lbpn = require('loopback-push-notification');
+var PushModel = lbpn(app, { dataSource: Memory });
+var Device = PushModel.Device;
 app.use(loopback.rest());
-app.listen(3000);
 
 Widget.destroyAll(function () {
   Widget.create({
@@ -42,3 +39,5 @@ Widget.destroyAll(function () {
     bars: 1
   });
 });
+
+app.listen(3000);
