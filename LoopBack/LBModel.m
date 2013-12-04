@@ -72,6 +72,11 @@
     return dict;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat: @"<LBModel %@>", [self toDictionary]];
+}
+
+
 - (void)saveWithSuccess:(LBModelSaveSuccessBlock)success
                 failure:(SLFailureBlock)failure {
     [self invokeMethod:(self._id || [self valueForKey:@"id"]) ? @"save" : @"create"
