@@ -2,8 +2,12 @@
 
 @implementation LBDevice
 
+- (NSString *)description {
+    return [NSString stringWithFormat: @"<LBDevice %p - %@>", self, self.id];
+}
+
 + (NSString *)deviceToken: (NSData *) token {
-    // 1. Convert device token from NSData to NSString
+    // Convert device token from NSData to NSString
     const unsigned *tokenBytes = [token bytes];
     NSString *hexToken = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
                           ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
@@ -15,9 +19,9 @@
 + (void)registerDevice: (LBDevice *) device
                success: (SLSuccessBlock) success
                failure: (SLFailureBlock) failure {
-    // 4. Save!
+    // Save!
     [device saveWithSuccess:^{
-        NSLog(@"Successfully saved %@", device._id);
+        NSLog(@"Successfully saved %@", device);
         success(device);
     } failure:^(NSError *error) {
         NSLog(@"Failed to save %@ with %@", device, error);
