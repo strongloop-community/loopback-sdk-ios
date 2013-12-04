@@ -24,10 +24,10 @@
     // Save!
     [device saveWithSuccess:^{
         device.id = device._id;
-        NSLog(@"Successfully saved %@", device);
+        NSLog(@"LBDevice: Successfully saved %@", device);
         success(device);
     } failure:^(NSError *error) {
-        NSLog(@"Failed to save %@ with %@", device, error);
+        NSLog(@"LBDevice: Failed to save %@ with %@", device, error);
         failure(error);
     }];
 }
