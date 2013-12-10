@@ -52,16 +52,6 @@
                success: (SLSuccessBlock) success
                failure: (SLFailureBlock) failure;
 
-/**
- * Register the device token
- * @param device The device information
- * @param success The success callback block for device registration
- * @param failure The failure callback block for device registration
- */
-+ (void)registerDevice: (LBDevice *) device
-               success: (SLSuccessBlock) success
-               failure: (SLFailureBlock) failure;
-
 @end
 
 /**
