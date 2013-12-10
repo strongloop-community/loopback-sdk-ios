@@ -18,7 +18,7 @@
 @property (nonatomic, copy) NSString *appId;
 @property (nonatomic, copy) NSString *appVersion;
 @property (nonatomic, copy) NSString *userId;
-@property (nonatomic, copy) NSString *deviceType;
+@property (nonatomic, readonly, copy) NSString *deviceType;
 @property (nonatomic, copy) NSString *deviceToken;
 @property (nonatomic, copy) NSNumber *badge;
 @property (nonatomic, copy) NSString *status;

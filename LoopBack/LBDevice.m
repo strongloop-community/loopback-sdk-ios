@@ -1,5 +1,9 @@
 #import "LBDevice.h"
 
+@interface LBDevice ()
+@property (nonatomic, readwrite, copy) NSString *deviceType;
+@end
+
 @implementation LBDevice
 
 + (NSString *)deviceTokenWithData: (NSData *) token {
