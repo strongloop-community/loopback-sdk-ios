@@ -16,7 +16,6 @@ typedef void (^DeviceRegistrationCallback)(NSError *err, LBDevice *model);
 
 @interface LBDevice : LBModel
 
-@property (nonatomic, copy) id id;
 @property (nonatomic, copy) NSString *appId;
 @property (nonatomic, copy) NSString *appVersion;
 @property (nonatomic, copy) NSString *userId;

@@ -23,7 +23,6 @@
                failure: (SLFailureBlock) failure {
     // Save!
     [device saveWithSuccess:^{
-        device.id = device._id;
         NSLog(@"LBDevice: Successfully saved %@", device);
         success(device);
     } failure:^(NSError *error) {
@@ -54,8 +53,14 @@
     }
     
     // 3. From that repository, create a new LBDevice.
-    LBDevice *model = (LBDevice *)[repository modelWithDictionary:@{}];
+    LBDevice *model = nil;
     
+    if(registrationId) {
+        model = (LBDevice *)[repository modelWithDictionary:@{@"id": registrationId}];
+    } else {
+        // The repository doesn't seem to accept nil as the value for id
+        model = (LBDevice *)[repository modelWithDictionary:@{}];
+    }
     
     model.appId = appId;
     model.appVersion = appVersion;
@@ -65,9 +70,6 @@
     model.status = @"Active";
     model.badge = badge;
     
-    if(registrationId) {
-        model.id = registrationId;
-    }
     
     [LBDevice registerDevice:model success:success failure:failure];
 }
