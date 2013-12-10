@@ -30,6 +30,7 @@ static id lastId = nil;
  */
 + (id)defaultTestSuite {
     SenTestSuite *suite = [SenTestSuite testSuiteWithName:@"TestSuite for LBDevice."];
+    [suite addTest:[self testCaseWithSelector:@selector(testSingletonRepository)]];
     [suite addTest:[self testCaseWithSelector:@selector(testRegister)]];
     [suite addTest:[self testCaseWithSelector:@selector(testFind)]];
     [suite addTest:[self testCaseWithSelector:@selector(testAll)]];
@@ -55,6 +56,12 @@ static id lastId = nil;
 
 - (void)tearDown {
     [super tearDown];
+}
+
+- (void)testSingletonRepository {
+    LBDeviceRepository* r1 = [LBDeviceRepository repository];
+    LBDeviceRepository* r2 = [LBDeviceRepository repository];
+    STAssertEquals(r1, r2, @"LBDeviceRepository.repository is a singleton");
 }
 
 - (void)testRegister {
