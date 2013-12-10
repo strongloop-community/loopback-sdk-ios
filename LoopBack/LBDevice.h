@@ -29,10 +29,10 @@
  * @param token The device token in NSData type
  * @return The device token in NSString type
  */
-+ (NSString *)deviceToken: (NSData *) token;
++ (NSString *)deviceTokenWithData: (NSData *) token;
 
 /**
- * Register the device token
+ * Register the device against LoopBack server
  * @param deviceToken The device token
  * @param registrationId The registration id
  * @param appId The application id
@@ -42,15 +42,15 @@
  * @param success The success callback block for device registration
  * @param failure The failure callback block for device registration
  */
-+ (void)registerDevice: (LBRESTAdapter *) adapter
-           deviceToken: (NSData *) deviceToken
-        registrationId: (id) registrationId
-                 appId: (NSString *) appId
-            appVersion: (NSString *) appVersion
-                userId: (NSString *) userId
-                 badge: (NSNumber *) badge
-               success: (SLSuccessBlock) success
-               failure: (SLFailureBlock) failure;
++ (void)registerDeviceWithAdapter: (LBRESTAdapter *) adapter
+                      deviceToken: (NSData *) deviceToken
+                   registrationId: (id) registrationId
+                            appId: (NSString *) appId
+                       appVersion: (NSString *) appVersion
+                           userId: (NSString *) userId
+                            badge: (NSNumber *) badge
+                          success: (SLSuccessBlock) success
+                          failure: (SLFailureBlock) failure;
 
 @end
 

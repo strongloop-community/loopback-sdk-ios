@@ -60,7 +60,7 @@ static id lastId = nil;
 - (void)testRegister {
     ASYNC_TEST_START
     
-    [LBDevice registerDevice: (LBRESTAdapter *)self.repository.adapter
+    [LBDevice registerDeviceWithAdapter: (LBRESTAdapter *)self.repository.adapter
                  deviceToken:self.testToken
               registrationId:lastId
                        appId:@"testapp"
@@ -102,7 +102,7 @@ static id lastId = nil;
 - (void)testReRegister {
     ASYNC_TEST_START
     
-    [LBDevice registerDevice: (LBRESTAdapter *)self.repository.adapter
+    [LBDevice registerDeviceWithAdapter: (LBRESTAdapter *)self.repository.adapter
                  deviceToken:self.testToken
               registrationId:lastId
                        appId:@"testapp"

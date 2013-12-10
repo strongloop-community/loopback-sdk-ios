@@ -2,7 +2,7 @@
 
 @implementation LBDevice
 
-+ (NSString *)deviceToken: (NSData *) token {
++ (NSString *)deviceTokenWithData: (NSData *) token {
     // Convert device token from NSData to NSString
     const unsigned *tokenBytes = [token bytes];
     NSString *hexToken = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
@@ -28,17 +28,17 @@
 /**
  * Saves the desired Device model to the server with all values pulled from the UI.
  */
-+ (void)registerDevice:(LBRESTAdapter *) adapter
-           deviceToken: (NSData *) deviceToken
-        registrationId: (id) registrationId
-                 appId: (NSString *) appId
-            appVersion: (NSString *) appVersion
-                userId: (NSString *) userId
-                 badge: (NSNumber *) badge
-               success: (SLSuccessBlock) success
-               failure: (SLFailureBlock) failure {
++ (void)registerDeviceWithAdapter: (LBRESTAdapter *) adapter
+                      deviceToken: (NSData *) deviceToken
+                   registrationId: (id) registrationId
+                            appId: (NSString *) appId
+                       appVersion: (NSString *) appVersion
+                           userId: (NSString *) userId
+                            badge: (NSNumber *) badge
+                          success: (SLSuccessBlock) success
+                          failure: (SLFailureBlock) failure {
     
-    NSString* hexToken = [LBDevice deviceToken:deviceToken];
+    NSString* hexToken = [LBDevice deviceTokenWithData:deviceToken];
     
     LBDeviceRepository *repository = (LBDeviceRepository *) [adapter repositoryWithModelClass:[LBDeviceRepository class]];
     
