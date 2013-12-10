@@ -11,6 +11,7 @@
 #import <LoopBack/LoopBack.h>
 
 @class LBDevice;
+@class LBDeviceRepository;
 
 typedef void (^DeviceRegistrationCallback)(NSError *err, LBDevice *model);
 
@@ -63,6 +64,16 @@ typedef void (^DeviceRegistrationCallback)(NSError *err, LBDevice *model);
                success: (SLSuccessBlock) success
                failure: (SLFailureBlock) failure;
 
+/**
+ * Load the LBDevice from the local document directory
+ * @param repository The repository for LBDevice
+ */
++ (LBDevice *) loadLocally:(LBDeviceRepository *) repository;
+
+/**
+ * Store the LBDevice to the local document directory
+ */
+- (void) storeLocally;
 
 @end
 
