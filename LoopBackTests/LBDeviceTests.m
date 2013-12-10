@@ -13,12 +13,13 @@
 #import "LBDevice.h"
 
 static id lastId = nil;
-static LBDevice *lastDevice = nil;
 
 @interface LBDeviceTests()
 
 + (id)defaultTestSuite;
+
 @property (nonatomic) LBDeviceRepository *repository;
+@property (nonatomic) NSData *testToken;
 
 @end
 
@@ -31,7 +32,6 @@ static LBDevice *lastDevice = nil;
     SenTestSuite *suite = [SenTestSuite testSuiteWithName:@"TestSuite for LBDevice."];
     [suite addTest:[self testCaseWithSelector:@selector(testRegister)]];
     [suite addTest:[self testCaseWithSelector:@selector(testFind)]];
-    [suite addTest:[self testCaseWithSelector:@selector(testStoreAndLoad)]];
     [suite addTest:[self testCaseWithSelector:@selector(testAll)]];
     [suite addTest:[self testCaseWithSelector:@selector(testReRegister)]];
     [suite addTest:[self testCaseWithSelector:@selector(testRemove)]];
@@ -43,6 +43,14 @@ static LBDevice *lastDevice = nil;
     
     LBRESTAdapter *adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
     self.repository = (LBDeviceRepository *) [adapter repositoryWithModelClass:[LBDeviceRepository class]];
+    
+    unsigned char bytes[] = {
+        0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
+        0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
+        0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
+        0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f};
+    self.testToken = [NSData dataWithBytes:bytes length:sizeof(bytes)];
+
 }
 
 - (void)tearDown {
@@ -51,15 +59,9 @@ static LBDevice *lastDevice = nil;
 
 - (void)testRegister {
     ASYNC_TEST_START
-    unsigned char bytes[] = {
-        0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
-        0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
-        0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
-        0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f};
-    NSData *data = [NSData dataWithBytes:bytes length:sizeof(bytes)];
     
     [LBDevice registerDevice: (LBRESTAdapter *)self.repository.adapter
-                 deviceToken:data
+                 deviceToken:self.testToken
               registrationId:lastId
                        appId:@"testapp"
                   appVersion:@"1.0"
@@ -79,24 +81,12 @@ static LBDevice *lastDevice = nil;
     ASYNC_TEST_START
     [self.repository findById:lastId
                       success:^(LBModel *model) {
-                          lastDevice = (LBDevice *)model;
                           STAssertNotNil(model, @"No model found with ID 1");
                           STAssertTrue([[model class] isSubclassOfClass:[LBDevice class]], @"Invalid class.");
                           ASYNC_TEST_SIGNAL
                       } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
 }
-
-- (void)testStoreAndLoad {
-    [lastDevice storeLocally];
-    LBDevice *device = [LBDevice loadLocally:self.repository];
-    STAssertNotNil(device, @"Invalid device");
-    NSString *id1 = (NSString *) device._id;
-    NSString *id2 = (NSString *) lastId;
-    STAssertTrue([id1 isEqualToString:id2], @"The ids should be the same");
-    // NSLog(@"%@", device);
-}
-
 
 - (void)testAll {
     ASYNC_TEST_START
@@ -111,16 +101,9 @@ static LBDevice *lastDevice = nil;
 
 - (void)testReRegister {
     ASYNC_TEST_START
-    unsigned char bytes[] = {
-        0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
-        0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
-        0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
-        0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f};
-
-    NSData *data = [NSData dataWithBytes:bytes length:sizeof(bytes)];
     
     [LBDevice registerDevice: (LBRESTAdapter *)self.repository.adapter
-                 deviceToken:data
+                 deviceToken:self.testToken
               registrationId:lastId
                        appId:@"testapp"
                   appVersion:@"1.0"
