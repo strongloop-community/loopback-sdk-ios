@@ -43,7 +43,7 @@ static id lastId = nil;
     [super setUp];
     
     LBRESTAdapter *adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
-    self.repository = (LBDeviceRepository *) [adapter repositoryWithModelClass:[LBDeviceRepository class]];
+    self.repository = (LBDeviceRepository *) [adapter repositoryWithClass:[LBDeviceRepository class]];
     
     unsigned char bytes[] = {
         0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,

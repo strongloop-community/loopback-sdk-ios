@@ -23,7 +23,7 @@
     return repository;
 }
 
-- (LBModelRepository *)repositoryWithModelClass:(Class)type {
+- (LBModelRepository *)repositoryWithClass:(Class)type {
     NSParameterAssert(type);
     NSParameterAssert([type isSubclassOfClass:[LBModelRepository class]]);
     NSParameterAssert([type respondsToSelector:@selector(repository)]);

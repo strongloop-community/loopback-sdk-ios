@@ -44,7 +44,7 @@
     
     NSString* hexToken = [LBDevice deviceTokenWithData:deviceToken];
     
-    LBDeviceRepository *repository = (LBDeviceRepository *) [adapter repositoryWithModelClass:[LBDeviceRepository class]];
+    LBDeviceRepository *repository = (LBDeviceRepository *) [adapter repositoryWithClass:[LBDeviceRepository class]];
     
     if(appVersion == nil) {
         appVersion = @"1.0.0";

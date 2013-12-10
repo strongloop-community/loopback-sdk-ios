@@ -29,6 +29,6 @@
  * @param  type A subclass of LBModelRepository to use.
  * @return      A new repository instance.
  */
-- (LBModelRepository *)repositoryWithModelClass:(Class)type;
+- (LBModelRepository *)repositoryWithClass:(Class)type;
 
 @end
