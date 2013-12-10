@@ -59,6 +59,9 @@
  */
 @interface LBDeviceRepository : LBModelRepository
 
+/**
+ * Get a singleton for LBDeviceRepository
+ */
 + (instancetype)repository;
 
 @end

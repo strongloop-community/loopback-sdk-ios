@@ -73,9 +73,14 @@
 @implementation LBDeviceRepository
 
 + (instancetype)repository {
-    LBDeviceRepository *repository = [self repositoryWithClassName:@"devices"];
-    repository.modelClass = [LBDevice class];
-    return repository;
+    static LBDeviceRepository *singleton = nil;
+    @synchronized(self) {
+        if(singleton == nil) {
+            singleton = [self repositoryWithClassName:@"devices"];
+            singleton.modelClass = [LBDevice class];
+        }
+    }
+    return singleton;
 }
 
 @end
