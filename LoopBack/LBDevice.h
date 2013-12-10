@@ -13,14 +13,12 @@
 @class LBDevice;
 @class LBDeviceRepository;
 
-typedef void (^DeviceRegistrationCallback)(NSError *err, LBDevice *model);
-
 @interface LBDevice : LBModel
 
 @property (nonatomic, copy) NSString *appId;
 @property (nonatomic, copy) NSString *appVersion;
 @property (nonatomic, copy) NSString *userId;
-@property (nonatomic, copy) NSString* deviceType;
+@property (nonatomic, copy) NSString *deviceType;
 @property (nonatomic, copy) NSString *deviceToken;
 @property (nonatomic, copy) NSNumber *badge;
 @property (nonatomic, copy) NSString *status;
@@ -77,15 +75,13 @@ typedef void (^DeviceRegistrationCallback)(NSError *err, LBDevice *model);
 
 @end
 
-
 /**
- * Our custom ModelRepository subclass. See Lesson One for more information.
+ * Custom ModelRepository subclass for LBDevice
  */
 @interface LBDeviceRepository : LBModelRepository
 
 + (instancetype)repository;
 
 @end
-
 
 #endif

@@ -2,12 +2,6 @@
 
 @implementation LBDevice
 
-/*
-- (NSString *)description {
-    return [NSString stringWithFormat: @"<LBDevice id: %@ deviceToken: %@>", self.id, self.deviceToken];
-}
-*/ 
-
 + (NSString *)deviceToken: (NSData *) token {
     // Convert device token from NSData to NSString
     const unsigned *tokenBytes = [token bytes];
@@ -70,11 +64,10 @@
     model.status = @"Active";
     model.badge = badge;
     
-    
     [LBDevice registerDevice:model success:success failure:failure];
 }
 
-- (void) saveLocally {
+- (void) storeLocally {
     
     // get paths from root direcory
     NSArray *paths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);
@@ -87,7 +80,9 @@
     NSDictionary *plistDict = [self toDictionary];
     NSString *error = nil;
     // create NSData from dictionary
-    NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:plistDict format:NSPropertyListXMLFormat_v1_0 errorDescription:&error];
+    NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:plistDict
+                                                                   format:NSPropertyListXMLFormat_v1_0
+                                                         errorDescription:&error];
         
     // check is plistData exists
     if(plistData) {
@@ -108,8 +103,7 @@
     NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"LBDevice.plist"];
     
     // check to see if LBDevice.plist exists in documents
-    if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath])
-    {
+    if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath]) {
         // if not in documents, get property list from main bundle
         plistPath = [[NSBundle mainBundle] pathForResource:@"LBDevice" ofType:@"plist"];
     }
@@ -119,9 +113,11 @@
     NSString *errorDesc = nil;
     NSPropertyListFormat format = NSPropertyListXMLFormat_v1_0;
     // convert static property liost into dictionary object
-    NSDictionary *temp = (NSDictionary *)[NSPropertyListSerialization propertyListFromData:plistXML mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&errorDesc];
-    if (!temp)
-    {
+    NSDictionary *temp = (NSDictionary *)
+        [NSPropertyListSerialization propertyListFromData:plistXML
+                                         mutabilityOption:NSPropertyListMutableContainersAndLeaves
+                                                   format:&format errorDescription:&errorDesc];
+    if (!temp) {
         NSLog(@"Error reading plist: %@", errorDesc);
         return nil;
     } else {
@@ -130,7 +126,6 @@
 }
 
 @end
-
 
 @implementation LBDeviceRepository
 
