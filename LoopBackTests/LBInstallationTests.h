@@ -1,5 +1,5 @@
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface LBDeviceTests : SenTestCase
+@interface LBInstallationTests : SenTestCase
 
 @end

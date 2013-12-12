@@ -6,30 +6,30 @@
 //  Copyright (c) 2013 StrongLoop. All rights reserved.
 //
 
-#import "LBDeviceTests.h"
+#import "LBInstallationTests.h"
 
 #import "LBModel.h"
 #import "LBRESTAdapter.h"
-#import "LBDevice.h"
+#import "LBInstallation.h"
 
 static id lastId = nil;
 
-@interface LBDeviceTests()
+@interface LBInstallationTests()
 
 + (id)defaultTestSuite;
 
-@property (nonatomic) LBDeviceRepository *repository;
+@property (nonatomic) LBInstallationRepository *repository;
 @property (nonatomic) NSData *testToken;
 
 @end
 
-@implementation LBDeviceTests
+@implementation LBInstallationTests
 
 /**
  * Create the default test suite to control the order of test methods
  */
 + (id)defaultTestSuite {
-    SenTestSuite *suite = [SenTestSuite testSuiteWithName:@"TestSuite for LBDevice."];
+    SenTestSuite *suite = [SenTestSuite testSuiteWithName:@"TestSuite for LBInstallation."];
     [suite addTest:[self testCaseWithSelector:@selector(testSingletonRepository)]];
     [suite addTest:[self testCaseWithSelector:@selector(testRegister)]];
     [suite addTest:[self testCaseWithSelector:@selector(testFind)]];
@@ -43,7 +43,7 @@ static id lastId = nil;
     [super setUp];
     
     LBRESTAdapter *adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
-    self.repository = (LBDeviceRepository *) [adapter repositoryWithClass:[LBDeviceRepository class]];
+    self.repository = (LBInstallationRepository *) [adapter repositoryWithClass:[LBInstallationRepository class]];
     
     unsigned char bytes[] = {
         0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
@@ -59,22 +59,22 @@ static id lastId = nil;
 }
 
 - (void)testSingletonRepository {
-    LBDeviceRepository* r1 = [LBDeviceRepository repository];
-    LBDeviceRepository* r2 = [LBDeviceRepository repository];
-    STAssertEquals(r1, r2, @"LBDeviceRepository.repository is a singleton");
+    LBInstallationRepository* r1 = [LBInstallationRepository repository];
+    LBInstallationRepository* r2 = [LBInstallationRepository repository];
+    STAssertEquals(r1, r2, @"LBInstallationRepository.repository is a singleton");
 }
 
 - (void)testRegister {
     ASYNC_TEST_START
     
-    [LBDevice registerDeviceWithAdapter: (LBRESTAdapter *)self.repository.adapter
+    [LBInstallation registerDeviceWithAdapter: (LBRESTAdapter *)self.repository.adapter
                  deviceToken:self.testToken
               registrationId:lastId
                        appId:@"testapp"
                   appVersion:@"1.0"
                       userId:@"user1"
                        badge:@1
-                     success:^(LBDevice *model) {
+                     success:^(LBInstallation *model) {
                          // NSLog(@"Completed with: %@", model._id);
                          lastId = model._id;
                          STAssertNotNil(model._id, @"Invalid id");
@@ -89,7 +89,7 @@ static id lastId = nil;
     [self.repository findById:lastId
                       success:^(LBModel *model) {
                           STAssertNotNil(model, @"No model found with ID 1");
-                          STAssertTrue([[model class] isSubclassOfClass:[LBDevice class]], @"Invalid class.");
+                          STAssertTrue([[model class] isSubclassOfClass:[LBInstallation class]], @"Invalid class.");
                           ASYNC_TEST_SIGNAL
                       } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
@@ -100,7 +100,7 @@ static id lastId = nil;
     [self.repository allWithSuccess:^(NSArray *models) {
         STAssertNotNil(models, @"No models returned.");
         STAssertTrue([models count] >= 1, [NSString stringWithFormat:@"Invalid # of models returned: %lu", (unsigned long)[models count]]);
-        // STAssertTrue([[models[0] class] isSubclassOfClass:[LBDevice class]], @"Invalid class.");
+        // STAssertTrue([[models[0] class] isSubclassOfClass:[LBInstallation class]], @"Invalid class.");
         ASYNC_TEST_SIGNAL
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
@@ -109,14 +109,14 @@ static id lastId = nil;
 - (void)testReRegister {
     ASYNC_TEST_START
     
-    [LBDevice registerDeviceWithAdapter: (LBRESTAdapter *)self.repository.adapter
+    [LBInstallation registerDeviceWithAdapter: (LBRESTAdapter *)self.repository.adapter
                  deviceToken:self.testToken
               registrationId:lastId
                        appId:@"testapp"
                   appVersion:@"1.0"
                       userId:@"user2"
                        badge:@1
-                    success:^(LBDevice *model) {
+                    success:^(LBInstallation *model) {
                         // NSLog(@"Completed with: %@ %@", model._id, [model._id class]);
                         // NSLog(@"Completed with: %@ %@", lastId, [lastId class]);
                         // [rfeng] We have to do NSString comparision

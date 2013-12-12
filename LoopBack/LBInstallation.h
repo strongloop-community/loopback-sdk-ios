@@ -1,19 +1,19 @@
 //
-//  LBDevice.h
+//  LBInstallation.h
 //
 //  Created by Raymond Feng on 11/20/13.
 //  Copyright (c) 2013 StrongLoop. All rights reserved.
 //
 
-#ifndef LoopBack_LBDevice_h
-#define LoopBack_LBDevice_h
+#ifndef LoopBack_LBInstallation_h
+#define LoopBack_LBInstallation_h
 
 #import <LoopBack/LoopBack.h>
 
-@class LBDevice;
-@class LBDeviceRepository;
+@class LBInstallation;
+@class LBInstallationRepository;
 
-@interface LBDevice : LBModel
+@interface LBInstallation : LBModel
 
 @property (nonatomic, copy) NSString *appId;
 @property (nonatomic, copy) NSString *appVersion;
@@ -55,12 +55,12 @@
 @end
 
 /**
- * Custom ModelRepository subclass for LBDevice
+ * Custom ModelRepository subclass for LBInstallation
  */
-@interface LBDeviceRepository : LBModelRepository
+@interface LBInstallationRepository : LBModelRepository
 
 /**
- * Get a singleton for LBDeviceRepository
+ * Get a singleton for LBInstallationRepository
  */
 + (instancetype)repository;
 
