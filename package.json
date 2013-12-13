@@ -1,0 +1,11 @@
+{
+  "name": "loopback-ios",
+  "version": "1.2.0",
+  "description": "A collection of client SDK implementations for the LoopBack framework.",
+  "keywords": [ "StrongLoop", "LoopBack", "client", "SDK", "iOS", "mobile" ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/strongloop/loopback-ios.git"
+  },
+  "license": "MIT"
+}
