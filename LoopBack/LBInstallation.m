@@ -83,7 +83,7 @@
     static LBInstallationRepository *singleton = nil;
     @synchronized(self) {
         if(singleton == nil) {
-            singleton = [self repositoryWithClassName:@"devices"];
+            singleton = [self repositoryWithClassName:@"installations"];
             singleton.modelClass = [LBInstallation class];
         }
     }
