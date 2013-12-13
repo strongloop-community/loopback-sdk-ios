@@ -2,6 +2,7 @@
 
 @interface LBInstallation ()
 @property (nonatomic, readwrite, copy) NSString *deviceType;
+@property (nonatomic, readwrite, copy) NSString *timeZone;
 @end
 
 @implementation LBInstallation
@@ -67,6 +68,8 @@
     model.deviceToken = hexToken;
     model.status = @"Active";
     model.badge = badge;
+    model.subscriptions = @[];
+    model.timeZone = [[NSTimeZone defaultTimeZone] name];
     
     [LBInstallation registerDevice:model success:success failure:failure];
 }

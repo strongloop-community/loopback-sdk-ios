@@ -21,6 +21,8 @@
 @property (nonatomic, readonly, copy) NSString *deviceType;
 @property (nonatomic, copy) NSString *deviceToken;
 @property (nonatomic, copy) NSNumber *badge;
+@property (nonatomic, copy) NSArray *subscriptions;
+@property (nonatomic, readonly, copy) NSString *timeZone;
 @property (nonatomic, copy) NSString *status;
 
 /**
