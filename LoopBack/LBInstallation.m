@@ -40,6 +40,7 @@
                        appVersion: (NSString *) appVersion
                            userId: (NSString *) userId
                             badge: (NSNumber *) badge
+                    subscriptions: (NSArray *) subscriptions
                           success: (SLSuccessBlock) success
                           failure: (SLFailureBlock) failure {
     
@@ -68,7 +69,7 @@
     model.deviceToken = hexToken;
     model.status = @"Active";
     model.badge = badge;
-    model.subscriptions = @[];
+    model.subscriptions = subscriptions ? subscriptions : @[];
     model.timeZone = [[NSTimeZone defaultTimeZone] name];
     
     [LBInstallation registerDevice:model success:success failure:failure];

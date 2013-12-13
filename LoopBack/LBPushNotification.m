@@ -10,10 +10,10 @@
     return self;
 }
 
-+ (LBPushNotification *) launch:(NSDictionary *)launchOptions {
++ (LBPushNotification *) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     // Let the device know we want to receive push notifications
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+    [application registerForRemoteNotificationTypes:
      (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 
     // Handle APN on Terminated state, app launched because of APN
@@ -55,7 +55,8 @@
 }
 
 + (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
-            adapter:(LBRESTAdapter *) adapter success:(SLSuccessBlock)success failure:(SLFailureBlock)failure
+            adapter:(LBRESTAdapter *)adapter userId:(NSString *) userId subscriptions:(NSArray *)subscriptions
+            success:(SLSuccessBlock)success failure:(SLFailureBlock)failure
 {
 	NSLog(@"My token is: %@", deviceToken);
     
@@ -69,8 +70,9 @@
                                registrationId: nil
                                         appId: settings[@"AppId"]
                                    appVersion: settings[@"AppVersion"]
-                                       userId: @"unknown"
+                                       userId: userId
                                         badge: badge
+                                subscriptions: subscriptions
                                       success: success
                                       failure: failure];
     

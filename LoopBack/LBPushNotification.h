@@ -40,7 +40,7 @@ typedef enum LBPushNotificationType {
  * @param launchOptions The launch options from the application hook
  * @return The offline notification
  */
-+ (LBPushNotification *) launch:(NSDictionary *)launchOptions;
++ (LBPushNotification *) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 
 /**
  * Handle received notification
@@ -52,13 +52,21 @@ typedef enum LBPushNotificationType {
 
 /**
  * Handle the device token
+ * @param application The application instance
  * @param deviceToken The device token
  * @param adapter The REST adapter
+ * @param userId The user id
  * @param success The success callback block
  * @param failure The failure callback block
  */
 + (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
-            adapter:(LBRESTAdapter *) adapter success:(SLSuccessBlock)success failure:(SLFailureBlock)failure;
+            adapter:(LBRESTAdapter *)adapter userId:(NSString *)userId subscriptions:(NSArray *)subscriptions
+            success:(SLSuccessBlock)success failure:(SLFailureBlock)failure;
+
+/**
+ * Handle failure to receive device token
+ */
++ (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error;
 
 /**
  * Reset badge
