@@ -54,7 +54,6 @@
     return app.applicationIconBadgeNumber;
 }
 
-
 + (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
             adapter:(LBRESTAdapter *) adapter success:(SLSuccessBlock)success failure:(SLFailureBlock)failure
 {
@@ -80,6 +79,5 @@
 + (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error {
 	NSLog(@"Failed to get token, error: %@", error);
 }
-
 
 @end
