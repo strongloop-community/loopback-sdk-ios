@@ -1,3 +1,3 @@
 [submodule "SLRemoting"]
-        path = SLRemoting
-        url = git@github.com:strongloop/strong-remoting-clients.git
+	path = SLRemoting
+	url = git@github.com:strongloop/strong-remoting-clients.git
