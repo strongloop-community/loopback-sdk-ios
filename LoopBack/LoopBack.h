@@ -7,3 +7,6 @@
 
 #import "LBModel.h"
 #import "LBRESTAdapter.h"
+#import "LBInstallation.h"
+#import "LBPushNotification.h"
+
