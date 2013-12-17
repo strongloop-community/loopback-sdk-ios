@@ -30,7 +30,7 @@ typedef enum LBPushNotificationType {
 } LBPushNotificationType;
 
 /**
- * @expermental(Provide helper methods for iOS clients to handle push notifications)
+ * @experimental(Provide helper methods for iOS clients to handle push notifications)
  *
  * @abstract Wrapper class to handle received push notifications
  *
