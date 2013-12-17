@@ -68,18 +68,20 @@ static id lastId = nil;
     ASYNC_TEST_START
     
     [LBInstallation registerDeviceWithAdapter: (LBRESTAdapter *)self.repository.adapter
-                 deviceToken:self.testToken
-              registrationId:lastId
-                       appId:@"testapp"
-                  appVersion:@"1.0"
-                      userId:@"user1"
-                       badge:@1
-                     success:^(LBInstallation *model) {
-                         // NSLog(@"Completed with: %@", model._id);
-                         lastId = model._id;
-                         STAssertNotNil(model._id, @"Invalid id");
-                         ASYNC_TEST_SIGNAL
-                     } failure:ASYNC_TEST_FAILURE_BLOCK];
+                                  deviceToken:self.testToken
+                               registrationId:lastId
+                                        appId:@"testapp"
+                                   appVersion:@"1.0"
+                                       userId:@"user1"
+                                        badge:@1
+                                subscriptions:nil
+                                      success:^(LBInstallation *model) {
+                                          // NSLog(@"Completed with: %@", model._id);
+                                          lastId = model._id;
+                                          STAssertNotNil(model._id, @"Invalid id");
+                                          ASYNC_TEST_SIGNAL
+                                      }
+                                      failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
 }
 
@@ -110,23 +112,25 @@ static id lastId = nil;
     ASYNC_TEST_START
     
     [LBInstallation registerDeviceWithAdapter: (LBRESTAdapter *)self.repository.adapter
-                 deviceToken:self.testToken
-              registrationId:lastId
-                       appId:@"testapp"
-                  appVersion:@"1.0"
-                      userId:@"user2"
-                       badge:@1
-                    success:^(LBInstallation *model) {
-                        // NSLog(@"Completed with: %@ %@", model._id, [model._id class]);
-                        // NSLog(@"Completed with: %@ %@", lastId, [lastId class]);
-                        // [rfeng] We have to do NSString comparision
-                        NSString *id1 = (NSString *) model._id;
-                        NSString *id2 = (NSString *) lastId;
-                        STAssertTrue([id1 isEqualToString:id2], @"The ids should be the same");
-                        lastId = model._id;
-                        STAssertNotNil(model._id, @"Invalid id");
-                        ASYNC_TEST_SIGNAL
-                    } failure:ASYNC_TEST_FAILURE_BLOCK];
+                                  deviceToken:self.testToken
+                               registrationId:lastId
+                                        appId:@"testapp"
+                                   appVersion:@"1.0"
+                                       userId:@"user2"
+                                        badge:@1
+                                subscriptions:nil
+                                      success:^(LBInstallation *model) {
+                                          // NSLog(@"Completed with: %@ %@", model._id, [model._id class]);
+                                          // NSLog(@"Completed with: %@ %@", lastId, [lastId class]);
+                                          // [rfeng] We have to do NSString comparision
+                                          NSString *id1 = (NSString *) model._id;
+                                          NSString *id2 = (NSString *) lastId;
+                                          STAssertTrue([id1 isEqualToString:id2], @"The ids should be the same");
+                                          lastId = model._id;
+                                          STAssertNotNil(model._id, @"Invalid id");
+                                          ASYNC_TEST_SIGNAL
+                                      }
+                                      failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
 }
 

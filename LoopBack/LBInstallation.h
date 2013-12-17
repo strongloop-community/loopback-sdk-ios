@@ -21,6 +21,8 @@
 @property (nonatomic, readonly, copy) NSString *deviceType;
 @property (nonatomic, copy) NSString *deviceToken;
 @property (nonatomic, copy) NSNumber *badge;
+@property (nonatomic, copy) NSArray *subscriptions;
+@property (nonatomic, readonly, copy) NSString *timeZone;
 @property (nonatomic, copy) NSString *status;
 
 /**
@@ -39,6 +41,7 @@
  * @param appVersion The application version
  * @param userIs The user id
  * @param badge The badge
+ * @param subscriptions An array of string values representing subscriptions to push events
  * @param success The success callback block for device registration
  * @param failure The failure callback block for device registration
  */
@@ -49,6 +52,7 @@
                        appVersion: (NSString *) appVersion
                            userId: (NSString *) userId
                             badge: (NSNumber *) badge
+                    subscriptions: (NSArray *) subscriptions
                           success: (SLSuccessBlock) success
                           failure: (SLFailureBlock) failure;
 
