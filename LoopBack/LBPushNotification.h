@@ -29,9 +29,23 @@ typedef enum LBPushNotificationType {
   Terminated   = 3
 } LBPushNotificationType;
 
+/**
+ * @expermental(Provide helper methods for iOS clients to handle push notifications)
+ *
+ * @abstract Wrapper class to handle received push notifications
+ *
+ * @discussion
+ */
 @interface LBPushNotification : NSObject
 
+/**
+ * The notification type
+ */
 @property (nonatomic) LBPushNotificationType type;
+
+/**
+ * The notification payload
+ */
 @property (nonatomic) NSDictionary *userInfo;
 
 /**
