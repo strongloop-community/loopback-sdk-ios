@@ -1,9 +1,8 @@
-//
-//  LBPushNotification.h
-//
-//  Created by Raymond Feng on 11/20/13.
-//  Copyright (c) 2013 StrongLoop. All rights reserved.
-//
+/**
+ * @file LBPushNotification.h
+ * @author Raymond Feng
+ * @copyright (c) 2013 StrongLoop. All rights reserved.
+ */
 
 #ifndef LoopBack_LBPushNotification_h
 #define LoopBack_LBPushNotification_h
@@ -14,8 +13,6 @@
 #import <LoopBack/LoopBack.h>
 
 /**
- @typedef LBPushNotificationType enum
- 
  @abstract Push Notification Type: Indicates in what state was app when received it (Foreground, Background, Terminated)
  
  @discussion
@@ -30,11 +27,8 @@ typedef enum LBPushNotificationType {
 } LBPushNotificationType;
 
 /**
+ * Wrapper class to handle received push notifications
  * @experimental(Provide helper methods for iOS clients to handle push notifications)
- *
- * @abstract Wrapper class to handle received push notifications
- *
- * @discussion
  */
 @interface LBPushNotification : NSObject
 
@@ -51,6 +45,7 @@ typedef enum LBPushNotificationType {
 /**
  * This method should be called within UIApplicationDelegate's application method.
  * - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+ * @param application The application
  * @param launchOptions The launch options from the application hook
  * @return The offline notification
  */
@@ -70,6 +65,7 @@ typedef enum LBPushNotificationType {
  * @param deviceToken The device token
  * @param adapter The REST adapter
  * @param userId The user id
+ * @param subscriptions The list of subscribed topics
  * @param success The success callback block
  * @param failure The failure callback block
  */
