@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -143,19 +143,17 @@ Properties</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A contract specifies how remote method names map to HTTP routes. </p>
 <p>For example, if a remote method on the server has been remapped like so:</p>
-<div class="fragment"><div class="line">* project.getObject = <span class="keyword">function</span> (id, callback) {</div>
-<div class="line">*     callback(null, { ... });</div>
-<div class="line">* };</div>
-<div class="line">* helper.method(project.getObject, {</div>
-<div class="line">*     http: { verb: <span class="stringliteral">&#39;GET&#39;</span>, path: <span class="stringliteral">&#39;/:id&#39;</span>},</div>
-<div class="line">*     accepts: { name: <span class="stringliteral">&#39;id&#39;</span>, type: <span class="stringliteral">&#39;string&#39;</span> }</div>
-<div class="line">*     returns: { name: <span class="stringliteral">&#39;object&#39;</span>, type: <span class="stringliteral">&#39;object&#39;</span> }</div>
-<div class="line">* })</div>
-<div class="line">* </div>
+<div class="fragment"><div class="line">project.getObject = <span class="keyword">function</span> (id, callback) {</div>
+<div class="line">    callback(null, { ... });</div>
+<div class="line">};</div>
+<div class="line">helper.method(project.getObject, {</div>
+<div class="line">    http: { verb: <span class="stringliteral">&#39;GET&#39;</span>, path: <span class="stringliteral">&#39;/:id&#39;</span>},</div>
+<div class="line">    accepts: { name: <span class="stringliteral">&#39;id&#39;</span>, type: <span class="stringliteral">&#39;string&#39;</span> }</div>
+<div class="line">    returns: { name: <span class="stringliteral">&#39;object&#39;</span>, type: <span class="stringliteral">&#39;object&#39;</span> }</div>
+<div class="line">})</div>
 </div><!-- fragment --><p>The new route is GET /:id, instead of POST /project/getObject, so we need to update our contract on the client:</p>
-<div class="fragment"><div class="line">* [contract addItem:[<a class="code" href="interface_s_l_r_e_s_t_contract_item.html">SLRESTContractItem</a> <a class="code" href="interface_s_l_r_e_s_t_contract_item.html#a1b824e5c31215d5741f077fb970a4712">itemWithPattern</a>:@&quot;/:id&quot; <a class="code" href="interface_s_l_r_e_s_t_contract_item.html#a1b824e5c31215d5741f077fb970a4712">verb</a>:@&quot;GET&quot;]</div>
-<div class="line">*     forMethod:@&quot;project.getObject&quot;];</div>
-<div class="line">* </div>
+<div class="fragment"><div class="line">[contract addItem:[<a class="code" href="interface_s_l_r_e_s_t_contract_item.html">SLRESTContractItem</a> <a class="code" href="interface_s_l_r_e_s_t_contract_item.html#a1b824e5c31215d5741f077fb970a4712">itemWithPattern</a>:@&quot;/:id&quot; <a class="code" href="interface_s_l_r_e_s_t_contract_item.html#a1b824e5c31215d5741f077fb970a4712">verb</a>:@&quot;GET&quot;]</div>
+<div class="line">    forMethod:@&quot;project.getObject&quot;];</div>
 </div><!-- fragment --> </div><h2 class="groupheader">Method Documentation</h2>
 <a class="anchor" id="a7452533bf3aa40778e1b84fdacd92da1"></a>
 <div class="memitem">
@@ -183,11 +181,10 @@ Properties</h2></td></tr>
 
 <p>Adds a single item to this contract. </p>
 <p>The item can be shared among different contracts, managed by the sum of all contracts that contain it. Similarly, each item can be used for more than one method, like so:</p>
-<div class="fragment"><div class="line">* <a class="code" href="interface_s_l_r_e_s_t_contract_item.html">SLRESTContractItem</a> *upsert = [<a class="code" href="interface_s_l_r_e_s_t_contract_item.html">SLRESTContractItem</a> itemWithPattern:@&quot;/widgets/:id&quot;</div>
-<div class="line">*                                                        andVerb:@&quot;PUT&quot;];</div>
-<div class="line">* [contract addItem:upsert forMethod:@&quot;widgets.create&quot;];</div>
-<div class="line">* [contract addItem:upsert forMethod:@&quot;widgets.update&quot;];</div>
-<div class="line">* </div>
+<div class="fragment"><div class="line"><a class="code" href="interface_s_l_r_e_s_t_contract_item.html">SLRESTContractItem</a> *upsert = [<a class="code" href="interface_s_l_r_e_s_t_contract_item.html">SLRESTContractItem</a> itemWithPattern:@&quot;/widgets/:id&quot;</div>
+<div class="line">                                                       andVerb:@&quot;PUT&quot;];</div>
+<div class="line">[contract addItem:upsert forMethod:@&quot;widgets.create&quot;];</div>
+<div class="line">[contract addItem:upsert forMethod:@&quot;widgets.update&quot;];</div>
 </div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">item</td><td>The item to add to this contract. </td></tr>
@@ -419,7 +416,7 @@ Properties</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 25 2013 12:04:48 for LoopBack iOS SDK by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 20 2013 14:30:14 for LoopBack iOS SDK by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

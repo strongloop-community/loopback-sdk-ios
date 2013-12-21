@@ -2,6 +2,7 @@
 
 @interface LBInstallation ()
 @property (nonatomic, readwrite, copy) NSString *deviceType;
+@property (nonatomic, readwrite, copy) NSString *timeZone;
 @end
 
 @implementation LBInstallation
@@ -39,6 +40,7 @@
                        appVersion: (NSString *) appVersion
                            userId: (NSString *) userId
                             badge: (NSNumber *) badge
+                    subscriptions: (NSArray *) subscriptions
                           success: (SLSuccessBlock) success
                           failure: (SLFailureBlock) failure {
     
@@ -67,6 +69,8 @@
     model.deviceToken = hexToken;
     model.status = @"Active";
     model.badge = badge;
+    model.subscriptions = subscriptions ? subscriptions : @[];
+    model.timeZone = [[NSTimeZone defaultTimeZone] name];
     
     [LBInstallation registerDevice:model success:success failure:failure];
 }
@@ -80,7 +84,7 @@
     static LBInstallationRepository *singleton = nil;
     @synchronized(self) {
         if(singleton == nil) {
-            singleton = [self repositoryWithClassName:@"devices"];
+            singleton = [self repositoryWithClassName:@"installations"];
             singleton.modelClass = [LBInstallation class];
         }
     }

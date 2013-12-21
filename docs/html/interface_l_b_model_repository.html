@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,7 +100,8 @@ Inheritance diagram for LBModelRepository:</div>
  <div class="center">
   <img src="interface_l_b_model_repository.png" usemap="#LBModelRepository_map" alt=""/>
   <map id="LBModelRepository_map" name="LBModelRepository_map">
-<area href="interface_s_l_repository.html" title="A local representative of classes (&quot;prototypes&quot; in JavaScript) defined and made remotable on the serv..." alt="SLRepository" shape="rect" coords="0,56,122,80"/>
+<area href="interface_s_l_repository.html" title="A local representative of classes (&quot;prototypes&quot; in JavaScript) defined and made remotable on the serv..." alt="SLRepository" shape="rect" coords="0,56,146,80"/>
+<area href="interface_l_b_installation_repository.html" title="Custom ModelRepository subclass for LBInstallation. " alt="LBInstallationRepository" shape="rect" coords="0,168,146,192"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -108,7 +109,7 @@ Inheritance diagram for LBModelRepository:</div>
 Public Types</h2></td></tr>
 <tr class="memitem:a250f76b6c76addafa770cc9953f348a5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a250f76b6c76addafa770cc9953f348a5"></a>
 typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_l_b_model_repository.html#a250f76b6c76addafa770cc9953f348a5">LBModelFindSuccessBlock</a> )(<a class="el" href="interface_l_b_model.html">LBModel</a> *model)</td></tr>
-<tr class="memdesc:a250f76b6c76addafa770cc9953f348a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Blocks of this type are executed when <a class="el" href="interface_l_b_model_repository.html#ab20984c60d6c8e7c14f089c1e46ceca0" title="Finds and downloads a single instance of this model type on and from the server with the given id...">findById:success:failure:</a> is successful. <br/></td></tr>
+<tr class="memdesc:a250f76b6c76addafa770cc9953f348a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Blocks of this type are executed when <a class="el" href="interface_l_b_model_repository.html#a416e1dee0767b0245157a895a7968f91" title="Finds and downloads a single instance of this model type on and from the server with the given id...">findById:success:failure:</a> is successful. <br/></td></tr>
 <tr class="separator:a250f76b6c76addafa770cc9953f348a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26943bb32e29ba89d9628833d644728c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a26943bb32e29ba89d9628833d644728c"></a>
 typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_l_b_model_repository.html#a26943bb32e29ba89d9628833d644728c">LBModelAllSuccessBlock</a> )(NSArray *models)</td></tr>
@@ -123,9 +124,9 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a1e7721e2f0c429f1e6e2a3c983fb3339"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_l_b_model.html">LBModel</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_l_b_model_repository.html#a1e7721e2f0c429f1e6e2a3c983fb3339">modelWithDictionary:</a></td></tr>
 <tr class="memdesc:a1e7721e2f0c429f1e6e2a3c983fb3339"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="interface_l_b_model.html" title="A local representative of a single model instance on the server. ">LBModel</a> of this type with the parameters described.  <a href="#a1e7721e2f0c429f1e6e2a3c983fb3339">More...</a><br/></td></tr>
 <tr class="separator:a1e7721e2f0c429f1e6e2a3c983fb3339"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab20984c60d6c8e7c14f089c1e46ceca0"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_l_b_model_repository.html#ab20984c60d6c8e7c14f089c1e46ceca0">findById:success:failure:</a></td></tr>
-<tr class="memdesc:ab20984c60d6c8e7c14f089c1e46ceca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds and downloads a single instance of this model type on and from the server with the given id.  <a href="#ab20984c60d6c8e7c14f089c1e46ceca0">More...</a><br/></td></tr>
-<tr class="separator:ab20984c60d6c8e7c14f089c1e46ceca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a416e1dee0767b0245157a895a7968f91"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_l_b_model_repository.html#a416e1dee0767b0245157a895a7968f91">findById:success:failure:</a></td></tr>
+<tr class="memdesc:a416e1dee0767b0245157a895a7968f91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds and downloads a single instance of this model type on and from the server with the given id.  <a href="#a416e1dee0767b0245157a895a7968f91">More...</a><br/></td></tr>
+<tr class="separator:a416e1dee0767b0245157a895a7968f91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac97a68ff8076ae8591b21e9692e94086"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_l_b_model_repository.html#ac97a68ff8076ae8591b21e9692e94086">allWithSuccess:failure:</a></td></tr>
 <tr class="memdesc:ac97a68ff8076ae8591b21e9692e94086"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds and downloads all models of this type on and from the server.  <a href="#ac97a68ff8076ae8591b21e9692e94086">More...</a><br/></td></tr>
 <tr class="separator:ac97a68ff8076ae8591b21e9692e94086"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -218,14 +219,14 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab20984c60d6c8e7c14f089c1e46ceca0"></a>
+<a class="anchor" id="a416e1dee0767b0245157a895a7968f91"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">- (void) findById: </td>
           <td></td>
-          <td class="paramtype">(NSNumber *)&#160;</td>
+          <td class="paramtype">(id)&#160;</td>
           <td class="paramname"><em>_id</em></td>
         </tr>
         <tr>
@@ -314,7 +315,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 25 2013 12:04:48 for LoopBack iOS SDK by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 20 2013 14:30:14 for LoopBack iOS SDK by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

@@ -79,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,10 +91,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 &#160;<ul>
 <li>_id
-: <a class="el" href="interface_l_b_model.html#a08f07e171b5f463346764a6199fbad15">LBModel</a>
+: <a class="el" href="interface_l_b_model.html#a161ee73c2a5c158885372392ff7e0cac">LBModel</a>
 </li>
 <li>adapter
 : <a class="el" href="interface_s_l_repository.html#ab80405fac6612b5866f70201621ed377">SLRepository</a>
+</li>
+<li>appId
+: <a class="el" href="interface_l_b_installation.html#a021bab35bc71b7f715508c00992b170a">LBInstallation</a>
+</li>
+<li>appVersion
+: <a class="el" href="interface_l_b_installation.html#a5c58df6b4f19c0c4a3f5c969eb7b03c2">LBInstallation</a>
+</li>
+<li>badge
+: <a class="el" href="interface_l_b_installation.html#abbf787bf714ac31568455f0c9d331e84">LBInstallation</a>
 </li>
 <li>className
 : <a class="el" href="interface_s_l_repository.html#a20568756d6fb3c9dddc5e359f14488dd">SLRepository</a>
@@ -108,6 +117,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>creationParameters
 : <a class="el" href="interface_s_l_object.html#a4187295e29e1fc2859be401525a4ae87">SLObject</a>
 </li>
+<li>deviceToken
+: <a class="el" href="interface_l_b_installation.html#adb690dc224650d3d5f3c50d8154efbdb">LBInstallation</a>
+</li>
+<li>deviceType
+: <a class="el" href="interface_l_b_installation.html#a9fdec8099a814ad3cce4e89a6685ab0f">LBInstallation</a>
+</li>
 <li>dict
 : <a class="el" href="interface_s_l_r_e_s_t_contract.html#afa9fc6f1bfabfe7026ef9f0dddc6f592">SLRESTContract</a>
 </li>
@@ -120,6 +135,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>repository
 : <a class="el" href="interface_s_l_object.html#a3dbcb5c6229ba41568990d25f0c0b7b6">SLObject</a>
 </li>
+<li>status
+: <a class="el" href="interface_l_b_installation.html#ac3b264e7d53e11f8b1ef8c76b987bd9c">LBInstallation</a>
+</li>
+<li>subscriptions
+: <a class="el" href="interface_l_b_installation.html#ae282f22550f632fb28d5176b41bda3de">LBInstallation</a>
+</li>
+<li>timeZone
+: <a class="el" href="interface_l_b_installation.html#a62152081d6d74b9fcb8477739b2ecc3a">LBInstallation</a>
+</li>
+<li>type
+: <a class="el" href="interface_l_b_push_notification.html#afc386fb3f552180335501ff587aec70b">LBPushNotification</a>
+</li>
+<li>userId
+: <a class="el" href="interface_l_b_installation.html#adf48cbcd8df0eb9f51f555acde16090e">LBInstallation</a>
+</li>
+<li>userInfo
+: <a class="el" href="interface_l_b_push_notification.html#aeee830f8c8e526bcece046620a72099b">LBPushNotification</a>
+</li>
 <li>verb
 : <a class="el" href="interface_s_l_r_e_s_t_contract_item.html#acb57ba10ced7c6ec13e7cb8992728dd3">SLRESTContractItem</a>
 </li>
@@ -127,7 +160,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 25 2013 12:04:48 for LoopBack iOS SDK by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 20 2013 14:30:14 for LoopBack iOS SDK by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
