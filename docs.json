@@ -1,0 +1,10 @@
+{
+  "assets": {
+    "/api": "docs/html",
+    "/api-1.0": "docs-1.0/html",
+    "/img": "docs/img"
+  },
+  "content": [
+    "README.md"
+  ]
+}
