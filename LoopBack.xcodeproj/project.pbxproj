@@ -33,6 +33,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0B278D4B187B584A00FFC135 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B278D4A187B584A00FFC135 /* SystemConfiguration.framework */; };
+		0B278D51187B584F00FFC135 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B278D50187B584F00FFC135 /* MobileCoreServices.framework */; };
+		0B6DCCA518806F2E00F7E57A /* LBUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B6DCCA318806F2E00F7E57A /* LBUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0B6DCCA618806F2E00F7E57A /* LBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6DCCA418806F2E00F7E57A /* LBUser.m */; };
 		4769FF09184D6F4F00E5152C /* LBInstallationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4769FF08184D6F4F00E5152C /* LBInstallationTests.m */; };
 		47AD031318491DA700F724C8 /* LBInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AD031118491DA700F724C8 /* LBInstallation.m */; };
 		47AD031418491E2000F724C8 /* LBInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47AD031018491DA700F724C8 /* LBInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -118,6 +122,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B278D4A187B584A00FFC135 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0B278D50187B584F00FFC135 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		0B6DCCA318806F2E00F7E57A /* LBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBUser.h; sourceTree = "<group>"; };
+		0B6DCCA418806F2E00F7E57A /* LBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBUser.m; sourceTree = "<group>"; };
 		4769FF07184D6F4F00E5152C /* LBInstallationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBInstallationTests.h; sourceTree = "<group>"; };
 		4769FF08184D6F4F00E5152C /* LBInstallationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBInstallationTests.m; sourceTree = "<group>"; };
 		47AD031018491DA700F724C8 /* LBInstallation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBInstallation.h; sourceTree = "<group>"; };
@@ -181,6 +189,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B278D51187B584F00FFC135 /* MobileCoreServices.framework in Frameworks */,
+				0B278D4B187B584A00FFC135 /* SystemConfiguration.framework in Frameworks */,
 				B3DC030D178F1EE20044DD58 /* libobjc.A.dylib in Frameworks */,
 				B3D220FB17722AE800B7CB63 /* Foundation.framework in Frameworks */,
 			);
@@ -295,6 +305,8 @@
 		B3D220F917722AE800B7CB63 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B278D50187B584F00FFC135 /* MobileCoreServices.framework */,
+				0B278D4A187B584A00FFC135 /* SystemConfiguration.framework */,
 				B3DC030C178F1EE20044DD58 /* libobjc.A.dylib */,
 				B3D220FA17722AE800B7CB63 /* Foundation.framework */,
 				B3D2210917722AE800B7CB63 /* SenTestingKit.framework */,
@@ -316,6 +328,8 @@
 				B3D2212317722B1700B7CB63 /* LBModel.m */,
 				B3D221481773766800B7CB63 /* LBRESTAdapter.h */,
 				B3D221491773766800B7CB63 /* LBRESTAdapter.m */,
+				0B6DCCA318806F2E00F7E57A /* LBUser.h */,
+				0B6DCCA418806F2E00F7E57A /* LBUser.m */,
 			);
 			path = LoopBack;
 			sourceTree = "<group>";
@@ -361,6 +375,7 @@
 				B3DFA5AD17970AB700F656D7 /* LoopBack.h in Headers */,
 				B3DFA5AE17970ABD00F656D7 /* LBModel.h in Headers */,
 				B3DFA5AF17970ABD00F656D7 /* LBRESTAdapter.h in Headers */,
+				0B6DCCA518806F2E00F7E57A /* LBUser.h in Headers */,
 				B356B1F217BBFA6400A50334 /* AFHTTPClient.h in Headers */,
 				B356B1F417BBFA6400A50334 /* AFHTTPRequestOperation.h in Headers */,
 				B356B1F617BBFA6400A50334 /* AFImageRequestOperation.h in Headers */,
@@ -556,6 +571,7 @@
 				B356B1F917BBFA6400A50334 /* AFJSONRequestOperation.m in Sources */,
 				47AD031318491DA700F724C8 /* LBInstallation.m in Sources */,
 				B356B1FB17BBFA6400A50334 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				0B6DCCA618806F2E00F7E57A /* LBUser.m in Sources */,
 				B356B1FE17BBFA6400A50334 /* AFPropertyListRequestOperation.m in Sources */,
 				B356B20017BBFA6400A50334 /* AFURLConnectionOperation.m in Sources */,
 				B356B20217BBFA6400A50334 /* AFXMLRequestOperation.m in Sources */,

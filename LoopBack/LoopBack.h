@@ -9,4 +9,4 @@
 #import "LBRESTAdapter.h"
 #import "LBInstallation.h"
 #import "LBPushNotification.h"
-
+#import "LBUser.h"
