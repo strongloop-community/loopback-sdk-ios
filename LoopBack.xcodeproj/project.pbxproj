@@ -35,6 +35,8 @@
 /* Begin PBXBuildFile section */
 		0B278D4B187B584A00FFC135 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B278D4A187B584A00FFC135 /* SystemConfiguration.framework */; };
 		0B278D51187B584F00FFC135 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B278D50187B584F00FFC135 /* MobileCoreServices.framework */; };
+		0B4F52AA18908089004F675A /* LBAccessToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B4F52A818908089004F675A /* LBAccessToken.h */; };
+		0B4F52AB18908089004F675A /* LBAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4F52A918908089004F675A /* LBAccessToken.m */; };
 		0B6DCCA518806F2E00F7E57A /* LBUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B6DCCA318806F2E00F7E57A /* LBUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B6DCCA618806F2E00F7E57A /* LBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6DCCA418806F2E00F7E57A /* LBUser.m */; };
 		4769FF09184D6F4F00E5152C /* LBInstallationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4769FF08184D6F4F00E5152C /* LBInstallationTests.m */; };
@@ -124,6 +126,8 @@
 /* Begin PBXFileReference section */
 		0B278D4A187B584A00FFC135 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0B278D50187B584F00FFC135 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		0B4F52A818908089004F675A /* LBAccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBAccessToken.h; sourceTree = "<group>"; };
+		0B4F52A918908089004F675A /* LBAccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBAccessToken.m; sourceTree = "<group>"; };
 		0B6DCCA318806F2E00F7E57A /* LBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBUser.h; sourceTree = "<group>"; };
 		0B6DCCA418806F2E00F7E57A /* LBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBUser.m; sourceTree = "<group>"; };
 		4769FF07184D6F4F00E5152C /* LBInstallationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBInstallationTests.h; sourceTree = "<group>"; };
@@ -330,6 +334,8 @@
 				B3D221491773766800B7CB63 /* LBRESTAdapter.m */,
 				0B6DCCA318806F2E00F7E57A /* LBUser.h */,
 				0B6DCCA418806F2E00F7E57A /* LBUser.m */,
+				0B4F52A818908089004F675A /* LBAccessToken.h */,
+				0B4F52A918908089004F675A /* LBAccessToken.m */,
 			);
 			path = LoopBack;
 			sourceTree = "<group>";
@@ -376,6 +382,7 @@
 				B3DFA5AE17970ABD00F656D7 /* LBModel.h in Headers */,
 				B3DFA5AF17970ABD00F656D7 /* LBRESTAdapter.h in Headers */,
 				0B6DCCA518806F2E00F7E57A /* LBUser.h in Headers */,
+				0B4F52AA18908089004F675A /* LBAccessToken.h in Headers */,
 				B356B1F217BBFA6400A50334 /* AFHTTPClient.h in Headers */,
 				B356B1F417BBFA6400A50334 /* AFHTTPRequestOperation.h in Headers */,
 				B356B1F617BBFA6400A50334 /* AFImageRequestOperation.h in Headers */,
@@ -581,6 +588,7 @@
 				B356B23717BBFA6400A50334 /* SLRemotingUtils.m in Sources */,
 				B356B23917BBFA6400A50334 /* SLRESTAdapter.m in Sources */,
 				B356B23B17BBFA6400A50334 /* SLRESTContract.m in Sources */,
+				0B4F52AB18908089004F675A /* LBAccessToken.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

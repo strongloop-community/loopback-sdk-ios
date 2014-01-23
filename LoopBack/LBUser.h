@@ -7,6 +7,8 @@
 
 #import "LBModel.h"
 
+@class LBAccessToken;
+
 /**
  * A local representative of a user instance on the server.
  */
@@ -15,33 +17,22 @@
 @property (nonatomic, copy) NSString *email;
 @property (nonatomic, copy) NSString *password;
 
-/**
- * Blocks of this type are executed when LBUser::logoutWithSuccess: is
- * successful.
- */
-typedef void (^LBUserLogoutSuccessBlock)();
-/**
- * Logs out the user.
- *
- * @param success  The block to be executed when the logout is successful.
- * @param failure  The block to be executed when the logout fails.
- */
-- (void)logoutWithSuccess:(LBUserLogoutSuccessBlock)success
-                  failure:(SLFailureBlock)failure;
+@property (nonatomic, copy) NSString *realm;
+@property (nonatomic, strong) NSNumber *emailVerified;
+@property (nonatomic, copy) NSString *status;
 
 @end
 
 /**
- * A local representative of a single model type on the server, encapsulating
- * the name of the model type for easy LBUser creation, login, and
- * management.
+ * A local representative of the User type on the server, encapsulating
+ * all User properties.
  */
 @interface LBUserRepository : LBModelRepository
 
 + (instancetype)repository;
 
 /**
- * Creates a user with the given credentials.
+ * Creates a user with the given credentials and additional data.
  *
  * @param  email       The user email.
  * @param  password    The user password.
@@ -52,12 +43,40 @@ typedef void (^LBUserLogoutSuccessBlock)();
                      dictionary:(NSDictionary *)dictionary;
 
 /**
+ * Creates a user with the given credentials.
+ *
+ * @param  email       The user email.
+ * @param  password    The user password.
+ */
+- (LBUser *)createUserWithEmail:(NSString*)email
+                       password:(NSString*)password;
+
+/**
  * Blocks of this type are executed when
  * LBUserRepository::login:success:failure: is successful.
  */
-typedef void (^LBUserLoginSuccessBlock)(LBUser *user);
+typedef void (^LBUserLoginSuccessBlock)(LBAccessToken* token);
 /**
- * Attempts to log in with the given credentials.
+ * Attempts to log in with the given credentials.  The returned access
+ * token will be passed for all subsequent server interaction. 
+ *
+ * @param email    The user email.
+ * @param password The user password.
+ * @param success  The block to be executed when the login is successful.
+ * @param failure  The block to be executed when the login fails.
+ */
+- (void)loginWithEmail:(NSString*)email
+              password:(NSString*)password
+               success:(LBUserLoginSuccessBlock)success
+               failure:(SLFailureBlock)failure;
+
+/**
+ * Blocks of this type are executed when
+ * LBUserRepository::login:success:failure: is successful.
+ */
+typedef void (^LBUserLoginFindUserSuccessBlock)(LBUser *user);
+/**
+ * Attempts to log in with the given credentials and return the LBUser.
  *
  * @param email    The user email.
  * @param password The user password.
@@ -66,7 +85,20 @@ typedef void (^LBUserLoginSuccessBlock)(LBUser *user);
  */
 - (void)userByLoginWithEmail:(NSString*)email
                     password:(NSString*)password
-                     success:(LBUserLoginSuccessBlock)success
+                     success:(LBUserLoginFindUserSuccessBlock)success
                      failure:(SLFailureBlock)failure;
 
+/**
+ * Blocks of this type are executed when LBUserRepository::logoutWithSuccess: is
+ * successful.
+ */
+typedef void (^LBUserLogoutSuccessBlock)();
+/**
+ * Clears the current access token for this session.
+ *
+ * @param success  The block to be executed when the logout is successful.
+ * @param failure  The block to be executed when the logout fails.
+ */
+- (void)logoutWithSuccess:(LBUserLogoutSuccessBlock)success
+                  failure:(SLFailureBlock)failure;
 @end

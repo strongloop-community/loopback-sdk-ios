@@ -9,7 +9,7 @@
 
 #import <objc/runtime.h>
 
-#define NSSelectorForSetter(key) NSSelectorFromString([NSString stringWithFormat:@"set%@:", [key capitalizedString]])
+#define NSSelectorForSetter(key) NSSelectorFromString([NSString stringWithFormat:@"set%@:", [key stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[key substringToIndex:1] capitalizedString]]])
 
 
 @interface LBModel() {
@@ -73,7 +73,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat: @"<LBModel %@>", [self toDictionary]];
+    return [NSString stringWithFormat: @"<%@ %@>", NSStringFromClass([self class]), [self toDictionary]];
 }
 
 
@@ -144,6 +144,7 @@
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         SEL setter = NSSelectorForSetter(key);
 
+        //if ([self.modelClass instancesRespondToSelector:setter]) {
         if ([model respondsToSelector:setter]) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -158,6 +159,7 @@
 - (void)findById:(id)_id
            success:(LBModelFindSuccessBlock)success
            failure:(SLFailureBlock)failure {
+    NSParameterAssert(_id);
     [self invokeStaticMethod:@"findById"
                   parameters:@{ @"id": _id }
                      success:^(id value) {
