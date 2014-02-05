@@ -5,6 +5,6 @@
   "main": "index.js",
   "dependencies": {
     "loopback": "1.x.x",
-    "loopback-push-notification": "git+ssh://git@github.com:strongloop/loopback-push-notification"
+    "loopback-push-notification": "~1.0.0"
   }
 }
