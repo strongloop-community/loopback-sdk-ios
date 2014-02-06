@@ -71,6 +71,9 @@
                                                      verb:@"GET"
                                                 multipart:YES]
             forMethod:[NSString stringWithFormat:@"%@.prototype.download", self.className]];
+    [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@/:container/files/:name", self.className]
+                                                     verb:@"GET"]
+            forMethod:[NSString stringWithFormat:@"%@.get", self.className]];
     
     return contract;
 }
@@ -80,6 +83,20 @@
                      container:(NSString*)container {
     LBFile *file = (LBFile*)[self modelWithDictionary:@{@"name" : name, @"url" : url, @"container" : container}];
     return file;
+}
+
+- (void)getFileWithName:(NSString*)name
+              container:(NSString*)container
+                success:(LBFileGetSuccessBlock)success
+                failure:(SLFailureBlock)failure {
+    NSParameterAssert(name);
+    NSParameterAssert(container);
+    [self invokeStaticMethod:@"get"
+            parameters:@{@"name": name, @"container" : container}
+               success:^(id value) {
+                   NSAssert([[value class] isSubclassOfClass:[NSDictionary class]], @"Received non-Dictionary: %@", value);
+                   success((LBFile*)[self modelWithDictionary:value]);
+               } failure:failure];
 }
 
 @end

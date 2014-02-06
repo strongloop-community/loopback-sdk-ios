@@ -49,8 +49,7 @@ typedef void (^LBFileDownloadSuccessBlock)();
 @end
 
 /**
- * A local representative of the User type on the server, encapsulating
- * all User properties.
+ * A local representative of the File type on the server.
  */
 @interface LBFileRepository : LBModelRepository
 
@@ -66,4 +65,22 @@ typedef void (^LBFileDownloadSuccessBlock)();
 - (LBFile *)createFileWithName:(NSString*)name
                            url:(NSString*)url
                      container:(NSString*)container;
+
+/**
+ * Blocks of this type are executed when
+ * LBFileRepository::getFileWithName:success:failure: is successful.
+ */
+typedef void (^LBFileGetSuccessBlock)(LBFile* file);
+/**
+ * Gets the file with the given name.
+ *
+ * @param  name       The file name.
+ * @param  container  The file's container.
+ * @param  success    The block to be executed when the get is successful.
+ * @param  failure    The block to be executed when the get fails.
+ */
+- (void)getFileWithName:(NSString*)name
+              container:(NSString*)container
+                success:(LBFileGetSuccessBlock)success
+                failure:(SLFailureBlock)failure;
 @end
