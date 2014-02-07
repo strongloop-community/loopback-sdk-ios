@@ -35,6 +35,10 @@
 /* Begin PBXBuildFile section */
 		0B278D4B187B584A00FFC135 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B278D4A187B584A00FFC135 /* SystemConfiguration.framework */; };
 		0B278D51187B584F00FFC135 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B278D50187B584F00FFC135 /* MobileCoreServices.framework */; };
+		0B3A200E18A55B5A006772C8 /* LBContainerTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 0B3A200D18A55B5A006772C8 /* LBContainerTests.h */; };
+		0B3A201618A56BA5006772C8 /* LBContainerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3A201518A56BA5006772C8 /* LBContainerTests.m */; };
+		0B3A201818A57CCD006772C8 /* LBUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3A201718A57CCD006772C8 /* LBUserTests.m */; };
+		0B3A201B18A5856F006772C8 /* LBFileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3A201A18A5856F006772C8 /* LBFileTests.m */; };
 		0B4F52AA18908089004F675A /* LBAccessToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B4F52A818908089004F675A /* LBAccessToken.h */; };
 		0B4F52AB18908089004F675A /* LBAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4F52A918908089004F675A /* LBAccessToken.m */; };
 		0B6DCCA518806F2E00F7E57A /* LBUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B6DCCA318806F2E00F7E57A /* LBUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -130,6 +134,12 @@
 /* Begin PBXFileReference section */
 		0B278D4A187B584A00FFC135 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0B278D50187B584F00FFC135 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		0B3A200D18A55B5A006772C8 /* LBContainerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBContainerTests.h; sourceTree = "<group>"; };
+		0B3A201518A56BA5006772C8 /* LBContainerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBContainerTests.m; sourceTree = "<group>"; };
+		0B3A201718A57CCD006772C8 /* LBUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBUserTests.m; sourceTree = "<group>"; };
+		0B3A201918A57D55006772C8 /* LBUserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBUserTests.h; sourceTree = "<group>"; };
+		0B3A201A18A5856F006772C8 /* LBFileTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBFileTests.m; sourceTree = "<group>"; };
+		0B3A201C18A58586006772C8 /* LBFileTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBFileTests.h; sourceTree = "<group>"; };
 		0B4F52A818908089004F675A /* LBAccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBAccessToken.h; sourceTree = "<group>"; };
 		0B4F52A918908089004F675A /* LBAccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBAccessToken.m; sourceTree = "<group>"; };
 		0B6DCCA318806F2E00F7E57A /* LBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBUser.h; sourceTree = "<group>"; };
@@ -366,10 +376,16 @@
 				4769FF07184D6F4F00E5152C /* LBInstallationTests.h */,
 				4769FF08184D6F4F00E5152C /* LBInstallationTests.m */,
 				B3D2211217722AE800B7CB63 /* Supporting Files */,
+				0B3A200D18A55B5A006772C8 /* LBContainerTests.h */,
+				0B3A201518A56BA5006772C8 /* LBContainerTests.m */,
+				0B3A201C18A58586006772C8 /* LBFileTests.h */,
+				0B3A201A18A5856F006772C8 /* LBFileTests.m */,
 				B3D2213917722BAB00B7CB63 /* LBModelTests.h */,
 				B3D2213A17722BAB00B7CB63 /* LBModelTests.m */,
 				B3D2214017725A7F00B7CB63 /* LBModelSubclassingTests.h */,
 				B3D2214117725A7F00B7CB63 /* LBModelSubclassingTests.m */,
+				0B3A201918A57D55006772C8 /* LBUserTests.h */,
+				0B3A201718A57CCD006772C8 /* LBUserTests.m */,
 			);
 			path = LoopBackTests;
 			sourceTree = "<group>";
@@ -517,6 +533,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B3A200E18A55B5A006772C8 /* LBContainerTests.h in Resources */,
 				B3D2211617722AE800B7CB63 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -613,8 +630,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3D2213B17722BAB00B7CB63 /* LBModelTests.m in Sources */,
+				0B3A201618A56BA5006772C8 /* LBContainerTests.m in Sources */,
+				0B3A201818A57CCD006772C8 /* LBUserTests.m in Sources */,
 				B3D2214217725A7F00B7CB63 /* LBModelSubclassingTests.m in Sources */,
 				4769FF09184D6F4F00E5152C /* LBInstallationTests.m in Sources */,
+				0B3A201B18A5856F006772C8 /* LBFileTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
