@@ -43,8 +43,9 @@
 }
 
 - (void)testGetByName {
+    NSString *tmpDir = NSTemporaryDirectory();
     ASYNC_TEST_START
-    [self.repository getFileWithName:@"f1.txt" container:@"container1" success:^(LBFile *file) {
+    [self.repository getFileWithName:@"f1.txt" localPath:tmpDir container:@"container1" success:^(LBFile *file) {
         STAssertNotNil(file, @"File not found.");
         STAssertEqualObjects(file.name, @"f1.txt", @"Invalid name");
         ASYNC_TEST_SIGNAL
@@ -67,7 +68,7 @@
     [contents writeToFile:fullPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
     
     ASYNC_TEST_START
-    LBFile __block *file = [self.repository createFileWithName:fileName url:tmpDir container:@"container1"];
+    LBFile __block *file = [self.repository createFileWithName:fileName localPath:tmpDir container:@"container1"];
     [file uploadWithSuccess:^(void) {
         ASYNC_TEST_SIGNAL
     } failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -86,7 +87,7 @@
     }
     
     ASYNC_TEST_START
-    [self.repository getFileWithName:@"uploadTest.txt" container:@"container1" success:^(LBFile *file) {
+    [self.repository getFileWithName:@"uploadTest.txt" localPath:tmpDir container:@"container1" success:^(LBFile *file) {
         STAssertNotNil(file, @"File not found.");
         STAssertEqualObjects(file.name, @"uploadTest.txt", @"Invalid name");
         [file downloadWithSuccess:^(void) {

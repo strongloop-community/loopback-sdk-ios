@@ -13,10 +13,9 @@
 @interface LBFile : LBModel
 
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *url;
+@property (nonatomic, copy) NSString *localPath;
 
 @property (nonatomic, copy) NSString *container;
-@property (nonatomic, strong) NSData *fileData;
 
 /**
  * Blocks of this type are executed when
@@ -43,7 +42,7 @@ typedef void (^LBFileDownloadSuccessBlock)();
  * @param success  The block to be executed when the download is successful.
  * @param failure  The block to be executed when the download fails.
  */
-- (void)downloadWithSuccess:(LBFileUploadSuccessBlock)success
+- (void)downloadWithSuccess:(LBFileDownloadSuccessBlock)success
                     failure:(SLFailureBlock)failure;
 
 @end
@@ -59,11 +58,11 @@ typedef void (^LBFileDownloadSuccessBlock)();
  * Creates a file with the given data
  *
  * @param  name       The file name.
- * @param  url        The file url.
+ * @param  localPath  The local path to the file, without file name.
  * @param  container  The file's container.
  */
 - (LBFile *)createFileWithName:(NSString*)name
-                           url:(NSString*)url
+                     localPath:(NSString*)localPath
                      container:(NSString*)container;
 
 /**
@@ -75,11 +74,13 @@ typedef void (^LBFileGetSuccessBlock)(LBFile* file);
  * Gets the file with the given name.
  *
  * @param  name       The file name.
+ * @param  localPath  The local path to the file, without file name.
  * @param  container  The file's container.
  * @param  success    The block to be executed when the get is successful.
  * @param  failure    The block to be executed when the get fails.
  */
 - (void)getFileWithName:(NSString*)name
+              localPath:(NSString*)localPath
               container:(NSString*)container
                 success:(LBFileGetSuccessBlock)success
                 failure:(SLFailureBlock)failure;

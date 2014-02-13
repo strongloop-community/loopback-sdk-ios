@@ -22,10 +22,12 @@
 }
 
 - (void)getFileWithName:(NSString*)name
+              localPath:(NSString*)localPath
                 success:(LBFileGetSuccessBlock)success
                 failure:(SLFailureBlock)failure {
     LBContainerRepository* containerRepo = (LBContainerRepository*)[self repository];
     [containerRepo.fileRepository getFileWithName:name
+                                        localPath:localPath
                                         container:self.name
                                           success:success
                                           failure:failure];

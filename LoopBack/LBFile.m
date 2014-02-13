@@ -12,42 +12,22 @@
 
 - (void)uploadWithSuccess:(LBFileUploadSuccessBlock)success
                   failure:(SLFailureBlock)failure {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@", _url, _name]]];
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                               self.fileData = data;
-                               if (error != nil)
-                                   failure(error);
-                               else {
-                                   [self invokeMethod:@"upload"
-                                        parameters:[self toDictionary]
-                                           success:^(id value) {
-                                               success();
-                                           }
-                                           failure:failure];
-                               }
-                              }];
+   [self invokeMethod:@"upload"
+           parameters:[self toDictionary]
+              success:^(id value) {
+                  success();
+              }
+              failure:failure];
 }
 
-- (void)downloadWithSuccess:(LBFileUploadSuccessBlock)success
+- (void)downloadWithSuccess:(LBFileDownloadSuccessBlock)success
                     failure:(SLFailureBlock)failure {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@", _url, _name]]];
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                               self.fileData = data;
-                               if (error != nil)
-                                   failure(error);
-                               else {
-                                   [self invokeMethod:@"download"
-                                           parameters:[self toDictionary]
-                                              success:^(id value) {
-                                                  success();
-                                              }
-                                              failure:failure];
-                               }
-                           }];
+   [self invokeMethod:@"download"
+           parameters:[self toDictionary]
+              success:^(id value) {
+                  success();
+              }
+              failure:failure];
 }
 
 @end
@@ -79,23 +59,26 @@
 }
 
 - (LBFile *)createFileWithName:(NSString*)name
-                           url:(NSString*)url
+                     localPath:(NSString*)localPath
                      container:(NSString*)container {
-    LBFile *file = (LBFile*)[self modelWithDictionary:@{@"name" : name, @"url" : url, @"container" : container}];
+    LBFile *file = (LBFile*)[self modelWithDictionary:@{@"name" : name, @"localPath" : localPath, @"container" : container}];
     return file;
 }
 
 - (void)getFileWithName:(NSString*)name
+              localPath:(NSString*)localPath
               container:(NSString*)container
                 success:(LBFileGetSuccessBlock)success
                 failure:(SLFailureBlock)failure {
     NSParameterAssert(name);
     NSParameterAssert(container);
     [self invokeStaticMethod:@"get"
-            parameters:@{@"name": name, @"container" : container}
+            parameters:@{@"name": name, @"localPath" : localPath, @"container" : container}
                success:^(id value) {
                    NSAssert([[value class] isSubclassOfClass:[NSDictionary class]], @"Received non-Dictionary: %@", value);
-                   success((LBFile*)[self modelWithDictionary:value]);
+                   LBFile *file = (LBFile*)[self modelWithDictionary:value];
+                   file.localPath = localPath;
+                   success(file);
                } failure:failure];
 }
 

@@ -35,10 +35,12 @@ typedef void (^LBContainerDeleteSuccessBlock)();
  * Gets the file with the given name.
  *
  * @param  name       The file name.
+ * @param  localPath  The local path to the file, without file name.
  * @param  success    The block to be executed when the get is successful.
  * @param  failure    The block to be executed when the get fails.
  */
 - (void)getFileWithName:(NSString*)name
+              localPath:(NSString*)localPath
                 success:(LBFileGetSuccessBlock)success
                 failure:(SLFailureBlock)failure;
 
