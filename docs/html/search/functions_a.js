@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['savewithsuccess_3afailure_3a',['saveWithSuccess:failure:',['../interface_l_b_model.html#a8078bba4859631207bd479523abafab8',1,'LBModel']]],
-  ['setobject_3aforkeyedsubscript_3a',['setObject:forKeyedSubscript:',['../interface_l_b_model.html#a2814cc9dd27ded4ddaa850635beb62d3',1,'LBModel']]]
+  ['uploadwithsuccess_3afailure_3a',['uploadWithSuccess:failure:',['../interface_l_b_file.html#a51b03712514bf28f9df7959f71c652d0',1,'LBFile']]]
 ];

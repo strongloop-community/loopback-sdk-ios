@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['patternformethod_3a',['patternForMethod:',['../interface_s_l_r_e_s_t_contract.html#a612649b0a4dcca206c38b3caa2598569',1,'SLRESTContract']]]
+  ['savewithsuccess_3afailure_3a',['saveWithSuccess:failure:',['../interface_l_b_model.html#a8078bba4859631207bd479523abafab8',1,'LBModel']]],
+  ['setobject_3aforkeyedsubscript_3a',['setObject:forKeyedSubscript:',['../interface_l_b_model.html#a2814cc9dd27ded4ddaa850635beb62d3',1,'LBModel']]]
 ];

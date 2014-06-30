@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['pattern',['pattern',['../interface_s_l_r_e_s_t_contract_item.html#a27d498f65b5061f808670fe988426117',1,'SLRESTContractItem']]]
+  ['timezone',['timeZone',['../interface_l_b_installation.html#a62152081d6d74b9fcb8477739b2ecc3a',1,'LBInstallation']]],
+  ['type',['type',['../interface_l_b_push_notification.html#afc386fb3f552180335501ff587aec70b',1,'LBPushNotification']]]
 ];

@@ -1,0 +1,9 @@
+{
+  "name": "sl-remoting-client-test-server",
+  "version": "0.0.0",
+  "description": "A test server for running sl-remoting-clients integration testing.",
+  "main": "index.js",
+  "dependencies": {
+    "strong-remoting": "~1.1.4"
+  }
+}

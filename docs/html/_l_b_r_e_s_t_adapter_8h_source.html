@@ -68,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_l_b_model_8h.html">LBModel.h</a>&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="interface_l_b_r_e_s_t_adapter.html">   16</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_l_b_r_e_s_t_adapter.html">LBRESTAdapter</a> : <a class="code" href="interface_s_l_r_e_s_t_adapter.html">SLRESTAdapter</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="interface_l_b_r_e_s_t_adapter.html">   16</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_l_b_r_e_s_t_adapter.html">LBRESTAdapter</a> : SLRESTAdapter</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;- (<a class="code" href="interface_l_b_model_repository.html">LBModelRepository</a> *)repositoryWithModelName:(NSString *)name;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
@@ -100,13 +100,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">@end</span></div>
 <div class="ttc" id="interface_l_b_r_e_s_t_adapter_html"><div class="ttname"><a href="interface_l_b_r_e_s_t_adapter.html">LBRESTAdapter</a></div><div class="ttdoc">An extension to the vanilla SLRESTAdapter to make working with LBModels easier. </div><div class="ttdef"><b>Definition:</b> LBRESTAdapter.h:16</div></div>
-<div class="ttc" id="interface_s_l_r_e_s_t_adapter_html"><div class="ttname"><a href="interface_s_l_r_e_s_t_adapter.html">SLRESTAdapter</a></div><div class="ttdoc">A specific SLAdapter implementation for RESTful servers. </div><div class="ttdef"><b>Definition:</b> SLRESTAdapter.h:22</div></div>
 <div class="ttc" id="_l_b_model_8h_html"><div class="ttname"><a href="_l_b_model_8h.html">LBModel.h</a></div></div>
 <div class="ttc" id="interface_l_b_model_repository_html"><div class="ttname"><a href="interface_l_b_model_repository.html">LBModelRepository</a></div><div class="ttdoc">A local representative of a single model type on the server, encapsulating the name of the model type...</div><div class="ttdef"><b>Definition:</b> LBModel.h:98</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 20 2013 14:30:14 for LoopBack iOS SDK by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 30 2014 15:00:19 for LoopBack iOS SDK by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
