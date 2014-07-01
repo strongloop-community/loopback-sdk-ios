@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,8 +100,11 @@ Inheritance diagram for LBModel:</div>
  <div class="center">
   <img src="interface_l_b_model.png" usemap="#LBModel_map" alt=""/>
   <map id="LBModel_map" name="LBModel_map">
-<area href="interface_s_l_object.html" title="A local representative of a single virtual object. " alt="SLObject" shape="rect" coords="0,56,86,80"/>
-<area href="interface_l_b_installation.html" title="LBInstallation represents the installation of a given app on the device. " alt="LBInstallation" shape="rect" coords="0,168,86,192"/>
+<area href="interface_l_b_access_token.html" title="An access token returned from the server for access control. " alt="LBAccessToken" shape="rect" coords="0,112,103,136"/>
+<area href="interface_l_b_container.html" title="A local representative of a container instance on the server. " alt="LBContainer" shape="rect" coords="113,112,216,136"/>
+<area href="interface_l_b_file.html" title="A local representative of a file instance on the server. " alt="LBFile" shape="rect" coords="226,112,329,136"/>
+<area href="interface_l_b_installation.html" title="LBInstallation represents the installation of a given app on the device. " alt="LBInstallation" shape="rect" coords="339,112,442,136"/>
+<area href="interface_l_b_user.html" title="A local representative of a user instance on the server. " alt="LBUser" shape="rect" coords="452,112,555,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -133,34 +136,12 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a85cb42b9c3094ea8363bf942ce95d7b8"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_l_b_model.html#a85cb42b9c3094ea8363bf942ce95d7b8">destroyWithSuccess:failure:</a></td></tr>
 <tr class="memdesc:a85cb42b9c3094ea8363bf942ce95d7b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="interface_l_b_model.html" title="A local representative of a single model instance on the server. ">LBModel</a> from the server.  <a href="#a85cb42b9c3094ea8363bf942ce95d7b8">More...</a><br/></td></tr>
 <tr class="separator:a85cb42b9c3094ea8363bf942ce95d7b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_interface_s_l_object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_interface_s_l_object')"><img src="closed.png" alt="-"/>&#160;Instance Methods inherited from <a class="el" href="interface_s_l_object.html">SLObject</a></td></tr>
-<tr class="memitem:a368b1c26aba0b047d29b20bf3d6ebd19 inherit pub_methods_interface_s_l_object"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_l_object.html#a368b1c26aba0b047d29b20bf3d6ebd19">initWithRepository:parameters:</a></td></tr>
-<tr class="memdesc:a368b1c26aba0b047d29b20bf3d6ebd19 inherit pub_methods_interface_s_l_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new object with the type defined by the given repository.  <a href="#a368b1c26aba0b047d29b20bf3d6ebd19">More...</a><br/></td></tr>
-<tr class="separator:a368b1c26aba0b047d29b20bf3d6ebd19 inherit pub_methods_interface_s_l_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f761bfca92d63028d46897baee6e542 inherit pub_methods_interface_s_l_object"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_l_object.html#a6f761bfca92d63028d46897baee6e542">invokeMethod:parameters:success:failure:</a></td></tr>
-<tr class="memdesc:a6f761bfca92d63028d46897baee6e542 inherit pub_methods_interface_s_l_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invokes a remotable method exposed within instances of this class on the server.  <a href="#a6f761bfca92d63028d46897baee6e542">More...</a><br/></td></tr>
-<tr class="separator:a6f761bfca92d63028d46897baee6e542 inherit pub_methods_interface_s_l_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:a161ee73c2a5c158885372392ff7e0cac"><td class="memItemLeft" align="right" valign="top">id&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_l_b_model.html#a161ee73c2a5c158885372392ff7e0cac">_id</a></td></tr>
 <tr class="memdesc:a161ee73c2a5c158885372392ff7e0cac"><td class="mdescLeft">&#160;</td><td class="mdescRight">All Models have a numerical <code>id</code> field.  <a href="#a161ee73c2a5c158885372392ff7e0cac">More...</a><br/></td></tr>
 <tr class="separator:a161ee73c2a5c158885372392ff7e0cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header properties_interface_s_l_object"><td colspan="2" onclick="javascript:toggleInherit('properties_interface_s_l_object')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interface_s_l_object.html">SLObject</a></td></tr>
-<tr class="memitem:a3dbcb5c6229ba41568990d25f0c0b7b6 inherit properties_interface_s_l_object"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_s_l_repository.html">SLRepository</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_s_l_object.html#a3dbcb5c6229ba41568990d25f0c0b7b6">repository</a></td></tr>
-<tr class="memdesc:a3dbcb5c6229ba41568990d25f0c0b7b6 inherit properties_interface_s_l_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="interface_s_l_repository.html" title="A local representative of classes (&quot;prototypes&quot; in JavaScript) defined and made remotable on the serv...">SLRepository</a> defining the type of this object.  <a href="#a3dbcb5c6229ba41568990d25f0c0b7b6">More...</a><br/></td></tr>
-<tr class="separator:a3dbcb5c6229ba41568990d25f0c0b7b6 inherit properties_interface_s_l_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4187295e29e1fc2859be401525a4ae87 inherit properties_interface_s_l_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4187295e29e1fc2859be401525a4ae87"></a>
-NSDictionary *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_s_l_object.html#a4187295e29e1fc2859be401525a4ae87">creationParameters</a></td></tr>
-<tr class="memdesc:a4187295e29e1fc2859be401525a4ae87 inherit properties_interface_s_l_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">The complete set of parameters to be used to identify/create this object on the server. <br/></td></tr>
-<tr class="separator:a4187295e29e1fc2859be401525a4ae87 inherit properties_interface_s_l_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_static_methods_interface_s_l_object"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_interface_s_l_object')"><img src="closed.png" alt="-"/>&#160;Class Methods inherited from <a class="el" href="interface_s_l_object.html">SLObject</a></td></tr>
-<tr class="memitem:ab383fbe486ee4a348869ed041f5abed5 inherit pub_static_methods_interface_s_l_object"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_s_l_object.html#ab383fbe486ee4a348869ed041f5abed5">objectWithRepository:parameters:</a></td></tr>
-<tr class="memdesc:ab383fbe486ee4a348869ed041f5abed5 inherit pub_static_methods_interface_s_l_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a new object with the type defined by given repository.  <a href="#ab383fbe486ee4a348869ed041f5abed5">More...</a><br/></td></tr>
-<tr class="separator:ab383fbe486ee4a348869ed041f5abed5 inherit pub_static_methods_interface_s_l_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A local representative of a single model instance on the server. </p>
@@ -179,7 +160,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey">failure:</td>
           <td></td>
-          <td class="paramtype">(<a class="el" href="_s_l_adapter_8h.html#a420607c4e242df077c5aadaf2ac9c523">SLFailureBlock</a>)&#160;</td>
+          <td class="paramtype">(SLFailureBlock)&#160;</td>
           <td class="paramname"><em>failure</em>&#160;</td>
         </tr>
         <tr>
@@ -241,7 +222,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey">failure:</td>
           <td></td>
-          <td class="paramtype">(<a class="el" href="_s_l_adapter_8h.html#a420607c4e242df077c5aadaf2ac9c523">SLFailureBlock</a>)&#160;</td>
+          <td class="paramtype">(SLFailureBlock)&#160;</td>
           <td class="paramname"><em>failure</em>&#160;</td>
         </tr>
         <tr>
@@ -348,7 +329,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 20 2013 14:30:14 for LoopBack iOS SDK by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 30 2014 15:00:19 for LoopBack iOS SDK by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

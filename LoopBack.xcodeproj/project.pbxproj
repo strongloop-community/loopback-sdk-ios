@@ -48,39 +48,56 @@
 		0B8022DF18A2F1BA00AF845E /* LBContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B8022DE18A2F1BA00AF845E /* LBContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B8022E518A2F27600AF845E /* LBContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8022E418A2F27600AF845E /* LBContainer.m */; };
 		4769FF09184D6F4F00E5152C /* LBInstallationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4769FF08184D6F4F00E5152C /* LBInstallationTests.m */; };
-		4792A72D18C7D8160077ED45 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4792A66018C7D8150077ED45 /* AFHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4792A72E18C7D8160077ED45 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792A66118C7D8150077ED45 /* AFHTTPClient.m */; };
-		4792A72F18C7D8160077ED45 /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4792A66218C7D8150077ED45 /* AFHTTPRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4792A73018C7D8160077ED45 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792A66318C7D8150077ED45 /* AFHTTPRequestOperation.m */; };
-		4792A73118C7D8160077ED45 /* AFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4792A66418C7D8150077ED45 /* AFImageRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4792A73218C7D8160077ED45 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792A66518C7D8150077ED45 /* AFImageRequestOperation.m */; };
-		4792A73318C7D8160077ED45 /* AFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4792A66618C7D8150077ED45 /* AFJSONRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4792A73418C7D8160077ED45 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792A66718C7D8150077ED45 /* AFJSONRequestOperation.m */; };
-		4792A73518C7D8160077ED45 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4792A66818C7D8150077ED45 /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4792A73618C7D8160077ED45 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792A66918C7D8150077ED45 /* AFNetworkActivityIndicatorManager.m */; };
-		4792A73718C7D8160077ED45 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 4792A66A18C7D8150077ED45 /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4792A73818C7D8160077ED45 /* AFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4792A66B18C7D8150077ED45 /* AFPropertyListRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4792A73918C7D8160077ED45 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792A66C18C7D8150077ED45 /* AFPropertyListRequestOperation.m */; };
-		4792A73A18C7D8160077ED45 /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4792A66D18C7D8150077ED45 /* AFURLConnectionOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4792A73B18C7D8160077ED45 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792A66E18C7D8150077ED45 /* AFURLConnectionOperation.m */; };
-		4792A73C18C7D8160077ED45 /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4792A66F18C7D8150077ED45 /* AFXMLRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4792A73D18C7D8160077ED45 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792A67018C7D8150077ED45 /* AFXMLRequestOperation.m */; };
-		4792A73E18C7D8160077ED45 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 4792A67118C7D8150077ED45 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4792A73F18C7D8160077ED45 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792A67218C7D8150077ED45 /* UIImageView+AFNetworking.m */; };
-		4792A76018C7D8160077ED45 /* SLAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4792A70518C7D8150077ED45 /* SLAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4792A76118C7D8160077ED45 /* SLAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792A70618C7D8150077ED45 /* SLAdapter.m */; };
-		4792A76218C7D8160077ED45 /* SLObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 4792A70718C7D8150077ED45 /* SLObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4792A76318C7D8160077ED45 /* SLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792A70818C7D8150077ED45 /* SLObject.m */; };
-		4792A76418C7D8160077ED45 /* SLRemoting-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 4792A70918C7D8150077ED45 /* SLRemoting-Prefix.pch */; };
-		4792A76518C7D8160077ED45 /* SLRemoting.h in Headers */ = {isa = PBXBuildFile; fileRef = 4792A70A18C7D8150077ED45 /* SLRemoting.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4792A76618C7D8160077ED45 /* SLRemotingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4792A70B18C7D8150077ED45 /* SLRemotingUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4792A76718C7D8160077ED45 /* SLRemotingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792A70C18C7D8150077ED45 /* SLRemotingUtils.m */; };
-		4792A76818C7D8160077ED45 /* SLRESTAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4792A70D18C7D8150077ED45 /* SLRESTAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4792A76918C7D8160077ED45 /* SLRESTAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792A70E18C7D8150077ED45 /* SLRESTAdapter.m */; };
-		4792A76A18C7D8160077ED45 /* SLRESTContract.h in Headers */ = {isa = PBXBuildFile; fileRef = 4792A70F18C7D8150077ED45 /* SLRESTContract.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4792A76B18C7D8160077ED45 /* SLRESTContract.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792A71018C7D8150077ED45 /* SLRESTContract.m */; };
 		47AD031318491DA700F724C8 /* LBInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AD031118491DA700F724C8 /* LBInstallation.m */; };
 		47AD031418491E2000F724C8 /* LBInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47AD031018491DA700F724C8 /* LBInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48B951962120E00995044 /* SLAFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B751962120E00995044 /* SLAFHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48B961962120E00995044 /* SLAFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B761962120E00995044 /* SLAFHTTPClient.m */; };
+		47C48B971962120E00995044 /* SLAFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B771962120E00995044 /* SLAFHTTPRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48B981962120E00995044 /* SLAFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B781962120E00995044 /* SLAFHTTPRequestOperation.m */; };
+		47C48B991962120E00995044 /* SLAFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B791962120E00995044 /* SLAFImageRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48B9A1962120E00995044 /* SLAFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B7A1962120E00995044 /* SLAFImageRequestOperation.m */; };
+		47C48B9B1962120E00995044 /* SLAFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B7B1962120E00995044 /* SLAFJSONRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48B9C1962120E00995044 /* SLAFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B7C1962120E00995044 /* SLAFJSONRequestOperation.m */; };
+		47C48B9D1962120E00995044 /* SLAFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B7D1962120E00995044 /* SLAFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48B9E1962120E00995044 /* SLAFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B7E1962120E00995044 /* SLAFNetworkActivityIndicatorManager.m */; };
+		47C48B9F1962120E00995044 /* SLAFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B7F1962120E00995044 /* SLAFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48BA01962120E00995044 /* SLAFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B801962120E00995044 /* SLAFPropertyListRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48BA11962120E00995044 /* SLAFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B811962120E00995044 /* SLAFPropertyListRequestOperation.m */; };
+		47C48BA21962120E00995044 /* SLAFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B821962120E00995044 /* SLAFURLConnectionOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48BA31962120E00995044 /* SLAFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B831962120E00995044 /* SLAFURLConnectionOperation.m */; };
+		47C48BA41962120E00995044 /* SLAFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B841962120E00995044 /* SLAFXMLRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48BA51962120E00995044 /* SLAFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B851962120E00995044 /* SLAFXMLRequestOperation.m */; };
+		47C48BA61962120E00995044 /* UIImageView+SLAFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B861962120E00995044 /* UIImageView+SLAFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48BA71962120E00995044 /* UIImageView+SLAFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B871962120E00995044 /* UIImageView+SLAFNetworking.m */; };
+		47C48BA81962120E00995044 /* SLAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B891962120E00995044 /* SLAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48BA91962120E00995044 /* SLAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B8A1962120E00995044 /* SLAdapter.m */; };
+		47C48BAA1962120E00995044 /* SLObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B8B1962120E00995044 /* SLObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48BAB1962120E00995044 /* SLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B8C1962120E00995044 /* SLObject.m */; };
+		47C48BAC1962120E00995044 /* SLRemoting-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B8D1962120E00995044 /* SLRemoting-Prefix.pch */; };
+		47C48BAD1962120E00995044 /* SLRemoting.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B8E1962120E00995044 /* SLRemoting.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48BAE1962120E00995044 /* SLRemotingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B8F1962120E00995044 /* SLRemotingUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48BAF1962120E00995044 /* SLRemotingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B901962120E00995044 /* SLRemotingUtils.m */; };
+		47C48BB01962120E00995044 /* SLRESTAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B911962120E00995044 /* SLRESTAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48BB11962120E00995044 /* SLRESTAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B921962120E00995044 /* SLRESTAdapter.m */; };
+		47C48BB21962120E00995044 /* SLRESTContract.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B931962120E00995044 /* SLRESTContract.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48BB31962120E00995044 /* SLRESTContract.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B941962120E00995044 /* SLRESTContract.m */; };
+		47C48BCC1962123900995044 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 47C48BB51962123900995044 /* InfoPlist.strings */; };
+		47C48BCD1962123900995044 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 47C48BB81962123900995044 /* .gitignore */; };
+		47C48BCE1962123900995044 /* contract-class.js in Sources */ = {isa = PBXBuildFile; fileRef = 47C48BB91962123900995044 /* contract-class.js */; };
+		47C48BCF1962123900995044 /* contract.js in Sources */ = {isa = PBXBuildFile; fileRef = 47C48BBA1962123900995044 /* contract.js */; };
+		47C48BD01962123900995044 /* index.js in Sources */ = {isa = PBXBuildFile; fileRef = 47C48BBB1962123900995044 /* index.js */; };
+		47C48BD11962123900995044 /* nonroot.js in Sources */ = {isa = PBXBuildFile; fileRef = 47C48BBC1962123900995044 /* nonroot.js */; };
+		47C48BD21962123900995044 /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = 47C48BBD1962123900995044 /* package.json */; };
+		47C48BD31962123900995044 /* certificate.pem in Resources */ = {isa = PBXBuildFile; fileRef = 47C48BBF1962123900995044 /* certificate.pem */; };
+		47C48BD41962123900995044 /* privatekey.pem in Resources */ = {isa = PBXBuildFile; fileRef = 47C48BC01962123900995044 /* privatekey.pem */; };
+		47C48BD51962123900995044 /* simple-class.js in Sources */ = {isa = PBXBuildFile; fileRef = 47C48BC11962123900995044 /* simple-class.js */; };
+		47C48BD61962123900995044 /* simple.js in Sources */ = {isa = PBXBuildFile; fileRef = 47C48BC21962123900995044 /* simple.js */; };
+		47C48BD71962123900995044 /* ssl-config.js in Sources */ = {isa = PBXBuildFile; fileRef = 47C48BC31962123900995044 /* ssl-config.js */; };
+		47C48BD81962123900995044 /* SLRemotingTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47C48BC41962123900995044 /* SLRemotingTests-Info.plist */; };
+		47C48BD91962123900995044 /* SLRESTAdapterNonRootTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48BC61962123900995044 /* SLRESTAdapterNonRootTests.m */; };
+		47C48BDA1962123900995044 /* SLRESTAdapterSSLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48BC71962123900995044 /* SLRESTAdapterSSLTests.m */; };
+		47C48BDB1962123900995044 /* SLRESTAdapterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48BC91962123900995044 /* SLRESTAdapterTests.m */; };
+		47C48BDC1962123900995044 /* SLRESTContractTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48BCB1962123900995044 /* SLRESTContractTests.m */; };
 		47F8E813185B7A4E0088BB73 /* LBPushNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 47F8E811185B7A4E0088BB73 /* LBPushNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		47F8E814185B7A4E0088BB73 /* LBPushNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F8E812185B7A4E0088BB73 /* LBPushNotification.m */; };
 		B3D220FB17722AE800B7CB63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D220FA17722AE800B7CB63 /* Foundation.framework */; };
@@ -101,20 +118,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4792A77E18C7D8160077ED45 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4792A71118C7D8150077ED45 /* SLRemoting.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B34A481B175D4BC400574A43;
-			remoteInfo = SLRemoting;
-		};
-		4792A78018C7D8160077ED45 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4792A71118C7D8150077ED45 /* SLRemoting.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B34A482C175D4BC400574A43;
-			remoteInfo = SLRemotingTests;
-		};
 		B3D2210E17722AE800B7CB63 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B3D220EF17722AE800B7CB63 /* Project object */;
@@ -150,40 +153,59 @@
 		0B8022E418A2F27600AF845E /* LBContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBContainer.m; sourceTree = "<group>"; };
 		4769FF07184D6F4F00E5152C /* LBInstallationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBInstallationTests.h; sourceTree = "<group>"; };
 		4769FF08184D6F4F00E5152C /* LBInstallationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBInstallationTests.m; sourceTree = "<group>"; };
-		4792A66018C7D8150077ED45 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
-		4792A66118C7D8150077ED45 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
-		4792A66218C7D8150077ED45 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
-		4792A66318C7D8150077ED45 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
-		4792A66418C7D8150077ED45 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
-		4792A66518C7D8150077ED45 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
-		4792A66618C7D8150077ED45 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
-		4792A66718C7D8150077ED45 /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
-		4792A66818C7D8150077ED45 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
-		4792A66918C7D8150077ED45 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
-		4792A66A18C7D8150077ED45 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
-		4792A66B18C7D8150077ED45 /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
-		4792A66C18C7D8150077ED45 /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
-		4792A66D18C7D8150077ED45 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
-		4792A66E18C7D8150077ED45 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
-		4792A66F18C7D8150077ED45 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
-		4792A67018C7D8150077ED45 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
-		4792A67118C7D8150077ED45 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
-		4792A67218C7D8150077ED45 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		4792A70518C7D8150077ED45 /* SLAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAdapter.h; sourceTree = "<group>"; };
-		4792A70618C7D8150077ED45 /* SLAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAdapter.m; sourceTree = "<group>"; };
-		4792A70718C7D8150077ED45 /* SLObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLObject.h; sourceTree = "<group>"; };
-		4792A70818C7D8150077ED45 /* SLObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLObject.m; sourceTree = "<group>"; };
-		4792A70918C7D8150077ED45 /* SLRemoting-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SLRemoting-Prefix.pch"; sourceTree = "<group>"; };
-		4792A70A18C7D8150077ED45 /* SLRemoting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRemoting.h; sourceTree = "<group>"; };
-		4792A70B18C7D8150077ED45 /* SLRemotingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRemotingUtils.h; sourceTree = "<group>"; };
-		4792A70C18C7D8150077ED45 /* SLRemotingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRemotingUtils.m; sourceTree = "<group>"; };
-		4792A70D18C7D8150077ED45 /* SLRESTAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRESTAdapter.h; sourceTree = "<group>"; };
-		4792A70E18C7D8150077ED45 /* SLRESTAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRESTAdapter.m; sourceTree = "<group>"; };
-		4792A70F18C7D8150077ED45 /* SLRESTContract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRESTContract.h; sourceTree = "<group>"; };
-		4792A71018C7D8150077ED45 /* SLRESTContract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRESTContract.m; sourceTree = "<group>"; };
-		4792A71118C7D8150077ED45 /* SLRemoting.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SLRemoting.xcodeproj; sourceTree = "<group>"; };
 		47AD031018491DA700F724C8 /* LBInstallation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBInstallation.h; sourceTree = "<group>"; };
 		47AD031118491DA700F724C8 /* LBInstallation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBInstallation.m; sourceTree = "<group>"; };
+		47C48B751962120E00995044 /* SLAFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAFHTTPClient.h; sourceTree = "<group>"; };
+		47C48B761962120E00995044 /* SLAFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAFHTTPClient.m; sourceTree = "<group>"; };
+		47C48B771962120E00995044 /* SLAFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		47C48B781962120E00995044 /* SLAFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		47C48B791962120E00995044 /* SLAFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAFImageRequestOperation.h; sourceTree = "<group>"; };
+		47C48B7A1962120E00995044 /* SLAFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAFImageRequestOperation.m; sourceTree = "<group>"; };
+		47C48B7B1962120E00995044 /* SLAFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAFJSONRequestOperation.h; sourceTree = "<group>"; };
+		47C48B7C1962120E00995044 /* SLAFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAFJSONRequestOperation.m; sourceTree = "<group>"; };
+		47C48B7D1962120E00995044 /* SLAFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		47C48B7E1962120E00995044 /* SLAFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		47C48B7F1962120E00995044 /* SLAFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAFNetworking.h; sourceTree = "<group>"; };
+		47C48B801962120E00995044 /* SLAFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		47C48B811962120E00995044 /* SLAFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		47C48B821962120E00995044 /* SLAFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAFURLConnectionOperation.h; sourceTree = "<group>"; };
+		47C48B831962120E00995044 /* SLAFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAFURLConnectionOperation.m; sourceTree = "<group>"; };
+		47C48B841962120E00995044 /* SLAFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAFXMLRequestOperation.h; sourceTree = "<group>"; };
+		47C48B851962120E00995044 /* SLAFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAFXMLRequestOperation.m; sourceTree = "<group>"; };
+		47C48B861962120E00995044 /* UIImageView+SLAFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SLAFNetworking.h"; sourceTree = "<group>"; };
+		47C48B871962120E00995044 /* UIImageView+SLAFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SLAFNetworking.m"; sourceTree = "<group>"; };
+		47C48B891962120E00995044 /* SLAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAdapter.h; sourceTree = "<group>"; };
+		47C48B8A1962120E00995044 /* SLAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAdapter.m; sourceTree = "<group>"; };
+		47C48B8B1962120E00995044 /* SLObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLObject.h; sourceTree = "<group>"; };
+		47C48B8C1962120E00995044 /* SLObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLObject.m; sourceTree = "<group>"; };
+		47C48B8D1962120E00995044 /* SLRemoting-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SLRemoting-Prefix.pch"; sourceTree = "<group>"; };
+		47C48B8E1962120E00995044 /* SLRemoting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRemoting.h; sourceTree = "<group>"; };
+		47C48B8F1962120E00995044 /* SLRemotingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRemotingUtils.h; sourceTree = "<group>"; };
+		47C48B901962120E00995044 /* SLRemotingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRemotingUtils.m; sourceTree = "<group>"; };
+		47C48B911962120E00995044 /* SLRESTAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRESTAdapter.h; sourceTree = "<group>"; };
+		47C48B921962120E00995044 /* SLRESTAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRESTAdapter.m; sourceTree = "<group>"; };
+		47C48B931962120E00995044 /* SLRESTContract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRESTContract.h; sourceTree = "<group>"; };
+		47C48B941962120E00995044 /* SLRESTContract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRESTContract.m; sourceTree = "<group>"; };
+		47C48BB61962123900995044 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		47C48BB81962123900995044 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		47C48BB91962123900995044 /* contract-class.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "contract-class.js"; sourceTree = "<group>"; };
+		47C48BBA1962123900995044 /* contract.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = contract.js; sourceTree = "<group>"; };
+		47C48BBB1962123900995044 /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
+		47C48BBC1962123900995044 /* nonroot.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = nonroot.js; sourceTree = "<group>"; };
+		47C48BBD1962123900995044 /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
+		47C48BBF1962123900995044 /* certificate.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = certificate.pem; sourceTree = "<group>"; };
+		47C48BC01962123900995044 /* privatekey.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = privatekey.pem; sourceTree = "<group>"; };
+		47C48BC11962123900995044 /* simple-class.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "simple-class.js"; sourceTree = "<group>"; };
+		47C48BC21962123900995044 /* simple.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = simple.js; sourceTree = "<group>"; };
+		47C48BC31962123900995044 /* ssl-config.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "ssl-config.js"; sourceTree = "<group>"; };
+		47C48BC41962123900995044 /* SLRemotingTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SLRemotingTests-Info.plist"; sourceTree = "<group>"; };
+		47C48BC51962123900995044 /* SLRESTAdapterNonRootTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRESTAdapterNonRootTests.h; sourceTree = "<group>"; };
+		47C48BC61962123900995044 /* SLRESTAdapterNonRootTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRESTAdapterNonRootTests.m; sourceTree = "<group>"; };
+		47C48BC71962123900995044 /* SLRESTAdapterSSLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRESTAdapterSSLTests.m; sourceTree = "<group>"; };
+		47C48BC81962123900995044 /* SLRESTAdapterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRESTAdapterTests.h; sourceTree = "<group>"; };
+		47C48BC91962123900995044 /* SLRESTAdapterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRESTAdapterTests.m; sourceTree = "<group>"; };
+		47C48BCA1962123900995044 /* SLRESTContractTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRESTContractTests.h; sourceTree = "<group>"; };
+		47C48BCB1962123900995044 /* SLRESTContractTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRESTContractTests.m; sourceTree = "<group>"; };
 		47F8E811185B7A4E0088BB73 /* LBPushNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPushNotification.h; sourceTree = "<group>"; };
 		47F8E812185B7A4E0088BB73 /* LBPushNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPushNotification.m; sourceTree = "<group>"; };
 		B3D220F717722AE800B7CB63 /* libLoopBack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLoopBack.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -232,78 +254,104 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4792A65D18C7D8150077ED45 /* SLRemoting */ = {
+		47C48B741962120E00995044 /* SLAFNetworking */ = {
 			isa = PBXGroup;
 			children = (
-				4792A65F18C7D8150077ED45 /* AFNetworking */,
-				4792A70418C7D8150077ED45 /* SLRemoting */,
-				4792A71118C7D8150077ED45 /* SLRemoting.xcodeproj */,
+				47C48B751962120E00995044 /* SLAFHTTPClient.h */,
+				47C48B761962120E00995044 /* SLAFHTTPClient.m */,
+				47C48B771962120E00995044 /* SLAFHTTPRequestOperation.h */,
+				47C48B781962120E00995044 /* SLAFHTTPRequestOperation.m */,
+				47C48B791962120E00995044 /* SLAFImageRequestOperation.h */,
+				47C48B7A1962120E00995044 /* SLAFImageRequestOperation.m */,
+				47C48B7B1962120E00995044 /* SLAFJSONRequestOperation.h */,
+				47C48B7C1962120E00995044 /* SLAFJSONRequestOperation.m */,
+				47C48B7D1962120E00995044 /* SLAFNetworkActivityIndicatorManager.h */,
+				47C48B7E1962120E00995044 /* SLAFNetworkActivityIndicatorManager.m */,
+				47C48B7F1962120E00995044 /* SLAFNetworking.h */,
+				47C48B801962120E00995044 /* SLAFPropertyListRequestOperation.h */,
+				47C48B811962120E00995044 /* SLAFPropertyListRequestOperation.m */,
+				47C48B821962120E00995044 /* SLAFURLConnectionOperation.h */,
+				47C48B831962120E00995044 /* SLAFURLConnectionOperation.m */,
+				47C48B841962120E00995044 /* SLAFXMLRequestOperation.h */,
+				47C48B851962120E00995044 /* SLAFXMLRequestOperation.m */,
+				47C48B861962120E00995044 /* UIImageView+SLAFNetworking.h */,
+				47C48B871962120E00995044 /* UIImageView+SLAFNetworking.m */,
+			);
+			path = SLAFNetworking;
+			sourceTree = "<group>";
+		};
+		47C48B881962120E00995044 /* SLRemoting */ = {
+			isa = PBXGroup;
+			children = (
+				47C48B891962120E00995044 /* SLAdapter.h */,
+				47C48B8A1962120E00995044 /* SLAdapter.m */,
+				47C48B8B1962120E00995044 /* SLObject.h */,
+				47C48B8C1962120E00995044 /* SLObject.m */,
+				47C48B8D1962120E00995044 /* SLRemoting-Prefix.pch */,
+				47C48B8E1962120E00995044 /* SLRemoting.h */,
+				47C48B8F1962120E00995044 /* SLRemotingUtils.h */,
+				47C48B901962120E00995044 /* SLRemotingUtils.m */,
+				47C48B911962120E00995044 /* SLRESTAdapter.h */,
+				47C48B921962120E00995044 /* SLRESTAdapter.m */,
+				47C48B931962120E00995044 /* SLRESTContract.h */,
+				47C48B941962120E00995044 /* SLRESTContract.m */,
 			);
 			path = SLRemoting;
 			sourceTree = "<group>";
 		};
-		4792A65F18C7D8150077ED45 /* AFNetworking */ = {
+		47C48BB41962123900995044 /* SLRemotingTests */ = {
 			isa = PBXGroup;
 			children = (
-				4792A66018C7D8150077ED45 /* AFHTTPClient.h */,
-				4792A66118C7D8150077ED45 /* AFHTTPClient.m */,
-				4792A66218C7D8150077ED45 /* AFHTTPRequestOperation.h */,
-				4792A66318C7D8150077ED45 /* AFHTTPRequestOperation.m */,
-				4792A66418C7D8150077ED45 /* AFImageRequestOperation.h */,
-				4792A66518C7D8150077ED45 /* AFImageRequestOperation.m */,
-				4792A66618C7D8150077ED45 /* AFJSONRequestOperation.h */,
-				4792A66718C7D8150077ED45 /* AFJSONRequestOperation.m */,
-				4792A66818C7D8150077ED45 /* AFNetworkActivityIndicatorManager.h */,
-				4792A66918C7D8150077ED45 /* AFNetworkActivityIndicatorManager.m */,
-				4792A66A18C7D8150077ED45 /* AFNetworking.h */,
-				4792A66B18C7D8150077ED45 /* AFPropertyListRequestOperation.h */,
-				4792A66C18C7D8150077ED45 /* AFPropertyListRequestOperation.m */,
-				4792A66D18C7D8150077ED45 /* AFURLConnectionOperation.h */,
-				4792A66E18C7D8150077ED45 /* AFURLConnectionOperation.m */,
-				4792A66F18C7D8150077ED45 /* AFXMLRequestOperation.h */,
-				4792A67018C7D8150077ED45 /* AFXMLRequestOperation.m */,
-				4792A67118C7D8150077ED45 /* UIImageView+AFNetworking.h */,
-				4792A67218C7D8150077ED45 /* UIImageView+AFNetworking.m */,
+				47C48BB51962123900995044 /* InfoPlist.strings */,
+				47C48BB71962123900995044 /* server */,
+				47C48BC41962123900995044 /* SLRemotingTests-Info.plist */,
+				47C48BC51962123900995044 /* SLRESTAdapterNonRootTests.h */,
+				47C48BC61962123900995044 /* SLRESTAdapterNonRootTests.m */,
+				47C48BC71962123900995044 /* SLRESTAdapterSSLTests.m */,
+				47C48BC81962123900995044 /* SLRESTAdapterTests.h */,
+				47C48BC91962123900995044 /* SLRESTAdapterTests.m */,
+				47C48BCA1962123900995044 /* SLRESTContractTests.h */,
+				47C48BCB1962123900995044 /* SLRESTContractTests.m */,
 			);
-			path = AFNetworking;
+			path = SLRemotingTests;
 			sourceTree = "<group>";
 		};
-		4792A70418C7D8150077ED45 /* SLRemoting */ = {
+		47C48BB71962123900995044 /* server */ = {
 			isa = PBXGroup;
 			children = (
-				4792A70518C7D8150077ED45 /* SLAdapter.h */,
-				4792A70618C7D8150077ED45 /* SLAdapter.m */,
-				4792A70718C7D8150077ED45 /* SLObject.h */,
-				4792A70818C7D8150077ED45 /* SLObject.m */,
-				4792A70918C7D8150077ED45 /* SLRemoting-Prefix.pch */,
-				4792A70A18C7D8150077ED45 /* SLRemoting.h */,
-				4792A70B18C7D8150077ED45 /* SLRemotingUtils.h */,
-				4792A70C18C7D8150077ED45 /* SLRemotingUtils.m */,
-				4792A70D18C7D8150077ED45 /* SLRESTAdapter.h */,
-				4792A70E18C7D8150077ED45 /* SLRESTAdapter.m */,
-				4792A70F18C7D8150077ED45 /* SLRESTContract.h */,
-				4792A71018C7D8150077ED45 /* SLRESTContract.m */,
+				47C48BB81962123900995044 /* .gitignore */,
+				47C48BB91962123900995044 /* contract-class.js */,
+				47C48BBA1962123900995044 /* contract.js */,
+				47C48BBB1962123900995044 /* index.js */,
+				47C48BBC1962123900995044 /* nonroot.js */,
+				47C48BBD1962123900995044 /* package.json */,
+				47C48BBE1962123900995044 /* private */,
+				47C48BC11962123900995044 /* simple-class.js */,
+				47C48BC21962123900995044 /* simple.js */,
+				47C48BC31962123900995044 /* ssl-config.js */,
 			);
-			path = SLRemoting;
+			path = server;
 			sourceTree = "<group>";
 		};
-		4792A71218C7D8150077ED45 /* Products */ = {
+		47C48BBE1962123900995044 /* private */ = {
 			isa = PBXGroup;
 			children = (
-				4792A77F18C7D8160077ED45 /* libSLRemoting.a */,
-				4792A78118C7D8160077ED45 /* SLRemotingTests.octest */,
+				47C48BBF1962123900995044 /* certificate.pem */,
+				47C48BC01962123900995044 /* privatekey.pem */,
 			);
-			name = Products;
+			path = private;
 			sourceTree = "<group>";
 		};
 		B3D220EE17722AE800B7CB63 = {
 			isa = PBXGroup;
 			children = (
+				47C48BB41962123900995044 /* SLRemotingTests */,
+				47C48B741962120E00995044 /* SLAFNetworking */,
+				47C48B881962120E00995044 /* SLRemoting */,
 				B3D220FC17722AE800B7CB63 /* LoopBack */,
 				B3D2211117722AE800B7CB63 /* LoopBackTests */,
 				B3D220F917722AE800B7CB63 /* Frameworks */,
 				B3D220F817722AE800B7CB63 /* Products */,
-				4792A65D18C7D8150077ED45 /* SLRemoting */,
 			);
 			sourceTree = "<group>";
 		};
@@ -399,32 +447,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3DFA5AD17970AB700F656D7 /* LoopBack.h in Headers */,
-				4792A76A18C7D8160077ED45 /* SLRESTContract.h in Headers */,
-				4792A72D18C7D8160077ED45 /* AFHTTPClient.h in Headers */,
+				47C48BB01962120E00995044 /* SLRESTAdapter.h in Headers */,
+				47C48BAC1962120E00995044 /* SLRemoting-Prefix.pch in Headers */,
+				47C48BA21962120E00995044 /* SLAFURLConnectionOperation.h in Headers */,
 				B3DFA5AE17970ABD00F656D7 /* LBModel.h in Headers */,
-				4792A73718C7D8160077ED45 /* AFNetworking.h in Headers */,
-				4792A76218C7D8160077ED45 /* SLObject.h in Headers */,
 				B3DFA5AF17970ABD00F656D7 /* LBRESTAdapter.h in Headers */,
-				4792A76518C7D8160077ED45 /* SLRemoting.h in Headers */,
+				47C48BA41962120E00995044 /* SLAFXMLRequestOperation.h in Headers */,
 				0B8022DF18A2F1BA00AF845E /* LBContainer.h in Headers */,
-				4792A76018C7D8160077ED45 /* SLAdapter.h in Headers */,
-				4792A73E18C7D8160077ED45 /* UIImageView+AFNetworking.h in Headers */,
+				47C48BAD1962120E00995044 /* SLRemoting.h in Headers */,
 				0B786860189B1C0700AB6782 /* LBFile.h in Headers */,
 				0B6DCCA518806F2E00F7E57A /* LBUser.h in Headers */,
-				4792A73318C7D8160077ED45 /* AFJSONRequestOperation.h in Headers */,
-				4792A73118C7D8160077ED45 /* AFImageRequestOperation.h in Headers */,
+				47C48B9D1962120E00995044 /* SLAFNetworkActivityIndicatorManager.h in Headers */,
+				47C48BA81962120E00995044 /* SLAdapter.h in Headers */,
 				0B4F52AA18908089004F675A /* LBAccessToken.h in Headers */,
-				4792A76418C7D8160077ED45 /* SLRemoting-Prefix.pch in Headers */,
+				47C48BAA1962120E00995044 /* SLObject.h in Headers */,
+				47C48BA61962120E00995044 /* UIImageView+SLAFNetworking.h in Headers */,
+				47C48B9B1962120E00995044 /* SLAFJSONRequestOperation.h in Headers */,
+				47C48B971962120E00995044 /* SLAFHTTPRequestOperation.h in Headers */,
+				47C48BB21962120E00995044 /* SLRESTContract.h in Headers */,
 				47AD031418491E2000F724C8 /* LBInstallation.h in Headers */,
 				47F8E813185B7A4E0088BB73 /* LBPushNotification.h in Headers */,
 				B3DFA5B017970AC700F656D7 /* LoopBack-Prefix.pch in Headers */,
-				4792A73818C7D8160077ED45 /* AFPropertyListRequestOperation.h in Headers */,
-				4792A73A18C7D8160077ED45 /* AFURLConnectionOperation.h in Headers */,
-				4792A76618C7D8160077ED45 /* SLRemotingUtils.h in Headers */,
-				4792A73C18C7D8160077ED45 /* AFXMLRequestOperation.h in Headers */,
-				4792A72F18C7D8160077ED45 /* AFHTTPRequestOperation.h in Headers */,
-				4792A73518C7D8160077ED45 /* AFNetworkActivityIndicatorManager.h in Headers */,
-				4792A76818C7D8160077ED45 /* SLRESTAdapter.h in Headers */,
+				47C48B991962120E00995044 /* SLAFImageRequestOperation.h in Headers */,
+				47C48B9F1962120E00995044 /* SLAFNetworking.h in Headers */,
+				47C48B951962120E00995044 /* SLAFHTTPClient.h in Headers */,
+				47C48BAE1962120E00995044 /* SLRemotingUtils.h in Headers */,
+				47C48BA01962120E00995044 /* SLAFPropertyListRequestOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,12 +535,6 @@
 			mainGroup = B3D220EE17722AE800B7CB63;
 			productRefGroup = B3D220F817722AE800B7CB63 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 4792A71218C7D8150077ED45 /* Products */;
-					ProjectRef = 4792A71118C7D8150077ED45 /* SLRemoting.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				B3D220F617722AE800B7CB63 /* LoopBack */,
@@ -503,30 +545,19 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		4792A77F18C7D8160077ED45 /* libSLRemoting.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libSLRemoting.a;
-			remoteRef = 4792A77E18C7D8160077ED45 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4792A78118C7D8160077ED45 /* SLRemotingTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SLRemotingTests.octest;
-			remoteRef = 4792A78018C7D8160077ED45 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		B3D2210517722AE800B7CB63 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47C48BCD1962123900995044 /* .gitignore in Resources */,
 				0B3A200E18A55B5A006772C8 /* LBContainerTests.h in Resources */,
+				47C48BCC1962123900995044 /* InfoPlist.strings in Resources */,
 				B3D2211617722AE800B7CB63 /* InfoPlist.strings in Resources */,
+				47C48BD81962123900995044 /* SLRemotingTests-Info.plist in Resources */,
+				47C48BD31962123900995044 /* certificate.pem in Resources */,
+				47C48BD21962123900995044 /* package.json in Resources */,
+				47C48BD41962123900995044 /* privatekey.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,25 +624,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3D2212417722B1700B7CB63 /* LBModel.m in Sources */,
-				4792A73F18C7D8160077ED45 /* UIImageView+AFNetworking.m in Sources */,
+				47C48B9C1962120E00995044 /* SLAFJSONRequestOperation.m in Sources */,
 				B3D2214A1773766800B7CB63 /* LBRESTAdapter.m in Sources */,
-				4792A73418C7D8160077ED45 /* AFJSONRequestOperation.m in Sources */,
-				4792A76B18C7D8160077ED45 /* SLRESTContract.m in Sources */,
-				4792A73018C7D8160077ED45 /* AFHTTPRequestOperation.m in Sources */,
-				4792A76718C7D8160077ED45 /* SLRemotingUtils.m in Sources */,
-				4792A73D18C7D8160077ED45 /* AFXMLRequestOperation.m in Sources */,
-				4792A73B18C7D8160077ED45 /* AFURLConnectionOperation.m in Sources */,
-				4792A73218C7D8160077ED45 /* AFImageRequestOperation.m in Sources */,
-				4792A72E18C7D8160077ED45 /* AFHTTPClient.m in Sources */,
+				47C48BA91962120E00995044 /* SLAdapter.m in Sources */,
+				47C48B961962120E00995044 /* SLAFHTTPClient.m in Sources */,
+				47C48BA51962120E00995044 /* SLAFXMLRequestOperation.m in Sources */,
 				47F8E814185B7A4E0088BB73 /* LBPushNotification.m in Sources */,
-				4792A76118C7D8160077ED45 /* SLAdapter.m in Sources */,
+				47C48B9E1962120E00995044 /* SLAFNetworkActivityIndicatorManager.m in Sources */,
+				47C48BAF1962120E00995044 /* SLRemotingUtils.m in Sources */,
 				47AD031318491DA700F724C8 /* LBInstallation.m in Sources */,
-				4792A73918C7D8160077ED45 /* AFPropertyListRequestOperation.m in Sources */,
-				4792A76918C7D8160077ED45 /* SLRESTAdapter.m in Sources */,
+				47C48BB31962120E00995044 /* SLRESTContract.m in Sources */,
+				47C48BA71962120E00995044 /* UIImageView+SLAFNetworking.m in Sources */,
+				47C48B9A1962120E00995044 /* SLAFImageRequestOperation.m in Sources */,
+				47C48B981962120E00995044 /* SLAFHTTPRequestOperation.m in Sources */,
+				47C48BA11962120E00995044 /* SLAFPropertyListRequestOperation.m in Sources */,
+				47C48BB11962120E00995044 /* SLRESTAdapter.m in Sources */,
 				0B6DCCA618806F2E00F7E57A /* LBUser.m in Sources */,
-				4792A76318C7D8160077ED45 /* SLObject.m in Sources */,
-				4792A73618C7D8160077ED45 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				47C48BAB1962120E00995044 /* SLObject.m in Sources */,
 				0B8022E518A2F27600AF845E /* LBContainer.m in Sources */,
+				47C48BA31962120E00995044 /* SLAFURLConnectionOperation.m in Sources */,
 				0B786866189B1C3300AB6782 /* LBFile.m in Sources */,
 				0B4F52AB18908089004F675A /* LBAccessToken.m in Sources */,
 			);
@@ -621,12 +652,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47C48BDB1962123900995044 /* SLRESTAdapterTests.m in Sources */,
+				47C48BD01962123900995044 /* index.js in Sources */,
 				B3D2213B17722BAB00B7CB63 /* LBModelTests.m in Sources */,
+				47C48BDC1962123900995044 /* SLRESTContractTests.m in Sources */,
 				0B3A201618A56BA5006772C8 /* LBContainerTests.m in Sources */,
 				0B3A201818A57CCD006772C8 /* LBUserTests.m in Sources */,
+				47C48BDA1962123900995044 /* SLRESTAdapterSSLTests.m in Sources */,
+				47C48BD91962123900995044 /* SLRESTAdapterNonRootTests.m in Sources */,
 				B3D2214217725A7F00B7CB63 /* LBModelSubclassingTests.m in Sources */,
+				47C48BCF1962123900995044 /* contract.js in Sources */,
+				47C48BD11962123900995044 /* nonroot.js in Sources */,
 				4769FF09184D6F4F00E5152C /* LBInstallationTests.m in Sources */,
 				0B3A201B18A5856F006772C8 /* LBFileTests.m in Sources */,
+				47C48BD51962123900995044 /* simple-class.js in Sources */,
+				47C48BD61962123900995044 /* simple.js in Sources */,
+				47C48BD71962123900995044 /* ssl-config.js in Sources */,
+				47C48BCE1962123900995044 /* contract-class.js in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,6 +688,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		47C48BB51962123900995044 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				47C48BB61962123900995044 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		B3D2211417722AE800B7CB63 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

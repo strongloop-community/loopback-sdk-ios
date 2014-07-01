@@ -1,25 +1,6 @@
 var searchData=
 [
-  ['savewithsuccess_3afailure_3a',['saveWithSuccess:failure:',['../interface_l_b_model.html#a8078bba4859631207bd479523abafab8',1,'LBModel']]],
-  ['setobject_3aforkeyedsubscript_3a',['setObject:forKeyedSubscript:',['../interface_l_b_model.html#a2814cc9dd27ded4ddaa850635beb62d3',1,'LBModel']]],
-  ['sladapter',['SLAdapter',['../interface_s_l_adapter.html',1,'']]],
-  ['sladapter_2eh',['SLAdapter.h',['../_s_l_adapter_8h.html',1,'']]],
-  ['sladapternotconnectederrordescription',['SLAdapterNotConnectedErrorDescription',['../_s_l_adapter_8h.html#a2c9fcfaf591c3c2dd8c8f6d84ab31208',1,'SLAdapter.h']]],
-  ['slfailureblock',['SLFailureBlock',['../_s_l_adapter_8h.html#a420607c4e242df077c5aadaf2ac9c523',1,'SLAdapter.h']]],
-  ['slobject',['SLObject',['../interface_s_l_object.html',1,'']]],
-  ['slobject_2eh',['SLObject.h',['../_s_l_object_8h.html',1,'']]],
-  ['slobjectinvalidrepositorydescription',['SLObjectInvalidRepositoryDescription',['../_s_l_object_8h.html#ae4fd8a38cd98b526acdc255095f3a578',1,'SLObject.h']]],
-  ['slremoting_2eh',['SLRemoting.h',['../_s_l_remoting_8h.html',1,'']]],
-  ['slremotingutils',['SLRemotingUtils',['../interface_s_l_remoting_utils.html',1,'']]],
-  ['slremotingutils_2eh',['SLRemotingUtils.h',['../_s_l_remoting_utils_8h.html',1,'']]],
-  ['slrepository',['SLRepository',['../interface_s_l_repository.html',1,'']]],
-  ['slrestadapter',['SLRESTAdapter',['../interface_s_l_r_e_s_t_adapter.html',1,'']]],
-  ['slrestadapter_2eh',['SLRESTAdapter.h',['../_s_l_r_e_s_t_adapter_8h.html',1,'']]],
-  ['slrestcontract',['SLRESTContract',['../interface_s_l_r_e_s_t_contract.html',1,'']]],
-  ['slrestcontract_2eh',['SLRESTContract.h',['../_s_l_r_e_s_t_contract_8h.html',1,'']]],
-  ['slrestcontractdefaultverb',['SLRESTContractDefaultVerb',['../_s_l_r_e_s_t_contract_8h.html#a125ea05f073d19cd2036d791aa3c3dcf',1,'SLRESTContract.h']]],
-  ['slrestcontractitem',['SLRESTContractItem',['../interface_s_l_r_e_s_t_contract_item.html',1,'']]],
-  ['slsuccessblock',['SLSuccessBlock',['../_s_l_adapter_8h.html#a58c5ad97ebd52e3365bf16c81e10a932',1,'SLAdapter.h']]],
-  ['status',['status',['../interface_l_b_installation.html#ac3b264e7d53e11f8b1ef8c76b987bd9c',1,'LBInstallation']]],
-  ['subscriptions',['subscriptions',['../interface_l_b_installation.html#ae282f22550f632fb28d5176b41bda3de',1,'LBInstallation']]]
+  ['uploadwithsuccess_3afailure_3a',['uploadWithSuccess:failure:',['../interface_l_b_file.html#a51b03712514bf28f9df7959f71c652d0',1,'LBFile']]],
+  ['userid',['userId',['../interface_l_b_access_token.html#a7751264828fc7366ebf669d8d690492e',1,'LBAccessToken::userId()'],['../interface_l_b_installation.html#adf48cbcd8df0eb9f51f555acde16090e',1,'LBInstallation::userId()']]],
+  ['userinfo',['userInfo',['../interface_l_b_push_notification.html#aeee830f8c8e526bcece046620a72099b',1,'LBPushNotification']]]
 ];
