@@ -123,9 +123,9 @@ static id lastId = nil;
                                           // NSLog(@"Completed with: %@ %@", model._id, [model._id class]);
                                           // NSLog(@"Completed with: %@ %@", lastId, [lastId class]);
                                           // [rfeng] We have to do NSString comparision
-                                          NSString *id1 = (NSString *) model._id;
-                                          NSString *id2 = (NSString *) lastId;
-                                          STAssertTrue([id1 isEqualToString:id2], @"The ids should be the same");
+                                          id id1 = model._id;
+                                          id id2 = lastId;
+                                          STAssertTrue([id1 isEqualToValue:id2], @"The ids should be the same");
                                           lastId = model._id;
                                           STAssertNotNil(model._id, @"Invalid id");
                                           ASYNC_TEST_SIGNAL

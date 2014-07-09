@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "loopback": "1.x.x",
-    "loopback-push-notification": "~1.0.0"
+    "loopback-component-push": "~1.2.2",
+    "loopback-component-storage": "~1.0.5"
   }
 }

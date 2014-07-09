@@ -35,7 +35,7 @@
 - (void)setUp {
     [super setUp];
     
-    LBRESTAdapter *adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000/api"]];
+    LBRESTAdapter *adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
     self.repository = (LBUserRepository*)[adapter repositoryWithClass:[LBUserRepository class]];
 }
 

@@ -1,5 +1,7 @@
 var loopback = require('loopback');
+var path = require('path');
 var app = loopback();
+app.use(loopback.logger(app.get('env') === 'development' ? 'dev' : 'default'));
 app.dataSource('Memory', {
   connector: loopback.Memory,
   defaultForType: 'db'
@@ -23,9 +25,21 @@ var Widget = app.model('widget', {
   dataSource: 'Memory'
 });
 
-var lbpn = require('loopback-push-notification');
-var PushModel = lbpn(app, { dataSource: app.dataSources.Memory });
-var Device = PushModel.Device;
+var lbpn = require('loopback-component-push');
+var PushModel = lbpn.createPushModel(app, { dataSource: app.dataSources.Memory });
+var Installation = lbpn.Installation;
+Installation.attachTo(app.dataSources.Memory);
+app.model(Installation);
+
+var ds = loopback.createDataSource({
+  connector: require('loopback-component-storage'),
+  provider: 'filesystem',
+  root: path.join(__dirname, 'storage')
+});
+
+var container = ds.createModel('container');
+
+app.model(container);
 
 Widget.destroyAll(function () {
   Widget.create({
