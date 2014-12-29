@@ -14,7 +14,7 @@ Contributing to `loopback-sdk-ios` is easy. In a few simple steps:
   * Adhere to code style outlined in the [Google C++ Style Guide][] and
     [Google Javascript Style Guide][].
 
-  * Sign the [Contributor License Agreement](https://cla.strongloop.com/strongloop/loopback-sdk-ios)
+  * Sign the [Contributor License Agreement](https://cla.strongloop.com/agreements/strongloop/loopback-sdk-ios)
 
   * Submit a pull request through Github.
 
