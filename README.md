@@ -1,6 +1,9 @@
-LoopBack iOS SDK
-=======
-## iOS
+## LoopBack iOS SDK
+
+![StrongLoop Labs](http://docs.strongloop.com/download/thumbnails/5310165/StrongLoop%20Labs%20Logo%20Cropped.png "StrongLoop Labs")
+
+> StrongLoop Labs projects provide early access to advanced or experimental functionality.  In general, these projects may lack usability, completeness, documentation, and robustness, and may be outdated.
+However, StrongLoop supports these projects: Paying customers can open issues using the StrongLoop customer support system (Zendesk), and community users can report bugs on GitHub.
 
 The LoopBack iOS SDK obviates the need for using the clunky `NSURLRequest` and
 similar interfaces to interact with a LoopBack-based backend, albeit RESTful.
@@ -15,4 +18,4 @@ See [LoopBack iOS SDK](http://apidocs.strongloop.com/loopback-sdk-ios/api/annota
 >  - `LBModelPrototype` was renamed to `LBModelRepository`
 >  - `findWithId` was renamed to `findById`
 
-See  [iOS v1.0](http://apidocs.strongloop.com/loopback-sdk-ios/api-1.0/annotated.html) for version 1.0 API reference documentation. 
+See also the [official iOS SDK documentation](http://docs.strongloop.com/display/LB/iOS+SDK). 
