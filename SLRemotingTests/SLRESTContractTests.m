@@ -11,6 +11,8 @@
 #import "SLRESTAdapter.h"
 #import "SLObject.h"
 
+static NSString * const SERVER_URL = @"http://localhost:3001";
+
 @interface SLRESTContractTests() {
     SLRESTAdapter *adapter;
     SLRESTContract *contract;
@@ -24,7 +26,7 @@
 - (void)setUp {
     [super setUp];
     
-    adapter = [SLRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3001"]];
+    adapter = [SLRESTAdapter adapterWithURL:[NSURL URLWithString:SERVER_URL]];
     
     [adapter.contract addItem:[SLRESTContractItem itemWithPattern:@"/contract/customizedGetSecret" verb:@"GET"] forMethod:@"contract.getSecret"];
     [adapter.contract addItem:[SLRESTContractItem itemWithPattern:@"/contract/customizedTransform" verb:@"GET"] forMethod:@"contract.transform"];
@@ -148,6 +150,24 @@
                    ASYNC_TEST_SIGNAL
                }
                failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
+- (void)testCustomRequestHeader {
+    ASYNC_TEST_START
+    SLRESTAdapter *customAdapter = [SLRESTAdapter adapterWithURL:[NSURL URLWithString:SERVER_URL]];
+    [customAdapter setAccessToken:@"auth-token"];
+
+    [customAdapter.contract addItem:[SLRESTContractItem itemWithPattern:@"/contract/get-auth" verb:@"GET"] forMethod:@"contract.getAuthorizationHeader"];
+
+    [customAdapter invokeStaticMethod:@"contract.getAuthorizationHeader"
+                           parameters:nil
+                              success:^(id value) {
+                                  STAssertNotNil(value, @"No value returned.");
+                                  STAssertTrue([@"auth-token" isEqualToString:value[@"data"]], @"Incorrect value returned.");
+                                  ASYNC_TEST_SIGNAL
+                              }
+                              failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
 }
 
