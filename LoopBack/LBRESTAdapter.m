@@ -7,13 +7,32 @@
 
 #import "LBRESTAdapter.h"
 
+static NSString * const DEFAULTS_ACCESSTOKEN_KEY = @"LBRESTAdapterAccessToken";
+
 @interface LBRESTAdapter()
 
 - (void)attachRepository:(LBModelRepository *)repository;
+- (void)saveAccessToken:(NSString *)accessToken;
+- (NSString *)loadAccessToken;
 
 @end
 
 @implementation LBRESTAdapter
+
+- (instancetype)initWithURL:(NSURL *)url allowsInvalidSSLCertificate : (BOOL) allowsInvalidSSLCertificate {
+    self = [super initWithURL:url allowsInvalidSSLCertificate:allowsInvalidSSLCertificate];
+
+    if (self) {
+        self.accessToken = [self loadAccessToken];
+    }
+
+    return self;
+}
+
+- (void)setAccessToken:(NSString *)accessToken {
+    super.accessToken = accessToken;
+    [self saveAccessToken:accessToken];
+}
 
 - (LBModelRepository *)repositoryWithModelName:(NSString *)name {
     NSParameterAssert(name);
@@ -40,6 +59,17 @@
 - (void)attachRepository:(LBModelRepository *)repository {
     [self.contract addItemsFromContract:[repository contract]];
     repository.adapter = self;
+}
+
+- (void)saveAccessToken:(NSString *)accessToken {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:accessToken forKey:DEFAULTS_ACCESSTOKEN_KEY];
+}
+
+- (NSString *)loadAccessToken {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *accessToken = [defaults objectForKey:DEFAULTS_ACCESSTOKEN_KEY];
+    return accessToken;
 }
 
 @end
