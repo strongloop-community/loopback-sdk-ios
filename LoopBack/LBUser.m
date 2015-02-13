@@ -89,6 +89,8 @@
     [self invokeStaticMethod:@"logout"
                   parameters:nil
                      success:^(id value) {
+                         LBRESTAdapter* adapter = (LBRESTAdapter*)self.adapter;
+                         adapter.accessToken = nil;
                          success();
                      }
                      failure:failure];
