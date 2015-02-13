@@ -11,9 +11,38 @@
 #import "LBUser.h"
 #import "LBRESTAdapter.h"
 
+/**
+ * Custom subclass of User.
+ */
+@interface Customer : LBUser
+
+@end
+
+@implementation Customer
+
+@end
+
+/**
+ * Repository for our custom User subclass.
+ */
+@interface CustomerRepository : LBUserRepository
+
++ (instancetype)repository;
+
+@end
+
+@implementation CustomerRepository
+
++ (instancetype)repository {
+	return [self repositoryWithClassName:@"customers"];
+}
+
+@end
+
+
 @interface LBUserTests ()
 
-@property (nonatomic, strong) LBUserRepository *repository;
+@property (nonatomic, strong) CustomerRepository *repository;
 
 @end
 
@@ -36,7 +65,7 @@
     [super setUp];
     
     LBRESTAdapter *adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
-    self.repository = (LBUserRepository*)[adapter repositoryWithClass:[LBUserRepository class]];
+    self.repository = (CustomerRepository*)[adapter repositoryWithClass:[CustomerRepository class]];
 }
 
 - (void)tearDown {
@@ -45,8 +74,8 @@
 
 - (void)testCreate {
     ASYNC_TEST_START
-    LBUser __block *user = [self.repository createUserWithEmail:@"testUser@test.com"
-                                                       password:@"test"];
+    Customer __block *user = (Customer*)[self.repository createUserWithEmail:@"testUser@test.com"
+                                                                    password:@"test"];
     [user saveWithSuccess:^{
         ASYNC_TEST_SIGNAL
     } failure:ASYNC_TEST_FAILURE_BLOCK];

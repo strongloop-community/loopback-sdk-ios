@@ -57,7 +57,7 @@ Widget.destroyAll(function () {
 
 app.model(loopback.AccessToken);
 
-app.model('User', {
+app.model('Customer', {
   options: {
     base: 'User',
     relations: {

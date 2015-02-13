@@ -56,17 +56,19 @@
 
     [dict setValue:__id forKey:@"id"];
 
-    unsigned int propertyCount, i;
-    objc_property_t *properties = class_copyPropertyList([self class], &propertyCount);
-    NSString *propertyName;
+    for (Class targetClass = [self class]; targetClass != [LBModel superclass]; targetClass = [targetClass superclass]) {
+        unsigned int propertyCount, i;
+        objc_property_t *properties = class_copyPropertyList(targetClass, &propertyCount);
+        NSString *propertyName;
 
-    for (i = 0; i < propertyCount; i++) {
-        propertyName = [NSString stringWithCString:property_getName(properties[i]) encoding:NSUTF8StringEncoding];
-        if ([propertyName isEqualToString:@"_id"]) {
-            continue;
+        for (i = 0; i < propertyCount; i++) {
+            propertyName = [NSString stringWithCString:property_getName(properties[i]) encoding:NSUTF8StringEncoding];
+            if ([propertyName isEqualToString:@"_id"]) {
+                continue;
+            }
+
+            [dict setValue:[self valueForKey:propertyName] forKey:propertyName];
         }
-
-        [dict setValue:[self valueForKey:propertyName] forKey:propertyName];
     }
 
     return dict;
