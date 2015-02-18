@@ -9,13 +9,22 @@
 #import "LBRESTAdapter.h"
 #import "LBAccessToken.h"
 
+static NSString * const DEFAULTS_CURRENT_USER_ID_KEY = @"LBUserRepositoryCurrentUserId";
+
 @implementation LBUser
 
 @end
 
-@interface LBUserRepository ()
+@interface LBUserRepository () {
+    NSString *_currentUserId;
+}
 
 @property (nonatomic, strong) LBAccessTokenRepository *accessTokenRepository;
+@property (nonatomic, readwrite) NSString *currentUserId;
+@property BOOL isCurrentUserIdLoaded;
+
+- (void)loadCurrentUserIdIfNotLoaded;
+- (void)saveCurrentUserId;
 
 @end
 
@@ -65,10 +74,12 @@
                      success:^(id value) {
                          NSAssert([[value class] isSubclassOfClass:[NSDictionary class]], @"Received non-Dictionary: %@", value);
                          LBRESTAdapter* adapter = (LBRESTAdapter*)self.adapter;
-                         if (self.accessTokenRepository == nil)
+                         if (self.accessTokenRepository == nil) {
                              self.accessTokenRepository = (LBAccessTokenRepository *)[adapter repositoryWithClass:[LBAccessTokenRepository class]];
+                         }
                          LBAccessToken *accessToken = (LBAccessToken*)[self.accessTokenRepository modelWithDictionary:(NSDictionary*)value];
                          adapter.accessToken = accessToken._id;
+                         self.currentUserId = accessToken.userId;
                          success(accessToken);
                      } failure:failure];
 }
@@ -93,9 +104,34 @@
                      success:^(id value) {
                          LBRESTAdapter* adapter = (LBRESTAdapter*)self.adapter;
                          adapter.accessToken = nil;
+                         self.currentUserId = nil;
                          success();
                      }
                      failure:failure];
+}
+
+- (NSString *)currentUserId {
+    [self loadCurrentUserIdIfNotLoaded];
+    return _currentUserId;
+}
+
+- (void)setCurrentUserId:(NSString *)currentUserId {
+    _currentUserId = currentUserId;
+    [self saveCurrentUserId];
+}
+
+- (void)loadCurrentUserIdIfNotLoaded {
+    if (self.isCurrentUserIdLoaded) {
+        return;
+    }
+    self.isCurrentUserIdLoaded = YES;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    _currentUserId = [defaults objectForKey:DEFAULTS_CURRENT_USER_ID_KEY];
+}
+
+- (void)saveCurrentUserId {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:_currentUserId forKey:DEFAULTS_CURRENT_USER_ID_KEY];
 }
 
 @end

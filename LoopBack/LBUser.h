@@ -29,6 +29,8 @@
  */
 @interface LBUserRepository : LBModelRepository
 
+@property (nonatomic, readonly) NSString *currentUserId;
+
 + (instancetype)repository;
 
 /**

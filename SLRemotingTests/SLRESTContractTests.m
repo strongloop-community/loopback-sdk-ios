@@ -156,7 +156,7 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
 - (void)testCustomRequestHeader {
     ASYNC_TEST_START
     SLRESTAdapter *customAdapter = [SLRESTAdapter adapterWithURL:[NSURL URLWithString:SERVER_URL]];
-    [customAdapter setAccessToken:@"auth-token"];
+    customAdapter.accessToken = @"auth-token";
 
     [customAdapter.contract addItem:[SLRESTContractItem itemWithPattern:@"/contract/get-auth" verb:@"GET"] forMethod:@"contract.getAuthorizationHeader"];
 

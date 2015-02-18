@@ -42,6 +42,7 @@
 
 @interface LBUserTests ()
 
+@property (nonatomic, strong) LBRESTAdapter *adapter;
 @property (nonatomic, strong) CustomerRepository *repository;
 
 @end
@@ -55,7 +56,10 @@
     SenTestSuite *suite = [SenTestSuite testSuiteWithName:@"TestSuite for LBContainer."];
     [suite addTest:[self testCaseWithSelector:@selector(testCreate)]];
     [suite addTest:[self testCaseWithSelector:@selector(testLogin)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testSetsCurrentUserIdOnLogin)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testCurrentUserIdIsStoredInSharedPreferences)]];
     [suite addTest:[self testCaseWithSelector:@selector(testLogout)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testClearsCurrentUserIdOnLogout)]];
     [suite addTest:[self testCaseWithSelector:@selector(testRemove)]];
     return suite;
 }
@@ -64,8 +68,8 @@
 - (void)setUp {
     [super setUp];
     
-    LBRESTAdapter *adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
-    self.repository = (CustomerRepository*)[adapter repositoryWithClass:[CustomerRepository class]];
+    self.adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
+    self.repository = (CustomerRepository*)[self.adapter repositoryWithClass:[CustomerRepository class]];
 }
 
 - (void)tearDown {
@@ -90,6 +94,25 @@
     ASYNC_TEST_END
 }
 
+- (void)testSetsCurrentUserIdOnLogin {
+    ASYNC_TEST_START
+    [self.repository userByLoginWithEmail:@"testUser@test.com" password:@"test" success:^(LBUser* user) {
+        STAssertEqualObjects(user._id, self.repository.currentUserId, @"Invalid current user ID");
+        ASYNC_TEST_SIGNAL
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
+- (void)testCurrentUserIdIsStoredInSharedPreferences {
+    ASYNC_TEST_START
+    [self.repository userByLoginWithEmail:@"testUser@test.com" password:@"test" success:^(LBUser* user) {
+        CustomerRepository *anotherRepo = (CustomerRepository*)[self.adapter repositoryWithClass:[CustomerRepository class]];
+        STAssertEqualObjects(user._id, anotherRepo.currentUserId, @"Invalid current user ID");
+        ASYNC_TEST_SIGNAL
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
 - (void)testLogout {
     ASYNC_TEST_START
     [self.repository userByLoginWithEmail:@"testUser@test.com" password:@"test" success:^(LBUser* user) {
@@ -99,6 +122,18 @@
             failure:^(NSError *error) {
                 ASYNC_TEST_SIGNAL
             }];
+        } failure:ASYNC_TEST_FAILURE_BLOCK];
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
+- (void)testClearsCurrentUserIdOnLogout {
+    ASYNC_TEST_START
+    [self.repository userByLoginWithEmail:@"testUser@test.com" password:@"test" success:^(LBUser* user) {
+        STAssertEqualObjects(user._id, self.repository.currentUserId, @"Invalid current user ID");
+        [self.repository logoutWithSuccess:^(void) {
+            STAssertEqualObjects(nil, self.repository.currentUserId, @"Invalid current user ID");
+            ASYNC_TEST_SIGNAL
         } failure:ASYNC_TEST_FAILURE_BLOCK];
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
