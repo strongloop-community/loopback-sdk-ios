@@ -22,6 +22,7 @@ static NSString * const DEFAULTS_CURRENT_USER_ID_KEY = @"LBUserRepositoryCurrent
 @property (nonatomic, strong) LBAccessTokenRepository *accessTokenRepository;
 @property (nonatomic, readwrite) NSString *currentUserId;
 @property BOOL isCurrentUserIdLoaded;
+@property (nonatomic, readwrite) LBUser *cachedCurrentUser;
 
 - (void)loadCurrentUserIdIfNotLoaded;
 - (void)saveCurrentUserId;
@@ -92,8 +93,22 @@ static NSString * const DEFAULTS_CURRENT_USER_ID_KEY = @"LBUserRepositoryCurrent
     NSParameterAssert(password);
     [self loginWithEmail:email password:password success:^(LBAccessToken* token){
         [self findById:token.userId success:^(LBModel *model){
+            self.cachedCurrentUser = (LBUser*)model;
             success((LBUser*)model);
         } failure:failure];
+    } failure:failure];
+}
+
+- (void)findCurrentUserWithSuccess:(LBUserFindUserSuccessBlock)success
+                           failure:(SLFailureBlock)failure {
+    if (self.currentUserId == nil) {
+        success(nil);
+        return;
+    }
+
+    [self findById:self.currentUserId success:^(LBModel *model) {
+        self.cachedCurrentUser = (LBUser*)model;
+        success((LBUser*)model);
     } failure:failure];
 }
 
@@ -117,6 +132,7 @@ static NSString * const DEFAULTS_CURRENT_USER_ID_KEY = @"LBUserRepositoryCurrent
 
 - (void)setCurrentUserId:(NSString *)currentUserId {
     _currentUserId = currentUserId;
+    self.cachedCurrentUser = nil;
     [self saveCurrentUserId];
 }
 
