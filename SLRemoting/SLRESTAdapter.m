@@ -35,6 +35,8 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
 
 @implementation SLRESTAdapter
 
+@synthesize connected;
+
 - (instancetype)initWithURL:(NSURL *)url allowsInvalidSSLCertificate : (BOOL) allowsInvalidSSLCertificate {
     self = [super initWithURL:url allowsInvalidSSLCertificate:allowsInvalidSSLCertificate];
 
