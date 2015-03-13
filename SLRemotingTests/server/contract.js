@@ -20,10 +20,12 @@ transform.accepts = [{ arg: 'str', type: 'string' }];
 transform.returns = [{ arg: 'data', type: 'string' }];
 transform.http = { path: '/customizedTransform', verb: 'GET' };
 
-function getAuthorizationHeader(auth, cb) {
-  cb(null, auth);
+/**
+ * Obtains the access token and returns it.
+ */
+function getAuthorizationHeader(auth, callback) {
+  callback(null, auth);
 }
-
 getAuthorizationHeader.shared = true;
 getAuthorizationHeader.accepts = [{ arg: 'auth', type: 'string', http: function(ctx) {
   return ctx.req.header('authorization');
@@ -34,5 +36,5 @@ getAuthorizationHeader.http = { path: '/get-auth' };
 module.exports = {
   getSecret: getSecret,
   transform: transform,
-  getAuthorizationHeader: getAuthorizationHeader
+  getAuthorizationHeader: getAuthorizationHeader,
 };

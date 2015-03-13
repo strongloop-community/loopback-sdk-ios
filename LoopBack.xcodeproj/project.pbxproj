@@ -106,6 +106,8 @@
 		895B41811AB16D670000A9D7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B278D50187B584F00FFC135 /* MobileCoreServices.framework */; };
 		895B41821AB16D6A0000A9D7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B278D4A187B584A00FFC135 /* SystemConfiguration.framework */; };
 		895B41831AB16D6B0000A9D7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B278D4A187B584A00FFC135 /* SystemConfiguration.framework */; };
+		8973753E1AB2A60A00FB31A2 /* SLStreamParam.h in Headers */ = {isa = PBXBuildFile; fileRef = 8973753C1AB2A60A00FB31A2 /* SLStreamParam.h */; };
+		8973753F1AB2A60A00FB31A2 /* SLStreamParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 8973753D1AB2A60A00FB31A2 /* SLStreamParam.m */; };
 		89D3DB0E1AB174F1005A1B90 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 47C48BB51962123900995044 /* InfoPlist.strings */; };
 		89D3DB0F1AB174F1005A1B90 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 47C48BB51962123900995044 /* InfoPlist.strings */; };
 		89EB399D1AB16ED700B1EB9D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D2214317725DAB00B7CB63 /* UIKit.framework */; };
@@ -225,6 +227,8 @@
 		47D471B7196DF4A1002E2358 /* LoopBackTests copy.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LoopBackTests copy.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47F8E811185B7A4E0088BB73 /* LBPushNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPushNotification.h; sourceTree = "<group>"; };
 		47F8E812185B7A4E0088BB73 /* LBPushNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPushNotification.m; sourceTree = "<group>"; };
+		8973753C1AB2A60A00FB31A2 /* SLStreamParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLStreamParam.h; sourceTree = "<group>"; };
+		8973753D1AB2A60A00FB31A2 /* SLStreamParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLStreamParam.m; sourceTree = "<group>"; };
 		89D3C9521AB17258005A1B90 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
 		89D3DB001AB17263005A1B90 /* package.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
 		89D3DB031AB17263005A1B90 /* f1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = f1.txt; sourceTree = "<group>"; };
@@ -321,7 +325,6 @@
 		47C48B881962120E00995044 /* SLRemoting */ = {
 			isa = PBXGroup;
 			children = (
-				89D3DB111AB178B7005A1B90 /* Supporting File */,
 				47C48B891962120E00995044 /* SLAdapter.h */,
 				47C48B8A1962120E00995044 /* SLAdapter.m */,
 				47C48B8B1962120E00995044 /* SLObject.h */,
@@ -333,6 +336,9 @@
 				47C48B921962120E00995044 /* SLRESTAdapter.m */,
 				47C48B931962120E00995044 /* SLRESTContract.h */,
 				47C48B941962120E00995044 /* SLRESTContract.m */,
+				8973753C1AB2A60A00FB31A2 /* SLStreamParam.h */,
+				8973753D1AB2A60A00FB31A2 /* SLStreamParam.m */,
+				89D3DB111AB178B7005A1B90 /* Supporting File */,
 			);
 			path = SLRemoting;
 			sourceTree = "<group>";
@@ -340,8 +346,6 @@
 		47C48BB41962123900995044 /* SLRemotingTests */ = {
 			isa = PBXGroup;
 			children = (
-				89D3DB101AB175C7005A1B90 /* Supporting Files */,
-				47C48BB71962123900995044 /* server */,
 				47C48BC81962123900995044 /* SLRESTAdapterTests.h */,
 				47C48BC91962123900995044 /* SLRESTAdapterTests.m */,
 				47C48BCA1962123900995044 /* SLRESTContractTests.h */,
@@ -349,6 +353,8 @@
 				47C48BC51962123900995044 /* SLRESTAdapterNonRootTests.h */,
 				47C48BC61962123900995044 /* SLRESTAdapterNonRootTests.m */,
 				47C48BC71962123900995044 /* SLRESTAdapterSSLTests.m */,
+				89D3DB101AB175C7005A1B90 /* Supporting Files */,
+				47C48BB71962123900995044 /* server */,
 			);
 			path = SLRemotingTests;
 			sourceTree = "<group>";
@@ -356,16 +362,16 @@
 		47C48BB71962123900995044 /* server */ = {
 			isa = PBXGroup;
 			children = (
-				47C48BB81962123900995044 /* .gitignore */,
 				47C48BB91962123900995044 /* contract-class.js */,
 				47C48BBA1962123900995044 /* contract.js */,
 				47C48BBB1962123900995044 /* index.js */,
 				47C48BBC1962123900995044 /* nonroot.js */,
-				47C48BBD1962123900995044 /* package.json */,
-				47C48BBE1962123900995044 /* private */,
 				47C48BC11962123900995044 /* simple-class.js */,
 				47C48BC21962123900995044 /* simple.js */,
 				47C48BC31962123900995044 /* ssl-config.js */,
+				47C48BBD1962123900995044 /* package.json */,
+				47C48BB81962123900995044 /* .gitignore */,
+				47C48BBE1962123900995044 /* private */,
 			);
 			path = server;
 			sourceTree = "<group>";
@@ -472,7 +478,6 @@
 		B3D220FC17722AE800B7CB63 /* LoopBack */ = {
 			isa = PBXGroup;
 			children = (
-				B3D220FD17722AE800B7CB63 /* Supporting Files */,
 				B3D220FF17722AE800B7CB63 /* LoopBack.h */,
 				B3D2212217722B1700B7CB63 /* LBModel.h */,
 				B3D2212317722B1700B7CB63 /* LBModel.m */,
@@ -490,6 +495,7 @@
 				0B786865189B1C3300AB6782 /* LBFile.m */,
 				0B8022DE18A2F1BA00AF845E /* LBContainer.h */,
 				0B8022E418A2F27600AF845E /* LBContainer.m */,
+				B3D220FD17722AE800B7CB63 /* Supporting Files */,
 			);
 			path = LoopBack;
 			sourceTree = "<group>";
@@ -505,8 +511,6 @@
 		B3D2211117722AE800B7CB63 /* LoopBackTests */ = {
 			isa = PBXGroup;
 			children = (
-				B3D2211217722AE800B7CB63 /* Supporting Files */,
-				89D3C9511AB17258005A1B90 /* server */,
 				B3D2213917722BAB00B7CB63 /* LBModelTests.h */,
 				B3D2213A17722BAB00B7CB63 /* LBModelTests.m */,
 				B3D2214017725A7F00B7CB63 /* LBModelSubclassingTests.h */,
@@ -519,6 +523,8 @@
 				0B3A201A18A5856F006772C8 /* LBFileTests.m */,
 				0B3A200D18A55B5A006772C8 /* LBContainerTests.h */,
 				0B3A201518A56BA5006772C8 /* LBContainerTests.m */,
+				B3D2211217722AE800B7CB63 /* Supporting Files */,
+				89D3C9511AB17258005A1B90 /* server */,
 			);
 			path = LoopBackTests;
 			sourceTree = "<group>";
@@ -552,6 +558,7 @@
 				0B6DCCA518806F2E00F7E57A /* LBUser.h in Headers */,
 				47C48B9D1962120E00995044 /* SLAFNetworkActivityIndicatorManager.h in Headers */,
 				47C48BA81962120E00995044 /* SLAdapter.h in Headers */,
+				8973753E1AB2A60A00FB31A2 /* SLStreamParam.h in Headers */,
 				0B4F52AA18908089004F675A /* LBAccessToken.h in Headers */,
 				47C48BAA1962120E00995044 /* SLObject.h in Headers */,
 				47C48BA61962120E00995044 /* UIImageView+SLAFNetworking.h in Headers */,
@@ -789,6 +796,7 @@
 				47C48BB11962120E00995044 /* SLRESTAdapter.m in Sources */,
 				0B6DCCA618806F2E00F7E57A /* LBUser.m in Sources */,
 				47C48BAB1962120E00995044 /* SLObject.m in Sources */,
+				8973753F1AB2A60A00FB31A2 /* SLStreamParam.m in Sources */,
 				0B8022E518A2F27600AF845E /* LBContainer.m in Sources */,
 				47C48BA31962120E00995044 /* SLAFURLConnectionOperation.m in Sources */,
 				0B786866189B1C3300AB6782 /* LBFile.m in Sources */,

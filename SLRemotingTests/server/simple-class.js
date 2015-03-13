@@ -45,4 +45,24 @@ SimpleClass.getFavoritePerson.shared = true;
 SimpleClass.getFavoritePerson.accepts = [];
 SimpleClass.getFavoritePerson.returns = [{ arg: 'data', type: 'string' }];
 
+/**
+ * Returns a binary sequence.
+ */
+SimpleClass.binary = function(res) {
+  res.type('application/octet-stream');
+  res.send(200, new Buffer('010203', 'hex'));
+};
+SimpleClass.binary.shared = true;
+SimpleClass.binary.accepts = [{arg: 'res', type: 'object', 'http': {source: 'res'}}];
+
+/**
+ * Returns a binary sequence.
+ */
+SimpleClass.prototype.binary = function(res) {
+  res.type('application/octet-stream');
+  res.send(200, new Buffer('040506', 'hex'));
+};
+SimpleClass.prototype.binary.shared = true;
+SimpleClass.prototype.binary.accepts = [{arg: 'res', type: 'object', 'http': {source: 'res'}}];
+
 module.exports = SimpleClass;

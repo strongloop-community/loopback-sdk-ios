@@ -129,4 +129,43 @@
     ASYNC_TEST_END
 }
 
+- (void)testBinaryPayloadStatic {
+    __block NSOutputStream *outputStream = [NSOutputStream outputStreamToMemory];
+
+    ASYNC_TEST_START
+    [adapter invokeStaticMethod:@"SimpleClass.binary"
+                     parameters:nil
+                   outputStream:outputStream
+                        success:^(id value) {
+                            NSData *data =
+                                [outputStream propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
+                            const unsigned char *bytes = [data bytes];
+                            STAssertTrue(bytes[0] == 1 && bytes[1] == 2 && bytes[2] == 3,
+                                         @"Incorrect binary data returned.");
+                            ASYNC_TEST_SIGNAL
+                        }
+                        failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
+- (void)testBinaryPayload {
+    __block NSOutputStream *outputStream = [NSOutputStream outputStreamToMemory];
+
+    ASYNC_TEST_START
+    [adapter invokeInstanceMethod:@"SimpleClass.prototype.binary"
+            constructorParameters:nil
+                       parameters:nil
+                     outputStream:outputStream
+                          success:^(id value) {
+                              NSData *data =
+                                [outputStream propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
+                              const unsigned char *bytes = [data bytes];
+                              STAssertTrue(bytes[0] == 4 && bytes[1] == 5 && bytes[2] == 6,
+                                           @"Incorrect binary data returned.");
+                              ASYNC_TEST_SIGNAL
+                          }
+                          failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
 @end

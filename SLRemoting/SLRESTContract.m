@@ -14,6 +14,34 @@ NSString *SLRESTContractDefaultVerb = @"POST";
 @property (readwrite, nonatomic, copy) NSString *pattern;
 @property (readwrite, nonatomic, copy) NSString *verb;
 @property (readwrite, nonatomic, assign) BOOL multipart;
+@property (readwrite, nonatomic, assign) BOOL binaryCallback;
+
+/**
+ * Initializes a new item to encapsulate the given pattern.
+ *
+ * @param  pattern  The pattern to represent.
+ * @return          The item.
+ */
+- (instancetype)initWithPattern:(NSString *)pattern;
+
+/**
+ * Initializes a new item encapsulating the given pattern and verb.
+ *
+ * @param  pattern  The pattern to represent.
+ * @param  verb     The verb to represent.
+ * @return          A new item.
+ */
+- (instancetype)initWithPattern:(NSString *)pattern verb:(NSString *)verb;
+
+/**
+ * Initializes a new item encapsulating the given pattern, verb and multipart setting.
+ *
+ * @param  pattern   The pattern to represent.
+ * @param  verb      The verb to represent.
+ * @param multiplart Indicates this item is a multipart mime type.
+ * @return           A new item.
+ */
+- (instancetype)initWithPattern:(NSString *)pattern verb:(NSString *)verb multipart:(BOOL)multipart;
 
 @end
 
