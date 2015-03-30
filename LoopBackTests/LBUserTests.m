@@ -94,7 +94,11 @@
     ASYNC_TEST_START
     [self.repository userByLoginWithEmail:@"testUser@test.com" password:@"test" success:^(LBUser* user) {
         [self.repository logoutWithSuccess:^(void) {
-        ASYNC_TEST_SIGNAL
+            // The following second try to logout should fail if the first logout succeeded
+            [self.repository logoutWithSuccess:ASYNC_TEST_FAILURE_BLOCK
+            failure:^(NSError *error) {
+                ASYNC_TEST_SIGNAL
+            }];
         } failure:ASYNC_TEST_FAILURE_BLOCK];
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END

@@ -29,8 +29,10 @@
 
 - (SLRESTContract *)contract {
     SLRESTContract *contract = [super contract];
-    
-    [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@/logout", self.className] verb:@"GET"]
+
+    [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@/login?include=user", self.className] verb:@"POST"]
+            forMethod:[NSString stringWithFormat:@"%@.login", self.className]];
+    [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@/logout", self.className] verb:@"POST"]
             forMethod:[NSString stringWithFormat:@"%@.logout", self.className]];
     
     return contract;
