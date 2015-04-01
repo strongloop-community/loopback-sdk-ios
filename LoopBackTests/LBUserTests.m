@@ -11,6 +11,10 @@
 #import "LBUser.h"
 #import "LBRESTAdapter.h"
 
+static NSString * const DEFAULTS_CURRENT_USER_ID_KEY = @"LBUserRepositoryCurrentUserId";
+static NSString * const USER_EMAIL_DOMAIN = @"@test.com";
+static NSString * const USER_PASSWORD = @"testpassword";
+
 /**
  * Custom subclass of User.
  */
@@ -42,7 +46,12 @@
 
 @interface LBUserTests ()
 
+@property (nonatomic, strong) LBRESTAdapter *adapter;
 @property (nonatomic, strong) CustomerRepository *repository;
+
+typedef void (^GivenCustomerSuccessBlock)(Customer *customer);
+- (void)givenCustomerWithSuccess:(GivenCustomerSuccessBlock)success failure:(SLFailureBlock)failure;
+- (void)givenLoggedInCustomerWithSuccess:(GivenCustomerSuccessBlock)success failure:(SLFailureBlock)failure;
 
 @end
 
@@ -53,65 +62,192 @@
  */
 + (id)defaultTestSuite {
     SenTestSuite *suite = [SenTestSuite testSuiteWithName:@"TestSuite for LBContainer."];
-    [suite addTest:[self testCaseWithSelector:@selector(testCreate)]];
-    [suite addTest:[self testCaseWithSelector:@selector(testLogin)]];
-    [suite addTest:[self testCaseWithSelector:@selector(testLogout)]];
-    [suite addTest:[self testCaseWithSelector:@selector(testRemove)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testCreateSaveRemove)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testLoginLogout)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testSetsCurrentUserIdOnLogin)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testCurrentUserIdIsStoredInSharedPreferences)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testClearsCurrentUserIdOnLogout)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testGetCachedCurrentUserReturnsNilInitially)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testFindCurrentUserReturnsNilWhenNotLoggedIn)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testFindCurrentUserReturnsCorrectValue)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testGetCachedCurrentUserReturnsValueLoadedByFindCurrentUser)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testGetCachedCurrentUserReturnsValueLoadedByLogin)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testCachedCurrentUserIsClearedOnLogout)]];
     return suite;
 }
 
-
 - (void)setUp {
     [super setUp];
-    
-    LBRESTAdapter *adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
-    self.repository = (CustomerRepository*)[adapter repositoryWithClass:[CustomerRepository class]];
+    // forcibly clear the stored user id
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:DEFAULTS_CURRENT_USER_ID_KEY];
+
+    self.adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
+    self.repository = (CustomerRepository*)[self.adapter repositoryWithClass:[CustomerRepository class]];
 }
 
 - (void)tearDown {
     [super tearDown];
 }
 
-- (void)testCreate {
+- (void)testCreateSaveRemove {
     ASYNC_TEST_START
-    Customer __block *user = (Customer*)[self.repository createUserWithEmail:@"testUser@test.com"
-                                                                    password:@"test"];
-    [user saveWithSuccess:^{
-        ASYNC_TEST_SIGNAL
-    } failure:ASYNC_TEST_FAILURE_BLOCK];
-    ASYNC_TEST_END
-}
+    double uid = [[NSDate date] timeIntervalSince1970];
+    NSString *userEmail = [NSString stringWithFormat:@"%f%@", uid, USER_EMAIL_DOMAIN];
 
-- (void)testLogin {
-    ASYNC_TEST_START
-    [self.repository userByLoginWithEmail:@"testUser@test.com" password:@"test" success:^(LBUser* user) {
-        ASYNC_TEST_SIGNAL
-    } failure:ASYNC_TEST_FAILURE_BLOCK];
-    ASYNC_TEST_END
-}
+    Customer __block *customer = (Customer*)[self.repository createUserWithEmail:userEmail
+                                                                        password:USER_PASSWORD];
+    STAssertNil(customer._id, @"User id should be nil before save");
 
-- (void)testLogout {
-    ASYNC_TEST_START
-    [self.repository userByLoginWithEmail:@"testUser@test.com" password:@"test" success:^(LBUser* user) {
-        [self.repository logoutWithSuccess:^(void) {
-            // The following second try to logout should fail if the first logout succeeded
-            [self.repository logoutWithSuccess:ASYNC_TEST_FAILURE_BLOCK
-            failure:^(NSError *error) {
+    [customer saveWithSuccess:^{
+        STAssertNotNil(customer._id, @"User id should not be nil after save");
+
+        [self.repository userByLoginWithEmail:userEmail password:USER_PASSWORD success:^(LBUser *user) {
+            [user destroyWithSuccess:^(void) {
                 ASYNC_TEST_SIGNAL
-            }];
+            } failure:ASYNC_TEST_FAILURE_BLOCK];
         } failure:ASYNC_TEST_FAILURE_BLOCK];
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
 }
 
-- (void)testRemove {
+- (void)testLoginLogout {
     ASYNC_TEST_START
-    [self.repository userByLoginWithEmail:@"testUser@test.com" password:@"test" success:^(LBUser* user) {
-        [user destroyWithSuccess:^(void) {
+    [self givenCustomerWithSuccess:^(Customer *customer) {
+        [self.repository userByLoginWithEmail:customer.email password:USER_PASSWORD success:^(LBUser *user) {
+            STAssertNotNil(user, @"User should not be nil");
+            STAssertNotNil(user._id, @"User id should not be nil");
+            STAssertEqualObjects(user.email, customer.email, @"Invalid email");
+
+            [self.repository logoutWithSuccess:^(void) {
+                ASYNC_TEST_SIGNAL
+            } failure:ASYNC_TEST_FAILURE_BLOCK];
+        } failure:ASYNC_TEST_FAILURE_BLOCK];
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
+- (void)testSetsCurrentUserIdOnLogin {
+    ASYNC_TEST_START
+    [self givenLoggedInCustomerWithSuccess:^(Customer *customer) {
+        STAssertEqualObjects(customer._id, self.repository.currentUserId, @"Invalid current user ID");
+        ASYNC_TEST_SIGNAL
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
+- (void)testCurrentUserIdIsStoredInSharedPreferences {
+    ASYNC_TEST_START
+    [self givenLoggedInCustomerWithSuccess:^(Customer *customer) {
+        CustomerRepository *anotherRepo = (CustomerRepository*)[self.adapter repositoryWithClass:[CustomerRepository class]];
+        STAssertEqualObjects(customer._id, anotherRepo.currentUserId, @"Invalid current user ID");
+        ASYNC_TEST_SIGNAL
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
+- (void)testClearsCurrentUserIdOnLogout {
+    ASYNC_TEST_START
+    [self givenLoggedInCustomerWithSuccess:^(Customer *customer) {
+        STAssertEqualObjects(customer._id, self.repository.currentUserId, @"Invalid current user ID");
+        [self.repository logoutWithSuccess:^(void) {
+            STAssertNil(self.repository.currentUserId, @"Invalid current user ID");
+            // The following second try to logout should fail if the first logout succeeded
+            [self.repository logoutWithSuccess:ASYNC_TEST_FAILURE_BLOCK
+                                       failure:^(NSError *error) {
+                                           ASYNC_TEST_SIGNAL
+                                       }];
+        } failure:ASYNC_TEST_FAILURE_BLOCK];
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
+- (void)testGetCachedCurrentUserReturnsNilInitially {
+    LBUser *cached = self.repository.cachedCurrentUser;
+    STAssertNil(cached, @"Cached current user should be nil initially");
+}
+
+- (void)testFindCurrentUserReturnsNilWhenNotLoggedIn {
+    ASYNC_TEST_START
+    [self.repository findCurrentUserWithSuccess:^(LBUser *current) {
+        STAssertNil(current, @"Current user should be nil when not logged in");
+        ASYNC_TEST_SIGNAL
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
+- (void)testFindCurrentUserReturnsCorrectValue {
+    ASYNC_TEST_START
+    [self givenLoggedInCustomerWithSuccess:^(Customer *customer) {
+        [self.repository findCurrentUserWithSuccess:^(LBUser *current) {
+            STAssertEqualObjects(customer._id, current._id, @"Invalid current user");
+            STAssertEqualObjects(customer.email, current.email, @"Invalid current user");
             ASYNC_TEST_SIGNAL
         } failure:ASYNC_TEST_FAILURE_BLOCK];
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
+}
+
+- (void)testGetCachedCurrentUserReturnsValueLoadedByFindCurrentUser {
+    ASYNC_TEST_START
+    [self givenLoggedInCustomerWithSuccess:^(Customer *customer) {
+        [self.repository findCurrentUserWithSuccess:^(LBUser *current) {
+            LBUser *cached = self.repository.cachedCurrentUser;
+            STAssertEqualObjects(current, cached, @"Invalid cached current user");
+            ASYNC_TEST_SIGNAL
+        } failure:ASYNC_TEST_FAILURE_BLOCK];
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
+- (void)testGetCachedCurrentUserReturnsValueLoadedByLogin {
+    ASYNC_TEST_START
+    [self givenLoggedInCustomerWithSuccess:^(Customer *customer) {
+        LBUser *cached = self.repository.cachedCurrentUser;
+        STAssertEqualObjects(customer, cached, @"Invalid cached current user");
+        ASYNC_TEST_SIGNAL
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
+- (void)testCachedCurrentUserIsClearedOnLogout {
+    ASYNC_TEST_START
+    [self givenLoggedInCustomerWithSuccess:^(Customer *customer) {
+        [self.repository logoutWithSuccess:^(void) {
+            LBUser *cached = self.repository.cachedCurrentUser;
+            STAssertNil(cached, @"Cached current user should be nil after logout");
+            ASYNC_TEST_SIGNAL
+        } failure:ASYNC_TEST_FAILURE_BLOCK];
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
+- (void)givenCustomerWithSuccess:(GivenCustomerSuccessBlock)success
+                         failure:(SLFailureBlock)failure {
+    static int counter = 0;
+
+    double uid = [[NSDate date] timeIntervalSince1970];
+    NSString *email = [NSString stringWithFormat:@"%f-%d%@", uid, ++counter, USER_EMAIL_DOMAIN];
+
+    Customer __block *user = (Customer*)[self.repository createUserWithEmail:email password:USER_PASSWORD];
+    [user saveWithSuccess:^{
+        success(user);
+    } failure:^(NSError *error) {
+        NSLog(@"givenCustomerWithSuccess failed with error: %@", error);
+        failure(error);
+    }];
+}
+
+- (void)givenLoggedInCustomerWithSuccess:(GivenCustomerSuccessBlock)success
+                                 failure:(SLFailureBlock)failure {
+    [self givenCustomerWithSuccess:^(Customer *customer) {
+        [self.repository userByLoginWithEmail:customer.email password:USER_PASSWORD success:^(LBUser *user) {
+            success((Customer*)user);
+        } failure:^(NSError *error) {
+            NSLog(@"givenLoggedInCustomerWithSuccess failed with error: %@", error);
+            failure(error);
+        }];
+    } failure:failure];
 }
 
 @end

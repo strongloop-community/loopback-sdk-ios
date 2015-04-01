@@ -29,6 +29,9 @@
  */
 @interface LBUserRepository : LBModelRepository
 
+@property (nonatomic, readonly) NSString *currentUserId;
+@property (nonatomic, readonly) LBUser *cachedCurrentUser;
+
 + (instancetype)repository;
 
 /**
@@ -53,7 +56,7 @@
 
 /**
  * Blocks of this type are executed when
- * LBUserRepository::login:success:failure: is successful.
+ * LBUserRepository::loginWithEmail:password:success:failure: is successful.
  */
 typedef void (^LBUserLoginSuccessBlock)(LBAccessToken* token);
 /**
@@ -72,7 +75,7 @@ typedef void (^LBUserLoginSuccessBlock)(LBAccessToken* token);
 
 /**
  * Blocks of this type are executed when
- * LBUserRepository::login:success:failure: is successful.
+ * LBUserRepository::userByLoginWithEmail:password:success:failure: is successful.
  */
 typedef void (^LBUserLoginFindUserSuccessBlock)(LBUser *user);
 /**
@@ -89,7 +92,22 @@ typedef void (^LBUserLoginFindUserSuccessBlock)(LBUser *user);
                      failure:(SLFailureBlock)failure;
 
 /**
- * Blocks of this type are executed when LBUserRepository::logoutWithSuccess: is
+ * Blocks of this type are executed when
+ * LBUserRepository::findCurrentUserWithSuccess:failure: is successful.
+ */
+typedef void (^LBUserFindUserSuccessBlock)(LBUser *user);
+/**
+ * Fetch the user model of the currently logged in user.
+ * Invokes {@code success(nil)} when no user is logged in.
+ *
+ * @param success  The block to be executed when the fetch is successful.
+ * @param failure  The block to be executed when the fetch fails.
+ */
+- (void)findCurrentUserWithSuccess:(LBUserFindUserSuccessBlock)success
+                           failure:(SLFailureBlock)failure;
+
+/**
+ * Blocks of this type are executed when LBUserRepository::logoutWithSuccess:success:failure: is
  * successful.
  */
 typedef void (^LBUserLogoutSuccessBlock)();
