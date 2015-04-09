@@ -47,9 +47,8 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
 
     NSString *url = [contract urlWithPattern:@"/widgets/:id" parameters:parameters];
 
-    STAssertEqualObjects(url, @"/widgets/57", @"Invalid URL");
-    STAssertEqualObjects(parameters, [@{ @"price": @"42.00" } mutableCopy], @"Invalid parameters");
-    NSLog(@"\n***, %@, %@", url, parameters);
+    XCTAssertEqualObjects(url, @"/widgets/57", @"Invalid URL");
+    XCTAssertEqualObjects(parameters, [@{ @"price": @"42.00" } mutableCopy], @"Invalid parameters");
 }
 
 - (void)testAddItemsFromContract {

@@ -5,7 +5,7 @@
  * @copyright (c) 2013 StrongLoop. All rights reserved.
  */
 
-#import <LoopBack/SLRemoting.h>
+#import "SLRemoting.h"
 
 /**
  * A local representative of a single model instance on the server. The data is
