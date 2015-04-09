@@ -72,15 +72,15 @@ static dispatch_queue_t xml_request_operation_processing_queue() {
 											   success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSXMLDocument *document))success
 											   failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSXMLDocument *document))failure
 {
-    AFXMLRequestOperation *requestOperation = [[self alloc] initWithRequest:urlRequest];
-    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, __unused id responseObject) {
+    SLAFXMLRequestOperation *requestOperation = [[self alloc] initWithRequest:urlRequest];
+    [requestOperation setCompletionBlockWithSuccess:^(SLAFHTTPRequestOperation *operation, __unused id responseObject) {
         if (success) {
-            NSXMLDocument *XMLDocument = [(AFXMLRequestOperation *)operation responseXMLDocument];
+            NSXMLDocument *XMLDocument = [(SLAFXMLRequestOperation *)operation responseXMLDocument];
             success(operation.request, operation.response, XMLDocument);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(SLAFHTTPRequestOperation *operation, NSError *error) {
         if (failure) {
-            NSXMLDocument *XMLDocument = [(AFXMLRequestOperation *)operation responseXMLDocument];
+            NSXMLDocument *XMLDocument = [(SLAFXMLRequestOperation *)operation responseXMLDocument];
             failure(operation.request, operation.response, error, XMLDocument);
         }
     }];
