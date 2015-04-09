@@ -34,8 +34,8 @@
     [adapter invokeStaticMethod:@"getMsg"
                      parameters:nil
                         success:^(id value) {
-                            STAssertNotNil(value, @"No value returned.");
-                            STAssertTrue([@"Hello" isEqualToString:value[@"data"]], @"Incorrect value returned.");
+                            XCTAssertNotNil(value, @"No value returned.");
+                            XCTAssertTrue([@"Hello" isEqualToString:value[@"data"]], @"Incorrect value returned.");
                             ASYNC_TEST_SIGNAL
                         }
                         failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -49,8 +49,8 @@
     [adapter invokeStaticMethod:@"convertMsg"
                      parameters:@{ @"str": @"somevalue" }
                         success:^(id value) {
-                            STAssertNotNil(value, @"No value returned.");
-                            STAssertTrue([@"CONVERTED: SOMEVALUE" isEqualToString:value[@"data"]], @"Incorrect value returned.");
+                            XCTAssertNotNil(value, @"No value returned.");
+                            XCTAssertTrue([@"CONVERTED: SOMEVALUE" isEqualToString:value[@"data"]], @"Incorrect value returned.");
                             ASYNC_TEST_SIGNAL
                         }
                         failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -64,8 +64,8 @@
     [adapter invokeStaticMethod:@"getMsg"
                      parameters:nil
                         success:^(id value) {
-                            STAssertNotNil(value, @"No value returned.");
-                            STAssertTrue([@"Hello" isEqualToString:value[@"data"]], @"Incorrect value returned.");
+                            XCTAssertNotNil(value, @"No value returned.");
+                            XCTAssertTrue([@"Hello" isEqualToString:value[@"data"]], @"Incorrect value returned.");
                             ASYNC_TEST_SIGNAL
                         }
                         failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -79,8 +79,8 @@
     [adapter invokeStaticMethod:@"convertMsg"
                      parameters:@{ @"str": @"somevalue" }
                         success:^(id value) {
-                            STAssertNotNil(value, @"No value returned.");
-                            STAssertTrue([@"CONVERTED: SOMEVALUE" isEqualToString:value[@"data"]], @"Incorrect value returned.");
+                            XCTAssertNotNil(value, @"No value returned.");
+                            XCTAssertTrue([@"CONVERTED: SOMEVALUE" isEqualToString:value[@"data"]], @"Incorrect value returned.");
                             ASYNC_TEST_SIGNAL
                         }
                         failure:ASYNC_TEST_FAILURE_BLOCK];

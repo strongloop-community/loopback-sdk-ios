@@ -23,7 +23,7 @@
  * Create the default test suite to control the order of test methods
  */
 + (id)defaultTestSuite {
-    SenTestSuite *suite = [SenTestSuite testSuiteWithName:@"TestSuite for LBFile."];
+    XCTestSuite *suite = [XCTestSuite testSuiteWithName:@"TestSuite for LBFile."];
     [suite addTest:[self testCaseWithSelector:@selector(testGetByName)]];
     [suite addTest:[self testCaseWithSelector:@selector(testUpload)]];
     [suite addTest:[self testCaseWithSelector:@selector(testDownload)]];
@@ -46,8 +46,8 @@
     NSString *tmpDir = NSTemporaryDirectory();
     ASYNC_TEST_START
     [self.repository getFileWithName:@"f1.txt" localPath:tmpDir container:@"container1" success:^(LBFile *file) {
-        STAssertNotNil(file, @"File not found.");
-        STAssertEqualObjects(file.name, @"f1.txt", @"Invalid name");
+        XCTAssertNotNil(file, @"File not found.");
+        XCTAssertEqualObjects(file.name, @"f1.txt", @"Invalid name");
         ASYNC_TEST_SIGNAL
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
@@ -88,14 +88,14 @@
     
     ASYNC_TEST_START
     [self.repository getFileWithName:@"uploadTest.txt" localPath:tmpDir container:@"container1" success:^(LBFile *file) {
-        STAssertNotNil(file, @"File not found.");
-        STAssertEqualObjects(file.name, @"uploadTest.txt", @"Invalid name");
+        XCTAssertNotNil(file, @"File not found.");
+        XCTAssertEqualObjects(file.name, @"uploadTest.txt", @"Invalid name");
         [file downloadWithSuccess:^(void) {
-            STAssertTrue([fileManager fileExistsAtPath:fullPath], @"File missing.");
+            XCTAssertTrue([fileManager fileExistsAtPath:fullPath], @"File missing.");
             NSString *fileContents = [NSString stringWithContentsOfFile:fullPath
                                                                encoding:NSUTF8StringEncoding
                                                                   error:nil];
-            STAssertEqualObjects(fileContents, @"Upload test", @"File corrupted");
+            XCTAssertEqualObjects(fileContents, @"Upload test", @"File corrupted");
             ASYNC_TEST_SIGNAL
         } failure:ASYNC_TEST_FAILURE_BLOCK];
     } failure:ASYNC_TEST_FAILURE_BLOCK];

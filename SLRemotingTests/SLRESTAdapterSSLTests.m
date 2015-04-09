@@ -37,8 +37,8 @@
     [adapter invokeStaticMethod:@"simple.getSecret"
                      parameters:nil
                         success:^(id value) {
-                            STAssertNotNil(value, @"No value returned.");
-                            STAssertTrue([@"shhh!" isEqualToString:value[@"data"]], @"Incorrect value returned.");
+                            XCTAssertNotNil(value, @"No value returned.");
+                            XCTAssertTrue([@"shhh!" isEqualToString:value[@"data"]], @"Incorrect value returned.");
                             ASYNC_TEST_SIGNAL
                         }
                         failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -50,8 +50,8 @@
     [adapter invokeStaticMethod:@"simple.transform"
                      parameters:@{ @"str": @"somevalue" }
                         success:^(id value) {
-                            STAssertNotNil(value, @"No value returned.");
-                            STAssertTrue([@"transformed: somevalue" isEqualToString:value[@"data"]], @"Incorrect value returned.");
+                            XCTAssertNotNil(value, @"No value returned.");
+                            XCTAssertTrue([@"transformed: somevalue" isEqualToString:value[@"data"]], @"Incorrect value returned.");
                             ASYNC_TEST_SIGNAL
                         }
                         failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -64,8 +64,8 @@
             constructorParameters:@{ @"name": @"somename" }
                        parameters:nil
                           success:^(id value) {
-                              STAssertNotNil(value, @"No value returned.");
-                              STAssertTrue([@"somename" isEqualToString:value[@"data"]], @"Incorrect value returned.");
+                              XCTAssertNotNil(value, @"No value returned.");
+                              XCTAssertTrue([@"somename" isEqualToString:value[@"data"]], @"Incorrect value returned.");
                               ASYNC_TEST_SIGNAL
                           }
                           failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -78,8 +78,8 @@
             constructorParameters:@{ @"name": @"somename" }
                        parameters:@{ @"other": @"othername" }
                           success:^(id value) {
-                              STAssertNotNil(value, @"No value returned.");
-                              STAssertTrue([@"Hi, othername!" isEqualToString:value[@"data"]], @"Incorrect value returned.");
+                              XCTAssertNotNil(value, @"No value returned.");
+                              XCTAssertTrue([@"Hi, othername!" isEqualToString:value[@"data"]], @"Incorrect value returned.");
                               ASYNC_TEST_SIGNAL
                           }
                           failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -91,8 +91,8 @@
     [TestClass invokeStaticMethod:@"getFavoritePerson"
                        parameters:nil
                           success:^(id value) {
-                              STAssertNotNil(value, @"No value returned.");
-                              STAssertTrue([@"You" isEqualToString:value[@"data"]], @"Incorrect value returned.");
+                              XCTAssertNotNil(value, @"No value returned.");
+                              XCTAssertTrue([@"You" isEqualToString:value[@"data"]], @"Incorrect value returned.");
                               ASYNC_TEST_SIGNAL
                           }
                           failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -106,8 +106,8 @@
     [test invokeMethod:@"getName"
             parameters:nil
                success:^(id value) {
-                   STAssertNotNil(value, @"No value returned.");
-                   STAssertTrue([@"somename" isEqualToString:value[@"data"]], @"Incorrect value returned.");
+                   XCTAssertNotNil(value, @"No value returned.");
+                   XCTAssertTrue([@"somename" isEqualToString:value[@"data"]], @"Incorrect value returned.");
                    ASYNC_TEST_SIGNAL
                }
                failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -121,8 +121,8 @@
     [test invokeMethod:@"greet"
             parameters:@{ @"other": @"othername" }
                success:^(id value) {
-                   STAssertNotNil(value, @"No value returned.");
-                   STAssertTrue([@"Hi, othername!" isEqualToString:value[@"data"]], @"Incorrect value returned.");
+                   XCTAssertNotNil(value, @"No value returned.");
+                   XCTAssertTrue([@"Hi, othername!" isEqualToString:value[@"data"]], @"Incorrect value returned.");
                    ASYNC_TEST_SIGNAL
                }
                failure:ASYNC_TEST_FAILURE_BLOCK];

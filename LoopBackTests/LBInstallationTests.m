@@ -29,7 +29,7 @@ static id lastId = nil;
  * Create the default test suite to control the order of test methods
  */
 + (id)defaultTestSuite {
-    SenTestSuite *suite = [SenTestSuite testSuiteWithName:@"TestSuite for LBInstallation."];
+    XCTestSuite *suite = [XCTestSuite testSuiteWithName:@"TestSuite for LBInstallation."];
     [suite addTest:[self testCaseWithSelector:@selector(testSingletonRepository)]];
     [suite addTest:[self testCaseWithSelector:@selector(testRegister)]];
     [suite addTest:[self testCaseWithSelector:@selector(testFind)]];
@@ -61,7 +61,7 @@ static id lastId = nil;
 - (void)testSingletonRepository {
     LBInstallationRepository* r1 = [LBInstallationRepository repository];
     LBInstallationRepository* r2 = [LBInstallationRepository repository];
-    STAssertEquals(r1, r2, @"LBInstallationRepository.repository is a singleton");
+    XCTAssertEqual(r1, r2, @"LBInstallationRepository.repository is a singleton");
 }
 
 - (void)testRegister {
@@ -78,7 +78,7 @@ static id lastId = nil;
                                       success:^(LBInstallation *model) {
                                           // NSLog(@"Completed with: %@", model._id);
                                           lastId = model._id;
-                                          STAssertNotNil(model._id, @"Invalid id");
+                                          XCTAssertNotNil(model._id, @"Invalid id");
                                           ASYNC_TEST_SIGNAL
                                       }
                                       failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -90,8 +90,8 @@ static id lastId = nil;
     ASYNC_TEST_START
     [self.repository findById:lastId
                       success:^(LBModel *model) {
-                          STAssertNotNil(model, @"No model found with ID 1");
-                          STAssertTrue([[model class] isSubclassOfClass:[LBInstallation class]], @"Invalid class.");
+                          XCTAssertNotNil(model, @"No model found with ID 1");
+                          XCTAssertTrue([[model class] isSubclassOfClass:[LBInstallation class]], @"Invalid class.");
                           ASYNC_TEST_SIGNAL
                       } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
@@ -100,8 +100,8 @@ static id lastId = nil;
 - (void)testAll {
     ASYNC_TEST_START
     [self.repository allWithSuccess:^(NSArray *models) {
-        STAssertNotNil(models, @"No models returned.");
-        STAssertTrue([models count] >= 1, [NSString stringWithFormat:@"Invalid # of models returned: %lu", (unsigned long)[models count]]);
+        XCTAssertNotNil(models, @"No models returned.");
+        XCTAssertTrue([models count] >= 1, @"Invalid # of models returned: %lu", (unsigned long)[models count]);
         // STAssertTrue([[models[0] class] isSubclassOfClass:[LBInstallation class]], @"Invalid class.");
         ASYNC_TEST_SIGNAL
     } failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -125,9 +125,9 @@ static id lastId = nil;
                                           // [rfeng] We have to do NSString comparision
                                           id id1 = model._id;
                                           id id2 = lastId;
-                                          STAssertTrue([id1 isEqualToValue:id2], @"The ids should be the same");
+                                          XCTAssertTrue([id1 isEqualToValue:id2], @"The ids should be the same");
                                           lastId = model._id;
-                                          STAssertNotNil(model._id, @"Invalid id");
+                                          XCTAssertNotNil(model._id, @"Invalid id");
                                           ASYNC_TEST_SIGNAL
                                       }
                                       failure:ASYNC_TEST_FAILURE_BLOCK];

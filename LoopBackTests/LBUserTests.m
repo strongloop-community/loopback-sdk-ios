@@ -61,7 +61,7 @@ typedef void (^GivenCustomerSuccessBlock)(Customer *customer);
  * Create the default test suite to control the order of test methods
  */
 + (id)defaultTestSuite {
-    SenTestSuite *suite = [SenTestSuite testSuiteWithName:@"TestSuite for LBContainer."];
+    XCTestSuite *suite = [XCTestSuite testSuiteWithName:@"TestSuite for LBContainer."];
     [suite addTest:[self testCaseWithSelector:@selector(testCreateSaveRemove)]];
     [suite addTest:[self testCaseWithSelector:@selector(testLoginLogout)]];
     [suite addTest:[self testCaseWithSelector:@selector(testSetsCurrentUserIdOnLogin)]];
@@ -97,10 +97,10 @@ typedef void (^GivenCustomerSuccessBlock)(Customer *customer);
 
     Customer __block *customer = (Customer*)[self.repository createUserWithEmail:userEmail
                                                                         password:USER_PASSWORD];
-    STAssertNil(customer._id, @"User id should be nil before save");
+    XCTAssertNil(customer._id, @"User id should be nil before save");
 
     [customer saveWithSuccess:^{
-        STAssertNotNil(customer._id, @"User id should not be nil after save");
+        XCTAssertNotNil(customer._id, @"User id should not be nil after save");
 
         [self.repository userByLoginWithEmail:userEmail password:USER_PASSWORD success:^(LBUser *user) {
             [user destroyWithSuccess:^(void) {
@@ -115,9 +115,9 @@ typedef void (^GivenCustomerSuccessBlock)(Customer *customer);
     ASYNC_TEST_START
     [self givenCustomerWithSuccess:^(Customer *customer) {
         [self.repository userByLoginWithEmail:customer.email password:USER_PASSWORD success:^(LBUser *user) {
-            STAssertNotNil(user, @"User should not be nil");
-            STAssertNotNil(user._id, @"User id should not be nil");
-            STAssertEqualObjects(user.email, customer.email, @"Invalid email");
+            XCTAssertNotNil(user, @"User should not be nil");
+            XCTAssertNotNil(user._id, @"User id should not be nil");
+            XCTAssertEqualObjects(user.email, customer.email, @"Invalid email");
 
             [self.repository logoutWithSuccess:^(void) {
                 ASYNC_TEST_SIGNAL
@@ -130,7 +130,7 @@ typedef void (^GivenCustomerSuccessBlock)(Customer *customer);
 - (void)testSetsCurrentUserIdOnLogin {
     ASYNC_TEST_START
     [self givenLoggedInCustomerWithSuccess:^(Customer *customer) {
-        STAssertEqualObjects(customer._id, self.repository.currentUserId, @"Invalid current user ID");
+        XCTAssertEqualObjects(customer._id, self.repository.currentUserId, @"Invalid current user ID");
         ASYNC_TEST_SIGNAL
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
@@ -140,7 +140,7 @@ typedef void (^GivenCustomerSuccessBlock)(Customer *customer);
     ASYNC_TEST_START
     [self givenLoggedInCustomerWithSuccess:^(Customer *customer) {
         CustomerRepository *anotherRepo = (CustomerRepository*)[self.adapter repositoryWithClass:[CustomerRepository class]];
-        STAssertEqualObjects(customer._id, anotherRepo.currentUserId, @"Invalid current user ID");
+        XCTAssertEqualObjects(customer._id, anotherRepo.currentUserId, @"Invalid current user ID");
         ASYNC_TEST_SIGNAL
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
@@ -149,9 +149,9 @@ typedef void (^GivenCustomerSuccessBlock)(Customer *customer);
 - (void)testClearsCurrentUserIdOnLogout {
     ASYNC_TEST_START
     [self givenLoggedInCustomerWithSuccess:^(Customer *customer) {
-        STAssertEqualObjects(customer._id, self.repository.currentUserId, @"Invalid current user ID");
+        XCTAssertEqualObjects(customer._id, self.repository.currentUserId, @"Invalid current user ID");
         [self.repository logoutWithSuccess:^(void) {
-            STAssertNil(self.repository.currentUserId, @"Invalid current user ID");
+            XCTAssertNil(self.repository.currentUserId, @"Invalid current user ID");
             // The following second try to logout should fail if the first logout succeeded
             [self.repository logoutWithSuccess:ASYNC_TEST_FAILURE_BLOCK
                                        failure:^(NSError *error) {
@@ -164,13 +164,13 @@ typedef void (^GivenCustomerSuccessBlock)(Customer *customer);
 
 - (void)testGetCachedCurrentUserReturnsNilInitially {
     LBUser *cached = self.repository.cachedCurrentUser;
-    STAssertNil(cached, @"Cached current user should be nil initially");
+    XCTAssertNil(cached, @"Cached current user should be nil initially");
 }
 
 - (void)testFindCurrentUserReturnsNilWhenNotLoggedIn {
     ASYNC_TEST_START
     [self.repository findCurrentUserWithSuccess:^(LBUser *current) {
-        STAssertNil(current, @"Current user should be nil when not logged in");
+        XCTAssertNil(current, @"Current user should be nil when not logged in");
         ASYNC_TEST_SIGNAL
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
@@ -180,8 +180,8 @@ typedef void (^GivenCustomerSuccessBlock)(Customer *customer);
     ASYNC_TEST_START
     [self givenLoggedInCustomerWithSuccess:^(Customer *customer) {
         [self.repository findCurrentUserWithSuccess:^(LBUser *current) {
-            STAssertEqualObjects(customer._id, current._id, @"Invalid current user");
-            STAssertEqualObjects(customer.email, current.email, @"Invalid current user");
+            XCTAssertEqualObjects(customer._id, current._id, @"Invalid current user");
+            XCTAssertEqualObjects(customer.email, current.email, @"Invalid current user");
             ASYNC_TEST_SIGNAL
         } failure:ASYNC_TEST_FAILURE_BLOCK];
     } failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -193,7 +193,7 @@ typedef void (^GivenCustomerSuccessBlock)(Customer *customer);
     [self givenLoggedInCustomerWithSuccess:^(Customer *customer) {
         [self.repository findCurrentUserWithSuccess:^(LBUser *current) {
             LBUser *cached = self.repository.cachedCurrentUser;
-            STAssertEqualObjects(current, cached, @"Invalid cached current user");
+            XCTAssertEqualObjects(current, cached, @"Invalid cached current user");
             ASYNC_TEST_SIGNAL
         } failure:ASYNC_TEST_FAILURE_BLOCK];
     } failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -204,7 +204,7 @@ typedef void (^GivenCustomerSuccessBlock)(Customer *customer);
     ASYNC_TEST_START
     [self givenLoggedInCustomerWithSuccess:^(Customer *customer) {
         LBUser *cached = self.repository.cachedCurrentUser;
-        STAssertEqualObjects(customer, cached, @"Invalid cached current user");
+        XCTAssertEqualObjects(customer, cached, @"Invalid cached current user");
         ASYNC_TEST_SIGNAL
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
@@ -215,7 +215,7 @@ typedef void (^GivenCustomerSuccessBlock)(Customer *customer);
     [self givenLoggedInCustomerWithSuccess:^(Customer *customer) {
         [self.repository logoutWithSuccess:^(void) {
             LBUser *cached = self.repository.cachedCurrentUser;
-            STAssertNil(cached, @"Cached current user should be nil after logout");
+            XCTAssertNil(cached, @"Cached current user should be nil after logout");
             ASYNC_TEST_SIGNAL
         } failure:ASYNC_TEST_FAILURE_BLOCK];
     } failure:ASYNC_TEST_FAILURE_BLOCK];

@@ -61,10 +61,10 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
     [child addItem:[SLRESTContractItem itemWithPattern:@"/new/route" verb:@"POST"] forMethod:@"new.route"];
 
     [parent addItemsFromContract:child];
-    STAssertTrue([[parent urlForMethod:@"test.route" parameters:nil] isEqualToString:@"/test/route"], @"Wrong URL.");
-    STAssertTrue([[parent verbForMethod:@"test.route"] isEqualToString:@"GET"], @"Wrong verb.");
-    STAssertTrue([[parent urlForMethod:@"new.route" parameters:nil] isEqualToString:@"/new/route"], @"Wrong URL.");
-    STAssertTrue([[parent verbForMethod:@"new.route"] isEqualToString:@"POST"], @"Wrong verb.");
+    XCTAssertTrue([[parent urlForMethod:@"test.route" parameters:nil] isEqualToString:@"/test/route"], @"Wrong URL.");
+    XCTAssertTrue([[parent verbForMethod:@"test.route"] isEqualToString:@"GET"], @"Wrong verb.");
+    XCTAssertTrue([[parent urlForMethod:@"new.route" parameters:nil] isEqualToString:@"/new/route"], @"Wrong URL.");
+    XCTAssertTrue([[parent verbForMethod:@"new.route"] isEqualToString:@"POST"], @"Wrong verb.");
 }
 
 - (void)testGet {
@@ -72,8 +72,8 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
     [adapter invokeStaticMethod:@"contract.getSecret"
                      parameters:nil
                         success:^(id value) {
-                            STAssertNotNil(value, @"No value returned.");
-                            STAssertTrue([@"shhh!" isEqualToString:value[@"data"]], @"Incorrect value returned.");
+                            XCTAssertNotNil(value, @"No value returned.");
+                            XCTAssertTrue([@"shhh!" isEqualToString:value[@"data"]], @"Incorrect value returned.");
                             ASYNC_TEST_SIGNAL
                         }
                         failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -85,8 +85,8 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
     [adapter invokeStaticMethod:@"contract.transform"
                      parameters:@{ @"str": @"somevalue" }
                         success:^(id value) {
-                            STAssertNotNil(value, @"No value returned.");
-                            STAssertTrue([@"transformed: somevalue" isEqualToString:value[@"data"]], @"Incorrect value returned.");
+                            XCTAssertNotNil(value, @"No value returned.");
+                            XCTAssertTrue([@"transformed: somevalue" isEqualToString:value[@"data"]], @"Incorrect value returned.");
                             ASYNC_TEST_SIGNAL
                         }
                         failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -99,8 +99,8 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
             constructorParameters:@{ @"name": @"somename" }
                        parameters:nil
                           success:^(id value) {
-                              STAssertNotNil(value, @"No value returned.");
-                              STAssertTrue([@"somename" isEqualToString:value[@"data"]], [NSString stringWithFormat:@"Incorrect value returned: %@", value]);
+                              XCTAssertNotNil(value, @"No value returned.");
+                              XCTAssertTrue([@"somename" isEqualToString:value[@"data"]], @"Incorrect value returned: %@", value);
                               ASYNC_TEST_SIGNAL
                           }
                           failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -113,8 +113,8 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
             constructorParameters:@{ @"name": @"somename" }
                        parameters:@{ @"other": @"othername" }
                           success:^(id value) {
-                              STAssertNotNil(value, @"No value returned.");
-                              STAssertTrue([@"Hi, othername!" isEqualToString:value[@"data"]], [NSString stringWithFormat:@"Incorrect value returned: %@", value]);
+                              XCTAssertNotNil(value, @"No value returned.");
+                              XCTAssertTrue([@"Hi, othername!" isEqualToString:value[@"data"]], @"Incorrect value returned: %@", value);
                               ASYNC_TEST_SIGNAL
                           }
                           failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -126,8 +126,8 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
     [TestClass invokeStaticMethod:@"getFavoritePerson"
                        parameters:nil
                           success:^(id value) {
-                              STAssertNotNil(value, @"No value returned.");
-                              STAssertTrue([@"You" isEqualToString:value[@"data"]], [NSString stringWithFormat:@"Incorrect value returned: %@", value]);
+                              XCTAssertNotNil(value, @"No value returned.");
+                              XCTAssertTrue([@"You" isEqualToString:value[@"data"]], @"Incorrect value returned: %@", value);
                               ASYNC_TEST_SIGNAL
                           }
                           failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -141,8 +141,8 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
     [test invokeMethod:@"getName"
             parameters:nil
                success:^(id value) {
-                   STAssertNotNil(value, @"No value returned.");
-                   STAssertTrue([@"somename" isEqualToString:value[@"data"]], [NSString stringWithFormat:@"Incorrect value returned: %@", value]);
+                   XCTAssertNotNil(value, @"No value returned.");
+                   XCTAssertTrue([@"somename" isEqualToString:value[@"data"]], @"Incorrect value returned: %@", value);
                    ASYNC_TEST_SIGNAL
                }
                failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -156,8 +156,8 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
     [test invokeMethod:@"greet"
             parameters:@{ @"other": @"othername" }
                success:^(id value) {
-                   STAssertNotNil(value, @"No value returned.");
-                   STAssertTrue([@"Hi, othername!" isEqualToString:value[@"data"]], [NSString stringWithFormat:@"Incorrect value returned: %@", value]);
+                   XCTAssertNotNil(value, @"No value returned.");
+                   XCTAssertTrue([@"Hi, othername!" isEqualToString:value[@"data"]], @"Incorrect value returned: %@", value);
                    ASYNC_TEST_SIGNAL
                }
                failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -174,8 +174,8 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
     [customAdapter invokeStaticMethod:@"contract.getAuthorizationHeader"
                            parameters:nil
                               success:^(id value) {
-                                  STAssertNotNil(value, @"No value returned.");
-                                  STAssertTrue([@"auth-token" isEqualToString:value[@"data"]], @"Incorrect value returned.");
+                                  XCTAssertNotNil(value, @"No value returned.");
+                                  XCTAssertTrue([@"auth-token" isEqualToString:value[@"data"]], @"Incorrect value returned.");
                                   ASYNC_TEST_SIGNAL
                               }
                               failure:ASYNC_TEST_FAILURE_BLOCK];

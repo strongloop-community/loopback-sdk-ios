@@ -49,7 +49,7 @@ static NSNumber *lastId;
  * Create the default test suite to control the order of test methods
  */
 + (id)defaultTestSuite {
-    SenTestSuite *suite = [SenTestSuite testSuiteWithName:@"TestSuite for LBModel subclasses."];
+    XCTestSuite *suite = [XCTestSuite testSuiteWithName:@"TestSuite for LBModel subclasses."];
     [suite addTest:[self testCaseWithSelector:@selector(testCreate)]];
     [suite addTest:[self testCaseWithSelector:@selector(testFind)]];
     [suite addTest:[self testCaseWithSelector:@selector(testAll)]];
@@ -72,14 +72,14 @@ static NSNumber *lastId;
 - (void)testCreate {
     Widget *model = (Widget*)[self.repository modelWithDictionary:@{ @"name": @"Foobar", @"bars": @1 }];
 
-    STAssertEqualObjects(model.name, @"Foobar", @"Invalid name.");
-    STAssertEqualObjects(model.bars, @1, @"Invalid bars.");
-    STAssertNil(model._id, nil, @"Invalid id");
+    XCTAssertEqualObjects(model.name, @"Foobar", @"Invalid name.");
+    XCTAssertEqualObjects(model.bars, @1, @"Invalid bars.");
+    XCTAssertNil(model._id, @"Invalid id");
 
     ASYNC_TEST_START
     [model saveWithSuccess:^{
         lastId = model._id;
-        STAssertNotNil(model._id, @"Invalid id");
+        XCTAssertNotNil(model._id, @"Invalid id");
         ASYNC_TEST_SIGNAL
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
@@ -89,10 +89,10 @@ static NSNumber *lastId;
     ASYNC_TEST_START
     [self.repository findById:@2
                        success:^(LBModel *model) {
-                           STAssertNotNil(model, @"No model found with ID 2");
-                           STAssertTrue([[model class] isSubclassOfClass:[Widget class]], @"Invalid class.");
-                           STAssertEqualObjects(((Widget *)model).name, @"Bar", @"Invalid name");
-                           STAssertEqualObjects(((Widget *)model).bars, @1, @"Invalid bars");
+                           XCTAssertNotNil(model, @"No model found with ID 2");
+                           XCTAssertTrue([[model class] isSubclassOfClass:[Widget class]], @"Invalid class.");
+                           XCTAssertEqualObjects(((Widget *)model).name, @"Bar", @"Invalid name");
+                           XCTAssertEqualObjects(((Widget *)model).bars, @1, @"Invalid bars");
                            ASYNC_TEST_SIGNAL
                        } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
@@ -101,13 +101,13 @@ static NSNumber *lastId;
 - (void)testAll {
     ASYNC_TEST_START
     [self.repository allWithSuccess:^(NSArray *models) {
-        STAssertNotNil(models, @"No models returned.");
-        STAssertTrue([models count] >= 2, [NSString stringWithFormat:@"Invalid # of models returned: %lu", (unsigned long)[models count]]);
-        STAssertTrue([[models[0] class] isSubclassOfClass:[Widget class]], @"Invalid class.");
-        STAssertEqualObjects(((Widget *)models[0]).name, @"Foo", @"Invalid name.");
-        STAssertEqualObjects(((Widget *)models[0]).bars, @0, @"Invalid bars");
-        STAssertEqualObjects(((Widget *)models[1]).name, @"Bar", @"Invalid name");
-        STAssertEqualObjects(((Widget *)models[1]).bars, @1, @"Invalid bars");
+        XCTAssertNotNil(models, @"No models returned.");
+        XCTAssertTrue([models count] >= 2, @"Invalid # of models returned: %lu", (unsigned long)[models count]);
+        XCTAssertTrue([[models[0] class] isSubclassOfClass:[Widget class]], @"Invalid class.");
+        XCTAssertEqualObjects(((Widget *)models[0]).name, @"Foo", @"Invalid name.");
+        XCTAssertEqualObjects(((Widget *)models[0]).bars, @0, @"Invalid bars");
+        XCTAssertEqualObjects(((Widget *)models[1]).name, @"Bar", @"Invalid name");
+        XCTAssertEqualObjects(((Widget *)models[1]).bars, @1, @"Invalid bars");
         ASYNC_TEST_SIGNAL
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
@@ -116,16 +116,15 @@ static NSNumber *lastId;
 - (void)testUpdate {
     ASYNC_TEST_START
     LBModelFindSuccessBlock verify = ^(LBModel *model) {
-        STAssertNotNil(model, @"No model found with ID 2");
-        STAssertTrue([[model class] isSubclassOfClass:[Widget class]], @"Invalid class.");
-        STAssertEqualObjects(((Widget *)model).name, @"Barfoo", @"Invalid name");
-        STAssertEqualObjects(((Widget *)model).bars, @1, @"Invalid bars");
+        XCTAssertNotNil(model, @"No model found with ID 2");
+        XCTAssertTrue([[model class] isSubclassOfClass:[Widget class]], @"Invalid class.");
+        XCTAssertEqualObjects(((Widget *)model).name, @"Barfoo", @"Invalid name");
+        XCTAssertEqualObjects(((Widget *)model).bars, @1, @"Invalid bars");
 
         ((Widget *)model).name = @"Bar";
         [model saveWithSuccess:^{
             ASYNC_TEST_SIGNAL
         } failure:ASYNC_TEST_FAILURE_BLOCK];
-        ASYNC_TEST_SIGNAL
     };
 
     LBModelSaveSuccessBlock findAgain = ^() {
@@ -133,7 +132,7 @@ static NSNumber *lastId;
     };
 
     LBModelFindSuccessBlock update = ^(LBModel *model) {
-        STAssertNotNil(model, @"No model found with ID 2");
+        XCTAssertNotNil(model, @"No model found with ID 2");
         ((Widget *)model).name = @"Barfoo";
         [model saveWithSuccess:findAgain failure:ASYNC_TEST_FAILURE_BLOCK];
     };
