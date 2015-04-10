@@ -13,13 +13,26 @@
 + (LBPushNotification *) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     // Let the device know we want to receive push notifications
-    [application registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        // iOS 8 or later
+        UIUserNotificationType types = UIUserNotificationTypeBadge |
+                                       UIUserNotificationTypeSound |
+                                       UIUserNotificationTypeAlert;
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types
+                                                                                 categories:nil];
+        [application registerUserNotificationSettings:settings];
+        [application registerForRemoteNotifications];
+    } else {
+        UIRemoteNotificationType types = UIRemoteNotificationTypeBadge |
+                                         UIRemoteNotificationTypeSound |
+                                         UIRemoteNotificationTypeAlert;
+        [application registerForRemoteNotificationTypes:types];
+    }
 
     // Handle APN on Terminated state, app launched because of APN
     NSDictionary *payload = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-    
-    if(payload) {
+
+    if (payload) {
         // There is an offline notification
         return [[LBPushNotification alloc] initWithTypeAndUserInfo:Terminated userInfo:payload];
     } else {
