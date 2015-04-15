@@ -4,6 +4,6 @@
   "description": "A test server for running sl-remoting-clients integration testing.",
   "main": "index.js",
   "dependencies": {
-    "strong-remoting": "~1.1.4"
+    "strong-remoting": "^2.16.1"
   }
 }

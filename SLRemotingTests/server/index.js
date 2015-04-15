@@ -1,3 +1,5 @@
+var express = require('strong-remoting/node_modules/express');
+var app = express();
 var remotes = require('strong-remoting').create();
 
 remotes.exports = {
@@ -8,7 +10,7 @@ remotes.exports = {
   nonroot: require('./nonroot')
 };
 
-var app = remotes.handler('rest');
+app.use(remotes.handler('rest'));
 
 var server = require('http')
   .createServer(app)

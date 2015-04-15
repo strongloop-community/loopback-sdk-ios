@@ -14,6 +14,7 @@ SimpleClass.sharedCtor = function (name, callback) {
 SimpleClass.shared = true;
 SimpleClass.sharedCtor.accepts = [{ arg: 'name', type: 'string' }];
 SimpleClass.sharedCtor.returns = { type: 'object', root: true };
+SimpleClass.sharedCtor.http = { path: '/prototype' };
 
 /**
  * Returns the SimpleClass instance's name.
@@ -50,7 +51,7 @@ SimpleClass.getFavoritePerson.returns = [{ arg: 'data', type: 'string' }];
  */
 SimpleClass.binary = function(res) {
   res.type('application/octet-stream');
-  res.send(200, new Buffer('010203', 'hex'));
+  res.status(200).send(new Buffer('010203', 'hex'));
 };
 SimpleClass.binary.shared = true;
 SimpleClass.binary.accepts = [{arg: 'res', type: 'object', 'http': {source: 'res'}}];
@@ -60,7 +61,7 @@ SimpleClass.binary.accepts = [{arg: 'res', type: 'object', 'http': {source: 'res
  */
 SimpleClass.prototype.binary = function(res) {
   res.type('application/octet-stream');
-  res.send(200, new Buffer('040506', 'hex'));
+  res.status(200).send(new Buffer('040506', 'hex'));
 };
 SimpleClass.prototype.binary.shared = true;
 SimpleClass.prototype.binary.accepts = [{arg: 'res', type: 'object', 'http': {source: 'res'}}];
