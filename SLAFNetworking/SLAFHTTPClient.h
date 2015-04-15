@@ -522,7 +522,7 @@ typedef enum {
 
  @return A percent-escaped query string
  */
-extern NSString * AFQueryStringFromParametersWithEncoding(NSDictionary *parameters, NSStringEncoding encoding);
+extern NSString * SLAFQueryStringFromParametersWithEncoding(NSDictionary *parameters, NSStringEncoding encoding);
 
 ///--------------------
 /// @name Notifications
