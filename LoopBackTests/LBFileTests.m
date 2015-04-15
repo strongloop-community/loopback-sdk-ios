@@ -92,8 +92,12 @@
         STAssertEqualObjects(file.name, @"uploadTest.txt", @"Invalid name");
         [file downloadWithSuccess:^(void) {
             STAssertTrue([fileManager fileExistsAtPath:fullPath], @"File missing.");
+            NSString *fileContents = [NSString stringWithContentsOfFile:fullPath
+                                                               encoding:NSUTF8StringEncoding
+                                                                  error:nil];
+            STAssertEqualObjects(fileContents, @"Upload test", @"File corrupted");
+            ASYNC_TEST_SIGNAL
         } failure:ASYNC_TEST_FAILURE_BLOCK];
-        ASYNC_TEST_SIGNAL
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
 }

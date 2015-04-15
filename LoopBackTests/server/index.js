@@ -77,4 +77,6 @@ loopback.autoAttach();
 app.enableAuth();
 app.use(loopback.token({ model: app.models.AccessToken }));
 app.use(loopback.rest());
-app.listen(3000);
+app.listen(3000, function() {
+  console.log('https server is ready at https://localhost:3000.');
+});

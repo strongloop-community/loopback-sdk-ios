@@ -58,6 +58,26 @@ NSString *SLObjectInvalidRepositoryDescription = @"Invalid repository.";
                                          failure:failure];
 }
 
+- (void)invokeMethod:(NSString *)name
+          parameters:(NSDictionary *)parameters
+        outputStream:(NSOutputStream *)outputStream
+             success:(SLSuccessBlock)success
+             failure:(SLFailureBlock)failure {
+
+    NSAssert(self.repository, SLObjectInvalidRepositoryDescription);
+
+    NSString *path = [NSString stringWithFormat:@"%@.prototype.%@",
+                      self.repository.className,
+                      name];
+
+    [self.repository.adapter invokeInstanceMethod:path
+                            constructorParameters:self.creationParameters
+                                       parameters:parameters
+                                     outputStream:outputStream
+                                          success:success
+                                          failure:failure];
+}
+
 @end
 
 @implementation SLRepository

@@ -6,6 +6,7 @@
  */
 
 #import "SLRESTAdapter.h"
+#import "SLStreamParam.h"
 
 #import "SLAFHTTPClient.h"
 #import "SLAFJSONRequestOperation.h"
@@ -18,22 +19,22 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
 
 @property (readwrite, nonatomic) BOOL connected;
 
-- (void)requestPath:(NSString *)path
-               verb:(NSString *)verb
-         parameters:(NSDictionary *)parameters
-            success:(SLSuccessBlock)success
-            failure:(SLFailureBlock)failure;
+- (void)requestWithPath:(NSString *)path
+                   verb:(NSString *)verb
+             parameters:(NSDictionary *)parameters
+              multipart:(BOOL)multipart
+           outputStream:(NSOutputStream *)outputStream
+                success:(SLSuccessBlock)success
+                failure:(SLFailureBlock)failure;
 
-- (void)requestMultipartPath:(NSString *)path
-                        verb:(NSString *)verb
-                    fileName:(NSString *)fileName
-                    localURL:(NSString *)localURL
-                     success:(SLSuccessBlock)success
-                     failure:(SLFailureBlock)failure;
+- (void)appendPartToMultiPartForm:(id <AFMultipartFormData>)formData
+                   withParameters:(NSDictionary *)parameters;
 
 @end
 
 @implementation SLRESTAdapter
+
+@synthesize connected;
 
 - (instancetype)initWithURL:(NSURL *)url allowsInvalidSSLCertificate : (BOOL) allowsInvalidSSLCertificate {
     self = [super initWithURL:url allowsInvalidSSLCertificate:allowsInvalidSSLCertificate];
@@ -65,21 +66,53 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
                 parameters:(NSDictionary *)parameters
                    success:(SLSuccessBlock)success
                    failure:(SLFailureBlock)failure {
+
+    [self invokeStaticMethod:method
+                  parameters:parameters
+                outputStream:nil
+                     success:success
+                     failure:failure];
+}
+
+- (void)invokeStaticMethod:(NSString *)method
+                parameters:(NSDictionary *)parameters
+              outputStream:(NSOutputStream *)outputStream
+                   success:(SLSuccessBlock)success
+                   failure:(SLFailureBlock)failure {
+    
     NSAssert(self.contract, @"Invalid contract.");
 
     NSString *verb = [self.contract verbForMethod:method];
     NSString *path = [self.contract urlForMethod:method parameters:parameters];
+    BOOL multipart = [self.contract multipartForMethod:method];
 
-    [self requestPath:path
-                 verb:verb
-           parameters:parameters
-              success:success
-              failure:failure];
+    [self requestWithPath:path
+                     verb:verb
+               parameters:parameters
+                multipart:multipart
+             outputStream:outputStream
+                  success:success
+                  failure:failure];
 }
 
 - (void)invokeInstanceMethod:(NSString *)method
        constructorParameters:(NSDictionary *)constructorParameters
                   parameters:(NSDictionary *)parameters
+                     success:(SLSuccessBlock)success
+                     failure:(SLFailureBlock)failure {
+
+    [self invokeInstanceMethod:method
+         constructorParameters:constructorParameters
+                    parameters:parameters
+                  outputStream:nil
+                       success:success
+                       failure:failure];
+}
+
+- (void)invokeInstanceMethod:(NSString *)method
+       constructorParameters:(NSDictionary *)constructorParameters
+                  parameters:(NSDictionary *)parameters
+                outputStream:(NSOutputStream *)outputStream
                      success:(SLSuccessBlock)success
                      failure:(SLFailureBlock)failure {
     // TODO(schoon) - Break out and document error description.
@@ -91,28 +124,25 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
 
     NSString *verb = [self.contract verbForMethod:method];
     NSString *path = [self.contract urlForMethod:method parameters:combinedParameters];
+    BOOL multipart = [self.contract multipartForMethod:method];
 
-    if ([self.contract multipartForMethod:method]) {
-        [self requestMultipartPath:path
-                              verb:verb
-                          fileName:parameters[@"name"]
-                          localURL:parameters[@"localPath"]
-                           success:success
-                           failure:failure];
-    } else {
-        [self requestPath:path
+    [self requestWithPath:path
                      verb:verb
                parameters:combinedParameters
+                multipart:multipart
+             outputStream:outputStream
                   success:success
                   failure:failure];
-    }
 }
 
-- (void)requestPath:(NSString *)path
-               verb:(NSString *)verb
-         parameters:(NSDictionary *)parameters
-            success:(SLSuccessBlock)success
-            failure:(SLFailureBlock)failure {
+- (void)requestWithPath:(NSString *)path
+                   verb:(NSString *)verb
+             parameters:(NSDictionary *)parameters
+              multipart:(BOOL)multipart
+           outputStream:(NSOutputStream *)outputStream
+                success:(SLSuccessBlock)success
+                failure:(SLFailureBlock)failure {
+
     NSAssert(self.connected, SLAdapterNotConnectedErrorDescription);
 
     if ([[verb uppercaseString] isEqualToString:@"GET"]) {
@@ -125,58 +155,66 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
     if ([path hasPrefix:@"/"]) {
         path = [path substringFromIndex:1];
     }
-    
-	NSURLRequest *request = [client requestWithMethod:verb path:path parameters:parameters];
-    SLAFHTTPRequestOperation *operation = [client HTTPRequestOperationWithRequest:request success:^(SLAFHTTPRequestOperation *operation, id responseObject) {
-        success(responseObject);
-    } failure:^(SLAFHTTPRequestOperation *operation, NSError *error) {
-        failure(error);
-    }];
+
+    NSURLRequest *request;
+
+    if (!multipart) {
+        request = [client requestWithMethod:verb path:path parameters:parameters];
+    } else {
+        request = [client multipartFormRequestWithMethod:verb
+                                                    path:path
+                                              parameters:parameters
+                               constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
+                                   [self appendPartToMultiPartForm:formData
+                                                    withParameters:parameters];
+                               }];
+    }
+
+    SLAFHTTPRequestOperation *operation;
+    // Synchronize the block so that the invocations of client's [un]registerHTTPOperationClass:
+    // and HTTPRequestOperationWithRequest:success: methods become atomic.
+    @synchronized(self) {
+        if (outputStream != nil) {
+            // The following is needed to force the received binary payload always go to the stream
+            [client unregisterHTTPOperationClass:[SLAFJSONRequestOperation class]];
+        }
+
+        operation = [client HTTPRequestOperationWithRequest:request
+                                                    success:^(SLAFHTTPRequestOperation *operation,
+                                                              id responseObject) {
+            success(responseObject);
+        } failure:^(SLAFHTTPRequestOperation *operation, NSError *error) {
+            failure(error);
+        }];
+
+        if (outputStream != nil) {
+            // Re-register the response handler class
+            [client registerHTTPOperationClass:[SLAFJSONRequestOperation class]];
+            
+            operation.outputStream = outputStream;
+        }
+    }
+
     [client enqueueHTTPRequestOperation:operation];
 }
 
-- (void)requestMultipartPath:(NSString *)path
-                        verb:(NSString *)verb
-                    fileName:(NSString *)fileName
-                    localURL:(NSString *)localURL
-                     success:(SLSuccessBlock)success
-                     failure:(SLFailureBlock)failure {
-    NSAssert(self.connected, SLAdapterNotConnectedErrorDescription);
-    
-    // Remove the leading / so that the path is treated as relative to the baseURL
-    if ([path hasPrefix:@"/"]) {
-        path = [path substringFromIndex:1];
+- (void)appendPartToMultiPartForm:(id <AFMultipartFormData>)formData
+                   withParameters:(NSDictionary *)parameters {
+    for (id key in parameters) {
+        id value = parameters[key];
+
+        if ([value isKindOfClass:[SLStreamParam class]]) {
+            SLStreamParam *streamParam = (SLStreamParam *)value;
+            [formData appendPartWithInputStream:streamParam.inputStream
+                                           name:key
+                                       fileName:streamParam.fileName
+                                         length:streamParam.length
+                                       mimeType:streamParam.contentType];
+        } else {
+            NSLog(@"%s: Ignored non SLStreamParam parameter %@ specified for multipart form",
+                  __FUNCTION__, [value class]);
+        }
     }
-    
-    NSURLRequest *request;
-    NSOutputStream *outStream = nil;
-    if ([[verb uppercaseString] isEqualToString:@"GET"]) {
-        path = [path stringByAppendingPathComponent:fileName];
-        
-        request = [client requestWithMethod:verb path:path parameters:nil];
-        outStream = [NSOutputStream outputStreamToFileAtPath:[localURL stringByAppendingPathComponent:fileName] append:NO];
-    } else {
-        request = [client multipartFormRequestWithMethod:verb path:path parameters:nil constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
-            NSString* fullLocalPath = [localURL stringByAppendingPathComponent:fileName];
-            NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:fullLocalPath error:NULL];
-            [formData appendPartWithInputStream:[[NSInputStream alloc] initWithFileAtPath:fullLocalPath]
-                                           name:@"uploadfiles"
-                                       fileName:fileName
-                                         length:attributes.fileSize
-                                       mimeType:@"multipart/form-data"];
-        }];
-    }
-    
-    SLAFHTTPRequestOperation *operation = [client HTTPRequestOperationWithRequest:request success:^(SLAFHTTPRequestOperation *operation, id responseObject) {
-        success(responseObject);
-    } failure:^(SLAFHTTPRequestOperation *operation, NSError *error) {
-        failure(error);
-    }];
-    if (outStream != nil) {
-        operation.outputStream = outStream;
-    }
-    
-    [client enqueueHTTPRequestOperation:operation];
 }
 
 - (NSString*)accessToken

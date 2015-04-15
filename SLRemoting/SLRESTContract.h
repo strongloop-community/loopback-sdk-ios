@@ -32,14 +32,6 @@ extern NSString *SLRESTContractDefaultVerb;
 + (instancetype)itemWithPattern:(NSString *)pattern;
 
 /**
- * Initializes a new item to encapsulate the given pattern.
- *
- * @param  pattern  The pattern to represent.
- * @return          The item.
- */
-- (instancetype)initWithPattern:(NSString *)pattern;
-
-/**
  * Returns a new item encapsulating the given pattern and verb.
  *
  * @param  pattern  The pattern to represent.
@@ -47,15 +39,6 @@ extern NSString *SLRESTContractDefaultVerb;
  * @return          A new item.
  */
 + (instancetype)itemWithPattern:(NSString *)pattern verb:(NSString *)verb;
-
-/**
- * Initializes a new item encapsulating the given pattern and verb.
- *
- * @param  pattern  The pattern to represent.
- * @param  verb     The verb to represent.
- * @return          A new item.
- */
-- (instancetype)initWithPattern:(NSString *)pattern verb:(NSString *)verb;
 
 /**
  * Returns a new item encapsulating the given pattern, verb and multipart setting.
@@ -66,16 +49,6 @@ extern NSString *SLRESTContractDefaultVerb;
  * @return           A new item.
  */
 + (instancetype)itemWithPattern:(NSString *)pattern verb:(NSString *)verb multipart:(BOOL)multipart;
-
-/**
- * Initializes a new item encapsulating the given pattern and verb.
- *
- * @param  pattern   The pattern to represent.
- * @param  verb      The verb to represent.
- * @param multiplart Indicates this item is a multipart mime type.
- * @return           A new item.
- */
-- (instancetype)initWithPattern:(NSString *)pattern verb:(NSString *)verb multipart:(BOOL)multipart;
 
 @end
 
