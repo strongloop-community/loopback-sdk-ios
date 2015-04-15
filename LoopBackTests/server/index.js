@@ -1,6 +1,7 @@
 var loopback = require('loopback');
 var path = require('path');
 var app = loopback();
+app.set('legacyExplorer', false);
 app.use(loopback.logger(app.get('env') === 'development' ? 'dev' : 'default'));
 app.dataSource('Memory', {
   connector: loopback.Memory,
