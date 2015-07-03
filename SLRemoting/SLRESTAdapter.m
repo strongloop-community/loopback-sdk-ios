@@ -82,13 +82,14 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
     
     NSAssert(self.contract, @"Invalid contract.");
 
+    NSMutableDictionary *mutableParams = [NSMutableDictionary dictionaryWithDictionary:parameters];
     NSString *verb = [self.contract verbForMethod:method];
-    NSString *path = [self.contract urlForMethod:method parameters:parameters];
+    NSString *path = [self.contract urlForMethod:method parameters:mutableParams];
     BOOL multipart = [self.contract multipartForMethod:method];
 
     [self requestWithPath:path
                      verb:verb
-               parameters:parameters
+               parameters:mutableParams
                 multipart:multipart
              outputStream:outputStream
                   success:success

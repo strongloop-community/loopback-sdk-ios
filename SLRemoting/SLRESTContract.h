@@ -120,13 +120,14 @@ extern NSString *SLRESTContractDefaultVerb;
 /**
  * Resolves a specific method, replacing pattern fragments with the optional
  * `parameters` as appropriate.
+ * Also removes consumed key-value pairs from the mutable `parameters`.
  *
  * @param  method     The method to resolve.
  * @param  parameters Pattern parameters. Can be `nil`.
  * @return            The complete, resolved URL.
  */
 - (NSString *)urlForMethod:(NSString *)method
-                parameters:(NSDictionary *)parameters;
+                parameters:(NSMutableDictionary *)parameters;
 
 /**
  * Returns the HTTP verb for the given method string.
@@ -162,15 +163,19 @@ extern NSString *SLRESTContractDefaultVerb;
 - (NSString *)patternForMethod:(NSString *)method;
 
 /**
- * Returns a rendered URL pattern using the parameters provided. For example,
- * `@"/widgets/:id"` + `@{ @"id": "57", @"price": @"42.00" }` begets
+ * Returns a rendered URL pattern using the parameters provided. 
+ * Also removes consumed key-value pairs from the mutable `parameters`.
+ * For example,
+ * `@"/widgets/:id"` + `@{ @"id": @"57", @"price": @"42.00" }` begets
  * `@"/widgets/57"`.
+ * And `parameter` becomes `@{ @"price": @"42.00" }`
  *
  * @param  pattern    The pattern to render.
  * @param  parameters Values to render with.
+ *                    This is mutable and consumed key-value pairs get removed.
  * @return            The rendered URL.
  */
 - (NSString *)urlWithPattern:(NSString *)pattern
-                  parameters:(NSDictionary *)parameters;
+                  parameters:(NSMutableDictionary *)parameters;
 
 @end

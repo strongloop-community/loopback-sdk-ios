@@ -16,7 +16,6 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
 
 @interface SLRESTContractTests() {
     SLRESTAdapter *adapter;
-    SLRESTContract *contract;
     SLRepository *TestClass;
 }
 
@@ -42,6 +41,17 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
     [super tearDown];
 }
 
+- (void)testUrlWithPattern {
+    SLRESTContract *contract = [SLRESTContract contract];
+    NSMutableDictionary *parameters = [@{ @"id": @"57", @"price": @"42.00" } mutableCopy];
+
+    NSString *url = [contract urlWithPattern:@"/widgets/:id" parameters:parameters];
+
+    STAssertEqualObjects(url, @"/widgets/57", @"Invalid URL");
+    STAssertEqualObjects(parameters, [@{ @"price": @"42.00" } mutableCopy], @"Invalid parameters");
+    NSLog(@"\n***, %@, %@", url, parameters);
+}
+
 - (void)testAddItemsFromContract {
     SLRESTContract *parent = [SLRESTContract contract];
     SLRESTContract *child = [SLRESTContract contract];
@@ -51,9 +61,9 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
     [child addItem:[SLRESTContractItem itemWithPattern:@"/new/route" verb:@"POST"] forMethod:@"new.route"];
 
     [parent addItemsFromContract:child];
-    STAssertTrue([[parent urlForMethod:@"test.route" parameters:@{}] isEqualToString:@"/test/route"], @"Wrong URL.");
+    STAssertTrue([[parent urlForMethod:@"test.route" parameters:nil] isEqualToString:@"/test/route"], @"Wrong URL.");
     STAssertTrue([[parent verbForMethod:@"test.route"] isEqualToString:@"GET"], @"Wrong verb.");
-    STAssertTrue([[parent urlForMethod:@"new.route" parameters:@{}] isEqualToString:@"/new/route"], @"Wrong URL.");
+    STAssertTrue([[parent urlForMethod:@"new.route" parameters:nil] isEqualToString:@"/new/route"], @"Wrong URL.");
     STAssertTrue([[parent verbForMethod:@"new.route"] isEqualToString:@"POST"], @"Wrong verb.");
 }
 

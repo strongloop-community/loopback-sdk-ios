@@ -131,7 +131,7 @@ NSString *SLRESTContractDefaultVerb = @"POST";
 }
 
 - (NSString *)urlForMethod:(NSString *)method
-                parameters:(NSDictionary *)parameters {
+                parameters:(NSMutableDictionary *)parameters {
     NSParameterAssert(method);
 
     NSString *pattern = [self patternForMethod:method];
@@ -173,18 +173,23 @@ NSString *SLRESTContractDefaultVerb = @"POST";
 }
 
 - (NSString *)urlWithPattern:(NSString *)pattern
-                  parameters:(NSDictionary *)parameters {
+                  parameters:(NSMutableDictionary *)parameters {
     NSParameterAssert(pattern);
 
     if (!parameters) {
         return pattern;
     }
 
-    NSString __block *url = pattern;
+    NSString *url = pattern;
 
-    [parameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        url = [url stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@":%@", key] withString:[NSString stringWithFormat:@"%@", obj]];
-    }];
+    for (NSString *key in parameters.allKeys) { // create a copy of allKeys to mutate parameters
+        NSString *keyPattern = [NSString stringWithFormat:@":%@", key];
+        if ([url rangeOfString:keyPattern].location == NSNotFound) continue;
+        
+        NSString *valueStr = [NSString stringWithFormat:@"%@", parameters[key]];
+        url = [url stringByReplacingOccurrencesOfString:keyPattern withString:valueStr];
+        [parameters removeObjectForKey:key];
+    }
 
     return url;
 }
