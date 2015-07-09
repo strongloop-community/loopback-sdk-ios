@@ -23,7 +23,7 @@
  * Create the default test suite to control the order of test methods
  */
 + (id)defaultTestSuite {
-    SenTestSuite *suite = [SenTestSuite testSuiteWithName:@"TestSuite for LBContainer."];
+    XCTestSuite *suite = [XCTestSuite testSuiteWithName:@"TestSuite for LBContainer."];
     [suite addTest:[self testCaseWithSelector:@selector(testGetAll)]];
     [suite addTest:[self testCaseWithSelector:@selector(testGetByName)]];
     [suite addTest:[self testCaseWithSelector:@selector(testCreate)]];
@@ -46,11 +46,11 @@
 - (void)testGetAll {
     ASYNC_TEST_START
     [self.repository getAllContainersWithSuccess:^(NSArray *containers) {
-        STAssertNotNil(containers, @"No containers returned.");
-        STAssertTrue(containers.count >= 2, [NSString stringWithFormat:@"Invalid # of containers returned: %lu", (unsigned long)containers.count]);
-        STAssertTrue([[containers[0] class] isSubclassOfClass:[LBContainer class]], @"Invalid class.");
-        STAssertEqualObjects(containers[0][@"name"], @"container1", @"Invalid name");
-        STAssertEqualObjects(containers[1][@"name"], @"container2", @"Invalid name");
+        XCTAssertNotNil(containers, @"No containers returned.");
+        XCTAssertTrue(containers.count >= 2, @"Invalid # of containers returned: %lu", (unsigned long)containers.count);
+        XCTAssertTrue([[containers[0] class] isSubclassOfClass:[LBContainer class]], @"Invalid class.");
+        XCTAssertEqualObjects(containers[0][@"name"], @"container1", @"Invalid name");
+        XCTAssertEqualObjects(containers[1][@"name"], @"container2", @"Invalid name");
         ASYNC_TEST_SIGNAL
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
@@ -59,8 +59,8 @@
 - (void)testGetByName {
     ASYNC_TEST_START
     [self.repository getContainerWithName:@"container1" success:^(LBContainer *container) {
-        STAssertNotNil(container, @"Container not found.");
-        STAssertEqualObjects(container.name, @"container1", @"Invalid name");
+        XCTAssertNotNil(container, @"Container not found.");
+        XCTAssertEqualObjects(container.name, @"container1", @"Invalid name");
         ASYNC_TEST_SIGNAL
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
@@ -78,7 +78,7 @@
 - (void)testRemove {
     ASYNC_TEST_START
     [self.repository getContainerWithName:@"containerTest" success:^(LBContainer *container) {
-        STAssertNotNil(container, @"Container not found.");
+        XCTAssertNotNil(container, @"Container not found.");
         [container deleteWithSuccess:^(void) {
             ASYNC_TEST_SIGNAL
         }failure:ASYNC_TEST_FAILURE_BLOCK];

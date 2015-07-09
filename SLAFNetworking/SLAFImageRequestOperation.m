@@ -108,8 +108,8 @@ static dispatch_queue_t image_request_operation_processing_queue() {
 										 success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSImage *image))success
 										 failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error))failure
 {
-    AFImageRequestOperation *requestOperation = [(AFImageRequestOperation *)[self alloc] initWithRequest:urlRequest];
-    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    SLAFImageRequestOperation *requestOperation = [(SLAFImageRequestOperation *)[self alloc] initWithRequest:urlRequest];
+    [requestOperation setCompletionBlockWithSuccess:^(SLAFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
             NSImage *image = responseObject;
             if (imageProcessingBlock) {
@@ -124,7 +124,7 @@ static dispatch_queue_t image_request_operation_processing_queue() {
                 success(operation.request, operation.response, image);
             }
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(SLAFHTTPRequestOperation *operation, NSError *error) {
         if (failure) {
             failure(operation.request, operation.response, error);
         }

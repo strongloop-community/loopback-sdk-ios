@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 StrongLoop. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface SLRESTAdapterTests : SenTestCase
+@interface SLRESTAdapterTests : XCTestCase
 
 @end

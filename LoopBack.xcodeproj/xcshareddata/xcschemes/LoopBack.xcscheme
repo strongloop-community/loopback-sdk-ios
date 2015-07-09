@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B3D2210717722AE800B7CB63"
-               BuildableName = "LoopBackTests.octest"
+               BuildableName = "LoopBackTests.xctest"
                BlueprintName = "LoopBackTests"
                ReferencedContainer = "container:LoopBack.xcodeproj">
             </BuildableReference>

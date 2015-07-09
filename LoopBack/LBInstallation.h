@@ -6,7 +6,7 @@
 #ifndef LoopBack_LBInstallation_h
 #define LoopBack_LBInstallation_h
 
-#import <LoopBack/LoopBack.h>
+#import "LoopBack.h"
 
 @class LBInstallation;
 @class LBInstallationRepository;

@@ -5,13 +5,13 @@
 //  Copyright (c) 2015 StrongLoop. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 #import "LBRESTAdapter.h"
 
 static NSString * const SERVER_URL = @"http://localhost:3001";
 
-@interface LBRESTAdapterTests : SenTestCase
+@interface LBRESTAdapterTests : XCTestCase
 
 @property (nonatomic, strong) LBRESTAdapter *adapter;
 
@@ -32,12 +32,12 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
     self.adapter.accessToken = @"an-access-token";
 
     LBRESTAdapter *anotherAdapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:SERVER_URL]];
-    STAssertEqualObjects(anotherAdapter.accessToken, @"an-access-token", @"Invalid access token");
+    XCTAssertEqualObjects(anotherAdapter.accessToken, @"an-access-token", @"Invalid access token");
 
     self.adapter.accessToken = @"a-different-access-token";
 
     LBRESTAdapter *yetAnotherAdapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:SERVER_URL]];
-    STAssertEqualObjects(yetAnotherAdapter.accessToken, @"a-different-access-token", @"Invalid access token");
+    XCTAssertEqualObjects(yetAnotherAdapter.accessToken, @"a-different-access-token", @"Invalid access token");
 
     self.adapter.accessToken = nil;
 }
