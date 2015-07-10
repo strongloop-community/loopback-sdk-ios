@@ -57,17 +57,24 @@ typedef void (^LBContainerDeleteSuccessBlock)();
 + (instancetype)repository;
 
 /**
+ * Blocks of this type are executed when
+ * LBContainerRepository::createContainerWithName:success:failure: is successful.
+ */
+typedef void (^LBContainerCreateSuccessBlock)(LBContainer* container);
+/**
  * Creates a container with the given name.
  *
  * @param  name       The container name.
  */
-- (LBContainer *)createContainerWithName:(NSString*)name;
+- (void)createContainerWithName:(NSString*)name
+                        success:(LBContainerCreateSuccessBlock)success
+                        failure:(SLFailureBlock)failure;
 
 /**
  * Blocks of this type are executed when
  * LBContainerRepository::getContainerWithName:success:failure: is successful.
  */
-typedef void (^LBGetContainerSuccessBlock)(LBContainer* container);
+typedef void (^LBContainerGetSuccessBlock)(LBContainer* container);
 /**
  * Attempts to get the named container from the server.
  *
@@ -76,21 +83,21 @@ typedef void (^LBGetContainerSuccessBlock)(LBContainer* container);
  * @param failure  The block to be executed when the get fails.
  */
 - (void)getContainerWithName:(NSString*)name
-                     success:(LBGetContainerSuccessBlock)success
+                     success:(LBContainerGetSuccessBlock)success
                      failure:(SLFailureBlock)failure;
 
 /**
  * Blocks of this type are executed when
  * LBContainerRepository::getAllContainersWithSuccess:failure: is successful.
  */
-typedef void (^LBGetAllContainersSuccessBlock)(NSArray* containers);
+typedef void (^LBContainerGetAllSuccessBlock)(NSArray* containers);
 /**
  * Returns all containers on the server.
  *
  * @param success  The block to be executed when the get is successful.
  * @param failure  The block to be executed when the get fails.
  */
-- (void)getAllContainersWithSuccess:(LBGetAllContainersSuccessBlock)success
+- (void)getAllContainersWithSuccess:(LBContainerGetAllSuccessBlock)success
                             failure:(SLFailureBlock)failure;
 
 @end

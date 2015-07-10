@@ -9,13 +9,9 @@
 
 /**
  * A local representative of a single model instance on the server. The data is
- * immediately accessible locally, but can be saved, destroyed, etc. from the
- * server easily.
+ * immediately accessible locally.
  */
-@interface LBModel : SLObject
-
-/** All Models have a numerical `id` field. */
-@property (nonatomic, readonly, copy) id _id;
+@interface LBModel : SLObject 
 
 /**
  * Returns the value associated with a given key.
@@ -58,36 +54,6 @@
  */
 - (NSDictionary *)toDictionary;
 
-/**
- * Blocks of this type are executed when LBModel::saveWithSuccess:failure: is
- * successful.
- */
-typedef void (^LBModelSaveSuccessBlock)();
-/**
- * Saves the LBModel to the server.
- *
- * Calls `toDictionary` to determine which fields should be saved.
- *
- * @param success  The block to be executed when the save is successful.
- * @param failure  The block to be executed when the save fails.
- */
-- (void)saveWithSuccess:(LBModelSaveSuccessBlock)success
-                failure:(SLFailureBlock)failure;
-
-/**
- * Blocks of this type are executed when LBModel::destroyWithSuccess:failure: is
- * successful.
- */
-typedef void (^LBModelDestroySuccessBlock)();
-/**
- * Destroys the LBModel from the server.
- *
- * @param success  The block to be executed when the destroy is successful.
- * @param failure  The block to be executed when the destroy fails.
- */
-- (void)destroyWithSuccess:(LBModelDestroySuccessBlock)success
-                   failure:(SLFailureBlock)failure;
-
 @end
 
 /**
@@ -115,46 +81,5 @@ typedef void (^LBModelDestroySuccessBlock)();
  * @return            A new LBModel.
  */
 - (LBModel *)modelWithDictionary:(NSDictionary *)dictionary;
-
-//typedef void (^LBModelExistsSuccessBlock)(BOOL exists);
-//- (void)existsWithId:(id)_id
-//             success:(LBModelExistsSuccessBlock)success
-//             failure:(SLFailureBlock)failure;
-
-/**
- * Blocks of this type are executed when
- * LBModelRepository::findById:success:failure: is successful.
- */
-typedef void (^LBModelFindSuccessBlock)(LBModel *model);
-/**
- * Finds and downloads a single instance of this model type on and from the
- * server with the given id.
- *
- * @param _id      The id to search for.
- * @param success  The block to be executed when the destroy is successful.
- * @param failure  The block to be executed when the destroy fails.
- */
-- (void)findById:(id)_id
-           success:(LBModelFindSuccessBlock)success
-           failure:(SLFailureBlock)failure;
-
-/**
- * Blocks of this type are executed when
- * LBModelRepository::allWithSuccess:failure: is successful.
- */
-typedef void (^LBModelAllSuccessBlock)(NSArray *models);
-/**
- * Finds and downloads all models of this type on and from the server.
- *
- * @param success  The block to be executed when the destroy is successful.
- * @param failure  The block to be executed when the destroy fails.
- */
-- (void)allWithSuccess:(LBModelAllSuccessBlock)success
-               failure:(SLFailureBlock)failure;
-
-//typedef void (^LBModelFindOneSuccessBlock)(LBModel *model);
-//- (void)findOneWithFilter:(NSDictionary *)filter
-//                  success:(LBModelFindOneSuccessBlock)success
-//                  failure:(SLFailureBlock)failure;
 
 @end

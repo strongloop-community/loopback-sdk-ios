@@ -5,14 +5,14 @@
  * @copyright (c) 2014 StrongLoop. All rights reserved.
  */
 
-#import "LBModel.h"
+#import "LBPersistedModel.h"
 
 @class LBAccessToken;
 
 /**
  * A local representative of a user instance on the server.
  */
-@interface LBUser : LBModel
+@interface LBUser : LBPersistedModel
 
 @property (nonatomic, copy) NSString *email;
 @property (nonatomic, copy) NSString *password;
@@ -27,7 +27,7 @@
  * A local representative of the User type on the server, encapsulating
  * all User properties.
  */
-@interface LBUserRepository : LBModelRepository
+@interface LBUserRepository : LBPersistedModelRepository
 
 @property (nonatomic, readonly) NSString *currentUserId;
 @property (nonatomic, readonly) LBUser *cachedCurrentUser;

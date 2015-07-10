@@ -51,7 +51,10 @@
 
 - (SLRESTContract *)contract {
     SLRESTContract *contract = [super contract];
-    
+
+    [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@", self.className]
+                                                     verb:@"POST"]
+            forMethod:[NSString stringWithFormat:@"%@.create", self.className]];
     [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@", self.className]
                                                      verb:@"GET"]
             forMethod:[NSString stringWithFormat:@"%@.getAll", self.className]];
@@ -73,14 +76,22 @@
     return _fileRepository;
 }
 
-- (LBContainer *)createContainerWithName:(NSString*)name {
-    LBContainer *container = (LBContainer*)[self modelWithDictionary:@{@"name" : name}];
-    return container;
+- (void)createContainerWithName:(NSString*)name
+                        success:(LBContainerCreateSuccessBlock)success
+                        failure:(SLFailureBlock)failure {
+    NSParameterAssert(name);
+    [self invokeStaticMethod:@"create"
+                  parameters:@{@"name": name}
+                     success:^(id value) {
+                         NSAssert([[value class] isSubclassOfClass:[NSDictionary class]], @"Received non-Dictionary: %@", value);
+                         LBContainer *container = (LBContainer*)[self modelWithDictionary:(NSDictionary*)value];
+                         success(container);
+                     } failure:failure];
 }
 
 - (void)getContainerWithName:(NSString*)name
-               success:(LBGetContainerSuccessBlock)success
-               failure:(SLFailureBlock)failure {
+                     success:(LBContainerGetSuccessBlock)success
+                     failure:(SLFailureBlock)failure {
     NSParameterAssert(name);
     [self invokeStaticMethod:@"get"
                   parameters:@{@"name": name}
@@ -91,7 +102,7 @@
                      } failure:failure];
 }
 
-- (void)getAllContainersWithSuccess:(LBGetAllContainersSuccessBlock)success
+- (void)getAllContainersWithSuccess:(LBContainerGetAllSuccessBlock)success
                             failure:(SLFailureBlock)failure {
     [self invokeStaticMethod:@"getAll"
                   parameters:nil

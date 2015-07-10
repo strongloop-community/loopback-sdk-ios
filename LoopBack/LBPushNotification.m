@@ -1,3 +1,10 @@
+/**
+ * @file LBPushNotification.m
+ *
+ * @author Raymond Feng
+ * @copyright (c) 2013 StrongLoop. All rights reserved.
+ */
+
 #import "LBPushNotification.h"
 #import "LBInstallation.h"
 

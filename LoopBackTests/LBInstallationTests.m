@@ -1,5 +1,5 @@
 //
-//  LBModelTests.m
+//  LBInstallationTests.m
 //  LoopBack
 //
 //  Created by Michael Schoonmaker on 6/19/13.
@@ -138,7 +138,7 @@ static id lastId = nil;
 - (void)testRemove {
     ASYNC_TEST_START
     [self.repository findById:lastId
-                      success:^(LBModel *model) {
+                      success:^(LBPersistedModel *model) {
                           [model destroyWithSuccess:^{
                               ASYNC_TEST_SIGNAL
                           } failure:ASYNC_TEST_FAILURE_BLOCK];
