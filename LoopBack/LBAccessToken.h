@@ -5,12 +5,12 @@
  * @copyright (c) 2014 StrongLoop. All rights reserved.
  */
 
-#import "LBModel.h"
+#import "LBPersistedModel.h"
 
 /**
  * An access token returned from the server for access control.
  */
-@interface LBAccessToken : LBModel
+@interface LBAccessToken : LBPersistedModel
 
 /** The user id associated with this access token. */
 @property (nonatomic, copy) NSString *userId;
@@ -20,7 +20,7 @@
 /**
  * A local representative of an access token on the server.
  */
-@interface LBAccessTokenRepository : LBModelRepository
+@interface LBAccessTokenRepository : LBPersistedModelRepository
 
 + (instancetype)repository;
 

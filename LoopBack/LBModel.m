@@ -16,10 +16,7 @@
     NSMutableDictionary *__overflow;
 }
 
-@property (nonatomic, readwrite, copy) id _id;
-
 - (NSMutableDictionary *)_overflow;
-- (void)setId:(id)_id;
 
 @end
 
@@ -47,26 +44,16 @@
     return __overflow;
 }
 
-- (void)setId:(id)_id {
-    __id = _id;
-}
-
 - (NSDictionary *)toDictionary {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:__overflow];
 
-    [dict setValue:__id forKey:@"id"];
-
     for (Class targetClass = [self class]; targetClass != [LBModel superclass]; targetClass = [targetClass superclass]) {
-        unsigned int propertyCount, i;
+        unsigned int propertyCount;
         objc_property_t *properties = class_copyPropertyList(targetClass, &propertyCount);
-        NSString *propertyName;
 
-        for (i = 0; i < propertyCount; i++) {
-            propertyName = [NSString stringWithCString:property_getName(properties[i]) encoding:NSUTF8StringEncoding];
-            if ([propertyName isEqualToString:@"_id"]) {
-                continue;
-            }
-
+        for (int i = 0; i < propertyCount; i++) {
+            NSString *propertyName = [NSString stringWithCString:property_getName(properties[i])
+                                                        encoding:NSUTF8StringEncoding];
             [dict setValue:[self valueForKey:propertyName] forKey:propertyName];
         }
     }
@@ -76,28 +63,6 @@
 
 - (NSString *)description {
     return [NSString stringWithFormat: @"<%@ %@>", NSStringFromClass([self class]), [self toDictionary]];
-}
-
-
-- (void)saveWithSuccess:(LBModelSaveSuccessBlock)success
-                failure:(SLFailureBlock)failure {
-    [self invokeMethod:self._id ? @"save" : @"create"
-            parameters:[self toDictionary]
-               success:^(id value) {
-                   self._id = [value valueForKey:@"id"];
-                   success();
-               }
-               failure:failure];
-}
-
-- (void)destroyWithSuccess:(LBModelDestroySuccessBlock)success
-                   failure:(SLFailureBlock)failure {
-    [self invokeMethod:@"remove"
-            parameters:[self toDictionary]
-               success:^(id value) {
-                   success();
-               }
-               failure:failure];
 }
 
 @end
@@ -123,18 +88,6 @@
 
 - (SLRESTContract *)contract {
     SLRESTContract *contract = [SLRESTContract contract];
-
-    [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@", self.className] verb:@"POST"]
-            forMethod:[NSString stringWithFormat:@"%@.prototype.create", self.className]];
-    [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@/:id", self.className] verb:@"PUT"]
-            forMethod:[NSString stringWithFormat:@"%@.prototype.save", self.className]];
-    [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@/:id", self.className] verb:@"DELETE"]
-            forMethod:[NSString stringWithFormat:@"%@.prototype.remove", self.className]];
-    [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@/:id", self.className] verb:@"GET"]
-            forMethod:[NSString stringWithFormat:@"%@.findById", self.className]];
-    [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@", self.className] verb:@"GET"]
-            forMethod:[NSString stringWithFormat:@"%@.all", self.className]];
-
     return contract;
 }
 
@@ -155,36 +108,6 @@
     }];
 
     return model;
-}
-
-- (void)findById:(id)_id
-           success:(LBModelFindSuccessBlock)success
-           failure:(SLFailureBlock)failure {
-    NSParameterAssert(_id);
-    [self invokeStaticMethod:@"findById"
-                  parameters:@{ @"id": _id }
-                     success:^(id value) {
-                         NSAssert([[value class] isSubclassOfClass:[NSDictionary class]], @"Received non-Dictionary: %@", value);
-                         success([self modelWithDictionary:value]);
-                     } failure:failure];
-}
-
-- (void)allWithSuccess:(LBModelAllSuccessBlock)success
-               failure:(SLFailureBlock)failure {
-    [self invokeStaticMethod:@"all"
-                  parameters:@{}
-                     success:^(id value) {
-                         NSAssert([[value class] isSubclassOfClass:[NSArray class]], @"Received non-Array: %@", value);
-
-                         NSMutableArray *models = [NSMutableArray array];
-
-                         [value enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                             [models addObject:[self modelWithDictionary:obj]];
-                         }];
-
-                         success(models);
-                     }
-                     failure:failure];
 }
 
 @end

@@ -1,3 +1,10 @@
+/**
+ * @file LBPushNotification.m
+ *
+ * @author Raymond Feng
+ * @copyright (c) 2013 StrongLoop. All rights reserved.
+ */
+
 #import "LBPushNotification.h"
 #import "LBInstallation.h"
 
@@ -13,6 +20,7 @@
 + (LBPushNotification *) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     // Let the device know we want to receive push notifications
+#ifdef __IPHONE_8_0
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         // iOS 8 or later
         UIUserNotificationType types = UIUserNotificationTypeBadge |
@@ -22,7 +30,9 @@
                                                                                  categories:nil];
         [application registerUserNotificationSettings:settings];
         [application registerForRemoteNotifications];
-    } else {
+    } else
+#endif
+    {
         UIRemoteNotificationType types = UIRemoteNotificationTypeBadge |
                                          UIRemoteNotificationTypeSound |
                                          UIRemoteNotificationTypeAlert;

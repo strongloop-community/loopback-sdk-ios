@@ -6,6 +6,7 @@
  */
 
 #import "LBModel.h"
+#import "LBPersistedModel.h"
 #import "LBRESTAdapter.h"
 #import "LBInstallation.h"
 #if TARGET_OS_IPHONE

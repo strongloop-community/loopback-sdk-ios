@@ -34,10 +34,15 @@ static NSString * const DEFAULTS_ACCESSTOKEN_KEY = @"LBRESTAdapterAccessToken";
     [self saveAccessToken:accessToken];
 }
 
-- (LBModelRepository *)repositoryWithModelName:(NSString *)name {
+- (LBModelRepository *)repositoryWithModelName:(NSString *)name persisted:(BOOL)persisted {
     NSParameterAssert(name);
 
-    LBModelRepository *repository = [LBModelRepository repositoryWithClassName:name];
+    LBModelRepository *repository = nil;
+    if (persisted) {
+        repository = [LBPersistedModelRepository repositoryWithClassName:name];
+    } else {
+        repository = [LBModelRepository repositoryWithClassName:name];
+    }
     [self attachRepository:repository];
     return repository;
 }

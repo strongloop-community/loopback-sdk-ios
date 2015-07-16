@@ -1,19 +1,19 @@
 //
-//  LBModelSubclassingTests.m
+//  LBPersistedModelSubclassingTest.m
 //  LoopBack
 //
 //  Created by Michael Schoonmaker on 6/19/13.
 //  Copyright (c) 2013 StrongLoop. All rights reserved.
 //
 
-#import "LBModelSubclassingTests.h"
+#import "LBPersistedModelSubclassingTests.h"
 
 #import "LBModel.h"
 #import "LBRESTAdapter.h"
 
 static NSNumber *lastId;
 
-@interface Widget : LBModel
+@interface Widget : LBPersistedModel
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) NSNumber *bars;
@@ -24,7 +24,7 @@ static NSNumber *lastId;
 
 @end
 
-@interface WidgetRepository : LBModelRepository
+@interface WidgetRepository : LBPersistedModelRepository
 + (instancetype)repository;
 
 @end
@@ -37,13 +37,13 @@ static NSNumber *lastId;
 
 @end
 
-@interface LBModelSubclassingTests()
+@interface LBPersistedModelSubclassingTests()
 
 @property (nonatomic) WidgetRepository *repository;
 
 @end
 
-@implementation LBModelSubclassingTests
+@implementation LBPersistedModelSubclassingTests
 
 /**
  * Create the default test suite to control the order of test methods
@@ -115,7 +115,7 @@ static NSNumber *lastId;
 
 - (void)testUpdate {
     ASYNC_TEST_START
-    LBModelFindSuccessBlock verify = ^(LBModel *model) {
+    LBPersistedModelFindSuccessBlock verify = ^(LBPersistedModel *model) {
         XCTAssertNotNil(model, @"No model found with ID 2");
         XCTAssertTrue([[model class] isSubclassOfClass:[Widget class]], @"Invalid class.");
         XCTAssertEqualObjects(((Widget *)model).name, @"Barfoo", @"Invalid name");
@@ -127,11 +127,11 @@ static NSNumber *lastId;
         } failure:ASYNC_TEST_FAILURE_BLOCK];
     };
 
-    LBModelSaveSuccessBlock findAgain = ^() {
+    LBPersistedModelSaveSuccessBlock findAgain = ^() {
         [self.repository findById:@2 success:verify failure:ASYNC_TEST_FAILURE_BLOCK];
     };
 
-    LBModelFindSuccessBlock update = ^(LBModel *model) {
+    LBPersistedModelFindSuccessBlock update = ^(LBPersistedModel *model) {
         XCTAssertNotNil(model, @"No model found with ID 2");
         ((Widget *)model).name = @"Barfoo";
         [model saveWithSuccess:findAgain failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -144,7 +144,7 @@ static NSNumber *lastId;
 - (void)testRemove {
     ASYNC_TEST_START
     [self.repository findById:lastId
-                      success:^(LBModel *model) {
+                      success:^(LBPersistedModel *model) {
                           [model destroyWithSuccess:^{
                               ASYNC_TEST_SIGNAL
                           } failure:ASYNC_TEST_FAILURE_BLOCK];

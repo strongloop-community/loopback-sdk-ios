@@ -68,8 +68,9 @@
 
 - (void)testCreate {
     ASYNC_TEST_START
-    LBContainer __block *container = [self.repository createContainerWithName:@"containerTest"];
-    [container saveWithSuccess:^{
+    [self.repository createContainerWithName:@"containerTest" success:^(LBContainer *container) {
+        XCTAssertNotNil(container, @"Container not found.");
+        XCTAssertEqualObjects(container.name, @"containerTest", @"Invalid name");
         ASYNC_TEST_SIGNAL
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END

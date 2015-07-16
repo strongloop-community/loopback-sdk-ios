@@ -1,5 +1,5 @@
 //
-//  LBInstallationTests.h
+//  LBPersistedModelSubclassingTest.h
 //  LoopBack
 //
 //  Created by Michael Schoonmaker on 6/19/13.
@@ -8,6 +8,6 @@
 
 #import <XCTest/XCTest.h>
 
-@interface LBInstallationTests : XCTestCase
+@interface LBPersistedModelSubclassingTests : XCTestCase
 
 @end

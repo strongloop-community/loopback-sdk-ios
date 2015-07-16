@@ -1,3 +1,10 @@
+/**
+ * @file LBInstallation.m
+ *
+ * @author Raymond Feng
+ * @copyright (c) 2013 StrongLoop. All rights reserved.
+ */
+
 #import "LBInstallation.h"
 
 @interface LBInstallation ()

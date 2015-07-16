@@ -1,16 +1,14 @@
 /**
  * @file LBPushNotification.h
+ *
  * @author Raymond Feng
  * @copyright (c) 2013 StrongLoop. All rights reserved.
  */
 
-#ifndef LoopBack_LBPushNotification_h
-#define LoopBack_LBPushNotification_h
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import <LoopBack/LoopBack.h>
+#import "LBRESTAdapter.h"
 
 /**
  @abstract Push Notification Type: Indicates in what state was app when received it (Foreground, Background, Terminated)
@@ -93,4 +91,3 @@ typedef enum LBPushNotificationType {
 
 @end
 
-#endif

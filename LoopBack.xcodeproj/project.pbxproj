@@ -87,13 +87,13 @@
 		47C48BDB1962123900995044 /* SLRESTAdapterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48BC91962123900995044 /* SLRESTAdapterTests.m */; };
 		47C48BDC1962123900995044 /* SLRESTContractTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48BCB1962123900995044 /* SLRESTContractTests.m */; };
 		47D47194196DF4A1002E2358 /* SLRESTAdapterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48BC91962123900995044 /* SLRESTAdapterTests.m */; };
-		47D47196196DF4A1002E2358 /* LBModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2213A17722BAB00B7CB63 /* LBModelTests.m */; };
+		47D47196196DF4A1002E2358 /* LBPersistedModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2213A17722BAB00B7CB63 /* LBPersistedModelTests.m */; };
 		47D47197196DF4A1002E2358 /* SLRESTContractTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48BCB1962123900995044 /* SLRESTContractTests.m */; };
 		47D47198196DF4A1002E2358 /* LBContainerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3A201518A56BA5006772C8 /* LBContainerTests.m */; };
 		47D47199196DF4A1002E2358 /* LBUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3A201718A57CCD006772C8 /* LBUserTests.m */; };
 		47D4719A196DF4A1002E2358 /* SLRESTAdapterSSLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48BC71962123900995044 /* SLRESTAdapterSSLTests.m */; };
 		47D4719B196DF4A1002E2358 /* SLRESTAdapterNonRootTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48BC61962123900995044 /* SLRESTAdapterNonRootTests.m */; };
-		47D4719C196DF4A1002E2358 /* LBModelSubclassingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2214117725A7F00B7CB63 /* LBModelSubclassingTests.m */; };
+		47D4719C196DF4A1002E2358 /* LBPersistedModelSubclassingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2214117725A7F00B7CB63 /* LBPersistedModelSubclassingTests.m */; };
 		47D4719F196DF4A1002E2358 /* LBInstallationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4769FF08184D6F4F00E5152C /* LBInstallationTests.m */; };
 		47D471A0196DF4A1002E2358 /* LBFileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3A201A18A5856F006772C8 /* LBFileTests.m */; };
 		47D471A7196DF4A1002E2358 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D220FA17722AE800B7CB63 /* Foundation.framework */; };
@@ -107,18 +107,25 @@
 		895B41831AB16D6B0000A9D7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B278D4A187B584A00FFC135 /* SystemConfiguration.framework */; };
 		8973753E1AB2A60A00FB31A2 /* SLStreamParam.h in Headers */ = {isa = PBXBuildFile; fileRef = 8973753C1AB2A60A00FB31A2 /* SLStreamParam.h */; };
 		8973753F1AB2A60A00FB31A2 /* SLStreamParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 8973753D1AB2A60A00FB31A2 /* SLStreamParam.m */; };
+		89C410341B4D4B0200B2ED51 /* LBPersistedModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 89C410321B4D4B0200B2ED51 /* LBPersistedModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		89C410351B4D4B0200B2ED51 /* LBPersistedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C410331B4D4B0200B2ED51 /* LBPersistedModel.m */; };
 		89D3DB0E1AB174F1005A1B90 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 47C48BB51962123900995044 /* InfoPlist.strings */; };
 		89D3DB0F1AB174F1005A1B90 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 47C48BB51962123900995044 /* InfoPlist.strings */; };
 		89EB399D1AB16ED700B1EB9D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D2214317725DAB00B7CB63 /* UIKit.framework */; };
 		89EB399E1AB16ED800B1EB9D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D2214317725DAB00B7CB63 /* UIKit.framework */; };
 		89EB399F1AB16ED900B1EB9D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D2214317725DAB00B7CB63 /* UIKit.framework */; };
+		89F4F36C1B53E6A80070D8EB /* LBModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F4F36B1B53E6A80070D8EB /* LBModelTests.m */; };
+		89F4F36D1B53E6A80070D8EB /* LBModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F4F36B1B53E6A80070D8EB /* LBModelTests.m */; };
+		89F4F36E1B53E6DE0070D8EB /* LBModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F4F36B1B53E6A80070D8EB /* LBModelTests.m */; };
+		89F4F36F1B546D0B0070D8EB /* LBPersistedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C410331B4D4B0200B2ED51 /* LBPersistedModel.m */; };
+		89F4F3701B546D170070D8EB /* LBPersistedModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 89C410321B4D4B0200B2ED51 /* LBPersistedModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3D220FB17722AE800B7CB63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D220FA17722AE800B7CB63 /* Foundation.framework */; };
 		B3D2210D17722AE800B7CB63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D220FA17722AE800B7CB63 /* Foundation.framework */; };
 		B3D2211017722AE800B7CB63 /* libLoopBack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D220F717722AE800B7CB63 /* libLoopBack.a */; };
 		B3D2211617722AE800B7CB63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3D2211417722AE800B7CB63 /* InfoPlist.strings */; };
 		B3D2212417722B1700B7CB63 /* LBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2212317722B1700B7CB63 /* LBModel.m */; };
-		B3D2213B17722BAB00B7CB63 /* LBModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2213A17722BAB00B7CB63 /* LBModelTests.m */; };
-		B3D2214217725A7F00B7CB63 /* LBModelSubclassingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2214117725A7F00B7CB63 /* LBModelSubclassingTests.m */; };
+		B3D2213B17722BAB00B7CB63 /* LBPersistedModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2213A17722BAB00B7CB63 /* LBPersistedModelTests.m */; };
+		B3D2214217725A7F00B7CB63 /* LBPersistedModelSubclassingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2214117725A7F00B7CB63 /* LBPersistedModelSubclassingTests.m */; };
 		B3D2214A1773766800B7CB63 /* LBRESTAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D221491773766800B7CB63 /* LBRESTAdapter.m */; };
 		B3DFA5AD17970AB700F656D7 /* LoopBack.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D220FF17722AE800B7CB63 /* LoopBack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3DFA5AE17970ABD00F656D7 /* LBModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B3D2212217722B1700B7CB63 /* LBModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -180,8 +187,8 @@
 		E4C9BC7D1AD6FC7000D70046 /* LBInstallationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4769FF08184D6F4F00E5152C /* LBInstallationTests.m */; };
 		E4C9BC7E1AD6FC9B00D70046 /* LBContainerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3A201518A56BA5006772C8 /* LBContainerTests.m */; };
 		E4C9BC7F1AD6FCA300D70046 /* LBFileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3A201A18A5856F006772C8 /* LBFileTests.m */; };
-		E4C9BC801AD6FCA800D70046 /* LBModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2213A17722BAB00B7CB63 /* LBModelTests.m */; };
-		E4C9BC811AD6FCAD00D70046 /* LBModelSubclassingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2214117725A7F00B7CB63 /* LBModelSubclassingTests.m */; };
+		E4C9BC801AD6FCA800D70046 /* LBPersistedModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2213A17722BAB00B7CB63 /* LBPersistedModelTests.m */; };
+		E4C9BC811AD6FCAD00D70046 /* LBPersistedModelSubclassingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D2214117725A7F00B7CB63 /* LBPersistedModelSubclassingTests.m */; };
 		E4C9BC821AD6FCB300D70046 /* LBUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3A201718A57CCD006772C8 /* LBUserTests.m */; };
 		E4C9BC841AD7005E00D70046 /* LBInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AD031118491DA700F724C8 /* LBInstallation.m */; };
 /* End PBXBuildFile section */
@@ -294,12 +301,16 @@
 		47F8E812185B7A4E0088BB73 /* LBPushNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPushNotification.m; sourceTree = "<group>"; };
 		8973753C1AB2A60A00FB31A2 /* SLStreamParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLStreamParam.h; sourceTree = "<group>"; };
 		8973753D1AB2A60A00FB31A2 /* SLStreamParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLStreamParam.m; sourceTree = "<group>"; };
+		89C410321B4D4B0200B2ED51 /* LBPersistedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPersistedModel.h; sourceTree = "<group>"; };
+		89C410331B4D4B0200B2ED51 /* LBPersistedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPersistedModel.m; sourceTree = "<group>"; };
 		89D3C9521AB17258005A1B90 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
 		89D3DB001AB17263005A1B90 /* package.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
 		89D3DB031AB17263005A1B90 /* f1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = f1.txt; sourceTree = "<group>"; };
 		89D3DB041AB17263005A1B90 /* f1_downloaded.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = f1_downloaded.txt; sourceTree = "<group>"; };
 		89D3DB051AB17263005A1B90 /* uploadTest.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = uploadTest.txt; sourceTree = "<group>"; };
 		89D3DB071AB17263005A1B90 /* f2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = f2.txt; sourceTree = "<group>"; };
+		89F4F36A1B53E6A80070D8EB /* LBModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBModelTests.h; sourceTree = "<group>"; };
+		89F4F36B1B53E6A80070D8EB /* LBModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBModelTests.m; sourceTree = "<group>"; };
 		B3D220F717722AE800B7CB63 /* libLoopBack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLoopBack.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D220FA17722AE800B7CB63 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B3D220FE17722AE800B7CB63 /* LoopBack-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LoopBack-Prefix.pch"; sourceTree = "<group>"; };
@@ -309,10 +320,10 @@
 		B3D2211517722AE800B7CB63 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B3D2212217722B1700B7CB63 /* LBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBModel.h; sourceTree = "<group>"; };
 		B3D2212317722B1700B7CB63 /* LBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBModel.m; sourceTree = "<group>"; };
-		B3D2213917722BAB00B7CB63 /* LBModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBModelTests.h; sourceTree = "<group>"; };
-		B3D2213A17722BAB00B7CB63 /* LBModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBModelTests.m; sourceTree = "<group>"; };
-		B3D2214017725A7F00B7CB63 /* LBModelSubclassingTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBModelSubclassingTests.h; sourceTree = "<group>"; };
-		B3D2214117725A7F00B7CB63 /* LBModelSubclassingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBModelSubclassingTests.m; sourceTree = "<group>"; };
+		B3D2213917722BAB00B7CB63 /* LBPersistedModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPersistedModelTests.h; sourceTree = "<group>"; };
+		B3D2213A17722BAB00B7CB63 /* LBPersistedModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPersistedModelTests.m; sourceTree = "<group>"; };
+		B3D2214017725A7F00B7CB63 /* LBPersistedModelSubclassingTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPersistedModelSubclassingTests.h; sourceTree = "<group>"; };
+		B3D2214117725A7F00B7CB63 /* LBPersistedModelSubclassingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPersistedModelSubclassingTests.m; sourceTree = "<group>"; };
 		B3D2214317725DAB00B7CB63 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B3D221481773766800B7CB63 /* LBRESTAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBRESTAdapter.h; sourceTree = "<group>"; };
 		B3D221491773766800B7CB63 /* LBRESTAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBRESTAdapter.m; sourceTree = "<group>"; };
@@ -566,6 +577,8 @@
 				B3D220FF17722AE800B7CB63 /* LoopBack.h */,
 				B3D2212217722B1700B7CB63 /* LBModel.h */,
 				B3D2212317722B1700B7CB63 /* LBModel.m */,
+				89C410321B4D4B0200B2ED51 /* LBPersistedModel.h */,
+				89C410331B4D4B0200B2ED51 /* LBPersistedModel.m */,
 				B3D221481773766800B7CB63 /* LBRESTAdapter.h */,
 				B3D221491773766800B7CB63 /* LBRESTAdapter.m */,
 				47AD031018491DA700F724C8 /* LBInstallation.h */,
@@ -596,10 +609,12 @@
 		B3D2211117722AE800B7CB63 /* LoopBackTests */ = {
 			isa = PBXGroup;
 			children = (
-				B3D2213917722BAB00B7CB63 /* LBModelTests.h */,
-				B3D2213A17722BAB00B7CB63 /* LBModelTests.m */,
-				B3D2214017725A7F00B7CB63 /* LBModelSubclassingTests.h */,
-				B3D2214117725A7F00B7CB63 /* LBModelSubclassingTests.m */,
+				89F4F36A1B53E6A80070D8EB /* LBModelTests.h */,
+				89F4F36B1B53E6A80070D8EB /* LBModelTests.m */,
+				B3D2213917722BAB00B7CB63 /* LBPersistedModelTests.h */,
+				B3D2213A17722BAB00B7CB63 /* LBPersistedModelTests.m */,
+				B3D2214017725A7F00B7CB63 /* LBPersistedModelSubclassingTests.h */,
+				B3D2214117725A7F00B7CB63 /* LBPersistedModelSubclassingTests.m */,
 				4769FF07184D6F4F00E5152C /* LBInstallationTests.h */,
 				4769FF08184D6F4F00E5152C /* LBInstallationTests.m */,
 				0B3A201918A57D55006772C8 /* LBUserTests.h */,
@@ -668,6 +683,7 @@
 				47C48BAC1962120E00995044 /* SLRemoting-Prefix.pch in Headers */,
 				47C48BA21962120E00995044 /* SLAFURLConnectionOperation.h in Headers */,
 				B3DFA5AE17970ABD00F656D7 /* LBModel.h in Headers */,
+				89C410341B4D4B0200B2ED51 /* LBPersistedModel.h in Headers */,
 				B3DFA5AF17970ABD00F656D7 /* LBRESTAdapter.h in Headers */,
 				47C48BA41962120E00995044 /* SLAFXMLRequestOperation.h in Headers */,
 				0B8022DF18A2F1BA00AF845E /* LBContainer.h in Headers */,
@@ -720,6 +736,7 @@
 				E4C9BC571AD6FB9A00D70046 /* SLAFPropertyListRequestOperation.h in Headers */,
 				E4C9BC611AD6FBC500D70046 /* SLObject.h in Headers */,
 				E4C9BC5F1AD6FBBE00D70046 /* SLAdapter.h in Headers */,
+				89F4F3701B546D170070D8EB /* LBPersistedModel.h in Headers */,
 				E4C9BC6E1AD6FC0800D70046 /* LoopBack.h in Headers */,
 				E4C9BC651AD6FBDB00D70046 /* SLRemotingUtils.h in Headers */,
 				E4C9BC631AD6FBD200D70046 /* SLRemoting-Prefix.pch in Headers */,
@@ -974,15 +991,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				47D47194196DF4A1002E2358 /* SLRESTAdapterTests.m in Sources */,
-				47D47196196DF4A1002E2358 /* LBModelTests.m in Sources */,
+				47D47196196DF4A1002E2358 /* LBPersistedModelTests.m in Sources */,
 				47D47197196DF4A1002E2358 /* SLRESTContractTests.m in Sources */,
 				47D47198196DF4A1002E2358 /* LBContainerTests.m in Sources */,
 				47D47199196DF4A1002E2358 /* LBUserTests.m in Sources */,
 				47D4719A196DF4A1002E2358 /* SLRESTAdapterSSLTests.m in Sources */,
 				47D4719B196DF4A1002E2358 /* SLRESTAdapterNonRootTests.m in Sources */,
-				47D4719C196DF4A1002E2358 /* LBModelSubclassingTests.m in Sources */,
+				47D4719C196DF4A1002E2358 /* LBPersistedModelSubclassingTests.m in Sources */,
 				47D4719F196DF4A1002E2358 /* LBInstallationTests.m in Sources */,
 				47D471A0196DF4A1002E2358 /* LBFileTests.m in Sources */,
+				89F4F36E1B53E6DE0070D8EB /* LBModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1013,6 +1031,7 @@
 				47C48BA31962120E00995044 /* SLAFURLConnectionOperation.m in Sources */,
 				0B786866189B1C3300AB6782 /* LBFile.m in Sources */,
 				0B4F52AB18908089004F675A /* LBAccessToken.m in Sources */,
+				89C410351B4D4B0200B2ED51 /* LBPersistedModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1021,15 +1040,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				47C48BDB1962123900995044 /* SLRESTAdapterTests.m in Sources */,
-				B3D2213B17722BAB00B7CB63 /* LBModelTests.m in Sources */,
+				B3D2213B17722BAB00B7CB63 /* LBPersistedModelTests.m in Sources */,
 				47C48BDC1962123900995044 /* SLRESTContractTests.m in Sources */,
 				0B3A201618A56BA5006772C8 /* LBContainerTests.m in Sources */,
 				0B3A201818A57CCD006772C8 /* LBUserTests.m in Sources */,
 				47C48BDA1962123900995044 /* SLRESTAdapterSSLTests.m in Sources */,
 				47C48BD91962123900995044 /* SLRESTAdapterNonRootTests.m in Sources */,
-				B3D2214217725A7F00B7CB63 /* LBModelSubclassingTests.m in Sources */,
+				B3D2214217725A7F00B7CB63 /* LBPersistedModelSubclassingTests.m in Sources */,
 				4769FF09184D6F4F00E5152C /* LBInstallationTests.m in Sources */,
 				0B3A201B18A5856F006772C8 /* LBFileTests.m in Sources */,
+				89F4F36C1B53E6A80070D8EB /* LBModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1056,6 +1076,7 @@
 				E4C9BC4F1AD6FB6E00D70046 /* SLAFHTTPRequestOperation.m in Sources */,
 				E4C9BC5C1AD6FBAE00D70046 /* SLAFXMLRequestOperation.m in Sources */,
 				E4C9BC581AD6FB9F00D70046 /* SLAFPropertyListRequestOperation.m in Sources */,
+				89F4F36F1B546D0B0070D8EB /* LBPersistedModel.m in Sources */,
 				E4C9BC7C1AD6FC6800D70046 /* LBFile.m in Sources */,
 				E4C9BC761AD6FC2B00D70046 /* LBUser.m in Sources */,
 				E4C9BC531AD6FB8400D70046 /* SLAFJSONRequestOperation.m in Sources */,
@@ -1066,8 +1087,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4C9BC811AD6FCAD00D70046 /* LBModelSubclassingTests.m in Sources */,
-				E4C9BC801AD6FCA800D70046 /* LBModelTests.m in Sources */,
+				E4C9BC811AD6FCAD00D70046 /* LBPersistedModelSubclassingTests.m in Sources */,
+				E4C9BC801AD6FCA800D70046 /* LBPersistedModelTests.m in Sources */,
 				E4C9BC4A1AD6FB3900D70046 /* SLRESTAdapterTests.m in Sources */,
 				E4C9BC7F1AD6FCA300D70046 /* LBFileTests.m in Sources */,
 				E4C9BC7D1AD6FC7000D70046 /* LBInstallationTests.m in Sources */,
@@ -1076,6 +1097,7 @@
 				E4C9BC4B1AD6FB3D00D70046 /* SLRESTContractTests.m in Sources */,
 				E4C9BC491AD6FB3100D70046 /* SLRESTAdapterSSLTests.m in Sources */,
 				E4C9BC821AD6FCB300D70046 /* LBUserTests.m in Sources */,
+				89F4F36D1B53E6A80070D8EB /* LBModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
