@@ -306,11 +306,10 @@
 		89D3C9521AB17258005A1B90 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
 		89D3DB001AB17263005A1B90 /* package.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
 		89D3DB031AB17263005A1B90 /* f1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = f1.txt; sourceTree = "<group>"; };
-		89D3DB041AB17263005A1B90 /* f1_downloaded.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = f1_downloaded.txt; sourceTree = "<group>"; };
-		89D3DB051AB17263005A1B90 /* uploadTest.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = uploadTest.txt; sourceTree = "<group>"; };
-		89D3DB071AB17263005A1B90 /* f2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = f2.txt; sourceTree = "<group>"; };
+		89D3DB071AB17263005A1B90 /* f1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = f1.txt; sourceTree = "<group>"; };
 		89F4F36A1B53E6A80070D8EB /* LBModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBModelTests.h; sourceTree = "<group>"; };
 		89F4F36B1B53E6A80070D8EB /* LBModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBModelTests.m; sourceTree = "<group>"; };
+		89FAACE61B60838600F40C95 /* f2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = f2.txt; sourceTree = "<group>"; };
 		B3D220F717722AE800B7CB63 /* libLoopBack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLoopBack.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D220FA17722AE800B7CB63 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B3D220FE17722AE800B7CB63 /* LoopBack-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LoopBack-Prefix.pch"; sourceTree = "<group>"; };
@@ -501,8 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				89D3DB031AB17263005A1B90 /* f1.txt */,
-				89D3DB041AB17263005A1B90 /* f1_downloaded.txt */,
-				89D3DB051AB17263005A1B90 /* uploadTest.txt */,
+				89FAACE61B60838600F40C95 /* f2.txt */,
 			);
 			path = container1;
 			sourceTree = "<group>";
@@ -510,7 +508,7 @@
 		89D3DB061AB17263005A1B90 /* container2 */ = {
 			isa = PBXGroup;
 			children = (
-				89D3DB071AB17263005A1B90 /* f2.txt */,
+				89D3DB071AB17263005A1B90 /* f1.txt */,
 			);
 			path = container2;
 			sourceTree = "<group>";
@@ -1560,6 +1558,7 @@
 				E4C9BC431AD6F9C800D70046 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4C9BC471AD6F9C800D70046 /* Build configuration list for PBXNativeTarget "LoopBackOSXTests" */ = {
 			isa = XCConfigurationList;
@@ -1568,6 +1567,7 @@
 				E4C9BC451AD6F9C800D70046 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
