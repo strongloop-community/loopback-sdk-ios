@@ -22,6 +22,8 @@
 
 @implementation LBPersistedModel
 
+@synthesize _id = __id;
+
 - (void)setId:(id)_id {
     __id = _id;
 }
