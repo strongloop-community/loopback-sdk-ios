@@ -18,6 +18,18 @@ var Widget = app.model('widget', {
       type: Number,
       required: false
     },
+    bars2: {
+      type: Number,
+      required: false
+    },
+    flag: {
+      type: Boolean,
+      required: false
+    },
+    flag2: {
+      type: Boolean,
+      required: false
+    },
     data: {
       type: Object,
       required: false
