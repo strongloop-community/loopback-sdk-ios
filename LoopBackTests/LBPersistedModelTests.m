@@ -25,7 +25,7 @@ static NSNumber *lastId;
  * Create the default test suite to control the order of test methods
  */
 + (id)defaultTestSuite {
-    XCTestSuite *suite = [XCTestSuite testSuiteWithName:@"TestSuite for LBModel."];
+    XCTestSuite *suite = [XCTestSuite testSuiteWithName:@"TestSuite for LBPersistedModel."];
     [suite addTest:[self testCaseWithSelector:@selector(testCreate)]];
     [suite addTest:[self testCaseWithSelector:@selector(testFind)]];
     [suite addTest:[self testCaseWithSelector:@selector(testAll)]];
@@ -69,7 +69,7 @@ static NSNumber *lastId;
     [self.repository findById:@2
                        success:^(LBPersistedModel *model) {
                            XCTAssertNotNil(model, @"No model found with ID 2");
-                           XCTAssertTrue([[model class] isSubclassOfClass:[LBModel class]], @"Invalid class.");
+                           XCTAssertTrue([[model class] isSubclassOfClass:[LBPersistedModel class]], @"Invalid class.");
                            XCTAssertEqualObjects(model[@"name"], @"Bar", @"Invalid name");
                            XCTAssertEqualObjects(model[@"bars"], @1, @"Invalid bars");
                            ASYNC_TEST_SIGNAL
@@ -82,7 +82,7 @@ static NSNumber *lastId;
     [self.repository allWithSuccess:^(NSArray *models) {
         XCTAssertNotNil(models, @"No models returned.");
         XCTAssertTrue([models count] >= 2, @"Invalid # of models returned: %lu", (unsigned long)[models count]);
-        XCTAssertTrue([[models[0] class] isSubclassOfClass:[LBModel class]], @"Invalid class.");
+        XCTAssertTrue([[models[0] class] isSubclassOfClass:[LBPersistedModel class]], @"Invalid class.");
         XCTAssertEqualObjects(models[0][@"name"], @"Foo", @"Invalid name");
         XCTAssertEqualObjects(models[0][@"bars"], @0, @"Invalid bars");
         XCTAssertEqualObjects(models[1][@"name"], @"Bar", @"Invalid name");
@@ -121,12 +121,19 @@ static NSNumber *lastId;
 
 - (void)testRemove {
     ASYNC_TEST_START
-    [self.repository findById:lastId
-                      success:^(LBPersistedModel *model) {
-                          [model destroyWithSuccess:^{
-                              ASYNC_TEST_SIGNAL
-                          } failure:ASYNC_TEST_FAILURE_BLOCK];
-                      } failure:ASYNC_TEST_FAILURE_BLOCK];
+    [self.repository findById:lastId success:^(LBPersistedModel *model) {
+
+        [model destroyWithSuccess:^{
+
+            [self.repository findById:lastId success:^(LBPersistedModel *model) {
+                XCTFail(@"Model found after removal");
+            } failure:^(NSError *err) {
+                ASYNC_TEST_SIGNAL
+            }];
+            
+        } failure:ASYNC_TEST_FAILURE_BLOCK];
+        
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
 }
 

@@ -8,7 +8,7 @@
 
 #import "LBPersistedModelSubclassingTests.h"
 
-#import "LBModel.h"
+#import "LBPersistedModel.h"
 #import "LBRESTAdapter.h"
 
 static NSNumber *lastId;
@@ -49,7 +49,7 @@ static NSNumber *lastId;
  * Create the default test suite to control the order of test methods
  */
 + (id)defaultTestSuite {
-    XCTestSuite *suite = [XCTestSuite testSuiteWithName:@"TestSuite for LBModel subclasses."];
+    XCTestSuite *suite = [XCTestSuite testSuiteWithName:@"TestSuite for LBPersistedModel subclasses."];
     [suite addTest:[self testCaseWithSelector:@selector(testCreate)]];
     [suite addTest:[self testCaseWithSelector:@selector(testFind)]];
     [suite addTest:[self testCaseWithSelector:@selector(testAll)]];
@@ -88,7 +88,7 @@ static NSNumber *lastId;
 - (void)testFind {
     ASYNC_TEST_START
     [self.repository findById:@2
-                       success:^(LBModel *model) {
+                       success:^(LBPersistedModel *model) {
                            XCTAssertNotNil(model, @"No model found with ID 2");
                            XCTAssertTrue([[model class] isSubclassOfClass:[Widget class]], @"Invalid class.");
                            XCTAssertEqualObjects(((Widget *)model).name, @"Bar", @"Invalid name");
