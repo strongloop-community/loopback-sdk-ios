@@ -153,4 +153,25 @@ extern NSString *SLObjectInvalidRepositoryDescription;
                    success:(SLSuccessBlock)success
                    failure:(SLFailureBlock)failure;
 
+/**
+ * Invokes a remotable method exposed statically within this class on the
+ * server.
+ *
+ * @see SLAdapter::invokeStaticMethod:parameters:outputStream:success:failure:
+ *
+ * @param name        The method to invoke (without the class name), e.g.
+ *                    `doSomething`.
+ * @param parameters  The parameters to invoke with.
+ * @param outputStream  The stream to which all the response data goes.
+ * @param success     An SLSuccessBlock to be executed when the invocation
+ *                    succeeds.
+ * @param failure     An SLFailureBlock to be executed when the invocation
+ *                    fails.
+ */
+- (void)invokeStaticMethod:(NSString *)name
+                parameters:(NSDictionary *)parameters
+              outputStream:(NSOutputStream *)outputStream
+                   success:(SLSuccessBlock)success
+                   failure:(SLFailureBlock)failure;
+
 @end

@@ -9,7 +9,6 @@
 #import "SLRESTContractTests.h"
 
 #import "SLRESTAdapter.h"
-#import "SLStreamParam.h"
 #import "SLObject.h"
 
 static NSString * const SERVER_URL = @"http://localhost:3001";

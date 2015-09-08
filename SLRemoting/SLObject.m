@@ -104,9 +104,24 @@ NSString *SLObjectInvalidRepositoryDescription = @"Invalid repository.";
                 parameters:(NSDictionary *)parameters
                    success:(SLSuccessBlock)success
                    failure:(SLFailureBlock)failure {
+
     NSString *path = [NSString stringWithFormat:@"%@.%@", self.className, name];
     [self.adapter invokeStaticMethod:path
                           parameters:parameters
+                             success:success
+                             failure:failure];
+}
+
+- (void)invokeStaticMethod:(NSString *)name
+                parameters:(NSDictionary *)parameters
+              outputStream:(NSOutputStream *)outputStream
+                   success:(SLSuccessBlock)success
+                   failure:(SLFailureBlock)failure {
+
+    NSString *path = [NSString stringWithFormat:@"%@.%@", self.className, name];
+    [self.adapter invokeStaticMethod:path
+                          parameters:parameters
+                        outputStream:outputStream
                              success:success
                              failure:failure];
 }
