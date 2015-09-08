@@ -16,8 +16,12 @@ static NSNumber *lastId;
 @interface Widget : LBPersistedModel
 
 @property (nonatomic, copy) NSString *name;
+// a Number property can be accessed via either of NSNumber or the primitive type long.
 @property (nonatomic) NSNumber *bars;
-
+@property long bars2;
+// a Boolean property can be accessed via either of NSNumber or the primitive type BOOL.
+@property (nonatomic) NSNumber *flag;
+@property BOOL flag2;
 @end
 
 @implementation Widget
@@ -70,11 +74,30 @@ static NSNumber *lastId;
 }
 
 - (void)testCreate {
-    Widget *model = (Widget*)[self.repository modelWithDictionary:@{ @"name": @"Foobar", @"bars": @1 }];
+    Widget *model = (Widget*)[self.repository modelWithDictionary:@{
+        @"name" : @"Foobar",
+        @"bars" : @123,
+        @"bars2": @123,
+        @"flag" : @YES,
+        @"flag2": @YES
+    }];
 
-    XCTAssertEqualObjects(model.name, @"Foobar", @"Invalid name.");
-    XCTAssertEqualObjects(model.bars, @1, @"Invalid bars.");
     XCTAssertNil(model._id, @"Invalid id");
+    XCTAssertEqualObjects(model.name, @"Foobar", @"Invalid name.");
+    XCTAssertEqualObjects(model.bars, @123, @"Invalid bars.");
+    XCTAssertEqual(model.bars2, 123, @"Invalid bars2.");
+    XCTAssertEqualObjects(model.flag, @YES, @"Invalid flag.");
+    XCTAssertEqual(model.flag2, YES, @"Invalid flag2.");
+
+    model.bars = @456;
+    model.bars2 = 456;
+    model.flag = @NO;
+    model.flag2 = NO;
+
+    XCTAssertEqualObjects(model.bars, @456, @"Invalid bars.");
+    XCTAssertEqual(model.bars2, 456, @"Invalid bars2.");
+    XCTAssertEqualObjects(model.flag, @NO, @"Invalid flag.");
+    XCTAssertEqual(model.flag2, NO, @"Invalid flag2.");
 
     ASYNC_TEST_START
     [model saveWithSuccess:^{

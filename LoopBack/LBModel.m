@@ -96,16 +96,35 @@
 
     [[model _overflow] addEntriesFromDictionary:dictionary];
 
-    [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+    for (NSString *key in dictionary) {
+        id obj = dictionary[key];
         SEL setter = NSSelectorForSetter(key);
 
+        // if obj is a NSNumber (including a boolean value) try to use a setter for the primitive type
+        if ([obj isKindOfClass:[NSNumber class]]) {
+            NSMethodSignature *signature = [model methodSignatureForSelector:setter];
+            const char* type = [signature getArgumentTypeAtIndex:2];
+            if (type != NULL && type[0] != '@') { // if the setter is for a primitive type
+                NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+                [invocation setSelector:setter];
+                if (obj == (void*)kCFBooleanFalse || obj == (void*)kCFBooleanTrue) { // if boolean
+                    BOOL boolValue = [obj boolValue];
+                    [invocation setArgument:&boolValue atIndex:2];
+                } else {
+                    long integerValue = [obj integerValue];
+                    [invocation setArgument:&integerValue atIndex:2];
+                }
+                [invocation invokeWithTarget:model];
+                continue;
+            }
+        }
         if ([model respondsToSelector:setter]) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
             [model performSelector:setter withObject:obj];
 #pragma clang diagnostic pop
         }
-    }];
+    };
 
     return model;
 }
