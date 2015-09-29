@@ -92,6 +92,45 @@ static NSNumber *lastId;
     ASYNC_TEST_END
 }
 
+- (void)testFindWithFilter {
+    ASYNC_TEST_START
+    [self.repository findWithFilter:@{@"where": @{ @"name" : @"Foo" }}
+        success:^(NSArray *models) {
+        XCTAssertNotNil(models, @"No models returned.");
+        XCTAssertTrue([models count] >= 1, @"Invalid # of models returned: %lu", (unsigned long)[models count]);
+        XCTAssertTrue([[models[0] class] isSubclassOfClass:[LBPersistedModel class]], @"Invalid class.");
+        XCTAssertEqualObjects(models[0][@"name"], @"Foo", @"Invalid name");
+        XCTAssertEqualObjects(models[0][@"bars"], @0, @"Invalid bars");
+        ASYNC_TEST_SIGNAL
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
+- (void)testFindOne {
+    ASYNC_TEST_START
+    [[self.repository adapter] invokeStaticMethod:@"widgets.findOne" parameters:
+     @{ @"filter": @{@"where": @{ @"name" : @"Foo" }}} success:^(LBPersistedModel *model) {
+        XCTAssertNotNil(model, @"No models returned.");
+        XCTAssertEqualObjects(model[@"name"], @"Foo", @"Invalid name");
+        XCTAssertEqualObjects(model[@"bars"], @0, @"Invalid bars");
+        ASYNC_TEST_SIGNAL
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
+- (void)testFindOneWithFilter {
+    ASYNC_TEST_START
+    [self.repository findOneWithFilter: @{@"where": @{ @"name" : @"Foo" }}
+        success:^(LBPersistedModel *model) {
+         XCTAssertNotNil(model, @"No models returned.");
+         XCTAssertEqualObjects(model[@"name"], @"Foo", @"Invalid name");
+         XCTAssertEqualObjects(model[@"bars"], @0, @"Invalid bars");
+         ASYNC_TEST_SIGNAL
+     } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
+
 - (void)testUpdate {
     ASYNC_TEST_START
     LBPersistedModelFindSuccessBlock verify = ^(LBPersistedModel *model) {
