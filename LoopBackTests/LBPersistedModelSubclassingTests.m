@@ -22,6 +22,8 @@ static NSNumber *lastId;
 // a Boolean property can be accessed via either of NSNumber or the primitive type BOOL.
 @property (nonatomic) NSNumber *flag;
 @property BOOL flag2;
+@property (nonatomic) NSDate *date;
+
 @end
 
 @implementation Widget
@@ -79,7 +81,8 @@ static NSNumber *lastId;
         @"bars" : @123,
         @"bars2": @123,
         @"flag" : @YES,
-        @"flag2": @YES
+        @"flag2": @YES,
+        @"date" : @"1970-01-01T00:00:00.000Z"
     }];
 
     XCTAssertNil(model._id, @"Invalid id");
@@ -88,21 +91,23 @@ static NSNumber *lastId;
     XCTAssertEqual(model.bars2, 123, @"Invalid bars2.");
     XCTAssertEqualObjects(model.flag, @YES, @"Invalid flag.");
     XCTAssertEqual(model.flag2, YES, @"Invalid flag2.");
+    XCTAssertEqualObjects(model.date, [NSDate dateWithTimeIntervalSince1970:0], @"Invalid date.");
 
     model.bars = @456;
     model.bars2 = 456;
     model.flag = @NO;
     model.flag2 = NO;
-
-    XCTAssertEqualObjects(model.bars, @456, @"Invalid bars.");
-    XCTAssertEqual(model.bars2, 456, @"Invalid bars2.");
-    XCTAssertEqualObjects(model.flag, @NO, @"Invalid flag.");
-    XCTAssertEqual(model.flag2, NO, @"Invalid flag2.");
+    model.date = [NSDate dateWithTimeIntervalSince1970:123];
 
     ASYNC_TEST_START
     [model saveWithSuccess:^{
         lastId = model._id;
         XCTAssertNotNil(model._id, @"Invalid id");
+        XCTAssertEqualObjects(model.bars, @456, @"Invalid bars.");
+        XCTAssertEqual(model.bars2, 456, @"Invalid bars2.");
+        XCTAssertEqualObjects(model.flag, @NO, @"Invalid flag.");
+        XCTAssertEqual(model.flag2, NO, @"Invalid flag2.");
+        XCTAssertEqualObjects(model.date, [NSDate dateWithTimeIntervalSince1970:123], @"Invalid date.");
         ASYNC_TEST_SIGNAL
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
@@ -127,6 +132,7 @@ static NSNumber *lastId;
         XCTAssertNotNil(models, @"No models returned.");
         XCTAssertTrue([models count] >= 2, @"Invalid # of models returned: %lu", (unsigned long)[models count]);
         XCTAssertTrue([[models[0] class] isSubclassOfClass:[Widget class]], @"Invalid class.");
+        XCTAssertTrue([[models[1] class] isSubclassOfClass:[Widget class]], @"Invalid class.");
         XCTAssertEqualObjects(((Widget *)models[0]).name, @"Foo", @"Invalid name.");
         XCTAssertEqualObjects(((Widget *)models[0]).bars, @0, @"Invalid bars");
         XCTAssertEqualObjects(((Widget *)models[1]).name, @"Bar", @"Invalid name");
@@ -137,14 +143,20 @@ static NSNumber *lastId;
 }
 
 - (void)testUpdate {
+    __block NSString *savedName;
+    __block NSDate *savedDate;
+
     ASYNC_TEST_START
     LBPersistedModelFindSuccessBlock verify = ^(LBPersistedModel *model) {
         XCTAssertNotNil(model, @"No model found with ID 2");
         XCTAssertTrue([[model class] isSubclassOfClass:[Widget class]], @"Invalid class.");
-        XCTAssertEqualObjects(((Widget *)model).name, @"Barfoo", @"Invalid name");
-        XCTAssertEqualObjects(((Widget *)model).bars, @1, @"Invalid bars");
+        Widget *widget = (Widget *)model;
+        XCTAssertEqualObjects(widget.name, @"Barfoo", @"Invalid name");
+        XCTAssertEqualObjects(widget.bars, @1, @"Invalid bars");
+        XCTAssertEqualObjects(widget.date, [NSDate dateWithTimeIntervalSince1970:0], @"Invalid date");
 
-        ((Widget *)model).name = @"Bar";
+        widget.name = savedName;
+        widget.date = savedDate;
         [model saveWithSuccess:^{
             ASYNC_TEST_SIGNAL
         } failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -156,7 +168,12 @@ static NSNumber *lastId;
 
     LBPersistedModelFindSuccessBlock update = ^(LBPersistedModel *model) {
         XCTAssertNotNil(model, @"No model found with ID 2");
-        ((Widget *)model).name = @"Barfoo";
+        XCTAssertTrue([[model class] isSubclassOfClass:[Widget class]], @"Invalid class.");
+        Widget *widget = (Widget *)model;
+        savedName = widget.name;
+        savedDate = widget.date;
+        widget.name = @"Barfoo";
+        widget.date = [NSDate dateWithTimeIntervalSince1970:0];
         [model saveWithSuccess:findAgain failure:ASYNC_TEST_FAILURE_BLOCK];
     };
 
