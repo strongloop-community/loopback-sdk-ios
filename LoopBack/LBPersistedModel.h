@@ -94,9 +94,13 @@ typedef void (^LBPersistedModelAllSuccessBlock)(NSArray *models);
 - (void)allWithSuccess:(LBPersistedModelAllSuccessBlock)success
                failure:(SLFailureBlock)failure;
 
-//typedef void (^LBPersistedModelFindOneSuccessBlock)(LBPersistedModel *model);
-//- (void)findOneWithFilter:(NSDictionary *)filter
-//                  success:(LBPersistedModelFindOneSuccessBlock)success
-//                  failure:(SLFailureBlock)failure;
+typedef void (^LBPersistedModelFindOneSuccessBlock)(LBPersistedModel *model);
+- (void)findOneWithFilter:(NSDictionary *)filter
+                  success:(LBPersistedModelFindOneSuccessBlock)success
+                  failure:(SLFailureBlock)failure;
+
+- (void)findWithFilter:(NSDictionary *)filter
+                  success:(LBPersistedModelAllSuccessBlock)success
+                  failure:(SLFailureBlock)failure;
 
 @end

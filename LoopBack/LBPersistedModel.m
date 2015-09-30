@@ -81,6 +81,10 @@
             forMethod:[NSString stringWithFormat:@"%@.findById", self.className]];
     [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@", self.className] verb:@"GET"]
             forMethod:[NSString stringWithFormat:@"%@.all", self.className]];
+    [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@", self.className] verb:@"GET"]
+            forMethod:[NSString stringWithFormat:@"%@.find", self.className]];
+    [contract addItem:[SLRESTContractItem itemWithPattern:[NSString stringWithFormat:@"/%@/findOne", self.className] verb:@"GET"]
+            forMethod:[NSString stringWithFormat:@"%@.findOne", self.className]];
 
     return contract;
 }
@@ -123,6 +127,43 @@
                      }
                      failure:failure];
 }
+
+- (void)findOneWithFilter:(NSDictionary *)filter
+        success:(LBPersistedModelFindOneSuccessBlock)success
+        failure:(SLFailureBlock)failure {
+
+    if(!filter) {
+        filter = @{};
+    }
+    [self invokeStaticMethod:@"findOne"
+                  parameters:@{@"filter": filter}
+                     success:^(id value) {
+                         NSAssert([[value class] isSubclassOfClass:[NSDictionary class]], @"Received non-Dictionary: %@", value);
+                         success((LBPersistedModel*)[self modelWithDictionary:value]);
+                     } failure:failure];
+}
+
+- (void)findWithFilter:(NSDictionary *) filter
+                success: (LBPersistedModelAllSuccessBlock)success
+                failure:(SLFailureBlock)failure {
+    if(!filter) {
+        filter = @{};
+    }
+    [self invokeStaticMethod:@"find"
+                  parameters:@{@"filter": filter}
+                     success:^(id value) {
+                         NSAssert([[value class] isSubclassOfClass:[NSArray class]], @"Received non-Array: %@", value);
+                         
+                         NSMutableArray *models = [NSMutableArray array];
+                         [value enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                             [models addObject:[self modelWithDictionary:obj]];
+                         }];
+                         
+                         success(models);
+                     }
+                     failure:failure];
+}
+
 
 
 @end
