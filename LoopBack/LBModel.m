@@ -20,6 +20,8 @@
 
 @end
 
+static NSDateFormatter *jsonDateFormatter = nil;
+
 @implementation LBModel
 
 - (instancetype)initWithRepository:(SLRepository *)repository parameters:(NSDictionary *)parameters {
@@ -27,6 +29,12 @@
 
     if (self) {
         __overflow = [NSMutableDictionary dictionary];
+    }
+
+    if (jsonDateFormatter == nil) {
+        jsonDateFormatter = [[NSDateFormatter alloc] init];
+        [jsonDateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'"];
+        [jsonDateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     }
 
     return self;
@@ -54,8 +62,13 @@
         for (int i = 0; i < propertyCount; i++) {
             NSString *propertyName = [NSString stringWithCString:property_getName(properties[i])
                                                         encoding:NSUTF8StringEncoding];
-            [dict setValue:[self valueForKey:propertyName] forKey:propertyName];
+            id obj = [self valueForKey:propertyName];
+            if ([obj isKindOfClass:[NSDate class]]) {
+                obj = [jsonDateFormatter stringFromDate:obj];
+            }
+            [dict setValue:obj forKey:propertyName];
         }
+        free(properties);
     }
 
     return dict;
@@ -96,35 +109,33 @@
 
     [[model _overflow] addEntriesFromDictionary:dictionary];
 
-    for (NSString *key in dictionary) {
-        id obj = dictionary[key];
-        SEL setter = NSSelectorForSetter(key);
-
-        // if obj is a NSNumber (including a boolean value) try to use a setter for the primitive type
-        if ([obj isKindOfClass:[NSNumber class]]) {
-            NSMethodSignature *signature = [model methodSignatureForSelector:setter];
-            const char* type = [signature getArgumentTypeAtIndex:2];
-            if (type != NULL && type[0] != '@') { // if the setter is for a primitive type
-                NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
-                [invocation setSelector:setter];
-                if (obj == (void*)kCFBooleanFalse || obj == (void*)kCFBooleanTrue) { // if boolean
-                    BOOL boolValue = [obj boolValue];
-                    [invocation setArgument:&boolValue atIndex:2];
-                } else {
-                    long integerValue = [obj integerValue];
-                    [invocation setArgument:&integerValue atIndex:2];
-                }
-                [invocation invokeWithTarget:model];
+    for (Class targetClass = [model class]; targetClass != [LBModel superclass]; targetClass = [targetClass superclass]) {
+        unsigned int count;
+        objc_property_t* props = class_copyPropertyList(targetClass, &count);
+        for (int i = 0; i < count; i++) {
+            objc_property_t property = props[i];
+            const char *name = property_getName(property);
+            NSString *key = [NSString stringWithUTF8String:name];
+            id obj = dictionary[key];
+            if (obj == nil) {
                 continue;
             }
+
+            const char *type = property_getAttributes(property);
+            // if the property type is NSDate, convert the string to a date object
+            if ([obj isKindOfClass:[NSString class]] && strncmp(type, "T@\"NSDate\",", 11) == 0) {
+                obj = [jsonDateFormatter dateFromString:obj];
+            }
+
+            @try {
+                [model setValue:obj forKey:key];
+            }
+            @catch (NSException *e) {
+                // ignore any failure
+            }
         }
-        if ([model respondsToSelector:setter]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            [model performSelector:setter withObject:obj];
-#pragma clang diagnostic pop
-        }
-    };
+        free(props);
+    }
 
     return model;
 }

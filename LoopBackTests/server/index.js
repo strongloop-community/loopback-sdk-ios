@@ -30,6 +30,10 @@ var Widget = app.model('widget', {
       type: Boolean,
       required: false
     },
+    date: {
+      type: Date,
+      required: false
+    },
     data: {
       type: Object,
       required: false
@@ -64,7 +68,8 @@ Widget.destroyAll(function () {
   });
   Widget.create({
     name: 'Bar',
-    bars: 1
+    bars: 1,
+    date: '2000-01-02T03:04:05.006Z'
   });
 });
 
