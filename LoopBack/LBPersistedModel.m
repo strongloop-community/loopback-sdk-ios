@@ -62,9 +62,8 @@
 @implementation LBPersistedModelRepository
 
 + (instancetype)repository {
-    LBPersistedModelRepository *repository = [self repositoryWithClassName:@"persistentmodels"];
-    repository.modelClass = [LBPersistedModel class];
-    return repository;
+    // LBPersistedModel won't get instantiated directly.
+    return nil;
 }
 
 - (SLRESTContract *)contract {

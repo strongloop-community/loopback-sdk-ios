@@ -92,7 +92,6 @@
     @synchronized(self) {
         if(singleton == nil) {
             singleton = [self repositoryWithClassName:@"installations"];
-            singleton.modelClass = [LBInstallation class];
         }
     }
     return singleton;
