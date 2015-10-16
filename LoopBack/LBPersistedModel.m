@@ -50,7 +50,7 @@
 - (void)destroyWithSuccess:(LBPersistedModelDestroySuccessBlock)success
                    failure:(SLFailureBlock)failure {
     [self invokeMethod:@"remove"
-            parameters:[self toDictionary]
+            parameters:@{ @"id": self._id }
                success:^(id value) {
                    success();
                }
