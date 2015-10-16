@@ -29,6 +29,9 @@ static NSNumber *lastId;
     [suite addTest:[self testCaseWithSelector:@selector(testCreate)]];
     [suite addTest:[self testCaseWithSelector:@selector(testFind)]];
     [suite addTest:[self testCaseWithSelector:@selector(testAll)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testFindWithFilter)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testFindOne)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testFindOneWithFilter)]];
     [suite addTest:[self testCaseWithSelector:@selector(testUpdate)]];
     [suite addTest:[self testCaseWithSelector:@selector(testRemove)]];
     return suite;
@@ -129,7 +132,6 @@ static NSNumber *lastId;
      } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
 }
-
 
 - (void)testUpdate {
     ASYNC_TEST_START
