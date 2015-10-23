@@ -60,30 +60,17 @@ NSString *SLAdapterNotConnectedErrorDescription = @"Adapter not connected.";
 
 - (void)invokeStaticMethod:(NSString *)path
                 parameters:(NSDictionary *)parameters
-                   success:(SLSuccessBlock)success
-                   failure:(SLFailureBlock)failure {
-    NSAssert(NO, @"Invalid Adapter.");
-}
-
-- (void)invokeStaticMethod:(NSString *)path
-                parameters:(NSDictionary *)parameters
+            bodyParameters:(NSDictionary *)bodyParameters
               outputStream:(NSOutputStream *)outputStream
                    success:(SLSuccessBlock)success
                    failure:(SLFailureBlock)failure {
     NSAssert(NO, @"Invalid Adapter.");
 }
 
-- (void)invokeInstanceMethod:(NSString *)path
-       constructorParameters:(NSDictionary *)constructorParameters
-                  parameters:(NSDictionary *)parameters
-                     success:(SLSuccessBlock)success
-                     failure:(SLFailureBlock)failure {
-    NSAssert(NO, @"Invalid Adapter.");
-}
-
 - (void)invokeInstanceMethod:(NSString *)method
        constructorParameters:(NSDictionary *)constructorParameters
                   parameters:(NSDictionary *)parameters
+              bodyParameters:(NSDictionary *)bodyParameters
                 outputStream:(NSOutputStream *)outputStream
                      success:(SLSuccessBlock)success
                      failure:(SLFailureBlock)failure {

@@ -71,7 +71,8 @@ static NSString * const DEFAULTS_CURRENT_USER_ID_KEY = @"LBUserRepositoryCurrent
     NSParameterAssert(email);
     NSParameterAssert(password);
     [self invokeStaticMethod:@"login"
-                  parameters:@{ @"email": email, @"password": password }
+                  parameters:nil
+              bodyParameters:@{ @"email": email, @"password": password }
                      success:^(id value) {
                          NSAssert([[value class] isSubclassOfClass:[NSDictionary class]], @"Received non-Dictionary: %@", value);
                          LBRESTAdapter* adapter = (LBRESTAdapter*)self.adapter;

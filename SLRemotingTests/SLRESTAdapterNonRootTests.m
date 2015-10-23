@@ -33,6 +33,8 @@
     adapter = [SLRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3001/nonroot/api"]];
     [adapter invokeStaticMethod:@"getMsg"
                      parameters:nil
+                 bodyParameters:nil
+                   outputStream:nil
                         success:^(id value) {
                             XCTAssertNotNil(value, @"No value returned.");
                             XCTAssertTrue([@"Hello" isEqualToString:value[@"data"]], @"Incorrect value returned.");
@@ -48,6 +50,8 @@
     adapter = [SLRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3001/nonroot/api"]];
     [adapter invokeStaticMethod:@"convertMsg"
                      parameters:@{ @"str": @"somevalue" }
+                 bodyParameters:nil
+                   outputStream:nil
                         success:^(id value) {
                             XCTAssertNotNil(value, @"No value returned.");
                             XCTAssertTrue([@"CONVERTED: SOMEVALUE" isEqualToString:value[@"data"]], @"Incorrect value returned.");
@@ -63,6 +67,8 @@
     adapter = [SLRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3001/nonroot/api/"]];
     [adapter invokeStaticMethod:@"getMsg"
                      parameters:nil
+                 bodyParameters:nil
+                   outputStream:nil
                         success:^(id value) {
                             XCTAssertNotNil(value, @"No value returned.");
                             XCTAssertTrue([@"Hello" isEqualToString:value[@"data"]], @"Incorrect value returned.");
@@ -78,6 +84,8 @@
     adapter = [SLRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3001/nonroot/api/"]];
     [adapter invokeStaticMethod:@"convertMsg"
                      parameters:@{ @"str": @"somevalue" }
+                 bodyParameters:nil
+                   outputStream:nil
                         success:^(id value) {
                             XCTAssertNotNil(value, @"No value returned.");
                             XCTAssertTrue([@"CONVERTED: SOMEVALUE" isEqualToString:value[@"data"]], @"Incorrect value returned.");
