@@ -86,7 +86,6 @@ static NSString *mimeTypeForFileName(NSString *fileName) {
 
 + (instancetype)repository {
     LBFileRepository *repository = [self repositoryWithClassName:@"containers"];
-    repository.modelClass = [LBFile class];
     return repository;
 }
 

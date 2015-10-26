@@ -16,9 +16,9 @@ static NSNumber *lastId;
 @interface Widget : LBPersistedModel
 
 @property (nonatomic, copy) NSString *name;
-// a Number property can be accessed via either of NSNumber or the primitive type long.
+// a Number property can be accessed via either of NSNumber or the primitive type NSInteger.
 @property (nonatomic) NSNumber *bars;
-@property long bars2;
+@property NSInteger bars2;
 // a Boolean property can be accessed via either of NSNumber or the primitive type BOOL.
 @property (nonatomic) NSNumber *flag;
 @property BOOL flag2;

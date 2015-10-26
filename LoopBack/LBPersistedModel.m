@@ -50,7 +50,7 @@
 - (void)destroyWithSuccess:(LBPersistedModelDestroySuccessBlock)success
                    failure:(SLFailureBlock)failure {
     [self invokeMethod:@"remove"
-            parameters:[self toDictionary]
+            parameters:@{ @"id": self._id }
                success:^(id value) {
                    success();
                }
@@ -62,9 +62,8 @@
 @implementation LBPersistedModelRepository
 
 + (instancetype)repository {
-    LBPersistedModelRepository *repository = [self repositoryWithClassName:@"persistentmodels"];
-    repository.modelClass = [LBPersistedModel class];
-    return repository;
+    // LBPersistedModel won't get instantiated directly.
+    return nil;
 }
 
 - (SLRESTContract *)contract {

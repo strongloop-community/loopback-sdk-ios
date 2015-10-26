@@ -45,7 +45,6 @@
 
 + (instancetype)repository {
     LBContainerRepository *repository = [self repositoryWithClassName:@"containers"];
-    repository.modelClass = [LBContainer class];
     return repository;
 }
 

@@ -15,7 +15,6 @@
 
 + (instancetype)repository {
     LBAccessTokenRepository *repository = [self repositoryWithClassName:@"accessToken"];
-    repository.modelClass = [LBAccessToken class];
     return repository;
 }
 
