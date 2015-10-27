@@ -54,8 +54,6 @@ typedef void (^LBContainerDeleteSuccessBlock)();
 /** Model repository for this container. */
 @property (nonatomic, readonly, strong) LBFileRepository *fileRepository;
 
-+ (instancetype)repository;
-
 /**
  * Blocks of this type are executed when
  * LBContainerRepository::createContainerWithName:success:failure: is successful.

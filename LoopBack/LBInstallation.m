@@ -87,6 +87,9 @@
 
 @implementation LBInstallationRepository
 
+/**
+ * Get a singleton for LBInstallationRepository
+ */
 + (instancetype)repository {
     static LBInstallationRepository *singleton = nil;
     @synchronized(self) {

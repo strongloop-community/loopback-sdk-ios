@@ -22,6 +22,4 @@
  */
 @interface LBAccessTokenRepository : LBPersistedModelRepository
 
-+ (instancetype)repository;
-
 @end

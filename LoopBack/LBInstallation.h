@@ -103,10 +103,5 @@
  */
 @interface LBInstallationRepository : LBPersistedModelRepository
 
-/**
- * Get a singleton for LBInstallationRepository
- */
-+ (instancetype)repository;
-
 @end
 

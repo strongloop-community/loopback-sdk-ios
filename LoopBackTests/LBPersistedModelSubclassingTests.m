@@ -32,7 +32,6 @@ static NSNumber *lastId;
 @end
 
 @interface WidgetRepository : LBPersistedModelRepository
-+ (instancetype)repository;
 
 @end
 
@@ -43,6 +42,15 @@ static NSNumber *lastId;
 }
 
 @end
+
+@interface TestRepository : LBPersistedModelRepository
+
+@end
+
+@implementation TestRepository
+
+@end
+
 
 @interface LBPersistedModelSubclassingTests : XCTestCase
 
@@ -57,6 +65,7 @@ static NSNumber *lastId;
  */
 + (id)defaultTestSuite {
     XCTestSuite *suite = [XCTestSuite testSuiteWithName:@"TestSuite for LBPersistedModel subclasses."];
+    [suite addTest:[self testCaseWithSelector:@selector(testRepositoryNotOverridden)]];
     [suite addTest:[self testCaseWithSelector:@selector(testCreate)]];
     [suite addTest:[self testCaseWithSelector:@selector(testFind)]];
     [suite addTest:[self testCaseWithSelector:@selector(testAll)]];
@@ -74,6 +83,10 @@ static NSNumber *lastId;
 
 - (void)tearDown {
     [super tearDown];
+}
+
+- (void)testRepositoryNotOverridden {
+    XCTAssertThrows([TestRepository repository], @"Exception should be thrown as 'repository' is not overridden.");
 }
 
 - (void)testCreate {

@@ -62,11 +62,6 @@
 
 @implementation LBPersistedModelRepository
 
-+ (instancetype)repository {
-    // LBPersistedModel won't get instantiated directly.
-    return nil;
-}
-
 - (SLRESTContract *)contract {
     SLRESTContract *contract = [super contract];
 
