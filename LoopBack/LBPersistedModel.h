@@ -7,6 +7,13 @@
 
 #import "LBModel.h"
 
+@class LBPersistedModel;
+typedef void (^LBPersistedModelObjectSuccessBlock)(LBPersistedModel *model);
+typedef void (^LBPersistedModelArraySuccessBlock)(NSArray *array);
+typedef void (^LBPersistedModelVoidSuccessBlock)();
+typedef void (^LBPersistedModelBoolSuccessBlock)(BOOL boolean);
+typedef void (^LBPersistedModelNumberSuccessBlock)(NSInteger number);
+
 /**
  * A local representative of a single persisted model instance on the server.
  * The key difference from LBModel is that this implements the CRUD operation supports.
@@ -20,7 +27,7 @@
  * Blocks of this type are executed when LBPersistedModel::saveWithSuccess:failure: is
  * successful.
  */
-typedef void (^LBPersistedModelSaveSuccessBlock)();
+typedef LBPersistedModelVoidSuccessBlock LBPersistedModelSaveSuccessBlock;
 /**
  * Saves the LBPersistedModel to the server.
  *
@@ -36,7 +43,7 @@ typedef void (^LBPersistedModelSaveSuccessBlock)();
  * Blocks of this type are executed when LBPersistedModel::destroyWithSuccess:failure: is
  * successful.
  */
-typedef void (^LBPersistedModelDestroySuccessBlock)();
+typedef LBPersistedModelVoidSuccessBlock LBPersistedModelDestroySuccessBlock;
 /**
  * Destroys the LBPersistedModel from the server.
  *
@@ -47,7 +54,6 @@ typedef void (^LBPersistedModelDestroySuccessBlock)();
                    failure:(SLFailureBlock)failure;
 
 @end
-
 
 /**
  * A local representative of a single model type on the server, encapsulating
@@ -67,7 +73,7 @@ typedef void (^LBPersistedModelDestroySuccessBlock)();
  * Blocks of this type are executed when
  * LBModelRepository::findById:success:failure: is successful.
  */
-typedef void (^LBPersistedModelFindSuccessBlock)(LBPersistedModel *model);
+typedef LBPersistedModelObjectSuccessBlock LBPersistedModelFindSuccessBlock;
 /**
  * Finds and downloads a single instance of this model type on and from the
  * server with the given id.
@@ -84,7 +90,7 @@ typedef void (^LBPersistedModelFindSuccessBlock)(LBPersistedModel *model);
  * Blocks of this type are executed when
  * LBPersistedModelRepository::allWithSuccess:failure: is successful.
  */
-typedef void (^LBPersistedModelAllSuccessBlock)(NSArray *models);
+typedef LBPersistedModelArraySuccessBlock LBPersistedModelAllSuccessBlock;
 /**
  * Finds and downloads all models of this type on and from the server.
  *
@@ -94,7 +100,7 @@ typedef void (^LBPersistedModelAllSuccessBlock)(NSArray *models);
 - (void)allWithSuccess:(LBPersistedModelAllSuccessBlock)success
                failure:(SLFailureBlock)failure;
 
-typedef void (^LBPersistedModelFindOneSuccessBlock)(LBPersistedModel *model);
+typedef LBPersistedModelObjectSuccessBlock LBPersistedModelFindOneSuccessBlock;
 - (void)findOneWithFilter:(NSDictionary *)filter
                   success:(LBPersistedModelFindOneSuccessBlock)success
                   failure:(SLFailureBlock)failure;
