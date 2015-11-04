@@ -10,6 +10,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.ios.deployment_target = '6.1'
-  s.ios.frameworks = 'UIKit', 'Foundation'
+  s.ios.frameworks = 'UIKit', 'Foundation', 'MobileCoreServices', 'SystemConfiguration'
 
 end
