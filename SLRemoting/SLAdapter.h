@@ -110,26 +110,10 @@ extern NSString *SLAdapterNotConnectedErrorDescription;
  * Unlike SLAdapter::invokeInstanceMethod:constructorParameters:parameters:success:failure:,
  * no object needs to be created on the server.
  *
- * @param method      The method to invoke, e.g. `module.doSomething`.
- * @param parameters  The parameters to invoke with.
- * @param success     An SLSuccessBlock to be executed when the invocation
- *                    succeeds.
- * @param failure     An SLFailureBlock to be executed when the invocation
- *                    fails.
- */
-- (void)invokeStaticMethod:(NSString *)method
-                parameters:(NSDictionary *)parameters
-                   success:(SLSuccessBlock)success
-                   failure:(SLFailureBlock)failure;
-
-/**
- * Invokes a remotable method exposed statically on the server.
- *
- * Unlike SLAdapter::invokeInstanceMethod:constructorParameters:parameters:success:failure:,
- * no object needs to be created on the server.
- *
  * @param method        The method to invoke, e.g. `module.doSomething`.
  * @param parameters    The parameters to invoke with.
+ * @param bodyParameters  The parameters that get JSON encoded and put into
+ *                      the message body when the method is POST or PUT.
  * @param outputStream  The stream to which all the response data goes.
  *                      If this is set, no data is routed for further
  *                      processing and the success block is invoked with `nil`.
@@ -140,6 +124,7 @@ extern NSString *SLAdapterNotConnectedErrorDescription;
  */
 - (void)invokeStaticMethod:(NSString *)method
                 parameters:(NSDictionary *)parameters
+            bodyParameters:(NSDictionary *)bodyParameters
               outputStream:(NSOutputStream *)outputStream
                    success:(SLSuccessBlock)success
                    failure:(SLFailureBlock)failure;
@@ -158,31 +143,8 @@ extern NSString *SLAdapterNotConnectedErrorDescription;
  * @param constructorParameters  The parameters the virual object should be
  *                               created with.
  * @param parameters             The parameters to invoke with.
- * @param success                An SLSuccessBlock to be executed when the
- *                               invocation succeeds.
- * @param failure                An SLFailureBlock to be executed when the
- *                               invocation fails.
- */
-- (void)invokeInstanceMethod:(NSString *)method
-       constructorParameters:(NSDictionary *)constructorParameters
-                  parameters:(NSDictionary *)parameters
-                     success:(SLSuccessBlock)success
-                     failure:(SLFailureBlock)failure;
-
-/**
- * Invokes a remotable method exposed within a prototype on the server.
- *
- * This should be thought of as a two-step process. First, the server loads or
- * creates an object with the appropriate type. Then and only then is the method
- * invoked on that object. The two parameter dictionaries correspond to these
- * two steps: `creationParameters` for the former, and `parameters` for the
- * latter.
- *
- * @param method                 The method to invoke, e.g.
- *                               `MyClass.prototype.doSomething`.
- * @param constructorParameters  The parameters the virual object should be
- *                               created with.
- * @param parameters             The parameters to invoke with.
+ * @param bodyParameters         The parameters that get JSON encoded and put into
+ *                               the message body when the method is POST or PUT.
  * @param outputStream           The stream to which all the response data goes.
  *                               If this is set, no data is routed for further
  *                               processing and the success block is invoked
@@ -195,6 +157,7 @@ extern NSString *SLAdapterNotConnectedErrorDescription;
 - (void)invokeInstanceMethod:(NSString *)method
        constructorParameters:(NSDictionary *)constructorParameters
                   parameters:(NSDictionary *)parameters
+              bodyParameters:(NSDictionary *)bodyParameters
                 outputStream:(NSOutputStream *)outputStream
                      success:(SLSuccessBlock)success
                      failure:(SLFailureBlock)failure;

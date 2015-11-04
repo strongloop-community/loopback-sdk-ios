@@ -22,6 +22,7 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
 - (void)requestWithPath:(NSString *)path
                    verb:(NSString *)verb
              parameters:(NSDictionary *)parameters
+         bodyParameters:(NSDictionary *)bodyParameters
               multipart:(BOOL)multipart
            outputStream:(NSOutputStream *)outputStream
                 success:(SLSuccessBlock)success
@@ -64,18 +65,7 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
 
 - (void)invokeStaticMethod:(NSString *)method
                 parameters:(NSDictionary *)parameters
-                   success:(SLSuccessBlock)success
-                   failure:(SLFailureBlock)failure {
-
-    [self invokeStaticMethod:method
-                  parameters:parameters
-                outputStream:nil
-                     success:success
-                     failure:failure];
-}
-
-- (void)invokeStaticMethod:(NSString *)method
-                parameters:(NSDictionary *)parameters
+            bodyParameters:(NSDictionary *)bodyParameters
               outputStream:(NSOutputStream *)outputStream
                    success:(SLSuccessBlock)success
                    failure:(SLFailureBlock)failure {
@@ -90,6 +80,7 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
     [self requestWithPath:path
                      verb:verb
                parameters:mutableParams
+           bodyParameters:bodyParameters
                 multipart:multipart
              outputStream:outputStream
                   success:success
@@ -99,20 +90,7 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
 - (void)invokeInstanceMethod:(NSString *)method
        constructorParameters:(NSDictionary *)constructorParameters
                   parameters:(NSDictionary *)parameters
-                     success:(SLSuccessBlock)success
-                     failure:(SLFailureBlock)failure {
-
-    [self invokeInstanceMethod:method
-         constructorParameters:constructorParameters
-                    parameters:parameters
-                  outputStream:nil
-                       success:success
-                       failure:failure];
-}
-
-- (void)invokeInstanceMethod:(NSString *)method
-       constructorParameters:(NSDictionary *)constructorParameters
-                  parameters:(NSDictionary *)parameters
+              bodyParameters:(NSDictionary *)bodyParameters
                 outputStream:(NSOutputStream *)outputStream
                      success:(SLSuccessBlock)success
                      failure:(SLFailureBlock)failure {
@@ -130,6 +108,7 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
     [self requestWithPath:path
                      verb:verb
                parameters:combinedParameters
+           bodyParameters:bodyParameters
                 multipart:multipart
              outputStream:outputStream
                   success:success
@@ -139,6 +118,7 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
 - (void)requestWithPath:(NSString *)path
                    verb:(NSString *)verb
              parameters:(NSDictionary *)parameters
+         bodyParameters:(NSDictionary *)bodyParameters
               multipart:(BOOL)multipart
            outputStream:(NSOutputStream *)outputStream
                 success:(SLSuccessBlock)success
@@ -146,21 +126,28 @@ static NSString * const DEFAULT_DEV_BASE_URL = @"http://localhost:3001";
 
     NSAssert(self.connected, SLAdapterNotConnectedErrorDescription);
 
-    if ([[verb uppercaseString] isEqualToString:@"GET"]) {
-        client.parameterEncoding = AFFormURLParameterEncoding;
-    } else {
-        client.parameterEncoding = AFJSONParameterEncoding;
-    }
-
     // Remove the leading / so that the path is treated as relative to the baseURL
     if ([path hasPrefix:@"/"]) {
         path = [path substringFromIndex:1];
     }
 
-    NSURLRequest *request;
+    NSMutableURLRequest *request;
 
     if (!multipart) {
-        request = [client requestWithMethod:verb path:path parameters:parameters];
+        if ([verb isEqualToString:@"GET"] || [verb isEqualToString:@"HEAD"] || [verb isEqualToString:@"DELETE"]) {
+            parameters = ([parameters count] > 0) ? parameters : nil;
+            request = [client requestWithMethod:verb path:path parameters:parameters];
+        } else {
+            client.parameterEncoding = AFJSONParameterEncoding;
+            request = [client requestWithMethod:verb path:path parameters:bodyParameters];
+            if (parameters) {
+                NSURL *url = [NSURL URLWithString:[[request.URL absoluteString]
+                                                   stringByAppendingFormat:@"?%@",
+                                                   SLAFQueryStringFromParametersWithEncoding(parameters,
+                                                                                             client.stringEncoding)]];
+                [request setURL:url];
+            }
+        }
     } else {
         request = [client multipartFormRequestWithMethod:verb
                                                     path:path

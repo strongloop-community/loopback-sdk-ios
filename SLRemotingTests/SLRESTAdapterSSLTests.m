@@ -36,6 +36,8 @@
     ASYNC_TEST_START
     [adapter invokeStaticMethod:@"simple.getSecret"
                      parameters:nil
+                 bodyParameters:nil
+                   outputStream:nil
                         success:^(id value) {
                             XCTAssertNotNil(value, @"No value returned.");
                             XCTAssertTrue([@"shhh!" isEqualToString:value[@"data"]], @"Incorrect value returned.");
@@ -49,6 +51,8 @@
     ASYNC_TEST_START
     [adapter invokeStaticMethod:@"simple.transform"
                      parameters:@{ @"str": @"somevalue" }
+                 bodyParameters:nil
+                   outputStream:nil
                         success:^(id value) {
                             XCTAssertNotNil(value, @"No value returned.");
                             XCTAssertTrue([@"transformed: somevalue" isEqualToString:value[@"data"]], @"Incorrect value returned.");
@@ -63,6 +67,8 @@
     [adapter invokeInstanceMethod:@"SimpleClass.prototype.getName"
             constructorParameters:@{ @"name": @"somename" }
                        parameters:nil
+                   bodyParameters:nil
+                     outputStream:nil
                           success:^(id value) {
                               XCTAssertNotNil(value, @"No value returned.");
                               XCTAssertTrue([@"somename" isEqualToString:value[@"data"]], @"Incorrect value returned.");
@@ -77,6 +83,8 @@
     [adapter invokeInstanceMethod:@"SimpleClass.prototype.greet"
             constructorParameters:@{ @"name": @"somename" }
                        parameters:@{ @"other": @"othername" }
+                   bodyParameters:nil
+                     outputStream:nil
                           success:^(id value) {
                               XCTAssertNotNil(value, @"No value returned.");
                               XCTAssertTrue([@"Hi, othername!" isEqualToString:value[@"data"]], @"Incorrect value returned.");

@@ -69,6 +69,8 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
     ASYNC_TEST_START
     [adapter invokeStaticMethod:@"contract.getSecret"
                      parameters:nil
+                 bodyParameters:nil
+                   outputStream:nil
                         success:^(id value) {
                             XCTAssertNotNil(value, @"No value returned.");
                             XCTAssertTrue([@"shhh!" isEqualToString:value[@"data"]], @"Incorrect value returned.");
@@ -82,6 +84,8 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
     ASYNC_TEST_START
     [adapter invokeStaticMethod:@"contract.transform"
                      parameters:@{ @"str": @"somevalue" }
+                 bodyParameters:nil
+                   outputStream:nil
                         success:^(id value) {
                             XCTAssertNotNil(value, @"No value returned.");
                             XCTAssertTrue([@"transformed: somevalue" isEqualToString:value[@"data"]], @"Incorrect value returned.");
@@ -96,6 +100,8 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
     [adapter invokeInstanceMethod:@"ContractClass.prototype.getName"
             constructorParameters:@{ @"name": @"somename" }
                        parameters:nil
+                   bodyParameters:nil
+                     outputStream:nil
                           success:^(id value) {
                               XCTAssertNotNil(value, @"No value returned.");
                               XCTAssertTrue([@"somename" isEqualToString:value[@"data"]], @"Incorrect value returned: %@", value);
@@ -110,6 +116,8 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
     [adapter invokeInstanceMethod:@"ContractClass.prototype.greet"
             constructorParameters:@{ @"name": @"somename" }
                        parameters:@{ @"other": @"othername" }
+                   bodyParameters:nil
+                     outputStream:nil
                           success:^(id value) {
                               XCTAssertNotNil(value, @"No value returned.");
                               XCTAssertTrue([@"Hi, othername!" isEqualToString:value[@"data"]], @"Incorrect value returned: %@", value);
@@ -171,6 +179,8 @@ static NSString * const SERVER_URL = @"http://localhost:3001";
 
     [customAdapter invokeStaticMethod:@"contract.getAuthorizationHeader"
                            parameters:nil
+                       bodyParameters:nil
+                         outputStream:nil
                               success:^(id value) {
                                   XCTAssertNotNil(value, @"No value returned.");
                                   XCTAssertTrue([@"auth-token" isEqualToString:value[@"data"]], @"Incorrect value returned.");

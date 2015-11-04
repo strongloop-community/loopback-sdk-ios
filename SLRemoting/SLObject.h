@@ -76,6 +76,28 @@ extern NSString *SLObjectInvalidRepositoryDescription;
  * Invokes a remotable method exposed within instances of this class on the
  * server.
  *
+ * @see SLAdapter::invokeInstanceMethod:constructorParameters:parameters:success:failure:
+ *
+ * @param name        The method to invoke (without the prototype), e.g.
+ *                    `doSomething`.
+ * @param parameters  The parameters to invoke with.
+ * @param bodyParameters  The parameters that get JSON encoded and put into
+ *                    the message body when the verb is POST or PUT.
+ * @param success     An SLSuccessBlock to be executed when the invocation
+ *                    succeeds.
+ * @param failure     An SLFailureBlock to be executed when the invocation
+ *                    fails.
+ */
+- (void)invokeMethod:(NSString *)name
+          parameters:(NSDictionary *)parameters
+      bodyParameters:(NSDictionary *)bodyParameters
+             success:(SLSuccessBlock)success
+             failure:(SLFailureBlock)failure;
+
+/**
+ * Invokes a remotable method exposed within instances of this class on the
+ * server.
+ *
  * @see SLAdapter::invokeInstanceMethod:constructorParameters:parameters:outputStream:success:failure:
  *
  * @param name          The method to invoke (without the prototype), e.g.
@@ -150,6 +172,28 @@ extern NSString *SLObjectInvalidRepositoryDescription;
  */
 - (void)invokeStaticMethod:(NSString *)name
                 parameters:(NSDictionary *)parameters
+                   success:(SLSuccessBlock)success
+                   failure:(SLFailureBlock)failure;
+
+/**
+ * Invokes a remotable method exposed statically within this class on the
+ * server.
+ *
+ * @see SLAdapter::invokeStaticMethod:parameters:success:failure:
+ *
+ * @param name        The method to invoke (without the class name), e.g.
+ *                    `doSomething`.
+ * @param parameters  The parameters to invoke with.
+ * @param bodyParameters  The parameters that get JSON encoded and put into
+ *                    the message body when the verb is POST or PUT.
+ * @param success     An SLSuccessBlock to be executed when the invocation
+ *                    succeeds.
+ * @param failure     An SLFailureBlock to be executed when the invocation
+ *                    fails.
+ */
+- (void)invokeStaticMethod:(NSString *)name
+                parameters:(NSDictionary *)parameters
+            bodyParameters:(NSDictionary *)bodyParameters
                    success:(SLSuccessBlock)success
                    failure:(SLFailureBlock)failure;
 

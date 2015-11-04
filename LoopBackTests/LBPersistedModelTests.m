@@ -111,8 +111,11 @@ static NSNumber *lastId;
 
 - (void)testFindOne {
     ASYNC_TEST_START
-    [[self.repository adapter] invokeStaticMethod:@"widgets.findOne" parameters:
-     @{ @"filter": @{@"where": @{ @"name" : @"Foo" }}} success:^(LBPersistedModel *model) {
+    [[self.repository adapter] invokeStaticMethod:@"widgets.findOne"
+                                       parameters:@{ @"filter": @{@"where": @{ @"name" : @"Foo" }}}
+                                   bodyParameters:nil
+                                     outputStream:nil
+                                          success:^(LBPersistedModel *model) {
         XCTAssertNotNil(model, @"No models returned.");
         XCTAssertEqualObjects(model[@"name"], @"Foo", @"Invalid name");
         XCTAssertEqualObjects(model[@"bars"], @0, @"Invalid bars");
