@@ -39,7 +39,7 @@
 		0B3A201618A56BA5006772C8 /* LBContainerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3A201518A56BA5006772C8 /* LBContainerTests.m */; };
 		0B3A201818A57CCD006772C8 /* LBUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3A201718A57CCD006772C8 /* LBUserTests.m */; };
 		0B3A201B18A5856F006772C8 /* LBFileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3A201A18A5856F006772C8 /* LBFileTests.m */; };
-		0B4F52AA18908089004F675A /* LBAccessToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B4F52A818908089004F675A /* LBAccessToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0B4F52AA18908089004F675A /* LBAccessToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B4F52A818908089004F675A /* LBAccessToken.h */; };
 		0B4F52AB18908089004F675A /* LBAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4F52A918908089004F675A /* LBAccessToken.m */; };
 		0B6DCCA518806F2E00F7E57A /* LBUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B6DCCA318806F2E00F7E57A /* LBUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B6DCCA618806F2E00F7E57A /* LBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6DCCA418806F2E00F7E57A /* LBUser.m */; };
@@ -50,24 +50,24 @@
 		4769FF09184D6F4F00E5152C /* LBInstallationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4769FF08184D6F4F00E5152C /* LBInstallationTests.m */; };
 		47AD031318491DA700F724C8 /* LBInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AD031118491DA700F724C8 /* LBInstallation.m */; };
 		47AD031418491E2000F724C8 /* LBInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47AD031018491DA700F724C8 /* LBInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		47C48B951962120E00995044 /* SLAFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B751962120E00995044 /* SLAFHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48B951962120E00995044 /* SLAFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B751962120E00995044 /* SLAFHTTPClient.h */; };
 		47C48B961962120E00995044 /* SLAFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B761962120E00995044 /* SLAFHTTPClient.m */; };
-		47C48B971962120E00995044 /* SLAFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B771962120E00995044 /* SLAFHTTPRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48B971962120E00995044 /* SLAFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B771962120E00995044 /* SLAFHTTPRequestOperation.h */; };
 		47C48B981962120E00995044 /* SLAFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B781962120E00995044 /* SLAFHTTPRequestOperation.m */; };
-		47C48B991962120E00995044 /* SLAFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B791962120E00995044 /* SLAFImageRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48B991962120E00995044 /* SLAFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B791962120E00995044 /* SLAFImageRequestOperation.h */; };
 		47C48B9A1962120E00995044 /* SLAFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B7A1962120E00995044 /* SLAFImageRequestOperation.m */; };
-		47C48B9B1962120E00995044 /* SLAFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B7B1962120E00995044 /* SLAFJSONRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48B9B1962120E00995044 /* SLAFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B7B1962120E00995044 /* SLAFJSONRequestOperation.h */; };
 		47C48B9C1962120E00995044 /* SLAFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B7C1962120E00995044 /* SLAFJSONRequestOperation.m */; };
-		47C48B9D1962120E00995044 /* SLAFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B7D1962120E00995044 /* SLAFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48B9D1962120E00995044 /* SLAFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B7D1962120E00995044 /* SLAFNetworkActivityIndicatorManager.h */; };
 		47C48B9E1962120E00995044 /* SLAFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B7E1962120E00995044 /* SLAFNetworkActivityIndicatorManager.m */; };
-		47C48B9F1962120E00995044 /* SLAFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B7F1962120E00995044 /* SLAFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		47C48BA01962120E00995044 /* SLAFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B801962120E00995044 /* SLAFPropertyListRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48B9F1962120E00995044 /* SLAFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B7F1962120E00995044 /* SLAFNetworking.h */; };
+		47C48BA01962120E00995044 /* SLAFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B801962120E00995044 /* SLAFPropertyListRequestOperation.h */; };
 		47C48BA11962120E00995044 /* SLAFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B811962120E00995044 /* SLAFPropertyListRequestOperation.m */; };
-		47C48BA21962120E00995044 /* SLAFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B821962120E00995044 /* SLAFURLConnectionOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48BA21962120E00995044 /* SLAFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B821962120E00995044 /* SLAFURLConnectionOperation.h */; };
 		47C48BA31962120E00995044 /* SLAFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B831962120E00995044 /* SLAFURLConnectionOperation.m */; };
-		47C48BA41962120E00995044 /* SLAFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B841962120E00995044 /* SLAFXMLRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48BA41962120E00995044 /* SLAFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B841962120E00995044 /* SLAFXMLRequestOperation.h */; };
 		47C48BA51962120E00995044 /* SLAFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B851962120E00995044 /* SLAFXMLRequestOperation.m */; };
-		47C48BA61962120E00995044 /* UIImageView+SLAFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B861962120E00995044 /* UIImageView+SLAFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C48BA61962120E00995044 /* UIImageView+SLAFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B861962120E00995044 /* UIImageView+SLAFNetworking.h */; };
 		47C48BA71962120E00995044 /* UIImageView+SLAFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B871962120E00995044 /* UIImageView+SLAFNetworking.m */; };
 		47C48BA81962120E00995044 /* SLAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 47C48B891962120E00995044 /* SLAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		47C48BA91962120E00995044 /* SLAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C48B8A1962120E00995044 /* SLAdapter.m */; };
@@ -677,34 +677,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3DFA5AD17970AB700F656D7 /* LoopBack.h in Headers */,
-				47C48BB01962120E00995044 /* SLRESTAdapter.h in Headers */,
-				47C48BAC1962120E00995044 /* SLRemoting-Prefix.pch in Headers */,
-				47C48BA21962120E00995044 /* SLAFURLConnectionOperation.h in Headers */,
 				B3DFA5AE17970ABD00F656D7 /* LBModel.h in Headers */,
 				89C410341B4D4B0200B2ED51 /* LBPersistedModel.h in Headers */,
 				B3DFA5AF17970ABD00F656D7 /* LBRESTAdapter.h in Headers */,
-				47C48BA41962120E00995044 /* SLAFXMLRequestOperation.h in Headers */,
 				0B8022DF18A2F1BA00AF845E /* LBContainer.h in Headers */,
-				47C48BAD1962120E00995044 /* SLRemoting.h in Headers */,
 				0B786860189B1C0700AB6782 /* LBFile.h in Headers */,
 				0B6DCCA518806F2E00F7E57A /* LBUser.h in Headers */,
-				47C48B9D1962120E00995044 /* SLAFNetworkActivityIndicatorManager.h in Headers */,
-				47C48BA81962120E00995044 /* SLAdapter.h in Headers */,
-				8973753E1AB2A60A00FB31A2 /* SLStreamParam.h in Headers */,
-				0B4F52AA18908089004F675A /* LBAccessToken.h in Headers */,
-				47C48BAA1962120E00995044 /* SLObject.h in Headers */,
-				47C48BA61962120E00995044 /* UIImageView+SLAFNetworking.h in Headers */,
-				47C48B9B1962120E00995044 /* SLAFJSONRequestOperation.h in Headers */,
-				47C48B971962120E00995044 /* SLAFHTTPRequestOperation.h in Headers */,
-				47C48BB21962120E00995044 /* SLRESTContract.h in Headers */,
-				47AD031418491E2000F724C8 /* LBInstallation.h in Headers */,
 				47F8E813185B7A4E0088BB73 /* LBPushNotification.h in Headers */,
-				B3DFA5B017970AC700F656D7 /* LoopBack-Prefix.pch in Headers */,
-				47C48B991962120E00995044 /* SLAFImageRequestOperation.h in Headers */,
-				47C48B9F1962120E00995044 /* SLAFNetworking.h in Headers */,
-				47C48B951962120E00995044 /* SLAFHTTPClient.h in Headers */,
+				47AD031418491E2000F724C8 /* LBInstallation.h in Headers */,
+				47C48BA81962120E00995044 /* SLAdapter.h in Headers */,
+				47C48BAA1962120E00995044 /* SLObject.h in Headers */,
+				47C48BAD1962120E00995044 /* SLRemoting.h in Headers */,
 				47C48BAE1962120E00995044 /* SLRemotingUtils.h in Headers */,
+				47C48BB01962120E00995044 /* SLRESTAdapter.h in Headers */,
+				47C48BB21962120E00995044 /* SLRESTContract.h in Headers */,
+				B3DFA5B017970AC700F656D7 /* LoopBack-Prefix.pch in Headers */,
+				0B4F52AA18908089004F675A /* LBAccessToken.h in Headers */,
+				47C48BAC1962120E00995044 /* SLRemoting-Prefix.pch in Headers */,
+				8973753E1AB2A60A00FB31A2 /* SLStreamParam.h in Headers */,
+				47C48B951962120E00995044 /* SLAFHTTPClient.h in Headers */,
+				47C48B971962120E00995044 /* SLAFHTTPRequestOperation.h in Headers */,
+				47C48B991962120E00995044 /* SLAFImageRequestOperation.h in Headers */,
+				47C48B9B1962120E00995044 /* SLAFJSONRequestOperation.h in Headers */,
+				47C48B9D1962120E00995044 /* SLAFNetworkActivityIndicatorManager.h in Headers */,
+				47C48B9F1962120E00995044 /* SLAFNetworking.h in Headers */,
 				47C48BA01962120E00995044 /* SLAFPropertyListRequestOperation.h in Headers */,
+				47C48BA21962120E00995044 /* SLAFURLConnectionOperation.h in Headers */,
+				47C48BA41962120E00995044 /* SLAFXMLRequestOperation.h in Headers */,
+				47C48BA61962120E00995044 /* UIImageView+SLAFNetworking.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
