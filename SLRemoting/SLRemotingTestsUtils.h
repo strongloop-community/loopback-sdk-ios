@@ -1,5 +1,5 @@
 /**
- * @file SLRemotingUtils.h
+ * @file SLRemotingTestsUtils.h
  *
  * @author Michael Schoonmaker
  * @copyright (c) 2013 StrongLoop. All rights reserved.
@@ -30,10 +30,3 @@
     XCTFail(@"Test failed: %@", error.description); \
     [expectation fulfill]; \
 }
-
-/**
- * A container for helper methods.
- */
-@interface SLRemotingUtils : NSObject
-
-@end

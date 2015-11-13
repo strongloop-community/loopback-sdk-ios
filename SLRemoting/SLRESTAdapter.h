@@ -5,7 +5,6 @@
  * @copyright (c) 2013 StrongLoop. All rights reserved.
  */
 
-#import "SLRemotingUtils.h"
 #import "SLAdapter.h"
 #import "SLRESTContract.h"
 

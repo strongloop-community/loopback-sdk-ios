@@ -6,12 +6,13 @@
 //  Copyright (c) 2014 StrongLoop. All rights reserved.
 //
 
-#import "LBFileTests.h"
+#import <XCTest/XCTest.h>
 
 #import "LBFile.h"
 #import "LBRESTAdapter.h"
+#import "SLRemotingTestsUtils.h"
 
-@interface LBFileTests ()
+@interface LBFileTests : XCTestCase
 
 @property (nonatomic) LBFileRepository *repository;
 

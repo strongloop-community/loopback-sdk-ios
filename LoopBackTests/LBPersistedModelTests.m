@@ -6,14 +6,15 @@
 //  Copyright (c) 2013 StrongLoop. All rights reserved.
 //
 
-#import "LBPersistedModelTests.h"
+#import <XCTest/XCTest.h>
 
 #import "LBPersistedModel.h"
 #import "LBRESTAdapter.h"
+#import "SLRemotingTestsUtils.h"
 
 static NSNumber *lastId;
 
-@interface LBPersistedModelTests()
+@interface LBPersistedModelTests : XCTestCase
 
 @property (nonatomic) LBPersistedModelRepository *repository;
 
