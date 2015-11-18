@@ -6,14 +6,15 @@
 //  Copyright (c) 2013 StrongLoop. All rights reserved.
 //
 
-#import "SLRESTContractTests.h"
+#import <XCTest/XCTest.h>
 
 #import "SLRESTAdapter.h"
 #import "SLObject.h"
+#import "SLRemotingTestsUtils.h"
 
 static NSString * const SERVER_URL = @"http://localhost:3001";
 
-@interface SLRESTContractTests() {
+@interface SLRESTContractTests : XCTestCase {
     SLRESTAdapter *adapter;
     SLRepository *TestClass;
 }

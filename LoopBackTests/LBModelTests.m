@@ -5,12 +5,12 @@
 //  Copyright (c) 2015 StrongLoop. All rights reserved.
 //
 
-#import "LBModelTests.h"
+#import <XCTest/XCTest.h>
 
 #import "LBModel.h"
 #import "LBRESTAdapter.h"
 
-@interface LBModelTests()
+@interface LBModelTests : XCTestCase
 
 @property (nonatomic) LBModelRepository *repository;
 

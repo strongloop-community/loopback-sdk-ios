@@ -6,12 +6,13 @@
 //  Copyright (c) 2014 StrongLoop. All rights reserved.
 //
 
-#import "LBContainerTests.h"
+#import <XCTest/XCTest.h>
 
 #import "LBContainer.h"
 #import "LBRESTAdapter.h"
+#import "SLRemotingTestsUtils.h"
 
-@interface LBContainerTests ()
+@interface LBContainerTests : XCTestCase
 
 @property (nonatomic) LBContainerRepository *repository;
 

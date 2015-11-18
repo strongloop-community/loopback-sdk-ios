@@ -6,12 +6,13 @@
 //  Copyright (c) 2013 StrongLoop. All rights reserved.
 //
 
-#import "SLRESTAdapterNonRootTests.h"
+#import <XCTest/XCTest.h>
 
 #import "SLRESTAdapter.h"
 #import "SLObject.h"
+#import "SLRemotingTestsUtils.h"
 
-@interface SLRESTAdapterNonRootTests() {
+@interface SLRESTAdapterNonRootTests : XCTestCase {
     SLRESTAdapter *adapter;
 }
 

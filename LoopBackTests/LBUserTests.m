@@ -6,10 +6,11 @@
 //  Copyright (c) 2014 StrongLoop. All rights reserved.
 //
 
-#import "LBUserTests.h"
+#import <XCTest/XCTest.h>
 
 #import "LBUser.h"
 #import "LBRESTAdapter.h"
+#import "SLRemotingTestsUtils.h"
 
 static NSString * const DEFAULTS_CURRENT_USER_ID_KEY = @"LBUserRepositoryCurrentUserId";
 static NSString * const USER_EMAIL_DOMAIN = @"@test.com";
@@ -44,7 +45,7 @@ static NSString * const USER_PASSWORD = @"testpassword";
 @end
 
 
-@interface LBUserTests ()
+@interface LBUserTests : XCTestCase
 
 @property (nonatomic, strong) LBRESTAdapter *adapter;
 @property (nonatomic, strong) CustomerRepository *repository;

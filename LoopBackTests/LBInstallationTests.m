@@ -6,17 +6,14 @@
 //  Copyright (c) 2013 StrongLoop. All rights reserved.
 //
 
-#import "LBInstallationTests.h"
+#import <XCTest/XCTest.h>
 
-#import "LBModel.h"
-#import "LBRESTAdapter.h"
 #import "LBInstallation.h"
+#import "SLRemotingTestsUtils.h"
 
 static id lastId = nil;
 
-@interface LBInstallationTests()
-
-+ (id)defaultTestSuite;
+@interface LBInstallationTests : XCTestCase
 
 @property (nonatomic) LBInstallationRepository *repository;
 @property (nonatomic) NSData *testToken;

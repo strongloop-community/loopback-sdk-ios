@@ -8,7 +8,6 @@
 #ifndef __SL_REMOTING_H
 #define __SL_REMOTING_H
 
-#import "SLRemotingUtils.h"
 #import "SLAdapter.h"
 #import "SLRESTAdapter.h"
 #import "SLRESTContract.h"

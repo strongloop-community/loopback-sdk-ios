@@ -5,7 +5,8 @@
  * @copyright (c) 2013 StrongLoop. All rights reserved.
  */
 
-#import "LoopBack.h"
+#import "LBPersistedModel.h"
+#import "LBRESTAdapter.h"
 
 @class LBInstallation;
 @class LBInstallationRepository;
