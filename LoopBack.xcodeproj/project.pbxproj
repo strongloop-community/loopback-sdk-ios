@@ -99,6 +99,7 @@
 		47D471AF196DF4A1002E2358 /* SLRemotingTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47C48BC41962123900995044 /* SLRemotingTests-Info.plist */; };
 		47F8E813185B7A4E0088BB73 /* LBPushNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 47F8E811185B7A4E0088BB73 /* LBPushNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		47F8E814185B7A4E0088BB73 /* LBPushNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F8E812185B7A4E0088BB73 /* LBPushNotification.m */; };
+		8915F0631BF72CD100540BD3 /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8915F0621BF72CB500540BD3 /* module.modulemap */; };
 		895B41801AB16D660000A9D7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B278D50187B584F00FFC135 /* MobileCoreServices.framework */; };
 		895B41811AB16D670000A9D7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B278D50187B584F00FFC135 /* MobileCoreServices.framework */; };
 		895B41821AB16D6A0000A9D7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B278D4A187B584A00FFC135 /* SystemConfiguration.framework */; };
@@ -221,6 +222,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8915F0611BF72C4E00540BD3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Modules;
+			dstSubfolderSpec = 16;
+			files = (
+				8915F0631BF72CD100540BD3 /* module.modulemap in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0B278D4A187B584A00FFC135 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0B278D50187B584F00FFC135 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -288,6 +302,7 @@
 		47D471B7196DF4A1002E2358 /* SLRemotingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SLRemotingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		47F8E811185B7A4E0088BB73 /* LBPushNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPushNotification.h; sourceTree = "<group>"; };
 		47F8E812185B7A4E0088BB73 /* LBPushNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPushNotification.m; sourceTree = "<group>"; };
+		8915F0621BF72CB500540BD3 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		8973753C1AB2A60A00FB31A2 /* SLStreamParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLStreamParam.h; sourceTree = "<group>"; };
 		8973753D1AB2A60A00FB31A2 /* SLStreamParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLStreamParam.m; sourceTree = "<group>"; };
 		89C410321B4D4B0200B2ED51 /* LBPersistedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPersistedModel.h; sourceTree = "<group>"; };
@@ -580,6 +595,7 @@
 			isa = PBXGroup;
 			children = (
 				B3D220FE17722AE800B7CB63 /* LoopBack-Prefix.pch */,
+				8915F0621BF72CB500540BD3 /* module.modulemap */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -745,6 +761,7 @@
 				B3D220F317722AE800B7CB63 /* Sources */,
 				B3D220F417722AE800B7CB63 /* Frameworks */,
 				B3DFA5AC17970AAD00F656D7 /* Headers */,
+				8915F0611BF72C4E00540BD3 /* CopyFiles */,
 				B36E878A17970CC4000B685A /* ShellScript */,
 			);
 			buildRules = (
@@ -912,7 +929,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n";
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh Versions/Current/Modules \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Modules\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n/bin/cp -a \"${TARGET_BUILD_DIR}/Modules\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Modules\"";
 		};
 		B3D2210617722AE800B7CB63 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
