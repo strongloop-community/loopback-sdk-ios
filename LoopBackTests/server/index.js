@@ -48,15 +48,14 @@ var Installation = lbpn.Installation;
 Installation.attachTo(app.dataSources.Memory);
 app.model(Installation);
 
-var ds = loopback.createDataSource({
+var ds = app.dataSource('storage', {
   connector: require('loopback-component-storage'),
   provider: 'filesystem',
   root: path.join(__dirname, 'storage')
 });
 
-var container = ds.createModel('container');
-
-app.model(container);
+var container = loopback.createModel({ name: 'container', base: 'Model' });
+app.model(container, { dataSource: 'storage' });
 
 Widget.destroyAll(function () {
   Widget.create({
