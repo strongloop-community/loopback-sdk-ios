@@ -1,0 +1,9 @@
+framework module LoopBack {
+    umbrella header "LoopBack.h"
+    
+    export *
+    module * { export * }
+
+    link framework "MobileCoreServices"
+    link framework "SystemConfiguration"
+}
