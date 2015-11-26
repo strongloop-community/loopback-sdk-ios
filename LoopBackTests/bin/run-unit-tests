@@ -1,0 +1,53 @@
+#!/bin/bash
+set -ex
+trap 'kill $(jobs -p)' EXIT
+
+# record the build environment
+xcodebuild -version
+xcodebuild -showsdks
+instruments -s devices
+
+# build for iOS
+xcodebuild \
+  -verbose \
+  -project LoopBack.xcodeproj \
+  -scheme LoopBackFramework \
+  -sdk iphoneos \
+  -configuration Debug \
+  ONLY_ACTIVE_ARCH=NO \
+  ${XCODEBUILD_ARGS} \
+  clean build
+
+# prepare for running test servers
+npm install
+
+# run the test servers
+node LoopBackTests/server/index.js &
+node SLRemotingTests/server/index.js &
+
+# run the unit tests on iPhone simulator
+xcodebuild \
+  -verbose \
+  -project LoopBack.xcodeproj \
+  -scheme LoopBack \
+  -sdk iphonesimulator \
+  -destination 'platform=iOS Simulator,name=iPhone Retina (4-inch 64-bit),OS=latest' \
+  ${XCODEBUILD_ARGS} \
+  test
+
+# build for OS X
+if [[ -n "${JENKINS_HOME}" ]]; then
+  # NOTE: the unit-tests fail to run against OS X on the CI, so it is temporarily skipped.
+  # See https://github.com/strongloop/loopback-sdk-ios/pull/79 for details.
+  OSX_BUILD_TARGET=build
+else
+  OSX_BUILD_TARGET=test
+fi
+
+xcodebuild \
+  -verbose \
+  -project LoopBack.xcodeproj \
+  -scheme LoopBackOSX \
+  -sdk macosx \
+  ${XCODEBUILD_ARGS} \
+  clean ${OSX_BUILD_TARGET}
