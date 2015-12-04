@@ -62,8 +62,6 @@ typedef LBPersistedModelVoidSuccessBlock LBPersistedModelDestroySuccessBlock;
  */
 @interface LBPersistedModelRepository : LBModelRepository
 
-+ (instancetype)repository;
-
 //typedef void (^LBPersistedModelExistsSuccessBlock)(BOOL exists);
 //- (void)existsWithId:(id)_id
 //             success:(LBPersistedModelExistsSuccessBlock)success

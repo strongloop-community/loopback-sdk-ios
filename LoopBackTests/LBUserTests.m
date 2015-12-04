@@ -32,8 +32,6 @@ static NSString * const USER_PASSWORD = @"testpassword";
  */
 @interface CustomerRepository : LBUserRepository
 
-+ (instancetype)repository;
-
 @end
 
 @implementation CustomerRepository

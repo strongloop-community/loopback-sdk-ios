@@ -65,8 +65,6 @@ typedef void (^LBFileDeleteSuccessBlock)();
  */
 @interface LBFileRepository : LBModelRepository
 
-+ (instancetype)repository;
-
 /**
  * Creates a file with the given data
  *
