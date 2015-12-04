@@ -89,7 +89,7 @@ Remember to use the right name:
 @implementation WidgetRepository
 
 + (instancetype)repository {
-    return [self repositoryWithModelName:@"widget"];
+    return [self repositoryWithClassName:@"widget"];
 }
 
 @end
