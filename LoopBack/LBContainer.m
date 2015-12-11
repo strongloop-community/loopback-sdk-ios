@@ -80,7 +80,8 @@
                         failure:(SLFailureBlock)failure {
     NSParameterAssert(name);
     [self invokeStaticMethod:@"create"
-                  parameters:@{@"name": name}
+                  parameters:nil
+              bodyParameters:@{@"name": name}
                      success:^(id value) {
                          NSAssert([[value class] isSubclassOfClass:[NSDictionary class]], @"Received non-Dictionary: %@", value);
                          LBContainer *container = (LBContainer*)[self modelWithDictionary:(NSDictionary*)value];

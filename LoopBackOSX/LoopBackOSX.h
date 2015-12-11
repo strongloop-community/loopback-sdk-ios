@@ -7,6 +7,7 @@
 //
 
 #import "LBModel.h"
+#import "LBPersistedModel.h"
 #import "LBRESTAdapter.h"
 #import "LBInstallation.h"
 #import "LBUser.h"
