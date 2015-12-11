@@ -50,13 +50,12 @@ static NSString * const DEFAULTS_ACCESSTOKEN_KEY = @"LBRESTAdapterAccessToken";
 - (LBModelRepository *)repositoryWithClass:(Class)type {
     if (type == nil) {
         @throw [NSException exceptionWithName:NSInvalidArgumentException
-                                       reason:[NSString stringWithFormat:@"Argument cannot be nil"]
+                                       reason:@"Argument cannot be nil"
                                      userInfo:nil];
     }
     if (![type isSubclassOfClass:[LBModelRepository class]]) {
         @throw [NSException exceptionWithName:NSInvalidArgumentException
-                                       reason:[NSString stringWithFormat:
-                                               @"Argument needs to be a subclass of LBModelRepository"]
+                                       reason:@"Argument needs to be a subclass of LBModelRepository"
                                      userInfo:nil];
     }
     if (![type respondsToSelector:@selector(repository)]) {

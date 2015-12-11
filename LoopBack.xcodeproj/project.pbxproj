@@ -93,6 +93,7 @@
 		47F8E813185B7A4E0088BB73 /* LBPushNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 47F8E811185B7A4E0088BB73 /* LBPushNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		47F8E814185B7A4E0088BB73 /* LBPushNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F8E812185B7A4E0088BB73 /* LBPushNotification.m */; };
 		8915F0631BF72CD100540BD3 /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8915F0621BF72CB500540BD3 /* module.modulemap */; };
+		893C8CBF1C1ABFD20050045C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 893C8CBE1C1ABFD20050045C /* CoreLocation.framework */; };
 		895B41801AB16D660000A9D7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B278D50187B584F00FFC135 /* MobileCoreServices.framework */; };
 		895B41811AB16D670000A9D7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B278D50187B584F00FFC135 /* MobileCoreServices.framework */; };
 		895B41821AB16D6A0000A9D7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B278D4A187B584A00FFC135 /* SystemConfiguration.framework */; };
@@ -276,15 +277,15 @@
 		47C48B931962120E00995044 /* SLRESTContract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRESTContract.h; sourceTree = "<group>"; };
 		47C48B941962120E00995044 /* SLRESTContract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRESTContract.m; sourceTree = "<group>"; };
 		47C48BB61962123900995044 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		47C48BB91962123900995044 /* contract-class.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "contract-class.js"; sourceTree = "<group>"; };
-		47C48BBA1962123900995044 /* contract.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = contract.js; sourceTree = "<group>"; };
-		47C48BBB1962123900995044 /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
-		47C48BBC1962123900995044 /* nonroot.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = nonroot.js; sourceTree = "<group>"; };
+		47C48BB91962123900995044 /* contract-class.js */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.javascript; path = "contract-class.js"; sourceTree = "<group>"; tabWidth = 2; };
+		47C48BBA1962123900995044 /* contract.js */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.javascript; path = contract.js; sourceTree = "<group>"; tabWidth = 2; };
+		47C48BBB1962123900995044 /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; tabWidth = 2; };
+		47C48BBC1962123900995044 /* nonroot.js */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.javascript; path = nonroot.js; sourceTree = "<group>"; tabWidth = 2; };
 		47C48BBF1962123900995044 /* certificate.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = certificate.pem; sourceTree = "<group>"; };
 		47C48BC01962123900995044 /* privatekey.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = privatekey.pem; sourceTree = "<group>"; };
-		47C48BC11962123900995044 /* simple-class.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "simple-class.js"; sourceTree = "<group>"; };
-		47C48BC21962123900995044 /* simple.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = simple.js; sourceTree = "<group>"; };
-		47C48BC31962123900995044 /* ssl-config.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "ssl-config.js"; sourceTree = "<group>"; };
+		47C48BC11962123900995044 /* simple-class.js */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.javascript; path = "simple-class.js"; sourceTree = "<group>"; tabWidth = 2; };
+		47C48BC21962123900995044 /* simple.js */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.javascript; path = simple.js; sourceTree = "<group>"; tabWidth = 2; };
+		47C48BC31962123900995044 /* ssl-config.js */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.javascript; path = "ssl-config.js"; sourceTree = "<group>"; tabWidth = 2; };
 		47C48BC41962123900995044 /* SLRemotingTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SLRemotingTests-Info.plist"; sourceTree = "<group>"; };
 		47C48BC61962123900995044 /* SLRESTAdapterNonRootTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRESTAdapterNonRootTests.m; sourceTree = "<group>"; };
 		47C48BC71962123900995044 /* SLRESTAdapterSSLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRESTAdapterSSLTests.m; sourceTree = "<group>"; };
@@ -294,11 +295,12 @@
 		47F8E811185B7A4E0088BB73 /* LBPushNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPushNotification.h; sourceTree = "<group>"; };
 		47F8E812185B7A4E0088BB73 /* LBPushNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPushNotification.m; sourceTree = "<group>"; };
 		8915F0621BF72CB500540BD3 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		893C8CBE1C1ABFD20050045C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8973753C1AB2A60A00FB31A2 /* SLStreamParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLStreamParam.h; sourceTree = "<group>"; };
 		8973753D1AB2A60A00FB31A2 /* SLStreamParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLStreamParam.m; sourceTree = "<group>"; };
 		89C410321B4D4B0200B2ED51 /* LBPersistedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPersistedModel.h; sourceTree = "<group>"; };
 		89C410331B4D4B0200B2ED51 /* LBPersistedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPersistedModel.m; sourceTree = "<group>"; };
-		89D3C9521AB17258005A1B90 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
+		89D3C9521AB17258005A1B90 /* index.js */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; tabWidth = 2; };
 		89D3DB031AB17263005A1B90 /* f1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = f1.txt; sourceTree = "<group>"; };
 		89D3DB071AB17263005A1B90 /* f1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = f1.txt; sourceTree = "<group>"; };
 		89F4F36B1B53E6A80070D8EB /* LBModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBModelTests.m; sourceTree = "<group>"; };
@@ -341,10 +343,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B278D51187B584F00FFC135 /* MobileCoreServices.framework in Frameworks */,
-				0B278D4B187B584A00FFC135 /* SystemConfiguration.framework in Frameworks */,
 				B3D220FB17722AE800B7CB63 /* Foundation.framework in Frameworks */,
 				89EB399F1AB16ED900B1EB9D /* UIKit.framework in Frameworks */,
+				0B278D51187B584F00FFC135 /* MobileCoreServices.framework in Frameworks */,
+				0B278D4B187B584A00FFC135 /* SystemConfiguration.framework in Frameworks */,
+				893C8CBF1C1ABFD20050045C /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +550,7 @@
 				B3D2214317725DAB00B7CB63 /* UIKit.framework */,
 				0B278D50187B584F00FFC135 /* MobileCoreServices.framework */,
 				0B278D4A187B584A00FFC135 /* SystemConfiguration.framework */,
+				893C8CBE1C1ABFD20050045C /* CoreLocation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1159,6 +1163,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1189,6 +1194,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;

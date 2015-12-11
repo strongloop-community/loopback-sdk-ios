@@ -7,12 +7,23 @@
 
 #import "LBModel.h"
 
+
+/**
+ * Blocks of this type are executed for a successful method invocation that returns
+ * an LBPersistedModel instance as a callback argument.
+ */
 @class LBPersistedModel;
 typedef void (^LBPersistedModelObjectSuccessBlock)(LBPersistedModel *model);
-typedef void (^LBPersistedModelArraySuccessBlock)(NSArray *array);
-typedef void (^LBPersistedModelVoidSuccessBlock)();
-typedef void (^LBPersistedModelBoolSuccessBlock)(BOOL boolean);
-typedef void (^LBPersistedModelNumberSuccessBlock)(NSInteger number);
+
+// The following typedefs are left for backward compatibility.
+typedef LBModelVoidSuccessBlock     LBPersistedModelVoidSuccessBlock
+        __attribute((deprecated("use LBModelVoidSuccessBlock")));
+typedef LBModelBoolSuccessBlock     LBPersistedModelBoolSuccessBlock
+        __attribute((deprecated("use LBModelBoolSuccessBlock")));
+typedef LBModelNumberSuccessBlock   LBPersistedModelNumberSuccessBlock
+        __attribute((deprecated("use LBModelNumberSuccessBlock")));
+typedef LBModelArraySuccessBlock    LBPersistedModelArraySuccessBlock
+        __attribute((deprecated("use LBModelArraySuccessBlock")));
 
 /**
  * A local representative of a single persisted model instance on the server.
@@ -27,7 +38,7 @@ typedef void (^LBPersistedModelNumberSuccessBlock)(NSInteger number);
  * Blocks of this type are executed when LBPersistedModel::saveWithSuccess:failure: is
  * successful.
  */
-typedef LBPersistedModelVoidSuccessBlock LBPersistedModelSaveSuccessBlock;
+typedef LBModelVoidSuccessBlock LBPersistedModelSaveSuccessBlock;
 /**
  * Saves the LBPersistedModel to the server.
  *
@@ -43,7 +54,7 @@ typedef LBPersistedModelVoidSuccessBlock LBPersistedModelSaveSuccessBlock;
  * Blocks of this type are executed when LBPersistedModel::destroyWithSuccess:failure: is
  * successful.
  */
-typedef LBPersistedModelVoidSuccessBlock LBPersistedModelDestroySuccessBlock;
+typedef LBModelVoidSuccessBlock LBPersistedModelDestroySuccessBlock;
 /**
  * Destroys the LBPersistedModel from the server.
  *
@@ -88,7 +99,7 @@ typedef LBPersistedModelObjectSuccessBlock LBPersistedModelFindSuccessBlock;
  * Blocks of this type are executed when
  * LBPersistedModelRepository::allWithSuccess:failure: is successful.
  */
-typedef LBPersistedModelArraySuccessBlock LBPersistedModelAllSuccessBlock;
+typedef LBModelArraySuccessBlock LBPersistedModelAllSuccessBlock;
 /**
  * Finds and downloads all models of this type on and from the server.
  *

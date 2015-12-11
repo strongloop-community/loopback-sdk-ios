@@ -52,17 +52,20 @@ static NSNumber *lastId;
 }
 
 - (void)testCreate {
-    LBPersistedModel __block *model = (LBPersistedModel*)[self.repository modelWithDictionary:@{ @"name": @"Foobar", @"bars": @1 }];
+    LBPersistedModel *model = (LBPersistedModel*)[self.repository modelWithDictionary: @{
+        @"name": @"Foobar",
+        @"bars": @1
+    }];
 
-    XCTAssertEqualObjects(@"Foobar", model[@"name"], @"Invalid name.");
-    XCTAssertEqualObjects(@1, model[@"bars"], @"Invalid bars.");
+    XCTAssertEqualObjects(model[@"name"], @"Foobar", @"Invalid name.");
+    XCTAssertEqualObjects(model[@"bars"], @1, @"Invalid bars.");
     XCTAssertNil(model._id, @"Invalid id");
 
     ASYNC_TEST_START
     [model saveWithSuccess:^{
         NSLog(@"Completed with: %@", model._id);
-        lastId = model._id;
         XCTAssertNotNil(model._id, @"Invalid id");
+        lastId = model._id;
         ASYNC_TEST_SIGNAL
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
@@ -70,14 +73,13 @@ static NSNumber *lastId;
 
 - (void)testFind {
     ASYNC_TEST_START
-    [self.repository findById:@2
-                       success:^(LBPersistedModel *model) {
-                           XCTAssertNotNil(model, @"No model found with ID 2");
-                           XCTAssertTrue([[model class] isSubclassOfClass:[LBPersistedModel class]], @"Invalid class.");
-                           XCTAssertEqualObjects(model[@"name"], @"Bar", @"Invalid name");
-                           XCTAssertEqualObjects(model[@"bars"], @1, @"Invalid bars");
-                           ASYNC_TEST_SIGNAL
-                       } failure:ASYNC_TEST_FAILURE_BLOCK];
+    [self.repository findById:@2 success:^(LBPersistedModel *model) {
+        XCTAssertNotNil(model, @"No model found with ID 2");
+        XCTAssertTrue([model isMemberOfClass:[LBPersistedModel class]], @"Invalid class.");
+        XCTAssertEqualObjects(model[@"name"], @"Bar", @"Invalid name");
+        XCTAssertEqualObjects(model[@"bars"], @1, @"Invalid bars");
+        ASYNC_TEST_SIGNAL
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
 }
 
@@ -86,7 +88,7 @@ static NSNumber *lastId;
     [self.repository allWithSuccess:^(NSArray *models) {
         XCTAssertNotNil(models, @"No models returned.");
         XCTAssertTrue([models count] >= 2, @"Invalid # of models returned: %lu", (unsigned long)[models count]);
-        XCTAssertTrue([[models[0] class] isSubclassOfClass:[LBPersistedModel class]], @"Invalid class.");
+        XCTAssertTrue([models[0] isMemberOfClass:[LBPersistedModel class]], @"Invalid class.");
         XCTAssertEqualObjects(models[0][@"name"], @"Foo", @"Invalid name");
         XCTAssertEqualObjects(models[0][@"bars"], @0, @"Invalid bars");
         XCTAssertEqualObjects(models[1][@"name"], @"Bar", @"Invalid name");
@@ -99,10 +101,10 @@ static NSNumber *lastId;
 - (void)testFindWithFilter {
     ASYNC_TEST_START
     [self.repository findWithFilter:@{@"where": @{ @"name" : @"Foo" }}
-        success:^(NSArray *models) {
+                            success:^(NSArray *models) {
         XCTAssertNotNil(models, @"No models returned.");
         XCTAssertTrue([models count] >= 1, @"Invalid # of models returned: %lu", (unsigned long)[models count]);
-        XCTAssertTrue([[models[0] class] isSubclassOfClass:[LBPersistedModel class]], @"Invalid class.");
+        XCTAssertTrue([models[0] isMemberOfClass:[LBPersistedModel class]], @"Invalid class.");
         XCTAssertEqualObjects(models[0][@"name"], @"Foo", @"Invalid name");
         XCTAssertEqualObjects(models[0][@"bars"], @0, @"Invalid bars");
         ASYNC_TEST_SIGNAL
@@ -128,56 +130,54 @@ static NSNumber *lastId;
 - (void)testFindOneWithFilter {
     ASYNC_TEST_START
     [self.repository findOneWithFilter: @{@"where": @{ @"name" : @"Foo" }}
-        success:^(LBPersistedModel *model) {
+                               success:^(LBPersistedModel *model) {
          XCTAssertNotNil(model, @"No models returned.");
          XCTAssertEqualObjects(model[@"name"], @"Foo", @"Invalid name");
          XCTAssertEqualObjects(model[@"bars"], @0, @"Invalid bars");
          ASYNC_TEST_SIGNAL
-     } failure:ASYNC_TEST_FAILURE_BLOCK];
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
 }
 
 - (void)testUpdate {
+    LBPersistedModel *model = (LBPersistedModel*)[self.repository modelWithDictionary: @{
+        @"name": @"Foobar",
+        @"bars": @1
+    }];
+
     ASYNC_TEST_START
-    LBPersistedModelFindSuccessBlock verify = ^(LBPersistedModel *model) {
-        XCTAssertNotNil(model, @"No model found with ID 2");
-        XCTAssertEqualObjects(model[@"name"], @"Barfoo", @"Invalid name");
-        XCTAssertEqualObjects(model[@"bars"], @1, @"Invalid bars");
-
-        model[@"name"] = @"Bar";
-        [model saveWithSuccess:^{
-            ASYNC_TEST_SIGNAL
+    [model saveWithSuccess:^{
+        NSNumber *tempId = model._id;
+        // find the model just created
+        [self.repository findById:tempId success:^(LBPersistedModel *model) {
+            XCTAssertNotNil(model, @"No model found");
+            // update
+            model[@"name"] = @"Barfoo";
+            [model saveWithSuccess:^() {
+                // find again
+                [self.repository findById:tempId success:^(LBPersistedModel *model) {
+                    // verify
+                    XCTAssertNotNil(model, @"No model found with ID 2");
+                    XCTAssertEqualObjects(model[@"name"], @"Barfoo", @"Invalid name");
+                    XCTAssertEqualObjects(model[@"bars"], @1, @"Invalid bars");
+                    ASYNC_TEST_SIGNAL
+                } failure:ASYNC_TEST_FAILURE_BLOCK];
+            } failure:ASYNC_TEST_FAILURE_BLOCK];
         } failure:ASYNC_TEST_FAILURE_BLOCK];
-    };
-
-    LBPersistedModelSaveSuccessBlock findAgain = ^() {
-        [self.repository findById:@2 success:verify failure:ASYNC_TEST_FAILURE_BLOCK];
-    };
-
-    LBPersistedModelFindSuccessBlock update = ^(LBPersistedModel *model) {
-        XCTAssertNotNil(model, @"No model found with ID 2");
-        model[@"name"] = @"Barfoo";
-        [model saveWithSuccess:findAgain failure:ASYNC_TEST_FAILURE_BLOCK];
-    };
-
-    [self.repository findById:@2 success:update failure:ASYNC_TEST_FAILURE_BLOCK];
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
 }
 
 - (void)testRemove {
     ASYNC_TEST_START
     [self.repository findById:lastId success:^(LBPersistedModel *model) {
-
         [model destroyWithSuccess:^{
-
             [self.repository findById:lastId success:^(LBPersistedModel *model) {
                 XCTFail(@"Model found after removal");
             } failure:^(NSError *err) {
                 ASYNC_TEST_SIGNAL
             }];
-            
         } failure:ASYNC_TEST_FAILURE_BLOCK];
-        
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END
 }
