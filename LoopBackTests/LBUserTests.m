@@ -63,6 +63,7 @@ typedef void (^GivenCustomerSuccessBlock)(Customer *customer);
     XCTestSuite *suite = [XCTestSuite testSuiteWithName:@"TestSuite for LBContainer."];
     [suite addTest:[self testCaseWithSelector:@selector(testCreateSaveRemove)]];
     [suite addTest:[self testCaseWithSelector:@selector(testLoginLogout)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testResetPassword)]];
     [suite addTest:[self testCaseWithSelector:@selector(testSetsCurrentUserIdOnLogin)]];
     [suite addTest:[self testCaseWithSelector:@selector(testCurrentUserIdIsStoredInSharedPreferences)]];
     [suite addTest:[self testCaseWithSelector:@selector(testClearsCurrentUserIdOnLogout)]];
@@ -121,6 +122,16 @@ typedef void (^GivenCustomerSuccessBlock)(Customer *customer);
             [self.repository logoutWithSuccess:^(void) {
                 ASYNC_TEST_SIGNAL
             } failure:ASYNC_TEST_FAILURE_BLOCK];
+        } failure:ASYNC_TEST_FAILURE_BLOCK];
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
+- (void)testResetPassword {
+    ASYNC_TEST_START
+    [self givenCustomerWithSuccess:^(Customer *customer) {
+        [self.repository resetPasswordWithEmail:customer.email success:^{
+            ASYNC_TEST_SIGNAL
         } failure:ASYNC_TEST_FAILURE_BLOCK];
     } failure:ASYNC_TEST_FAILURE_BLOCK];
     ASYNC_TEST_END

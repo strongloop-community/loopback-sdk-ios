@@ -125,6 +125,19 @@ static NSString * const DEFAULTS_CURRENT_USER_ID_KEY = @"LBUserRepositoryCurrent
                      failure:failure];
 }
 
+- (void)resetPasswordWithEmail:(NSString*)email
+                       success:(LBUserResetSuccessBlock)success
+                       failure:(SLFailureBlock)failure {
+    NSParameterAssert(email);
+    [self invokeStaticMethod:@"reset"
+                  parameters:nil
+              bodyParameters:@{ @"email": email }
+                     success:^(id value) {
+                         success();
+                     }
+                     failure:failure];
+}
+
 - (NSString *)currentUserId {
     [self loadCurrentUserIdIfNotLoaded];
     return _currentUserId;
