@@ -67,14 +67,6 @@
 @property Class modelClass;
 
 /**
- * A method to be overriden by a subclass to create an adequately
- * initialized repository of this type.
- *
- * @return  a new LBPersistedModelRepository subclass of this type.
- */
-+ (instancetype)repository;
-
-/**
  * The SLRESTContract representing this model type's custom routes. Used to
  * extend an Adapter to support this model type.
  *

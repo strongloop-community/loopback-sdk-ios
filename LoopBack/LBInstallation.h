@@ -103,5 +103,7 @@
  */
 @interface LBInstallationRepository : LBPersistedModelRepository
 
++ (instancetype)repository;
+
 @end
 

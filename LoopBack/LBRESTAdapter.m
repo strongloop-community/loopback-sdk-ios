@@ -48,10 +48,23 @@ static NSString * const DEFAULTS_ACCESSTOKEN_KEY = @"LBRESTAdapterAccessToken";
 }
 
 - (LBModelRepository *)repositoryWithClass:(Class)type {
-    NSParameterAssert(type);
-    NSParameterAssert([type isSubclassOfClass:[LBModelRepository class]]);
-    NSParameterAssert([type respondsToSelector:@selector(repository)]);
-
+    if (type == nil) {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException
+                                       reason:[NSString stringWithFormat:@"Argument cannot be nil"]
+                                     userInfo:nil];
+    }
+    if (![type isSubclassOfClass:[LBModelRepository class]]) {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException
+                                       reason:[NSString stringWithFormat:
+                                               @"Argument needs to be a subclass of LBModelRepository"]
+                                     userInfo:nil];
+    }
+    if (![type respondsToSelector:@selector(repository)]) {
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                       reason:[NSString stringWithFormat:
+                                               @"%@ must define 'repository' method", type]
+                                     userInfo:nil];
+    }
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-method-access"
     LBModelRepository *repository = (LBModelRepository *)[type repository];

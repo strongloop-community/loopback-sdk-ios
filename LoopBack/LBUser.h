@@ -32,6 +32,8 @@
 @property (nonatomic, readonly) NSString *currentUserId;
 @property (nonatomic, readonly) LBUser *cachedCurrentUser;
 
++ (instancetype)repository;
+
 /**
  * Creates a user with the given credentials and additional data.
  *
