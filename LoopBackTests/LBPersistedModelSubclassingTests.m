@@ -54,6 +54,7 @@ static NSNumber *lastId;
 
 @interface LBPersistedModelSubclassingTests : XCTestCase
 
+@property (nonatomic) LBRESTAdapter *adapter;
 @property (nonatomic) WidgetRepository *repository;
 
 @end
@@ -77,8 +78,8 @@ static NSNumber *lastId;
 - (void)setUp {
     [super setUp];
 
-    LBRESTAdapter *adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
-    self.repository = (WidgetRepository *)[adapter repositoryWithClass:[WidgetRepository class]];
+    self.adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
+    self.repository = (WidgetRepository *)[self.adapter repositoryWithClass:[WidgetRepository class]];
 }
 
 - (void)tearDown {
@@ -86,7 +87,8 @@ static NSNumber *lastId;
 }
 
 - (void)testRepositoryNotOverridden {
-    XCTAssertThrows([TestRepository repository], @"Exception should be thrown as 'repository' is not overridden.");
+    XCTAssertThrows([self.adapter repositoryWithClass:[TestRepository class]],
+        @"Exception should be thrown as 'repository' is not overridden.");
 }
 
 - (void)testCreate {

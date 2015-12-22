@@ -51,6 +51,8 @@ typedef void (^LBContainerDeleteSuccessBlock)();
  */
 @interface LBContainerRepository : LBModelRepository
 
++ (instancetype)repository;
+
 /** Model repository for this container. */
 @property (nonatomic, readonly, strong) LBFileRepository *fileRepository;
 

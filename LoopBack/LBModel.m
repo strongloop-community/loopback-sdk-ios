@@ -82,12 +82,6 @@ static NSDateFormatter *jsonDateFormatter = nil;
 
 @implementation LBModelRepository
 
-+ (instancetype)repository {
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:[NSString stringWithFormat:@"%s must be overridden appropriately in a subclass", __FUNCTION__]
-                                 userInfo:nil];
-}
-
 - (instancetype)initWithClassName:(NSString *)name {
     self = [super initWithClassName:name];
 
