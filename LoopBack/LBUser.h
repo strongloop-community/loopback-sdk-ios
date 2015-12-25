@@ -119,4 +119,21 @@ typedef void (^LBUserLogoutSuccessBlock)();
  */
 - (void)logoutWithSuccess:(LBUserLogoutSuccessBlock)success
                   failure:(SLFailureBlock)failure;
+
+/**
+ * Blocks of this type are executed when
+ * LBUserRepository::resetPasswordWithEmail:success:failure: is successful.
+ */
+typedef void (^LBUserResetSuccessBlock)();
+/**
+ * Triggers reset password for a user with email.
+ *
+ * @param email    The user email.
+ * @param success  The block to be executed when the reset is successful.
+ * @param failure  The block to be executed when the reset fails.
+ */
+- (void)resetPasswordWithEmail:(NSString*)email
+               success:(LBUserResetSuccessBlock)success
+               failure:(SLFailureBlock)failure;
+
 @end
