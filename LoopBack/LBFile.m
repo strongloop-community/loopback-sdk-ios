@@ -40,15 +40,20 @@ static NSString *mimeTypeForFileName(NSString *fileName) {
                                                                           fileName:self.name
                                                                        contentType:mimeType
                                                                             length:length];
-
-   [self invokeMethod:@"upload"
-           parameters:@{ @"container": self.container,
-                         @"name": self.name,
-                         @"file": streamParam }
-              success:^(id value) {
-                  success();
-              }
-              failure:failure];
+    
+    [self invokeMethod:@"upload"
+            parameters:@{ @"container": self.container,
+                          @"name": self.name,
+                          @"file": streamParam }
+               success:^(id value) {
+                   NSAssert([[value class] isSubclassOfClass:[NSDictionary class]],
+                            @"Received non-Dictionary: %@", value);
+                   NSDictionary *fileDictionary = [(NSDictionary*)value valueForKeyPath:@"result.files.file"][0];
+                   NSAssert(fileDictionary != nil, @"Empty Response from File Upload");
+                   LBFile *file = (LBFile *)[(LBFileRepository *)[self repository] modelWithDictionary:fileDictionary];
+                   success(file);
+               }
+               failure:failure];
 }
 
 - (void)downloadWithSuccess:(LBFileDownloadSuccessBlock)success
@@ -186,7 +191,12 @@ static NSString *mimeTypeForFileName(NSString *fileName) {
                                 @"container": container,
                                 @"file": streamParam }
                      success:^(id value) {
-                         success();
+                         NSAssert([[value class] isSubclassOfClass:[NSDictionary class]],
+                                  @"Received non-Dictionary: %@", value);
+                         NSDictionary *fileDictionary = [(NSDictionary*)value valueForKeyPath:@"result.files.file"][0];
+                         NSAssert(fileDictionary != nil, @"Empty Response from File Upload");
+                         LBFile *file = (LBFile *)[self modelWithDictionary:fileDictionary];
+                         success(file);
                      }
                      failure:failure];
 }

@@ -179,7 +179,10 @@
                                              localPath:tmpDir
                                              container:container];
     ASYNC_TEST_START
-    [file uploadWithSuccess:^() {
+    [file uploadWithSuccess:^(LBFile *fileResponse) {
+        XCTAssertEqualObjects(fileResponse.name, file.name);
+        XCTAssertEqualObjects(fileResponse.container, file.container);
+        
         [self.repository downloadAsDataWithName:fileName
                                       container:container
                                         success:^(NSData *data) {
@@ -206,7 +209,9 @@
                         inputStream:inputStream
                         contentType:@"text/plain"
                              length:bytes
-                            success:^() {
+                            success:^(LBFile *fileResponse) {
+                                XCTAssertEqualObjects(fileResponse.name, fileName);
+                                XCTAssertEqualObjects(fileResponse.container, container);
         [self.repository downloadAsDataWithName:fileName
                                       container:container
                                         success:^(NSData *data) {
@@ -230,7 +235,9 @@
                           container:container
                                data:data
                         contentType:@"text/plain"
-                            success:^() {
+                            success:^(LBFile *fileResponse) {
+                                XCTAssertEqualObjects(fileResponse.name, fileName);
+                                XCTAssertEqualObjects(fileResponse.container, container);
         [self.repository downloadAsDataWithName:fileName
                                       container:container
                                         success:^(NSData *data) {
