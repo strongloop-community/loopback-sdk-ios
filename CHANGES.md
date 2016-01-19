@@ -1,4 +1,4 @@
-2016-01-19, Version 1.3.1
+2016-01-19, Version 1.3.2
 =========================
 
  * Remove docs and docs-1.0 leave md files and img (crandmck)
