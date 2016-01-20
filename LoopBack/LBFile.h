@@ -20,7 +20,7 @@
  * Blocks of this type are executed when
  * LBFile:uploadWithSuccess:failure: is successful.
  */
-typedef void (^LBFileUploadSuccessBlock)();
+typedef void (^LBFileUploadSuccessBlock)(LBFile *file);
 /**
  * Uploads the file to the server.
  *
