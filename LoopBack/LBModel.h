@@ -75,6 +75,13 @@
 - (SLRESTContract *)contract;
 
 /**
+ * Creates a new LBModel of this type without setting initial parameters.
+ *
+ * @return  A new LBModel.
+ */
+- (LBModel *)model;
+
+/**
  * Creates a new LBModel of this type with the parameters described.
  *
  * @param  dictionary The data to encapsulate.

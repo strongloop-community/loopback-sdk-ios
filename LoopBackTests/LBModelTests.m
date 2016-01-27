@@ -41,7 +41,7 @@
 }
 
 - (void)testSetObject {
-    LBModel *model = [self.repository modelWithDictionary:@{ @"name": @"Foo", @"bars": @123 }];
+    LBModel *model = [self.repository model];
 
     [model setObject:@"Bar" forKeyedSubscript:@"name"];
     [model setObject:@456 forKeyedSubscript:@"bars"];

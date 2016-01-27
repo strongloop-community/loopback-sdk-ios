@@ -104,8 +104,13 @@ static NSDateFormatter *jsonDateFormatter = nil;
     return contract;
 }
 
+- (LBModel *)model {
+    LBModel *model = (LBModel *)[[self.modelClass alloc] initWithRepository:self parameters:nil];
+    return model;
+}
+
 - (LBModel *)modelWithDictionary:(NSDictionary *)dictionary {
-    LBModel __block *model = (LBModel *)[[self.modelClass alloc] initWithRepository:self parameters:dictionary];
+    LBModel *model = (LBModel *)[[self.modelClass alloc] initWithRepository:self parameters:dictionary];
 
     [[model _overflow] addEntriesFromDictionary:dictionary];
 
