@@ -43,8 +43,7 @@ static NSNumber *lastId;
     [super setUp];
 
     LBRESTAdapter *adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
-    self.repository = (LBPersistedModelRepository*)[adapter repositoryWithModelName:@"widgets"
-                                                                          persisted:YES];
+    self.repository = [adapter repositoryWithPersistedModelName:@"widgets"];
 }
 
 - (void)tearDown {
