@@ -26,12 +26,19 @@ node LoopBackTests/server/index.js &
 node SLRemotingTests/server/index.js &
 
 # run the unit tests on iPhone simulator
+DESTINATION_SIMULATOR='iPhone 6s'
+DESTINATION_SIMULATOR_CI='iPhone Retina (4-inch 64-bit)'
+# CI's xcode only has old simulators
+if [[ -n "${JENKINS_HOME}" ]]; then
+  DESTINATION_SIMULATOR=${DESTINATION_SIMULATOR_CI}
+fi
+
 xcodebuild \
   -verbose \
   -project LoopBack.xcodeproj \
   -scheme LoopBack \
   -sdk iphonesimulator \
-  -destination 'platform=iOS Simulator,name=iPhone Retina (4-inch 64-bit),OS=latest' \
+  -destination "platform=iOS Simulator,name=${DESTINATION_SIMULATOR},OS=latest" \
   ${XCODEBUILD_ARGS} \
   test
 

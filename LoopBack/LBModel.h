@@ -8,6 +8,68 @@
 #import "SLRemoting.h"
 
 /**
+ * Blocks of this type are executed for a successful method invocation that doesn't return
+ * any value as a callback argument.
+ */
+typedef void (^LBModelVoidSuccessBlock)();
+
+/**
+ * Blocks of this type are executed for a successful method invocation that returns
+ * a BOOL value as a callback argument.
+ */
+typedef void (^LBModelBoolSuccessBlock)(BOOL boolean);
+
+/**
+ * Blocks of this type are executed for a successful method invocation that returns
+ * an NSInteger value as a callback argument.
+ */
+typedef void (^LBModelNumberSuccessBlock)(NSInteger number);
+
+/**
+ * Blocks of this type are executed for a successful method invocation that returns
+ * a NSString value as a callback argument.
+ */
+typedef void (^LBModelStringSuccessBlock)(NSString *string);
+
+/**
+ * Blocks of this type are executed for a successful method invocation that returns
+ * an LBModel instance as a callback argument.
+ */
+@class LBModel;
+typedef void (^LBModelObjectSuccessBlock)(LBModel *model);
+
+/**
+ * Blocks of this type are executed for a successful method invocation that returns
+ * an NSDictionary instance as a callback argument.
+ */
+typedef void (^LBModelDictionarySuccessBlock)(NSDictionary *dictionary);
+
+/**
+ * Blocks of this type are executed for a successful method invocation that returns
+ * an NSArray instance as a callback argument.
+ */
+typedef void (^LBModelArraySuccessBlock)(NSArray *array);
+
+/**
+ * Blocks of this type are executed for a successful method invocation that returns
+ * an NSDate instance as a callback argument.
+ */
+typedef void (^LBModelDateSuccessBlock)(NSDate *date);
+
+/**
+ * Blocks of this type are executed for a successful method invocation that returns
+ * an NSData instance as a callback argument.
+ */
+typedef void (^LBModelDataSuccessBlock)(NSData *data);
+
+/**
+ * Blocks of this type are executed for a successful method invocation that returns
+ * a CLLocation instance as a callback argument.
+ */
+typedef void (^LBModelLocationSuccessBlock)(CLLocation *location);
+
+
+/**
  * A local representative of a single model instance on the server. The data is
  * immediately accessible locally.
  */

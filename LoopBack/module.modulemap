@@ -6,4 +6,5 @@ framework module LoopBack {
 
     link framework "MobileCoreServices"
     link framework "SystemConfiguration"
+    link framework "CoreLocation"
 }

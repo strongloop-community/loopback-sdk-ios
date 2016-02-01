@@ -6,6 +6,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>  // for CLLocation
 
 #import "SLAdapter.h"
 
@@ -114,6 +115,48 @@ extern NSString *SLObjectInvalidRepositoryDescription;
         outputStream:(NSOutputStream *)outputStream
              success:(SLSuccessBlock)success
              failure:(SLFailureBlock)failure;
+
+/**
+ * Converts encoded Date value to an NSDate object following the argument encoding rule.
+ *
+ * @param value     The argument value to be converted.
+ */
++ (NSDate *)dateFromEncodedArgument:(NSDictionary *)value;
+
+/**
+ * Converts encoded Buffer value to an NSData object following the argument encoding rule.
+ *
+ * @param value     The argument value to be converted.
+ */
++ (NSData *)dataFromEncodedArgument:(NSDictionary *)value;
+
+/**
+ * Converts encoded GeoPoint value to a CLLocation object following the argument encoding rule.
+ *
+ * @param value     The argument value to be converted.
+ */
++ (CLLocation *)locationFromEncodedArgument:(NSDictionary *)value;
+
+/**
+ * Converts encoded Date value to an NSDate object following the property encoding rule.
+ *
+ * @param value     The property value to be converted.
+ */
++ (NSDate *)dateFromEncodedProperty:(NSString *)value;
+
+/**
+ * Converts encoded Buffer value to an NSData object following the property encoding rule.
+ *
+ * @param value     The property value to be converted.
+ */
++ (NSMutableData *)dataFromEncodedProperty:(NSDictionary *)value;
+
+/**
+ * Converts encoded GeoPoint value to a CLLocation object following the property encoding rule.
+ *
+ * @param value     The property value to be converted.
+ */
++ (CLLocation *)locationFromEncodedProperty:(NSDictionary *)value;
 
 @end
 

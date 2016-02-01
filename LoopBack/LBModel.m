@@ -5,11 +5,9 @@
  * @copyright (c) 2013 StrongLoop. All rights reserved.
  */
 
-#import "LBModel.h"
-
 #import <objc/runtime.h>
 
-#define NSSelectorForSetter(key) NSSelectorFromString([NSString stringWithFormat:@"set%@:", [key stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[key substringToIndex:1] capitalizedString]]])
+#import "LBModel.h"
 
 
 @interface LBModel() {
@@ -20,7 +18,6 @@
 
 @end
 
-static NSDateFormatter *jsonDateFormatter = nil;
 
 @implementation LBModel
 
@@ -29,12 +26,6 @@ static NSDateFormatter *jsonDateFormatter = nil;
 
     if (self) {
         __overflow = [NSMutableDictionary dictionary];
-    }
-
-    if (jsonDateFormatter == nil) {
-        jsonDateFormatter = [[NSDateFormatter alloc] init];
-        [jsonDateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'"];
-        [jsonDateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     }
 
     return self;
@@ -63,9 +54,6 @@ static NSDateFormatter *jsonDateFormatter = nil;
             NSString *propertyName = [NSString stringWithCString:property_getName(properties[i])
                                                         encoding:NSUTF8StringEncoding];
             id obj = [self valueForKey:propertyName];
-            if ([obj isKindOfClass:[NSDate class]]) {
-                obj = [jsonDateFormatter stringFromDate:obj];
-            }
             [dict setValue:obj forKey:propertyName];
         }
         free(properties);
@@ -127,9 +115,21 @@ static NSDateFormatter *jsonDateFormatter = nil;
             }
 
             const char *type = property_getAttributes(property);
-            // if the property type is NSDate, convert the string to a date object
-            if ([obj isKindOfClass:[NSString class]] && strncmp(type, "T@\"NSDate\",", 11) == 0) {
-                obj = [jsonDateFormatter dateFromString:obj];
+            if ([obj isKindOfClass:[NSString class]]) {
+                // if the property type is NSDate, convert the string to a date object
+                if (strncmp(type, "T@\"NSDate\",", 11) == 0) {
+                    obj = [SLObject dateFromEncodedProperty:obj];
+                }
+            } else if ([obj isKindOfClass:[NSDictionary class]]) {
+                // if the property type is NSMutableData, convert the json object to a data object
+                if (strncmp(type, "T@\"NSMutableData\",", 18) == 0 ||
+                    strncmp(type, "T@\"NSData\",", 11) == 0) {
+                    obj = [SLObject dataFromEncodedProperty:obj];
+                }
+                // if the property type is CLLocation, convert the json object to a location object
+                else if (strncmp(type, "T@\"CLLocation\",", 15) == 0) {
+                    obj = [SLObject locationFromEncodedProperty:obj];
+                }
             }
 
             @try {

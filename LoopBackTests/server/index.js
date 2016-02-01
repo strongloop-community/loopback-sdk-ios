@@ -30,17 +30,62 @@ var Widget = app.model('widget', {
       type: Boolean,
       required: false
     },
+    data: {
+      type: Object,
+      required: false
+    },
+    stringArray: {
+      type: [String],
+      required: false
+    },
     date: {
       type: Date,
       required: false
     },
-    data: {
-      type: Object,
+    buffer: {
+      type: Buffer,
+      required: false
+    },
+    geopoint: {
+      type: 'geopoint',
       required: false
     }
   },
   dataSource: 'Memory'
 });
+
+Widget.testDate = function(date, callback) {
+  // advance the time of the given date by 1 second and return it
+  var ret = new Date(date.getTime() + 1000);
+  callback(null, ret);
+};
+Widget.testDate.shared = true;
+Widget.testDate.accepts = [{ arg: 'date', type: 'date' }];
+Widget.testDate.returns = [{ arg: 'date', type: 'date' }];
+Widget.testDate.http = { verb: 'get' };
+
+Widget.testBuffer = function(buffer, callback) {
+  // increment all the bytes of the given buffer by 1 and return it
+  for (var i = 0; i < buffer.length; i++) {
+    buffer[i]++;
+  }
+  callback(null, buffer);
+};
+Widget.testBuffer.shared = true;
+Widget.testBuffer.accepts = [{ arg: 'buffer', type: 'buffer' }];
+Widget.testBuffer.returns = [{ arg: 'buffer', type: 'buffer' }];
+Widget.testBuffer.http = { verb: 'get' };
+
+Widget.testGeoPoint = function(geopoint, callback) {
+  // add 1 to both lat and lng of the given geopoint and return it
+  geopoint.lat += 1;
+  geopoint.lng += 1;
+  callback(null, geopoint);
+};
+Widget.testGeoPoint.shared = true;
+Widget.testGeoPoint.accepts = [{ arg: 'geopoint', type: 'geopoint' }];
+Widget.testGeoPoint.returns = [{ arg: 'geopoint', type: 'geopoint' }];
+Widget.testGeoPoint.http = { verb: 'get' };
 
 var lbpn = require('loopback-component-push');
 var PushModel = lbpn.createPushModel(app, { dataSource: app.dataSources.Memory });
@@ -57,18 +102,28 @@ var ds = app.dataSource('storage', {
 var container = loopback.createModel({ name: 'container', base: 'Model' });
 app.model(container, { dataSource: 'storage' });
 
+var GeoPoint = require('loopback-datasource-juggler/lib/geo').GeoPoint;
+
 Widget.destroyAll(function () {
   Widget.create({
     name: 'Foo',
     bars: 0,
     data: {
-      quux: true
-    }
+      data1: 1,
+      data2: 2
+    },
+    array: [
+      'one',
+      'two',
+      'three'
+    ],
+    date: new Date('January 1, 1970 00:00:00.000Z'),
+    buffer: new Buffer('010203', 'hex'),
+    geopoint: new GeoPoint({lat: 10.32424, lng: 5.84978})
   });
   Widget.create({
     name: 'Bar',
-    bars: 1,
-    date: '2000-01-02T03:04:05.006Z'
+    bars: 1
   });
 });
 

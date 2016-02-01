@@ -7,10 +7,6 @@
 
 #import "LBPersistedModel.h"
 
-#import <objc/runtime.h>
-
-#define NSSelectorForSetter(key) NSSelectorFromString([NSString stringWithFormat:@"set%@:", [key stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[key substringToIndex:1] capitalizedString]]])
-
 
 @interface LBPersistedModel() {
     id __id;
