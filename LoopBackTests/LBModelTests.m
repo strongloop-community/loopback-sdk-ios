@@ -22,7 +22,7 @@
     [super setUp];
 
     LBRESTAdapter *adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3000"]];
-    self.repository = (LBModelRepository*)[adapter repositoryWithModelName:@"widgets" persisted:NO];
+    self.repository = [adapter repositoryWithModelName:@"widgets"];
 }
 
 - (void)tearDown {

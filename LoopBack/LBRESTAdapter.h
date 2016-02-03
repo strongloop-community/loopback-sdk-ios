@@ -17,15 +17,23 @@
 @interface LBRESTAdapter : SLRESTAdapter
 
 /**
- * Returns a new LBModelRepository or LBPersistedModelRepository representing the named model type.
+ * Returns a new LBModelRepository representing the named model type.
  *
  * @param  name       The model name.
- * @param  persisted  A flag to specify `LBPersistedModelRepository` to be created.
- *                    `NO` to create a `LBModelRepository`.
  * @return            A new repository instance.
  */
+- (LBModelRepository *)repositoryWithModelName:(NSString *)name;
 
-- (LBModelRepository *)repositoryWithModelName:(NSString *)name persisted:(BOOL)persisted;
+/**
+ * Returns a new LBPersistedModelRepository representing the named model type.
+ *
+ * @param  name       The model name.
+ * @return            A new repository instance.
+ */
+- (LBPersistedModelRepository *)repositoryWithPersistedModelName:(NSString *)name;
+
+- (LBModelRepository *)repositoryWithModelName:(NSString *)name persisted:(BOOL)persisted
+    __attribute((deprecated("use repositoryWithModelName or repositoryWithPersistedModelName")));
 
 /**
  * Returns a new LBModelRepository from the given subclass.
