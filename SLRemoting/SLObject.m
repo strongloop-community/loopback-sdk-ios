@@ -9,7 +9,7 @@
 
 @interface SLObject()
 
-@property (readwrite, nonatomic, weak) SLRepository *repository;
+@property (readwrite, nonatomic, strong) SLRepository *repository;
 @property (readwrite, nonatomic, strong) NSDictionary *creationParameters;
 
 @end
