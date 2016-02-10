@@ -26,7 +26,7 @@ extern NSString *SLObjectInvalidRepositoryDescription;
 @interface SLObject : NSObject
 
 /** The SLRepository defining the type of this object. */
-@property (readonly, nonatomic, weak) SLRepository *repository;
+@property (readonly, nonatomic, strong) SLRepository *repository;
 
 /**
  * The complete set of parameters to be used to identify/create this object on

@@ -34,6 +34,7 @@ static NSNumber *lastId;
     [suite addTest:[self testCaseWithSelector:@selector(testFindOne)]];
     [suite addTest:[self testCaseWithSelector:@selector(testFindOneWithFilter)]];
     [suite addTest:[self testCaseWithSelector:@selector(testUpdate)]];
+    [suite addTest:[self testCaseWithSelector:@selector(testUpdateRightAfterCreate)]];
     [suite addTest:[self testCaseWithSelector:@selector(testRemove)]];
     return suite;
 }
@@ -141,7 +142,7 @@ static NSNumber *lastId;
 - (void)testUpdate {
     LBPersistedModel *model = (LBPersistedModel*)[self.repository modelWithDictionary: @{
         @"name": @"Foobar",
-        @"bars": @1
+        @"bars": @123
     }];
 
     ASYNC_TEST_START
@@ -158,7 +159,38 @@ static NSNumber *lastId;
                     // verify
                     XCTAssertNotNil(model, @"No model found with ID 2");
                     XCTAssertEqualObjects(model[@"name"], @"Barfoo", @"Invalid name");
-                    XCTAssertEqualObjects(model[@"bars"], @1, @"Invalid bars");
+                    XCTAssertEqualObjects(model[@"bars"], @123, @"Invalid bars");
+                    // remove
+                    [model destroyWithSuccess:^() {
+                        ASYNC_TEST_SIGNAL
+                    } failure:ASYNC_TEST_FAILURE_BLOCK];
+                } failure:ASYNC_TEST_FAILURE_BLOCK];
+            } failure:ASYNC_TEST_FAILURE_BLOCK];
+        } failure:ASYNC_TEST_FAILURE_BLOCK];
+    } failure:ASYNC_TEST_FAILURE_BLOCK];
+    ASYNC_TEST_END
+}
+
+- (void)testUpdateRightAfterCreate {
+    LBPersistedModel *model = (LBPersistedModel*)[self.repository modelWithDictionary: @{
+        @"name": @"Foobar",
+        @"bars": @123
+    }];
+
+    ASYNC_TEST_START
+    // create
+    [model saveWithSuccess:^{
+        // update
+        model[@"name"] = @"Barfoo";
+        [model saveWithSuccess:^() {
+            // find
+            [self.repository findById:model._id success:^(LBPersistedModel *returnedModel) {
+                // verify
+                XCTAssertNotNil(returnedModel, @"No model found");
+                XCTAssertEqualObjects(returnedModel[@"name"], @"Barfoo", @"Invalid name");
+                XCTAssertEqualObjects(returnedModel[@"bars"], @123, @"Invalid bars");
+                // remove
+                [model destroyWithSuccess:^() {
                     ASYNC_TEST_SIGNAL
                 } failure:ASYNC_TEST_FAILURE_BLOCK];
             } failure:ASYNC_TEST_FAILURE_BLOCK];

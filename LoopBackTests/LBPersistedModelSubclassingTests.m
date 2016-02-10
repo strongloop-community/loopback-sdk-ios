@@ -210,10 +210,9 @@ static NSNumber *lastId;
 }
 
 - (void)testUpdate {
-    Widget *widget = (Widget*)[self.repository modelWithDictionary:@{
-        @"name": @"Foobar",
-        @"bars": @1
-    }];
+    Widget *widget = (Widget*)[self.repository model];
+    widget.name = @"Foobar";
+    widget.bars = @123;
 
     ASYNC_TEST_START
     [widget saveWithSuccess:^{
@@ -233,8 +232,11 @@ static NSNumber *lastId;
                     Widget *widget = (Widget *)model;
                     // verify
                     XCTAssertEqualObjects(widget.name, @"Barfoo", @"Invalid name");
-                    XCTAssertEqualObjects(widget.bars, @1, @"Invalid bars");
-                    ASYNC_TEST_SIGNAL
+                    XCTAssertEqualObjects(widget.bars, @123, @"Invalid bars");
+                    // remove
+                    [widget destroyWithSuccess:^() {
+                        ASYNC_TEST_SIGNAL
+                    } failure:ASYNC_TEST_FAILURE_BLOCK];
                 } failure:ASYNC_TEST_FAILURE_BLOCK];
             } failure:ASYNC_TEST_FAILURE_BLOCK];
         } failure:ASYNC_TEST_FAILURE_BLOCK];
