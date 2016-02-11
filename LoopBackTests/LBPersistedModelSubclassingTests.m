@@ -61,7 +61,7 @@ static NSNumber *lastId;
 }
 
 - (void)testMethodWithDate:(NSDate *)date
-                   success:(LBModelDateSuccessBlock)success
+                   success:(void (^)(NSDate *date))success
                    failure:(SLFailureBlock)failure {
 
     [self invokeStaticMethod:@"testDate"
@@ -76,7 +76,7 @@ static NSNumber *lastId;
 }
 
 - (void)testMethodWithData:(NSData *)data
-                   success:(LBModelDataSuccessBlock)success
+                   success:(void (^)(NSData *data))success
                    failure:(SLFailureBlock)failure {
 
     [self invokeStaticMethod:@"testBuffer"
@@ -91,7 +91,7 @@ static NSNumber *lastId;
 }
 
 - (void)testmethodWithLocation:(CLLocation *)location
-                       success:(LBModelLocationSuccessBlock)success
+                       success:(void (^)(CLLocation *location))success
                        failure:(SLFailureBlock)failure {
 
     [self invokeStaticMethod:@"testGeoPoint"
