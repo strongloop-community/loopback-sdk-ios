@@ -1,3 +1,8 @@
+// Copyright IBM Corp. 2014. All Rights Reserved.
+// Node module: loopback-sdk-ios
+// This file is licensed under the MIT License.
+// License text available at https://opensource.org/licenses/MIT
+
 /**
  * A simple class that contains a name, this time with a custom HTTP contract.
  */

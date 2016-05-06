@@ -1,3 +1,8 @@
+// Copyright IBM Corp. 2013,2015. All Rights Reserved.
+// Node module: loopback-sdk-ios
+// This file is licensed under the MIT License.
+// License text available at https://opensource.org/licenses/MIT
+
 var loopback = require('loopback');
 var path = require('path');
 var app = loopback();
