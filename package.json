@@ -1,6 +1,7 @@
 {
   "name": "loopback-sdk-ios",
   "version": "1.3.2",
+  "os": [ "darwin"],
   "description": "iOS client SDK for the LoopBack framework.",
   "keywords": [
     "StrongLoop Labs",
