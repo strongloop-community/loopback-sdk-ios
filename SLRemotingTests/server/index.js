@@ -3,7 +3,7 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-var express = require('strong-remoting/node_modules/express');
+var express = require('express');
 var app = express();
 var remotes = require('strong-remoting').create();
 

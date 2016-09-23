@@ -6,15 +6,11 @@
 var loopback = require('loopback');
 var path = require('path');
 var app = loopback();
-app.set('legacyExplorer', false);
-app.use(loopback.logger(app.get('env') === 'development' ? 'dev' : 'default'));
-app.dataSource('Memory', {
-  connector: loopback.Memory,
-  defaultForType: 'db'
-});
 
-var Widget = app.model('widget', {
-  properties: {
+app.dataSource('Memory', { connector: 'memory' });
+
+var Widget = app.registry.createModel('widget',
+  {
     name: {
       type: String,
       required: true
@@ -55,9 +51,9 @@ var Widget = app.model('widget', {
       type: 'geopoint',
       required: false
     }
-  },
-  dataSource: 'Memory'
-});
+  });
+
+app.model(Widget, { dataSource: 'Memory' });
 
 Widget.testDate = function(date, callback) {
   // advance the time of the given date by 1 second and return it
@@ -87,10 +83,11 @@ Widget.testGeoPoint = function(geopoint, callback) {
   geopoint.lng += 1;
   callback(null, geopoint);
 };
-Widget.testGeoPoint.shared = true;
-Widget.testGeoPoint.accepts = [{ arg: 'geopoint', type: 'geopoint' }];
-Widget.testGeoPoint.returns = [{ arg: 'geopoint', type: 'geopoint' }];
-Widget.testGeoPoint.http = { verb: 'get' };
+Widget.remoteMethod('testGeoPoint', {
+  accepts: [{ arg: 'geopoint', type: 'geopoint' }],
+  returns: [{ arg: 'geopoint', type: 'geopoint' }],
+  http: { verb: 'get', source: 'form'}
+});
 
 var lbpn = require('loopback-component-push');
 var PushModel = lbpn.createPushModel(app, { dataSource: app.dataSources.Memory });
@@ -99,7 +96,7 @@ Installation.attachTo(app.dataSources.Memory);
 app.model(Installation);
 
 var ds = app.dataSource('storage', {
-  connector: require('loopback-component-storage'),
+  connector: 'loopback-component-storage',
   provider: 'filesystem',
   root: path.join(__dirname, 'storage')
 });
@@ -132,10 +129,10 @@ Widget.destroyAll(function () {
   });
 });
 
-app.model(loopback.AccessToken);
+app.model(loopback.AccessToken, {dataSource: 'Memory'});
 
-app.model('Customer', {
-  options: {
+var Customer = app.registry.createModel('Customer', {},
+  {
     base: 'User',
     relations: {
       accessTokens: {
@@ -144,14 +141,14 @@ app.model('Customer', {
         foreignKey: "userId"
       }
     }
-  },
-  dataSource: 'Memory'
-});
+  });
 
-app.dataSource('mail', { connector: 'mail', defaultForType: 'mail' });
-loopback.autoAttach();
+app.model(Customer, { dataSource: 'Memory' });
 
-app.enableAuth();
+app.dataSource('mail', { connector: 'mail' });
+
+app.enableAuth({ dataSource: 'Memory' });
+
 app.use(loopback.token({ model: app.models.AccessToken }));
 app.use(loopback.rest());
 app.listen(3000, function() {

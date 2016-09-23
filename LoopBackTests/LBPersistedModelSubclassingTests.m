@@ -335,7 +335,7 @@ static NSNumber *lastId;
 - (void)testMethodGeoPointArgAndRetValue {
     ASYNC_TEST_START
     CLLocation *location = [[CLLocation alloc] initWithLatitude:1.23 longitude:4.56];
-    [self.repository testmethodWithLocation:location success:^(CLLocation *retLocation) {
+  [self.repository testmethodWithLocation:location success:^(CLLocation *retLocation) {
         // The test method returns a location object with lat +1 and lng +1 of the given object.
         // Note that only the lat and the lng values are sent to/from the server.
         XCTAssertEqual(retLocation.coordinate.latitude, 2.23, @"Invalid latitude.");

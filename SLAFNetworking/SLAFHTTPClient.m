@@ -278,7 +278,7 @@ NSArray * SLAFQueryStringPairsFromKeyAndValue(NSString *key, id value) {
 #ifdef _AFNETWORKING_ALLOW_INVALID_SSL_CERTIFICATES_
     self.allowsInvalidSSLCertificate = YES;
 #endif
-    
+
     return self;
 }
 
@@ -465,6 +465,7 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
     if (parameters) {
         if ([method isEqualToString:@"GET"] || [method isEqualToString:@"HEAD"] || [method isEqualToString:@"DELETE"]) {
             url = [NSURL URLWithString:[[url absoluteString] stringByAppendingFormat:[path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@", SLAFQueryStringFromParametersWithEncoding(parameters, self.stringEncoding)]];
+            
             [request setURL:url];
         } else {
             NSString *charset = (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(self.stringEncoding));
@@ -538,7 +539,7 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
                                                     failure:(void (^)(SLAFHTTPRequestOperation *operation, NSError *error))failure
 {
     SLAFHTTPRequestOperation *operation = nil;
-    
+
     for (NSString *className in self.registeredHTTPOperationClassNames) {
         Class operationClass = NSClassFromString(className);
         if (operationClass && [operationClass canProcessRequest:urlRequest]) {
@@ -850,7 +851,7 @@ NSTimeInterval const kSLAFUploadStream3GSuggestedDelay = 0.2;
 
     NSString *fileName = [fileURL lastPathComponent];
     NSString *mimeType = AFContentTypeForPathExtension([fileURL pathExtension]);
-    
+
     return [self appendPartWithFileURL:fileURL name:name fileName:fileName mimeType:mimeType error:error];
 }
 

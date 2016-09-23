@@ -229,7 +229,7 @@ NSString *SLObjectInvalidRepositoryDescription = @"Invalid repository.";
         id value = [prop objectForKey:key];
         if ([value isKindOfClass:[NSDate class]]) {
             NSString *jsonString = [value convertToJSONString];
-            value = @{ @"$type": @"date", @"$data": jsonString };
+            value = jsonString ;
         } else if ([value isKindOfClass:[NSData class]]) {
             NSString *base64string = [value base64EncodedStringWithOptions:0];
             value = @{ @"$type": @"base64", @"$data": base64string };
