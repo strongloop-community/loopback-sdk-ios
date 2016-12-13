@@ -86,7 +86,7 @@ Widget.testGeoPoint = function(geopoint, callback) {
 Widget.remoteMethod('testGeoPoint', {
   accepts: [{ arg: 'geopoint', type: 'geopoint' }],
   returns: [{ arg: 'geopoint', type: 'geopoint' }],
-  http: { verb: 'get', source: 'form'}
+  http: { verb: 'get'}
 });
 
 var lbpn = require('loopback-component-push');
@@ -129,7 +129,8 @@ Widget.destroyAll(function () {
   });
 });
 
-app.model(loopback.AccessToken, {dataSource: 'Memory'});
+app.enableAuth({ dataSource: 'Memory' });
+app.model(loopback.AccessToken);
 
 var Customer = app.registry.createModel('Customer', {},
   {
@@ -144,10 +145,6 @@ var Customer = app.registry.createModel('Customer', {},
   });
 
 app.model(Customer, { dataSource: 'Memory' });
-
-app.dataSource('mail', { connector: 'mail' });
-
-app.enableAuth({ dataSource: 'Memory' });
 
 app.use(loopback.token({ model: app.models.AccessToken }));
 app.use(loopback.rest());
