@@ -1,9 +1,14 @@
-## LoopBack iOS SDK
+# LoopBack iOS SDK
 
-![StrongLoop Labs](http://loopback.io/images/9830552.png "StrongLoop Labs")
+## Status
 
-> StrongLoop Labs projects provide early access to advanced or experimental functionality.  In general, these projects may lack usability, completeness, documentation, and robustness, and may be outdated.
-However, StrongLoop supports these projects: Paying customers can open issues using the StrongLoop customer support system (Zendesk), and community users can report bugs on GitHub.
+As a former StrongLoop Labs project, this SDK may lack usability, completeness, documentation, and robustness, and may be outdated. StrongLoop/IBM is no longer maintaining this project actively, however we do provide support for our paying customers through usual IBM support channels.
+
+Our recommendatios is to use [IBM Mobile First](https://www.ibm.com/mobile) platform or [Swagger codegen](https://github.com/swagger-api/swagger-codegen) instead of this SDK.
+
+We are looking for volunteers from our community to pick up the maintenance of this project, see https://github.com/strongloop-community/loopback-sdk-ios/issues/136
+
+## Description
 
 The LoopBack iOS SDK obviates the need for using the clunky `NSURLRequest` and
 similar interfaces to interact with a LoopBack-based backend, albeit RESTful.
